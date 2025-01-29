@@ -1,9 +1,10 @@
-# Tapir_Elithril.github.io
+# Tapir's Notebook
 
-Personal github website from Tapir_Elithril
+Personal website by Tapir_Elithril
 
-Zhejiang Univ.
-
-23Turing AI 
-
-2025.1.29
+- Zhejiang Univ.
+- 23Turing AI 
+- 2025.1.29
+- ShangHai,China
+  
+QQ:406015625
