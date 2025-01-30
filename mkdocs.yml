@@ -8,18 +8,18 @@ nav:
   - 首页: index.md
   - fa23:
     - fa23/index.md
-    - 军训:fa23/military_training/index.md
-    - 数学分析(甲)I(H):fa23/math_analysis1/index.md
-    - 线性代数I(H):fa23/linear_algebra1/index.md
-    - 程序设计与算法基础:fa23/programming/index.md
-    - 思想道德与法治:fa23/morality_law/index.md
-    - 中国近现代史纲要(H):fa23/modern_history/index.md
-    - 近代西方政治哲学导论:fa23/political_philosophy/index.md
-    - 天文学导论:fa23/astronomy/index.md
-    - 心理学及应用:fa23/psychology/index.md
-    - 职业生涯规划:fa23/career_planning/index.md
-    - 中国改革开放史:fa23/reform_and_openup/index.md
-    - 定向越野:fa23/orienteering/index.md
+    - 军训: fa23/military_training/index.md
+    - 数学分析(甲)I(H): fa23/math_analysis1/index.md
+    - 线性代数I(H): fa23/linear_algebra1/index.md
+    - 程序设计与算法基础: fa23/programming/index.md
+    - 思想道德与法治: fa23/morality_law/index.md
+    - 中国近现代史纲要(H): fa23/modern_history/index.md
+    - 近代西方政治哲学导论: fa23/political_philosophy/index.md
+    - 天文学导论: fa23/astronomy/index.md
+    - 心理学及应用: fa23/psychology/index.md
+    - 职业生涯规划: fa23/career_planning/index.md
+    - 中国改革开放史: fa23/reform_and_openup/index.md
+    - 定向越野: fa23/orienteering/index.md
 
 theme:
   name: material
@@ -73,7 +73,7 @@ theme:
     - content.action.edit
   font:
     code: JetBrains Mono
-    text: JetBrains Mono
+    text: Noto Serif SC
   language: zh # 一些提示性的文字会变成中文
   # icon:
   #   edit: material/pencil
