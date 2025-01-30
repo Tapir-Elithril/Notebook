@@ -7,4 +7,4 @@ Personal website by Tapir_Elithril
 - 2025.1.29
 - ShangHai,China
   
-QQ:406015625
+QQ:406015625(remember to note(备注) something)

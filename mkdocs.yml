@@ -2,7 +2,24 @@ site_name: Tapir's Notebook
 site_url: https://tapir-elithril.github.io/Notebook/
 site_author: 杨亿酬
 site_description: Tapir's Notebook
-copyright: 2025 yyc
+copyright: Copyright © YYC 2025
+
+nav:
+  - 首页: index.md
+  - fa23:
+    - fa23/index.md
+    - 军训:fa23/military_training/index.md
+    - 数学分析(甲)I(H):fa23/math_analysis1/index.md
+    - 线性代数I(H):fa23/linear_algebra1/index.md
+    - 程序设计与算法基础:fa23/programming/index.md
+    - 思想道德与法治:fa23/morality_law/index.md
+    - 中国近现代史纲要(H):fa23/modern_history/index.md
+    - 近代西方政治哲学导论:fa23/political_philosophy/index.md
+    - 天文学导论:fa23/astronomy/index.md
+    - 心理学及应用:fa23/psychology/index.md
+    - 职业生涯规划:fa23/career_planning/index.md
+    - 中国改革开放史:fa23/reform_and_openup/index.md
+    - 定向越野:fa23/orienteering/index.md
 
 theme:
   name: material
@@ -54,17 +71,17 @@ theme:
     # [点击按钮跳转至 GitHub 修改 Markdown 源文件]
     # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
     - content.action.edit
+  font:
+    code: JetBrains Mono
+    text: JetBrains Mono
   language: zh # 一些提示性的文字会变成中文
-  icon:
-    # [添加 GitHub 仓库]
-    # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository-icon
-    repo: fontawesome/brands/github
+  # icon:
+  #   edit: material/pencil
 # [点击按钮跳转至 GitHub 修改 Markdown 源文件]
 # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
 edit_uri: edit/main/docs/
-
-nav:
-  - 首页: index.md
+repo_url: https://github.com/Tapir-Elithril/Notebook
+repo_name: Tapir-Elithril/Notebook
 
 markdown_extensions:
   # [数学公式支持]
