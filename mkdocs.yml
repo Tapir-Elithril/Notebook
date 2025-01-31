@@ -10,16 +10,29 @@ nav:
     - fa23/index.md
     - 军训: fa23/military_training/index.md
     - 数学分析(甲)I(H): fa23/math_analysis1/index.md
-    - 线性代数I(H): fa23/linear_algebra1/index.md
     - 程序设计与算法基础: fa23/programming/index.md
-    - 思想道德与法治: fa23/morality_law/index.md
+    - 线性代数I(H): fa23/linear_algebra1/index.md
     - 中国近现代史纲要(H): fa23/modern_history/index.md
+    - 思想道德与法治: fa23/morality_law/index.md
     - 近代西方政治哲学导论: fa23/political_philosophy/index.md
     - 天文学导论: fa23/astronomy/index.md
     - 心理学及应用: fa23/psychology/index.md
     - 职业生涯规划: fa23/career_planning/index.md
     - 中国改革开放史: fa23/reform_and_openup/index.md
     - 定向越野: fa23/orienteering/index.md
+  - sp24:
+    - sp24/index.md
+    - 数学分析(甲)II(H): sp24/math_analysis2/index.md
+    - 计算机系统I: sp24/sys1/index.md
+    - 普通物理学I(H): sp24/physics1/index.md
+    - 离散数学理论基础: sp24/discrete_math/index.md
+    - 线性代数II(H): sp24/linear_algebra2/index.md
+    - 数据结构基础: sp24/fds/index.md
+    - 普通物理学实验I: sp24/physics1_lab/index.md
+    - 打开艺术之门——钢琴: sp24/piano/index.md
+    - 游泳(初级): sp24/swimming/index.md
+    - 形势与政策: sp24/situation_policy1/index.md、
+    - 课程综合实践I——安全攻防战略(CTF): sp24/ctf/index.md
 
 theme:
   name: material
