@@ -30,6 +30,7 @@ nav:
     - sp24/index.md
     - 数学分析(甲)II(H): sp24/math_analysis2/index.md
     - 计算机系统I: sp24/sys1/index.md
+      - 单周期CPU: sp24/sys1/CPU.md
     - 普通物理学I(H): sp24/physics1/index.md
     - 离散数学理论基础: sp24/discrete_math/index.md
     - 线性代数II(H): sp24/linear_algebra2/index.md
