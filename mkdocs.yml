@@ -6,6 +6,12 @@ copyright: Copyright © YYC 2025
 
 nav:
   - 首页: index.md
+  # - 工具: 
+  #   - Git: tools/git/index.md
+  #   - Linux: tools/linux/index.md
+  #   - Markdown: tools/markdown/index.md
+  #   - LaTeX: tools/latex/index.md
+  #   - Python: tools/python/index.md
   - fa23:
     - fa23/index.md
     - 军训: fa23/military_training/index.md
@@ -29,10 +35,22 @@ nav:
     - 线性代数II(H): sp24/linear_algebra2/index.md
     - 数据结构基础: sp24/fds/index.md
     - 普通物理学实验I: sp24/physics1_lab/index.md
+    - 网络空间安全导论: sp24/cyber_security/index.md
     - 打开艺术之门——钢琴: sp24/piano/index.md
     - 游泳(初级): sp24/swimming/index.md
     - 形势与政策I: sp24/situation_policy1/index.md
-    - 课程综合实践I——安全攻防战略(CTF): sp24/ctf/index.md
+    - 课程综合实践I——安全攻防实践基础(CTF): sp24/ctf/index.md
+  # - fa24:
+  #   - fa24/index.md
+  #   - 计算机系统II: fa24/sys2/index.md
+  #   - 普通物理学II(H): fa24/physics2/index.md
+  #   - 高级数据结构与算法分析: fa24/ads/index.md
+  #   - 概率论(H): fa24/probability/index.md
+  #   - 人工智能引论: fa24/aid/index.md
+  #   - 军事理论: fa24/military_theory/index.md
+  #   - 普通物理学实验II: fa24/physics2_lab/index.md
+  #   - 茶文化与茶健康: fa24/tea/index.md
+  #   - 健美操: fa24/aerobics/index.md
 
 theme:
   name: material
