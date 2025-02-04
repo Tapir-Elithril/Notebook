@@ -1,1 +1,7 @@
-到大二应该已经是个老油条了
+# 学习建议
+一个合格的老油条应该学会  
+
+- Read the manuals and papers
+- Improve your English
+- Start thinking about researches
+- Self-learning
