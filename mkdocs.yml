@@ -6,12 +6,17 @@ copyright: Copyright © YYC 2025
 
 nav:
   - 首页: index.md
-  # - 工具: 
-  #   - Git: tools/git/index.md
+  - 工具: 
+    - Git: tools/git/index.md
   #   - Linux: tools/linux/index.md
-  #   - Markdown: tools/markdown/index.md
-  #   - LaTeX: tools/latex/index.md
+    - Markdown: tools/markdown/index.md
+    - LaTeX: 
+      - tools/latex/index.md
+      - 文献: tools/latex/format.md
+      - 常用符号: tools/latex/symbols.md
   #   - Python: tools/python/index.md
+  #   - Makefile: tools/makefile/index.md
+  #   - Html: tools/html/index.md
   - fa23:
     - fa23/index.md
     - 军训: fa23/military_training/index.md
@@ -30,12 +35,15 @@ nav:
   - sp24:
     - sp24/index.md
     - 数学分析(甲)II(H): sp24/math_analysis2/index.md
-    - 计算机系统I: sp24/sys1/index.md
+    - 计算机系统I: 
+      - sp24/sys1/index.md
       - 单周期CPU: sp24/sys1/CPU.md
     - 普通物理学I(H): sp24/physics1/index.md
     - 离散数学理论基础: sp24/discrete_math/index.md
     - 线性代数II(H): sp24/linear_algebra2/index.md
-    - 数据结构基础: sp24/fds/index.md
+    - 数据结构基础: 
+      - sp24/fds/index.md
+      - 常见结构体:sp24/fds/struct.md
     - 普通物理学实验I: sp24/physics1_lab/index.md
     - 网络空间安全导论: sp24/cyber_security/index.md
     - 打开艺术之门——钢琴: sp24/piano/index.md
