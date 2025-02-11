@@ -7,6 +7,7 @@ copyright: Copyright © YYC 2025
 nav:
   - 首页: index.md
   - 工具: 
+    - tools/index.md
     - Git: tools/git/index.md
   #   - Linux: tools/linux/index.md
     - Markdown: tools/markdown/index.md
@@ -43,7 +44,7 @@ nav:
     - 线性代数II(H): sp24/linear_algebra2/index.md
     - 数据结构基础: 
       - sp24/fds/index.md
-      - 常见结构体:sp24/fds/struct.md
+      - 常见结构体: sp24/fds/struct.md
     - 普通物理学实验I: sp24/physics1_lab/index.md
     - 网络空间安全导论: sp24/cyber_security/index.md
     - 打开艺术之门——钢琴: sp24/piano/index.md

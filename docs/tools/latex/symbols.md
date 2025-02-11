@@ -34,7 +34,8 @@ x_2,x^2,C_n^m,a_{ij},f^{(n)} //下标与上标
 \forall,\exists //任意，存在
 
 //希腊字母
-\alpha,\beta,\gamma,\delta,\epsilon,\varepsilon(格式不同),\eta,\theta,\lambda,\mu,\pi,\rho,\sigma,\tau,\phi,\varphi,\psi,\omega,\xi,\zeta
+\alpha,\beta,\gamma,\delta,\epsilon,\varepsilon(格式不同),\eta,\theta,\lambda,
+\mu,\pi,\rho,\sigma,\tau,\phi,\varphi,\psi,\omega,\xi,\zeta
 \Gamma,\Delta,\Pi,\Sigma,\Phi,\Psi,\Omega
 
 \infty,\aleph //无穷大，阿列夫

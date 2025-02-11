@@ -4,12 +4,14 @@ Texlive
 ```
 sudo apt install texlive-full
 ```
-Mathtype固定公式转化为LaTeX
-Mathpix手写公式、计算机生成公式转化为LaTeX
-Vscode插件：
-latex workshop
-latex utilities
-Ctrl + Shift + P -> Preferences: Open Settings (JSON) -> settings.json
+Mathtype固定公式转化为LaTeX  
+Mathpix手写公式、计算机生成公式转化为LaTeX  
+Vscode插件：  
+
+- latex workshop
+- latex utilities
+- Ctrl + Shift + P -> Preferences: Open Settings (JSON) -> settings.json  
+  
 ```
 "latex-workshop.latex.recipes": [
   {

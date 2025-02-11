@@ -3,5 +3,6 @@
 
 - Read the manuals and papers
 - Improve your English
-- Start thinking about researches
+- Be a smart researcher
 - Self-learning
+- Reserve KFC breakfast
