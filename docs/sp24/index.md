@@ -21,13 +21,15 @@
   fake location
 - 有问题私信沟通
 
-其他推荐的工具:(98/朵朵)
-- celechron(查分和付款码很好用)
-- ZTA
-- ZJU Connect
-- SpaceSniffer (on github)
+其他推荐的工具:(98/朵朵)  
+
+- celechron(查分和付款码很好用)  
+- ZTA  
+- ZJU Connect  
+- SpaceSniffer (on github)  
 
 
 此外，从这学期开始，所有的专业课(sys,fds等)实验相关的问题都可以询问我，相关内容都有做留存，不过更具体的内容还是积极求助课程助教（或许就是我~？）
 
-剩下的就是良好的心态、合理的安排以及足够的信息
+剩下的就是良好的心态、合理的安排以及足够的信息  
+祝好运  
