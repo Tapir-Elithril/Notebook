@@ -1,7 +1,7 @@
 # LaTeX
 ## 工具
 Texlive
-```
+```bash
 sudo apt install texlive-full
 ```
 Mathtype固定公式转化为LaTeX  

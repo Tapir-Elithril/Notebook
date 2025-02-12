@@ -18,6 +18,7 @@ nav:
   #   - Python: tools/python/index.md
   #   - Makefile: tools/makefile/index.md
   #   - Html: tools/html/index.md
+  #   - reveal-md: tools/reveal-md/index.md
   - fa23:
     - fa23/index.md
     - 军训: fa23/military_training/index.md
