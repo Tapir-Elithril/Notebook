@@ -14,7 +14,7 @@ struct AdjVNode{
     int Weight;
     PtrToAdjVNode Next;
 };
-// Unidirectional edge, contains the node number AdjV that the edge points to, the weight of the edge Weight, a pointer Next to the next edge, and a pointer Reverse to the reverse edge
+// Undirectional edge, containing the node number AdjV that the edge points to, the weight of the edge Weight, a pointer Next to the next edge, and a pointer Reverse to the reverse edge
 
 typedef struct Vnode{
     PtrToAdjVNode FirstEdge;
