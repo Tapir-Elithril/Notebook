@@ -55,7 +55,9 @@ nav:
     - 课程综合实践I——安全攻防实践基础(CTF): sp24/ctf/index.md
   - fa24:
     - fa24/index.md
-    - 计算机系统II: fa24/sys2/index.md
+    - 计算机系统II: 
+      - fa24/sys2/index.md
+      - 笔记: fa24/sys2/note.md
     - 普通物理学II(H): fa24/physics2/index.md
     - 高级数据结构与算法分析: fa24/ads/index.md
     - 概率论(H): fa24/probability/index.md
@@ -64,6 +66,16 @@ nav:
     - 普通物理学实验II: fa24/physics2_lab/index.md
     - 茶文化与茶健康: fa24/tea/index.md
     - 健美操: fa24/aerobics/index.md
+  # - sp25:
+  #   - sp25/index.md
+  #   - 计算机系统III:
+  #     - sp25/sys3/index.md
+  #     - 笔记: sp25/sys3/note.md
+  #   - 数据库系统: sp25/sql/index.md
+  #   - 面向对象程序设计: sp25/oop/index.md
+  #   - 马克思主义基本原理(H): sp25/marx/index.md
+  #   - 习近平新时代中国特色社会主义思想概论: sp25/xi/index.md
+
 
 theme:
   name: material
