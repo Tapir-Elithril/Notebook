@@ -59,7 +59,9 @@ nav:
       - fa24/sys2/index.md
       - 笔记: fa24/sys2/note.md
     - 普通物理学II(H): fa24/physics2/index.md
-    - 高级数据结构与算法分析: fa24/ads/index.md
+    - 高级数据结构与算法分析: 
+      - fa24/ads/index.md
+      - 笔记: fa24/ads/note.md
     - 概率论(H): fa24/probability/index.md
     - 人工智能引论: fa24/aid/index.md
     - 军事理论: fa24/military_theory/index.md
