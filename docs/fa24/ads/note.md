@@ -6,7 +6,7 @@
   
 [Target]Speed up searching    
 Problem: worst case complexity of BST may be O(N)    
-[Definition]:T是非空二叉树（空树的高度:=-1），T是高度平衡的，如果    
+[Definition]T是非空二叉树（空树的高度:=-1），T是高度平衡的，如果    
 (1)左右子树是高度平衡的    
 (2)左右子树的高度差|h<sub>L</sub>-h<sub>R</sub>|<=1    
 定义BF(node) = h<sub>L</sub>-h<sub>R</sub> 为某个节点的平衡因子，如果T是高度平衡的，则BF(node) = -1,0,1    
@@ -88,7 +88,7 @@ potential function的要求:
 Φ(D<sub>n</sub>) > Φ(D<sub>0</sub>)    
 对任意操作，Φ(D<sub>i</sub>) - Φ(D<sub>i-1</sub>) 尽可能小（常数）    
   
-!!! danger "选择正确的potential function:</br>计算不同操作的C<sub>i</sub> = c<sub>i</sub> + (D<sub>i</sub>) - Φ(D<sub>i-1</sub>)，选择最小的(通常要求都为常数)"  
+!!! danger "选择正确的potential function:计算不同操作的C<sub>i</sub> = c<sub>i</sub> + Φ(D<sub>i</sub>) - Φ(D<sub>i-1</sub>)，选择最小的(通常要求都为常数)"  
   
 **用Amortized analysis 分析Splay tree**    
 尝试：    
@@ -261,9 +261,7 @@ remember to update npl(H1),otherwise the npl of every node is 0
   
 level of recursive:r1+r2(length of right path of H1/H2)  
 time per level:O(1)  
-$$  
-T = O(r1 + r2) = O(logN1 + logN2) = O(log \sqrt{N1N2} )= O(log(N1 + N2))  
-$$  
+$T = O(r1 + r2) = O(logN1 + logN2) = O(log \sqrt{N1N2} )= O(log(N1 + N2))$  
   
 *Delete:Only the npl of the ancestors of the node to be deleted(u<sub>0</sub>) will be changed  
 ![alt text](image/image-18.png)  
@@ -287,12 +285,12 @@ Merge:(iterative)
 Target:Any M consecutive operations take at most O(MlogN) time   
   
 [Definition]Merge:除了两棵树右路径上的最大结点之外(交换了就只有右儿子没有左儿子)都必须交换其左右孩子，一路上都要交换  
-```  
+```C  
 Merge(H1->Right,H2)  
 Attach(H2,H1->Right)  
 Swap(H1->Right,H1->Left) #always  
 ```  
-!!! Reminder H 与 null 连接，必须看 H 的右路径，要求 H 右路径上除了最大结点之外都必须交换其左右孩子。  
+!!! note "H 与 null 连接，必须看 H 的右路径，要求 H 右路径上除了最大结点之外都必须交换其左右孩子。"
 ![alt text](image/image-29.png)  
 上面两个堆在合并时，注意6-14-13这个堆与null连接时，要交换6的左右孩子(14&13)  
 ![alt text](image/image-28.png)  
@@ -364,10 +362,10 @@ T<sub>p</sub> = O(logN)
 all the trees be accessed quickly => Left-child-next-sibling with linked lists  
 link the subtrees in **decreasing** sizes  
   
-!!! danger 实际存储方式与常规画图方式不同  
+!!! danger "实际存储方式与常规画图方式不同"
   
 ![alt text](image/image-33.png)  
-```  
+```C  
 typedef struct BinNode *Position;  
 typedef struct collection *BinQueue;  
 typedef struct BinNode *BinTree;  
@@ -441,7 +439,7 @@ pruning剪枝:eliminate the explicit examination of a large subset of the candid
 Step1: N(N-1)/2 = 15 => N = 6  
 Step2:x1 = 0 and x6 = 10  
 Step3:find the next larget distance and check  
-```  
+```C  
     x5 = 8 or x2 = 2  
       if x5 = 8 then x4 = 7 or x2 = 3  
                     if x4 = 7 then x3 = 6 or x2 = 4  
@@ -470,8 +468,10 @@ try 6:4 sticks in total
 已知每根长度为6，枚举每根小木棍的位置  
 搜索树：已经拼接的木棍   
 pruning:  
+
 - 超过总长  
 - 考察剩余最长的小木棍是否可放 => 改变搜索顺序 先放置长的小木棍(smaller Si)  
+  
 有解 return  
 无解 try 8  
   
@@ -496,22 +496,22 @@ The human is trying to minimize the value of the position P,while the computer i
 β pruning：human  
 black node is the node get cut  
   
-!!! danger prunning bottom up (bottom prunned first)  
+!!! danger "prunning bottom up (bottom prunned first)"
   
 #### 华容道 Eight Digits:The minimum number of moves  
 搜索树：挪动棋子的方案  
 prunning  
+
 - 去重 => 动态规划  
 - 步数超过当前已有的最优解  
   预判：  
 - 当前空格到目标空格的最短步数 + 当前步数 > 最优解  
 - 当前棋盘数字达到目标状态的步数 + 当前步数 > 最优解  
+  
 ## Lecture 7 :Divide and Conquer  
   
 ### General recurrence:  
-$$  
-T(N) = aT(N/b) + f(N)  
-$$  
+$T(N) = aT(N/b) + f(N)$  
 a:子问题数量  
 b:每个子问题内的元素数量  
 f(N):合并所需要的时间  
@@ -545,6 +545,7 @@ combine
 [Problem]Given N points in a plane.Find the closest pair of points  
 Check N(N-1)/2 pairs.T = O(N²)  
 ![alt text](image/image-40.png)  
+
 $$  
 T(N) = 2T(N/2) + cN  
      = ... = 2^{k}T(N/2^{k}) +kcN = N + cNlogN = O(NlogN)  
@@ -562,9 +563,9 @@ $$
 实现上的困难：既按x轴排序又按y轴排序  
   
 ### Recurrences solving  
-$$  
+$  
 T(N) = aT(N/b) + f(N)  
-$$  
+$  
 Assume:  
 - N/b is an integer  
 - O(1) for small n  
@@ -572,7 +573,7 @@ Assume:
 #### Fundamental method - iterative unfolding  
   
 #### Substitution method - guess,then prove by induction  
-$$  
+$  
 \begin{align*}  
   \begin{aligned}  
 T(N) &= 2T(N/2) + N \\  
@@ -582,15 +583,15 @@ T(N) &= 2T(N/2) + N \\ &\leq 2c(N/2)log(N/2) + N \\&\leq cN(logN-log2) + N \\
 &\leq cNlogN  
   \end{aligned}  
 \end{align*}  
-$$  
+$  
 wrong for N = 1,只需找到一个N,对任意n>N,上式成立即可  
 对低于NlogN的量，直接丢弃(见HW7-4.A)  
-$$   
+$   
 \begin{align*}  
 &Wrong Guess:T(N) = O(N) \\   
 &T(N) \leq cN + N \neq O(N)  
 \end{align*}  
-$$  
+$  
 #### Recursion-tree method  
 ![alt text](image/image-43.png)  
 再用代入法证明即可  
@@ -665,9 +666,9 @@ prunning
 **动态规划的关键：记忆性**  
   
 Let b<sub>n</sub> be the ways of computing M<sub>1</sub>M<sub>2</sub>...M<sub>n</sub>  
-$$  
+$  
 b_{n} = O(\frac{4^n}{n\sqrt{n}})  
-$$  
+$  
 ![alt text](image/image-49.png)  
 O(N²) values of M<sub>ij</sub>  
 枚举l,O(N)  
@@ -769,7 +770,7 @@ The hardest:undecidable不可判定问题（已知答案无法确认正误）
 Halting problem:Is it possible to have a C compiler detect all infinite loops?  
   No,proof by self-detecting.  
   
-!!! note difficulty:P <= NP <= NPC < undeciable   
+!!! note "difficulty:P <= NP <= NPC < undeciable"
   
 ### The Class NP  
   
@@ -784,7 +785,7 @@ e.g. A graph does not have a Hamiltonian cycle:not NP
   
 P:we can prove any solution is true and find the solution in polynomial time  
   
-!!! note P:解决 NP:判定  
+!!! note "P:解决 NP:判定"
 **The most difficult NP problems:NP-complete problem(NPC)**  
 an NPC problem has the property that any problem in NP can be polynomially reduced to NPC  
 If we can solve **any** NPC problem in polynomial time ,then we can solve all the problems in NP  
@@ -813,7 +814,7 @@ Q是I到S的一个映射
 优化问题都可以转化为判定问题(将优化问题的解作为判定问题的条件即可)，判定问题的输出是0或1，这便于判断两个不同类型的问题的解是不是一样的(recall answer for β = answer for α)  
 接下来只讨论判定问题：  
   
-!!! note language也包括不可判定问题  
+!!! note "language也包括不可判定问题"
   
 Formal-language Theory  
 - An alphabet is a finite set of symbols{0,1}  
@@ -846,9 +847,9 @@ Lecture 11-13的任务是：对于一个不能在多项式时间复杂度找到�
 3.**near**-optimal solutions in polynomial time  
   
 [Definition] Approximation Ratio  
-$$  
+$  
 max(\frac{C}{C^*},\frac{C^*}{C})<=ρ(n)  
-$$  
+$  
 C*is the cost of an optimal solution  
 ρ(n)-approximation alogrithm  
   
@@ -856,7 +857,7 @@ C*is the cost of an optimal solution
 An approximation scheme is a polynomial-time approximation scheme(PTAS) if for any fixed ε,the scheme runs in time polynomial in the size n:O(n<sup>2/ε</sup>)  
 fully polynomial-time approximation scheme(FPTAS):with the decreasing of ε(追求更高精度),the time complexity will drop polynomially:O((1/ε)<sup>2</sup>n<sup>3</sup>)   
   
-!!! note 只要是n的多项式级别，无论ε 都是PTAS  </br> 如果1/ε也是多项式级别，则是FPTAS  
+!!! note "只要是n的多项式级别，无论ε 都是PTAS  </br> 如果1/ε也是多项式级别，则是FPTAS"
   
 ### Approximate Bin Packing  
   
@@ -882,7 +883,7 @@ place a new item in the tightest spot among all bins
 T = O(NlogN)  
 ρ = 1.7  
   
-!!! note special case is meaningless in the worst case  
+!!! note "special case is meaningless in the worst case"
   
 Order is important!  
   
@@ -1107,11 +1108,11 @@ Related to Local Search
 Feasible solution set *FS*:any partition(A,B)  
 Neighbourhood:moving one node from A to B(or B to A)  
   
-!!! note a special case of Hopfield Neural Network - with w all being positive  
+!!! note "a special case of Hopfield Neural Network - with w all being positive"
   
 `u = GetUnsatisfiled(S)`   
   
-!!! note Hopfield Neural Network is to find a valid solution </br>but now we want to find an optimal solution  
+!!! note "Hopfield Neural Network is to find a valid solution </br>but now we want to find an optimal solution"
   
 Claim:Let(A,B)be a local optimal partition and let (A*,B*) be a glocal optimal partition.Then w(A,B) >= 1/2w(A*,B*) ρ = 2  
 Proof:  
@@ -1199,9 +1200,9 @@ Q1:What is the probability we hire the best for any given k
 S<sub>i</sub>:= the ith applicant is the best  
 Pr(S<sub>i</sub>) = Pr(the best one is at position i) * Pr(no one at position k+1 ~ i-1 are hired) = 1/N * k/(i-1)  
 Pr(S) = ΣPr(S<sub>i</sub>) = $\frac{k}{N}\sum_{i=k}^{N-1}\frac{1}{i}$  
-$$  
+$  
 \frac{k}{N}ln(\frac{N}{k}) <= Pr[S] <= \frac{k}{N}ln(\frac{N-1}{k-1})  
-$$  
+$  
   
 注意：最后一人被雇佣的概率要加上最好的在前k个的概率   
   
@@ -1245,13 +1246,13 @@ Modified Quicksort := always select a central splitter before recursions
 Claim:The expectation of iterations needed until we find a central splitter is at most 2.  
 Recall:Recursion-tree method in divide and conquer  
 Type j:The subproblem S is of Type j if   
-$$  
+$  
 N(\frac{3}{4})^{j+1} <= |S| <= N(\frac{3}{4})^{j}(递归树的层数)  
-$$  
+$  
 At most $(\frac{3}{4})^{j+1}$ ( = $\frac{N}{|S|_{min}}$) subproblems of type j.  
-$$  
+$  
 E[T_{type j}] = O(N(\frac{3}{4})^{j})(数量上界) * (\frac{4}{3})^{j+1}(规模上界) = O(N)  
-$$  
+$  
 Number of different types = log<sub>4/3</sub>N = O(logN)  
 T = O(NlogN)(期望时间复杂度)  
   
@@ -1521,7 +1522,7 @@ I/O与CPU的并行
 ![alt text](image/image-66.png)  
 ![alt text](image/image-67.png)  
   
-!!! note 只有在读入的数据不影响排序结果的情况下才可以parallel地读入与合并  
+!!! note "只有在读入的数据不影响排序结果的情况下才可以parallel地读入与合并"
   
 ### Generate a longer run —— Replacement Selection  
   
