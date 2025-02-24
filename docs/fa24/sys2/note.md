@@ -166,7 +166,7 @@ $TP = \frac{n}{(m+n-1)*Δt_0}$
 $TP_{max} = \frac{1}{Δt_0} = TP(n → ∞)$  
 
 实际情况需要考虑瓶颈
-e.g.
+e.g.  
 m = 4, s1,s3,s4:Δt, s2:3Δt  
 
 $TP = \frac{n}{(3n+3)*Δt}$
@@ -178,7 +178,8 @@ $TP = \frac{n}{(m-1)Δt + nmax(Δt_1,Δt_2,...,Δt_m)}$
 提高吞吐量/解决瓶颈：  
 
 - subdivision:divide s2 into s2a,s2b,s2c  
-- repetition:s2:s2a,s2b,s2c e.g.译码，一次可在寄存器取两个操作数rs1,rs2  
+- repetition:s2:s2a,s2b,s2c  
+  e.g.译码，一次可在寄存器取两个操作数rs1,rs2  
 
 (2)Speedup加速比>1：  
 

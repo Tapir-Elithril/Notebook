@@ -936,9 +936,10 @@ P<sub>opt</sub> / P<sub>greedy</sub> <= 1 + p<sub>max</sub> / P<sub>greedy</sub>
 #### A dynamic programming solution  
   
 计算i个物体达到价值p需要的最小容量W<sub>i,p</sub>  
-W<sub>i,p</sub> = inf         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,i = 0  
-                  W<sub>i-1,p</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,pi > p  
-                  min{W<sub>i-1,p</sub>,w<sub>i</sub>+W<sub>i-1,p-pi</sub>}&nbsp;,otherwise  
+W<sub>i,p</sub> =   
+inf ,i = 0  
+W<sub>i-1,p</sub> ,pi > p  
+min{W<sub>i-1,p</sub>,w<sub>i</sub>+W<sub>i-1,p-pi</sub>} ,otherwise  
   
 T = O(n<sup>2</sup>p<sub>max</sub>) not polynomial because   
 input size:n & the bytes used to store the profits(2<sup>p</sup>),伪多项式时间复杂度  
@@ -966,18 +967,18 @@ find a set of centres C that minimize r(C)
   
 Put the first centre at the best possible location for a single centre,then keep adding centers to reduce the covering radius each time by as much as possible(常用 but arbitarily bad)  
   
-假定已经知道最佳半径 r(C*)(后续可以通过二分查找找到这个值)  
-我们选定某一个site为圆心以半径2r(C*)画圆，再选择没有被覆盖的site为圆心继续画圆，知道所有site都被覆盖  
+假定已经知道最佳半径 r(C\*)(后续可以通过二分查找找到这个值)  
+我们选定某一个site为圆心以半径2r(C\*)画圆，再选择没有被覆盖的site为圆心继续画圆，知道所有site都被覆盖  
 下证该算法不会选择超过K centres  
-反证：假设我们通过这种算法得到了超过K个centers，说明则一定至少有K+1个点两两距离超过2r(C*)，此时我们如果只要求覆盖这K+1个sites，我们选取两两的中点为最优半径的圆心，K个圆心也无法覆盖这K+1个sites  
-直观的例子是k=1两个site的情况下，如果取某一个点为圆心半径2r(C*)画圆无法覆盖另一个点，则此时的r(C*)一定比实际的最优解小，因为如果取两个site中点，最优解为两个site距离的1/2，那么以某一个点为圆心2倍最优解画圆一定能覆盖另一个点  
-这意味着我们的r(C*)猜小了  
-事实上，如果我们得到小于K个centers就意味着我们的r(C*)猜大了  
-在这种启发思路下，通过二分查找我们可以猜到一个r(C*)，当以2r(C*)画圆时能恰好覆盖所有sites，此时我们得到了最优解r(C*)，和2r(C*)覆盖所有sites的一种方案  
+反证：假设我们通过这种算法得到了超过K个centers，说明则一定至少有K+1个点两两距离超过2r(C\*)，此时我们如果只要求覆盖这K+1个sites，我们选取两两的中点为最优半径的圆心，K个圆心也无法覆盖这K+1个sites  
+直观的例子是k=1两个site的情况下，如果取某一个点为圆心半径2r(C\*)画圆无法覆盖另一个点，则此时的r(C\*)一定比实际的最优解小，因为如果取两个site中点，最优解为两个site距离的1/2，那么以某一个点为圆心2倍最优解画圆一定能覆盖另一个点  
+这意味着我们的r(C\*)猜小了  
+事实上，如果我们得到小于K个centers就意味着我们的r(C\*)猜大了  
+在这种启发思路下，通过二分查找我们可以猜到一个r(C\*)，当以2r(C\*)画圆时能恰好覆盖所有sites，此时我们得到了最优解r(C\*)，和2r(C\*)覆盖所有sites的一种方案  
 这是一个2-approximation算法   
   
   
-**Kcentre**——be far away(不需要花时间猜测r(C*)以尝试求解)  
+**Kcentre**——be far away(不需要花时间猜测r(C\*)以尝试求解)  
 寻找与圆心距离最远的点作为新的圆心  
   
 ρ = 2   

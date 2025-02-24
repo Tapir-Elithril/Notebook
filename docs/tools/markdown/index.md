@@ -88,3 +88,18 @@
 \*这不是斜体\*
 ```
 \*这不是斜体\*
+
+## 提示框(admonitions)  
+
+支持的提示框类型：note,danger,abstract,tip,warning,question(???)  
+```
+In mkdocs.yml:
+markdown_extensions:
+  - pymdownx.details
+```
+```
+!!! note "这是一个默认展开的提示框"
+    这是提示框的内容，它是折叠的，点击标题展开。
+```
+!!! note "这是一个默认展开的提示框"
+    这是提示框的内容，它是折叠的，点击标题展开。

@@ -103,6 +103,10 @@ theme:
     - scheme: slate
       primary: indigo
       accent: orange
+      background: "#000000"  # 设置纯黑背景
+      surface: "#121212"     # 设置深色表面
+      text: "#ffffff"        # 纯白色文本
+      anchor: "#ffffff"      # 链接颜色
       toggle:
         icon: material/weather-sunny
         name: 切换至日间模式
@@ -144,41 +148,37 @@ repo_url: https://github.com/Tapir-Elithril/Notebook
 repo_name: Tapir-Elithril/Notebook
 
 markdown_extensions:
-  # [数学公式支持]
-  # https://squidfunk.github.io/mkdocs-material/reference/math/#katex
-  - pymdownx.arithmatex:
-      generic: true
-  # [图片功能支持]
-  # https://squidfunk.github.io/mkdocs-material/reference/images/
-  # 给 Markdown 图片语法后面添加 `{width="300"}` 设置大小
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - meta
+  - def_list
   - attr_list
   - md_in_html
-  # [给标题添加链接]
-  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.permalink
-  - toc:
-      permalink: true # 固定标题位置为当前位置
-  # [代码语法高亮]
-  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-blocks
-  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
-  - pymdownx.highlight:
-      # 显示行号
-      linenums: true
-      # 显示编程语言名称
-      auto_title: true
-      # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.line_spans
-      line_spans: __span
-      # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.pygments_lang_class
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  # [Markdown 提示]
-  # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+  - sane_lists
   - admonition
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
   - pymdownx.details
-  # [Markdown footnote 语法支持]
-  # https://squidfunk.github.io/mkdocs-material/reference/footnotes/
-  - footnotes
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.arithmatex:
+      generic: true
+  - math:
+      enable_syntax: true
 
 plugins:
   - search
