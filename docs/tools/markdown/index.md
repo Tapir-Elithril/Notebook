@@ -71,6 +71,8 @@
 显然这段文字已经在一个代码块中了
 支持语言：py,js,html,css,java,c,cpp,ruby,php,sql,bash(sh),json,yaml,r,go,markdown
 ```
+在语言处填写text linenums="0/1"表示不显示/显示行号  
+hl_lines="5 7 9 10 11"表示高亮5、7、9、10、11行  
 ## 表格
 ```
 | 表头1 | 表头2 | 表头3 |

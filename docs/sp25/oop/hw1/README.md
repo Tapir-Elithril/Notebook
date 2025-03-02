@@ -5,7 +5,7 @@ The average score for each student is accurate to five decimal places while the 
   
 The program is running under g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0  
 
-Run the program by executing `make` and `./student1`.  
+Run the program by executing `make run`.  
   
 The result will display in the terminal.
 

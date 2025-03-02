@@ -1,6 +1,6 @@
 SRC = $(wildcard *.cpp) 
 OBJ = $(SRC:.cpp=.o)     
-OUT = student1   
+OUT = student2   
 
 all: $(OUT)
 

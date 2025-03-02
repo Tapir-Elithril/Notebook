@@ -6,7 +6,7 @@ copyright: Copyright © YYC 2025
 
 nav:
   - 首页: index.md
-  - 工具: 
+  - tools: 
     - tools/index.md
     - Git: tools/git/index.md
     - Linux: tools/linux/index.md
@@ -16,9 +16,15 @@ nav:
       - 文献: tools/latex/format.md
       - 常用符号: tools/latex/symbols.md
   #   - Python: tools/python/index.md
-  #   - Makefile: tools/makefile/index.md
+    - Makefile: tools/makefile/index.md
   #   - Html: tools/html/index.md
   #   - reveal-md: tools/reveal-md/index.md
+  - research:
+    - research/index.md
+    - 论文阅读:
+      - research/paper_reading/index.md
+      - kvcache: research/paper_reading/kvcache.md
+    # - 论文写作工具: research/paper_tools/index.md
   - fa23:
     - fa23/index.md
     - 军训: fa23/military_training/index.md

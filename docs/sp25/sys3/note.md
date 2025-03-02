@@ -135,8 +135,39 @@ SUB F10,F4,F6
 ADD F12,F6,F14//waiting without data dependencies
 ```
 ##### Scoreboard  
+Scoreboard algorithm is an approach to schedule the instructions.  
+
+recall:hazard detection in ID  
+split ID into two parts:IS(issue) & RO(read operands)  
+IS:check structural hazards(in-order)  
+RO:check data hazards(out of order)  
+cannot flow to IS/RO if a certain hazard exists  
+```asm
+1.LD  F6,34(R2) //integer unit
+//assume the first inst has been completed
+2.LD  F2,45(R3) //integer unit structural hazard
+3.MUL F0,F2,F4  //F2 F8 F0 F6 data hazard
+4.SUB F8,F6,F2
+5.DIV F10,F0,F6
+6.ADD F6,F8,F2
+```
+
+info table design  
+
+- Instruction status table  
+![alt text](image-5.png)
+- Function component status table  
+![alt text](image-7.png)
+只有在某条指令执行WB后清空该指令使用的部件的一行，下一个要使用这一部件的指令才能进入IS阶段  
+- Register status table
+![alt text](image-8.png)
+note that register status can be read from function component table,register status table is created just for convenience  
+
+In-class practice:
+![alt text](bfe71aabcb33516540fb13d8f421b2f.jpg)
 
 ##### Tomasulo  
+Tomasulo's approach is to introduce register renaming in hardware to minimize WAW and WAR hazards.  
 
 ### Memory Hierarchy(Cache)  
 

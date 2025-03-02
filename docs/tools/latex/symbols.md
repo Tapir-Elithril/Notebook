@@ -4,15 +4,26 @@ $a+b=c$ //行内公式
 $$a+b=c$$ //行间公式
 ```
 ### 数学符号
+#### 四则运算
 ```
 +,-,\times,\div,\cdot,\pm,\mp,=,\approx //加减乘除、点乘、加减、减加、等于、约等于
+```
+#### 大小比较
+```
 \le,\ge,\ll,\gg,\ne,\equiv //小于等于、大于等于、远小于、远大于、不等于、恒等于
+```
+#### 上下标
+```
 x_2,x^2,C_n^m,a_{ij},f^{(n)} //下标与上标
-
+```
+#### 分数
+```
 \frac{分子}{分母}
 \displaystyle\frac{}{} //行内公式手动放大
 \frac{c}{displaystyle\frac{a}{b}} //行间子分数手动放大
-
+```
+#### 极限 级数
+```
 \sqrt{a},\sqrt{n}{a}
 \lim\limits_{x \rightarrow 0}x //极限
 \sum\limits_{i=1}^na_i //求和
@@ -20,50 +31,76 @@ x_2,x^2,C_n^m,a_{ij},f^{(n)} //下标与上标
 \bigoplus\limits_{i=1}^nV_i //直和
 \bigotimes\limits_{i=1}^nW_i //张量积
 \lim\limits_{\substack{x \rightarrow 0 \\ y \rightarrow 0}}xy //多重下标
-
+```
+#### 集合
+```
 \in,\subset,\subseteq,\supset,\supseteq,\cap,\cup,\emptyset,\varnothing
 //属于，包含于，真包含于，包含，真包含，交，并，空集，空集(格式不同)
 \not\in,\not\subset //不属于，不包含于
-
+```
+#### 整除
+```
 \mid,\not\mid,\nmid //整除，不整除，不整除(格式不同)
-
+```
+#### 字母符号
+```
 \mathbb{R} //空心符号
 
 \mathcal{A},\mathscr{I},\mathfrak{g} //花写符号
-
+```
+#### 离散数学
+```
 \forall,\exists //任意，存在
 
-//希腊字母
+\wedge,\vee //逻辑与，逻辑或
+```
+#### 希腊字母
+```
 \alpha,\beta,\gamma,\delta,\epsilon,\varepsilon(格式不同),\eta,\theta,\lambda,
 \mu,\pi,\rho,\sigma,\tau,\phi,\varphi,\psi,\omega,\xi,\zeta
 \Gamma,\Delta,\Pi,\Sigma,\Phi,\Psi,\Omega
-
+```
+#### 无穷
+```
 \infty,\aleph //无穷大，阿列夫
-
+```
+#### 初等函数
+```
 \sin,\cos,\tan,\cot,\log,\lg,\ln
-
+```
+#### 微积分
+```
 \d x //微分
 \int_a^bf(x)\d x //积分
 \frac{\partial y}{partial x} //偏微分
 \iint_D f(x,y) \d x \d y //二重积分
 \oint_DP\d x + Q\d y //曲线积分
-
+\nabla //梯度
+```
+#### 上划线
+```
 \overline{AB},\widetilde{AB},\widehat{AB},\overrightarrow{AB}
 //上划线，上波浪线，上尖号，矢量
-
+```
+#### 特殊符号
+```
 \backslash,\left\{a\right\} //反斜杠，大括号
-
+```
+#### 括号
+```
 (a),[a],\left(\frac{1}{2},1\right),\left(\frac{1}{2},1\right] //区间与单侧括号
-
-方程组：
+```
+#### 方程组
+```
 {l}:左对齐一列
 
 \left\{\begin{array}}{l}
 x+y=1,\\
 x-y=1.\\
 \end{array}\right.
-
-矩阵：
+```
+#### 矩阵
+```
 *{n}{X}:重复X格式n次，c:centre居中对齐
 
 A=\left( {\begin{array}{*{20}{c}}
@@ -73,16 +110,18 @@ A=\left( {\begin{array}{*{20}{c}}
 {a_{n1}} & {a_{n2}} & {\cdots} & {a_{nn}} \\
 \end{array}}    
     \right)
-
-\wedge,\vee //逻辑与，逻辑或
-
+```
+#### 相似全等
+```
 \sim,\cong //相似，全等
-
-\nabla //梯度
-
+```
+#### 箭头与关系
+```
 \rightarrow,\Rightarrow,\rightrightarrows,\Leftrightarrow,\iff,\mapsto
 //右箭头，推出，双右箭头，等价，等价(不同格式)，映射箭头
-
+```
+#### 几何
+```
 \circ,\triangle,\odot,\bot,\parallel //度，三角，圆，垂直，平行
 ```
 ## 排版符号
