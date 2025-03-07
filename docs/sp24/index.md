@@ -15,7 +15,7 @@
   苹果  
   爱思助手  
   AutoMacroRecorder  
-  Github上的其它方式  
+  Github上的fakerun  
 - 雷达签到  
   安卓  
   fake location  

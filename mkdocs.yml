@@ -19,12 +19,11 @@ nav:
     - Makefile: tools/makefile/index.md
   #   - Html: tools/html/index.md
   #   - reveal-md: tools/reveal-md/index.md
-  - research:
-    - research/index.md
-    - 论文阅读:
-      - research/paper_reading/index.md
-      - kvcache: research/paper_reading/kvcache.md
-    # - 论文写作工具: research/paper_tools/index.md
+  # - research:
+  #   - research/index.md
+  #   - 论文阅读:
+  #     - kvcache: research/paper_reading/kvcache.md
+  #   # - 论文写作工具: research/paper_tools/index.md
   - fa23:
     - fa23/index.md
     - 军训: fa23/military_training/index.md

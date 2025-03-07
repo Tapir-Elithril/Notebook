@@ -161,13 +161,44 @@ info table design
 只有在某条指令执行WB后清空该指令使用的部件的一行，下一个要使用这一部件的指令才能进入IS阶段  
 - Register status table
 ![alt text](image-8.png)
-note that register status can be read from function component table,register status table is created just for convenience  
+note that register status can be read from function component table,register status table is created just for convenience.  
 
 In-class practice:
 ![alt text](bfe71aabcb33516540fb13d8f421b2f.jpg)
 
 ##### Tomasulo  
-Tomasulo's approach is to introduce register renaming in hardware to minimize WAW and WAR hazards.  
+Tomasulo's approach is to introduce **register renaming** in hardware to minimize WAW and WAR hazards.  
+```asm
+1.LD  F6,34(R2) 
+2.LD  F2,45(R3) 
+3.MUL F0,F2,F4  
+4.SUB F8,F6,F2
+5.DIV F10,F0,F6
+6.ADD F6,F8,F2
+```
+Reservation Station(RS保留站):防止因硬件冲突导致指令无法流入(上例中的4.SUB与6.ADD),在RS中执行乱序  
+Command Data Bus(CDB):将指令需要的值替换为保留站的结果(6.ADD中F8的值即为adder RS的结果,保留站的名称替代了寄存器的名称),通过广播的方式使结果分布控制  
+执行阶段简化为IS,EX,WB三阶段,没有解决顺序写回的问题  
+IS:检查保留站是否还有空位 
+EX:保留站中乱序执行,如果操作数未全部ready则等待,操作数已经ready的先执行  
+WB:CDB同时将结果写入寄存器和需要的RS  
+Register status Qi记录寄存器与RS的对应关系  
+Instruction status table,Function component status table,Register status table(Field Qi) are still needed.
+
+Limitation:
+
+- Structual complexity  
+- performance limited by Common Data Bus  
+- correctness not guaranteed  
+  
+The limitations on ILP approaches directly led to the movement to multicore.
+
+In-class practice:
+![alt text](73594853addbe984fa7f1755da7374b.png)
+
+Instructions come out in order:Waiting sofa(buffer)
+
+#### Hardware-Based Speculation
 
 ### Memory Hierarchy(Cache)  
 
