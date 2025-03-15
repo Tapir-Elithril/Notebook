@@ -153,7 +153,7 @@ wire类型是线路，只能通过assign
 例如出现以下报错
 ![alt text](image-6.png)  
 表示在执行li指令时，pc与inst错误，即没有正确的读入li指令，实际发生错误的是上一条j指令，观察波形如下  
-![alt text](image-8.png) 
+![alt text](image-9.png)  
 仿真给出的00000354的下一条应该为0000035c但波形显示的是00000358，观察alu_res是正确的0000035c，next_pc也是正确的0000035c，那么说明问题在于正确的next_pc没有在is_j信号为1的情况下传递给pc  
 事实上错误是由于
 ```verilog
