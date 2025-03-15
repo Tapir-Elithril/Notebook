@@ -39,8 +39,8 @@ dmem_ift.r/w_request_bits.raddr/waddr
 dmem_ift.r/w_reply_bits.rdata/wdata  
 dmem_ift.w_request_bits.wmask  
 ```
-正确接线即可
-ImmGen,DataPkg,MaskGen模块要自行设计与实现，具体在[Data Package,Mask Generation,Data Trunc设计](##-Data-Package,Mask-Generation,Data-Trunc设计)会详细解释  
+正确接线即可  
+ImmGen,DataPkg,MaskGen模块要自行设计与实现，具体在[Data Package,Mask Generation,Data Trunc设计](#data-packagemask-generationdata-trunc)会详细解释  
 cosim是仿真测试，将pc,inst,wdata等接入cosim用于测试代码的正确性(虽然给出的cosim连线很多，但事实上我们通常只关心pc,inst,wdata的正确性，因为只要这些都正确了，指令执行就基本正确了)
 ### 指令执行阶段
 指令执行分为五个阶段，具体为：
@@ -53,7 +53,7 @@ cosim是仿真测试，将pc,inst,wdata等接入cosim用于测试代码的正确
   
 如果区分阶段，则数据通路图如下(以下是sys2-lab1的数据通路图)
 ![alt text](image-2.png)
-四个Reg将通路图切分为五个阶段（该图仅供区分阶段参考用，实际连接使用[CPU组成](###CPU组成)部分给出的通路图）  
+四个Reg将通路图切分为五个阶段（该图仅供区分阶段参考用，实际连接使用[CPU组成](#cpu_2)部分给出的通路图）  
 #### IF
 Instruction Fetch阶段要完成取指操作，具体而言，就是将下一条指令从IMEM(Instruction Memory)中取出来，方法为，向imem.raddr传入pc，imem.rdata传出inst  
 完成取指后要对pc进行更新，对于一般指令，pc需要+4，对于条件符合（Cmp.sv返回cmp_res为true）的B型指令和J型指令，需要将pc更新为ALU的计算结果（计算出的跳转地址）  
@@ -68,7 +68,7 @@ Memory阶段要执行访存操作，也就是访问内存，从内存中取值�
 访存阶段要做的是向DMEM提供需要读或写的内存地址，如果是读(ld)DMEM会返回读取的值，如果是写(sd)则还需要向DMEM提供写入值  
 #### WB
 Write Back阶段执行写回操作，具体而言，就是根据指令类型执行写入操作，如add指令要将计算结果alu_res通过regfile写入rd寄存器，j指令要将计算结果alu_res赋值给pc，ld指令要将读出的dmem_ift.r_reply_bits.rdata（通过datatrunc处理后）写回regfile，sd指令没有写回
-
+ 
 ## R-Type数据通路与控制器设计
 To be implemented
 
