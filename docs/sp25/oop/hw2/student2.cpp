@@ -1,84 +1,137 @@
 #include <iostream>
 #include <string>
-#include <fstream>
+#include <map>
+#include <vector>
 #include <iomanip>
+#include <sstream>
+#include <algorithm>
+#include "student.h"
 
 using namespace std;
 
+const string Student::courses[9] = 
+{"Chinese", "Math"     , "English", 
+ "Physics", "Chemistry", "Biology",
+ "History", "Politics" , "Geography"};
+
+//static member initialization
+map<string, float> Student::shared_average[2];
+map<string, int> Student::shared_min;
+map<string, int> Student::shared_max;
+
+void initialize_shared_values() {
+     for (int i = 0; i < 9; ++i) 
+     {
+         Student::shared_average[0][Student::courses[i]] = 0;  
+         Student::shared_average[1][Student::courses[i]] = 0;
+         Student::shared_min[Student::courses[i]] = 6; 
+         Student::shared_max[Student::courses[i]] = 0;
+     }
+ }
+
+Student::Student() {
+     // initialize every course score: 0
+     for (int i = 0; i < 9; ++i)
+          score[courses[i]] = 0;
+}
+
+Student::~Student() {
+    //Destructor
+}
+
+void Student::input(const string& line,int no) {
+
+     this -> no = no;
+     stringstream ss(line); //create stringstream
+     ss >> name; // the first word is name
+
+     string course;
+     int grade;
+
+     while(ss >> course >> grade)
+     {
+          score[course] = grade;
+          avaliable ++ ;
+          avg += grade;
+          shared_average[0][course] += grade;
+          shared_average[1][course] ++;
+          shared_min[course] = std::min(shared_min[course],grade);
+          shared_max[course] = std::max(shared_max[course],grade);
+     }
+     avg /= avaliable;
+}
+
+void Student::output(){
+     cout << setw(10) << left << no 
+     << setw(10) << left << name;
+     for (int i = 0; i < 9; i++)
+          cout << setw(10) << left << (score[courses[i]] != 0 ? to_string(score[courses[i]]) : "NA");
+     if(avg == 0)
+          cout << setw(10) << left << "NA" << endl;
+     else
+          cout << setw(10) << left << avg << endl;
+}
+
 int main()
 {
-    cout << setw(8) << left << "no" 
-         << setw(8) << left << "name"
-         << setw(8) << left << "score1"
-         << setw(8) << left << "score2"
-         << setw(8) << left << "score3"
-         << setw(8) << left << "average" << endl;
+     initialize_shared_values();
 
-    ifstream file("score.txt");
+     string line;
+     vector<Student> students; // Vector to hold all student objects
+     int no = 1;
+ 
+     // Read all input
+     while (getline(cin, line)) {
+         Student student;
+         student.input(line, no);
+         students.push_back(student);  // Store the student in the vector
+         no++;
+     }
 
-    if (!file.is_open())
-    {
-        cout << "File not found" << endl;
-        return 1;
-    }
+     cout << setw(10) << left << "no" 
+          << setw(10) << left << "name";
+     for(int i = 0; i < 9; i++)
+          cout << setw(10) << left << Student::courses[i];
+     cout << setw(10) << left << "average" << endl;
 
-    int no = 1;
-    string name;
-    int score1, score2, score3;
-    float average;
-    int totalScore1 = 0, totalScore2 = 0, totalScore3 = 0;
-    int minScore1 = 5, minScore2 = 5, minScore3 = 5;
-    int maxScore1 = 1, maxScore2 = 1, maxScore3 = 1;
-    int count = 0;
+     // Output all student results after input is complete
+     for (auto& student : students) // Loop through all students(type vector(auto inferred))
+         student.output();
 
-    while (file >> name >> score1 >> score2 >> score3)
-    {
-        average = (score1 + score2 + score3) / 3.0;
-        
-        totalScore1 += score1;
-        totalScore2 += score2;
-        totalScore3 += score3;
+     // Output the average of each course
+     cout << setw(10) << left << "" 
+          << setw(10) << "average";    
+     for (int i = 0; i < 9; i++) {
+          if(Student::shared_average[1][Student::courses[i]] == 0)
+               cout << setw(10) << "NA";
+          else
+               cout << setw(10) << fixed << setprecision(1) 
+                    << Student::shared_average[0][Student::courses[i]] / 
+                       Student::shared_average[1][Student::courses[i]];
+     }
+     cout << endl;
 
-        minScore1 = min(minScore1, score1);
-        minScore2 = min(minScore2, score2);
-        minScore3 = min(minScore3, score3);
-        maxScore1 = max(maxScore1, score1);
-        maxScore2 = max(maxScore2, score2);
-        maxScore3 = max(maxScore3, score3);
+     // Output the min of each course
+     cout << setw(10) << left << ""
+          << setw(10) << "min";
+     for (int i = 0; i < 9; i++) {
+          if(Student::shared_min[Student::courses[i]] == 6)
+               cout << setw(10) << "NA";
+          else
+               cout << setw(10) << Student::shared_min[Student::courses[i]];
+     }
+     cout << endl;
 
-    cout << setw(8) << left << no 
-         << setw(8) << left << name
-         << setw(8) << left << score1
-         << setw(8) << left << score2
-         << setw(8) << left << score3
-         << setw(8) << left << average << endl;
+     // Output the max of each course
+     cout << setw(10) << left << ""
+          << setw(10) << "max";
+     for (int i = 0; i < 9; i++) {
+          if(Student::shared_max[Student::courses[i]] == 0)
+               cout << setw(10) << "NA";
+          else
+               cout << setw(10) << Student::shared_max[Student::courses[i]];
+     }
+     cout << endl;
 
-        no++;
-        count++;
-    }
-
-    float avgScore1 = totalScore1 / float(count);
-    float avgScore2 = totalScore2 / float(count);
-    float avgScore3 = totalScore3 / float(count);
-
-    cout << setw(8) << left << "" 
-         << setw(8) << "average"    
-         << setw(8) << fixed << setprecision(1) << avgScore1
-         << setw(8) << fixed << setprecision(1) << avgScore2
-         << setw(8) << fixed << setprecision(1) << avgScore3 << endl;
-
-    cout << setw(8) << left << ""
-         << setw(8) << "min"
-         << setw(8) << minScore1
-         << setw(8) << minScore2
-         << setw(8) << minScore3 << endl;
-
-    cout << setw(8) << left << ""
-         << setw(8) << "max"
-         << setw(8) << maxScore1
-         << setw(8) << maxScore2
-         << setw(8) << maxScore3 << endl;
-
-    file.close();
     return 0;
 }

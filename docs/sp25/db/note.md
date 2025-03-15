@@ -360,6 +360,8 @@ select dept_name,ID,avg(salary) from instructor group by dept_name;
 ```sql
 select dept_name,avg(salary) from instructor group by dept_name 
 having avg(salary) > 42000; -- fliter
+-- where不能与聚合函数一起使用 
+-- having必须与group by 一起使用
 ```
 arithmetric expression
 ```sql
@@ -458,3 +460,198 @@ set salary = case when salary <= 100000 then salary * 1.05 else salary * 1.03 en
 ```
 
 ## Chap 4 Intermediate SQL 
+### 4.1 Join Relations
+inner join,left/right outer join,full outer join
+```sql
+select instructor.id,count(distinct course_id),count(takes.id)
+from instructor natural left outer join teaches left outer join takes using(course_id,sec_id,semester,year)
+group by instructor.id;
+-- 不上课的老师count = null/0(但保留)
+```
+
+### 4.2 SQL Data Types and Schemas
+#### User-defined types
+```sql
+create type Dollars as numeric(12,2) final -- 叶子类，不能再派生
+-- 编译时发现类型间错误
+```
+#### Domains
+```sql
+create domain person_name char(20) not null -- constraints
+create domain degree_level varchar(10)
+constraint degree_level_test
+check(value in 'Bachelors','Masters','Doctors')
+```
+#### Large object
+blob(binary large object):tinyblob,blob,mediumblob,largeblob  
+clob(character large object)  
+when a query returns a large object,**a pointer** is returned.  
+
+### 4.3 Integrity Constraints
+#### Single Relation
+not null,primary key,unique,check(P),foreign key
+```sql
+course table section(
+    ...
+    semester varchar(6),
+    ...
+    check(semester in('Fall','Spring','Summer','Winter'))
+);
+```
+#### Referential
+```sql
+create table course(
+    ...
+    dept_name varchar(20),
+    foreign key(dept_name) references department
+        on delete cascade,
+        on update cascade,
+    ...
+);
+```
+### Violation during transactions
+```sql
+create table person(
+    mother char(10),
+    foreign key(mother) references person
+);
+```
+defer constraints checking to **transaction end**
+### Complex Check Clause
+```sql
+check((course_id,sec_id,semester,year) 
+in (select course_id,sec_id,semester,year from teaches));
+```
+### Assertion
+```sql
+create assertion credits_earned_constraints check
+(not exists
+    (select ID from students 
+    where tot_cred <> 
+          select sum(credits) from takes natural join course
+          where student.ID = takes.ID
+                and grade is not null
+                and grade <> 'F'));
+```
+### 4.4 Views
+
+- hide complexity  
+- logic independence  
+- authority management  
+  
+```sql
+create view faculty as
+    select ID,name,dept_name
+    from instructor;
+
+select name from faculty
+where dept_name = 'Biology';
+
+create view dept_total_salary(dept_name,total_salary)as
+    select dept_name,sum(salary)
+    from instructor
+    group by dept_name;
+```
+view can be defined from other views(view expansion for sql server)
+```sql
+insert into faculty values('30765','Green','Music');
+insert into instructor values('30765','Green','Music',null);
+-- view is rarely updatable
+```
+#### *Materialized view
+create a physical table containing all the tuples in the result of the query
+```sql
+create materialized view
+```
+maintain the view by updating the view whenever the underlying relations are updated  
+#### Logical data independence
+S(a,b,c) -> S1(a,b) & S2(a,c)(primary key a)  
+How to realize data independence  
+```sql
+1.create table S1... S2...
+2.insert into S1/S2 select a,b from S
+3.drop table S
+4.create view S(a,b,c) as select a,b,c from S1,S2
+
+select * from S where ... -> select * from S1 natural join S2
+insert into S value (1,2,3) ->
+insert into S1 value (1,2)
+insert into S2 value (2,3)
+```
+### 4.5 Indexes
+Indices are data structures used to speed up access to records with specified values for index attributes(using B+ Tree)
+```sql
+create index studentID_index on student(ID)
+```
+### 4.6 Transactions
+atomic:either fully executed or rolled back as if it never occurred  
+ended by commit or rollback
+```sql
+set autocommit = 0 --关闭自动提交
+update account set balance = balance - 100 where ano='1001';
+-- roll back if power shut down 
+update account set balance = balance + 100 where ano='1002';
+commit;-- end of the transaction,start a new transaction
+```
+Transaction Boundaries:one ticket or multiple tickets  
+根据业务需求定义  
+booking and paying,one transaction or two  
+长事务占用资源，rollback -> complement transaction  
+### 4.7 ACID Properties
+
+- Atomicity  
+- Consistency  
+- Isolation  
+- Durability:after a transaction completes,the changes it has made to the db persist,even if the system failures.  
+  
+### 4.8 Authorization
+forms of authorization of the db  
+
+- select  
+- insert  
+- update  
+- delete  
+
+forms of authorization to modify the schema  
+
+- create  
+- aleration  
+- drop  
+- index  
+- create view  
+  
+```sql
+grant <privilege list> on <relation name or view name> to <user list>
+grant select on instructor to U1,U2,U3  
+grant select on department to public 
+grant update(budget) on department to U1,U2
+grant all privileges on department to U1
+
+revoke <privilege list> on <relation name or view name> from <user list>
+revoke select on branch from U1,U2,U3
+```
+#### Role
+权限的集合
+```sql
+create role instructor;
+grant instructor to Amit;-- 人名
+grant select on takes to instructor;
+create role dean;
+grant instructor to dean;
+grant dean to Satoshi;
+```
+![alt text](image-18.png)
+```sql
+create view geo_instructor as
+(select * from instructor where dept_name = 'Geograpy');
+grant select on geo_instructor to geo_staff;
+
+grant reference(dept_name) on department to Mariano;
+-- 定义foreign key的权限 on delete/update restricted
+grant select on department to Amit with grant option;-- 可以转授
+revoke select on department from Amit,Satoshi cascade;-- 转授权全收回
+revoke select on department from Amit,Satoshi restrict;
+revoke grant option for select on department from Amit;
+```
+
+## Chap 5 Advanced SQL

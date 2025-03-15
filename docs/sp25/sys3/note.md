@@ -1,6 +1,6 @@
 # 计算机系统III
 ## 体系结构  
-### Fundamentals of computer system Week1 - 2
+### Fundamentals of computer system Week1
 Classes of computers(by Flynn)  
 
 - SISD(single instruction single data stream):only in theory  
@@ -80,7 +80,7 @@ Below the program:
 - hierarchical nature of memories  
 - compiler decisions  
 
-### Instruction-Level Parallelism(ILP) Week2  
+### Instruction-Level Parallelism(ILP) Week2 - 3 
 Dependencies  
 
 - Data dependence(RAW-read after write)
@@ -198,16 +198,154 @@ In-class practice:
 
 Instructions come out in order:Waiting sofa(buffer)
 
-#### Hardware-Based Speculation
+#### Hardware-Based Speculation 硬件前瞻
+Reorder buffer(ROB) before writing back to registers
+extend the stages of every instruction into:IS,EX,WB,Commit  
+Commit:In-order write back —— the key of speculation  
 
-### Memory Hierarchy(Cache)  
+- Function component status table:ROB No. in column dest in  
+- ROB table:the current stages of the relevant instructions  
+- Register status table:ROB row shows the registers to be written and the corresponding ROB No.
+  
+In-class practice:前三列同Tomasulo  
+Commit列:5,6,17,18,58,59  
+
+!!! danger "60个周期的表格变化，每个格子会填会算"  
+
+- Precise exception  
+- easily extend to other(e.g. integer)units  
+- complex hardware(CDB)  
+  
+#### Exploiting ILP Using Multiple Issue and Static Scheduling  
+
+- n-issue Superscalar  
+- VLIW  
+- Super pipeline  
+  
+Dynamic scheduling is more dependent on hardware,while static scheduling may not.  
+
+Multi-issue based on dynamic scheduling:
+双流入流出Tomasulo:  
+![alt text](image-9.png)  
+bottleneck:data-dependent branches & ALU
+With Speculation:  
+![alt text](image-10.png)  
+前瞻执行：不需要等待分支结果，因为不一定要提交  
+Branches are a critical performance limiter(especially with data-dependent ones),but speculation helps.  
+##### VLIW
+operation slots  
+parallel execution in EX  
+```asm
+Loop:fld    f0,0(x1)
+     fadd.d f4,f0,f2
+     fsd    f4,0(x1)
+     addi   x1,x1,-8
+     bne    x1,x2,Loop
+```
+指令乱序/循环展开
+
+- code length increases  
+- lockstep mechanism  
+- machine code incompability  
+
+##### Superpipeline
+IF IS RF EX (DF DS TC) WB
+
+### Memory Hierarchy(Cache) Week4 - 5  
+#### Introduction
+
+- Registers  
+- Cache  
+- Memory  
+- Storage  
+  
+  
+- Mechanical memory  
+- Electronic memory  
+  SRAM:static random access memory(Cache)
+  DRAM:dynamic ~(Main memory)
+    DDR2(double data rate上升沿和下降沿都能传数据),DDR3,DDRSDRAM
+  Flash
+  ROM:read-only memory
+    PROM,EPROM
+- Optical memory
+  
+Temporal/Spatial locality时空局部性  
+
+Cache:a safe place for hiding or storing things.  
+
+hit/miss:whether the processor can or cannot find a requested data in the cache  
+hit rate/miss rate/hit time/miss penalty  
+
+Block run:A fixed-size collection of data containing the data we need retrieved from the memory  
+Spatial locality:likely need other data within the same block soon  
+
+#### Technology Trend
+SRAM
+DRAM
+SDRAM(Synchronous DRAM)
+DDR SDRAM
+HBM:High Bandwidth Memory DRAM
+SSD
+HDD/TAPE
+
+#### Memory Hierarchy
+##### Cache Miss
+Latency:the time to retrieve the first word of the book  
+Bandwidth:the time to retrieve the rest of the book  
+
+Miss causes  
+
+- Compulsory:first reference(cache is empty)  
+- Capacity:blocks discarded and later retrieved  
+- Conflict:program makes repeated references to multiple addresses from different blocks that map to the same location in the cache  
+
+desktop users:average latency  
+server:memory bandwidth(multiple users)  
+embedded:power and battery life/real-time response/small memory  
+
+Everything is a cache.  
+Registers -> L1-Cache -> L2-Cache -> Memory -> Disk  
+
+Cache Size = Block Size * Sets + Related info(Indexes)
+
+#### Cache Design
+##### 1.Where can a block be placed in the upper level?(Block placement)
+###### Direct mapped
+(Block address) modulo (Number of blocks in the cache):循环分配  
+e.g.Cache number = 8(0-7)   
+Memory 1,9,17,25 -> Cache 1  
+[Problem]low space usage & high conflict probability  
+###### Fully associative
+Block can go anywhere in cache  
+###### n-way Set associative
+Each memory block maps to a cache group(n cache blocks in each group) and put memory block into certain cache block in casual  
+for most caches:n <= 4
+
+##### 2.How is a block found if it is in the upper level?(Block Identification)
+Every block has an address tag that stores the main memory address of the data stored in the block 
+valid bit  
+index selects the set/block
+direct map:tag + set index + offset  
+hit if valid_bit == 1'b1 && tag == mem_addr  
+
+##### 3.Which block should be replaced on a cache/main memory miss?(Block Replacement)
+Random,LRU,FIFO
+
+##### 4.What happens on a write?(Write Strategy)
+Write Back or Write Through(with Write Buffer)
+
+#### Memory System Performance
+
+#### *Storage Systems
+
 
 
 ## OS  
-### Memory Hierarchy(Main Memory)  
+### Main Memory Week7 - 10
 
-### File System  
+### File System Week11 - 14
 
-### DLP,TLP  
+### DLP,TLP Week15
 
-## Final Review  
+## Final Review Week16

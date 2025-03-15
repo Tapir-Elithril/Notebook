@@ -1,6 +1,6 @@
 SRC = $(wildcard *.cpp) 
 OBJ = $(SRC:.cpp=.o)     
-OUT = student2
+OUT = adventure
 
 INCLUDES = -I.
 
