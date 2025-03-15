@@ -136,7 +136,7 @@ MEM_UH:  rw_wmask = 8'b0000_0011 << (alu_res[2:1]*2);
 2.按照通路图分5个阶段完成接线并接入ALU,Cmp,Regfile模块，明确每个阶段需要做什么  
 3.完成R-Type通路，编写相应的译码，控制信号，与多路选择器的选项(ImmGen,DataPkg,MaskGen,DataTrunc全部置0即可)  
 仿真通过`make verilate TESTCASE=rtype`  
-4.完成ImmGen,DataPkg,MaskGen,DataTrunc的编写
+4.完成ImmGen,DataPkg,MaskGen,DataTrunc的编写  
 5.根据I,S,B,U,J的顺序编写，依次完成立即数生成，访存，分支处理，完成每项后进行对应type的仿真测试，如果出错按以下方式调试  
 ## 调试与运行
 1.语法错误  
