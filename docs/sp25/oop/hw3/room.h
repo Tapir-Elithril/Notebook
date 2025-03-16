@@ -5,6 +5,10 @@
 
 using namespace std;
 
+class game {
+
+};
+
 class room {
 private:
     bool monster;
