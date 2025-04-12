@@ -1,0 +1,2241 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tapir's Notebook" name="description"/>
+<meta content="杨亿酬" name="author"/>
+<link href="https://tapir-elithril.github.io/Notebook/sp25/oop/note/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.11" name="generator"/>
+<title>面向对象程序设计 - Tapir's Notebook</title>
+<link href="../../../assets/stylesheets/main.4af4bdda.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"JetBrains Mono"}</style>
+<link href="../../../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="orange" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Tapir's Notebook" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Tapir's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Tapir's Notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              面向对象程序设计
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="切换至夜间模式" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="切换至夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="切换至日间模式" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="切换至日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tools/">
+          
+  
+  
+    
+  
+  tools
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../fa23/">
+          
+  
+  
+    
+  
+  fa23
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../sp24/">
+          
+  
+  
+    
+  
+  sp24
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../fa24/">
+          
+  
+  
+    
+  
+  fa24
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Tapir's Notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Tapir's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Tapir's Notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    首页
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../tools/">
+<span class="md-ellipsis">
+    tools
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            tools
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git/">
+<span class="md-ellipsis">
+    Git
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/linux/">
+<span class="md-ellipsis">
+    Linux
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/markdown/">
+<span class="md-ellipsis">
+    Markdown
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../tools/latex/">
+<span class="md-ellipsis">
+    LaTeX
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            LaTeX
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/latex/format/">
+<span class="md-ellipsis">
+    文献
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/latex/symbols/">
+<span class="md-ellipsis">
+    常用符号
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/makefile/">
+<span class="md-ellipsis">
+    Makefile
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../fa23/">
+<span class="md-ellipsis">
+    fa23
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            fa23
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/military_training/">
+<span class="md-ellipsis">
+    军训
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/math_analysis1/">
+<span class="md-ellipsis">
+    数学分析(甲)I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/programming/">
+<span class="md-ellipsis">
+    程序设计与算法基础
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/linear_algebra1/">
+<span class="md-ellipsis">
+    线性代数I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/modern_history/">
+<span class="md-ellipsis">
+    中国近现代史纲要(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/morality_law/">
+<span class="md-ellipsis">
+    思想道德与法治
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/political_philosophy/">
+<span class="md-ellipsis">
+    近代西方政治哲学导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/astronomy/">
+<span class="md-ellipsis">
+    天文学导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/psychology/">
+<span class="md-ellipsis">
+    心理学及应用
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/career_planning/">
+<span class="md-ellipsis">
+    职业生涯规划
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/reform_and_openup/">
+<span class="md-ellipsis">
+    中国改革开放史
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/orienteering/">
+<span class="md-ellipsis">
+    定向越野
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa23/fitness/">
+<span class="md-ellipsis">
+    身体素质课
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../sp24/">
+<span class="md-ellipsis">
+    sp24
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            sp24
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/math_analysis2/">
+<span class="md-ellipsis">
+    数学分析(甲)II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../sp24/sys1/">
+<span class="md-ellipsis">
+    计算机系统I
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统I
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/sys1/CPU/">
+<span class="md-ellipsis">
+    单周期CPU
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/physics1/">
+<span class="md-ellipsis">
+    普通物理学I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/discrete_math/">
+<span class="md-ellipsis">
+    离散数学理论基础
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/linear_algebra2/">
+<span class="md-ellipsis">
+    线性代数II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../sp24/fds/">
+<span class="md-ellipsis">
+    数据结构基础
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_7">
+<span class="md-nav__icon md-icon"></span>
+            数据结构基础
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/fds/struct/">
+<span class="md-ellipsis">
+    常见结构体
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/physics1_lab/">
+<span class="md-ellipsis">
+    普通物理学实验I
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/cyber_security/">
+<span class="md-ellipsis">
+    网络空间安全导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/piano/">
+<span class="md-ellipsis">
+    打开艺术之门——钢琴
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/swimming/">
+<span class="md-ellipsis">
+    游泳(初级)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/fitness/">
+<span class="md-ellipsis">
+    身体素质课
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/situation_policy1/">
+<span class="md-ellipsis">
+    形势与政策I
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sp24/ctf/">
+<span class="md-ellipsis">
+    课程综合实践I——安全攻防实践基础(CTF)
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../fa24/">
+<span class="md-ellipsis">
+    fa24
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            fa24
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../fa24/sys2/">
+<span class="md-ellipsis">
+    计算机系统II
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统II
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/sys2/note/">
+<span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/physics2/">
+<span class="md-ellipsis">
+    普通物理学II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../fa24/ads/">
+<span class="md-ellipsis">
+    高级数据结构与算法分析
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/ads/note/">
+<span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/probability/">
+<span class="md-ellipsis">
+    概率论(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/aid/">
+<span class="md-ellipsis">
+    人工智能引论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/military_theory/">
+<span class="md-ellipsis">
+    军事理论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/physics2_lab/">
+<span class="md-ellipsis">
+    普通物理学实验II
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/tea/">
+<span class="md-ellipsis">
+    茶文化与茶健康
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../fa24/aerobics/">
+<span class="md-ellipsis">
+    健美操
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-objects-week-1chenxiang">
+<span class="md-ellipsis">
+      Using Objects Week 1(ChenXiang)
+    </span>
+</a>
+<nav aria-label="Using Objects Week 1(ChenXiang)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-string-class">
+<span class="md-ellipsis">
+      The string class
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#file-io">
+<span class="md-ellipsis">
+      File I/O
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-quick-tour-of-c-week-2chenxiang">
+<span class="md-ellipsis">
+      A Quick Tour of C++ Week 2(ChenXiang)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stl-week-3chenxiang">
+<span class="md-ellipsis">
+      STL Week 3(ChenXiang)
+    </span>
+</a>
+<nav aria-label="STL Week 3(ChenXiang)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#containers">
+<span class="md-ellipsis">
+      Containers
+    </span>
+</a>
+<nav aria-label="Containers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vector">
+<span class="md-ellipsis">
+      vector
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#list">
+<span class="md-ellipsis">
+      list
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#map">
+<span class="md-ellipsis">
+      map
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stack">
+<span class="md-ellipsis">
+      stack
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithms">
+<span class="md-ellipsis">
+      Algorithms
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iterators">
+<span class="md-ellipsis">
+      Iterators
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#typedefs">
+<span class="md-ellipsis">
+      Typedefs
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#defining-class-week-3">
+<span class="md-ellipsis">
+      Defining Class Week 3
+    </span>
+</a>
+<nav aria-label="Defining Class Week 3" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#object">
+<span class="md-ellipsis">
+      Object
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#include">
+<span class="md-ellipsis">
+      include
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#constructor">
+<span class="md-ellipsis">
+      Constructor
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#destructor">
+<span class="md-ellipsis">
+      Destructor
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inside-object-week-4">
+<span class="md-ellipsis">
+      Inside Object Week 4
+    </span>
+</a>
+<nav aria-label="Inside Object Week 4" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#access-control">
+<span class="md-ellipsis">
+      Access Control
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objects-in-different-places">
+<span class="md-ellipsis">
+      Objects in different places
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#static">
+<span class="md-ellipsis">
+      Static
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#constant-object">
+<span class="md-ellipsis">
+      Constant object
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-model-week-4chenxiang">
+<span class="md-ellipsis">
+      Memory model Week 4(ChenXiang)
+    </span>
+</a>
+<nav aria-label="Memory model Week 4(ChenXiang)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#variables">
+<span class="md-ellipsis">
+      variables
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+<span class="md-ellipsis">
+      reference
+    </span>
+</a>
+<nav aria-label="reference" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      *右值引用
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dynamic-memory-allocation">
+<span class="md-ellipsis">
+      dynamic memory allocation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#constant">
+<span class="md-ellipsis">
+      constant
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inside-class-week-6">
+<span class="md-ellipsis">
+      Inside Class Week 6
+    </span>
+</a>
+<nav aria-label="Inside Class Week 6" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overload">
+<span class="md-ellipsis">
+      Overload
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#default-argument">
+<span class="md-ellipsis">
+      Default argument
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inline-functions">
+<span class="md-ellipsis">
+      Inline functions
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composition-week-7">
+<span class="md-ellipsis">
+      Composition Week 7
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance-week-8">
+<span class="md-ellipsis">
+      Inheritance Week 8
+    </span>
+</a>
+<nav aria-label="Inheritance Week 8" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-does-it-inherited">
+<span class="md-ellipsis">
+      What does it inherited?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#name-hiding">
+<span class="md-ellipsis">
+      Name hiding
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#polymorphism-week-9-10">
+<span class="md-ellipsis">
+      Polymorphism Week 9 - 10
+    </span>
+</a>
+<nav aria-label="Polymorphism Week 9 - 10" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#casting">
+<span class="md-ellipsis">
+      casting
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#virtual">
+<span class="md-ellipsis">
+      virtual
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-does-virtual-work">
+<span class="md-ellipsis">
+      How does virtual work?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#virtual-destructors">
+<span class="md-ellipsis">
+      Virtual destructors
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#override">
+<span class="md-ellipsis">
+      Override
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiple-inheritance">
+<span class="md-ellipsis">
+      *Multiple Inheritance
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#copy-and-move-week-10">
+<span class="md-ellipsis">
+      Copy and Move Week 10
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      开课小测
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/Tapir-Elithril/Notebook/edit/main/docs/sp25/oop/note.md" title="编辑此页">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="_1">面向对象程序设计<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>翁恺班的笔记，补充了陈翔班课程的部分内容</p>
+<h2 id="using-objects-week-1chenxiang">Using Objects Week 1(ChenXiang)<a class="headerlink" href="#using-objects-week-1chenxiang" title="Permanent link">¶</a></h2>
+<h3 id="the-string-class">The string class<a class="headerlink" href="#the-string-class" title="Permanent link">¶</a></h3>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="cp">#include</span><span class="cpf">&lt;string&gt;</span>
+</span><span id="__span-0-2"><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span><span id="__span-0-3"><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">;</span>
+</span><span id="__span-0-4"><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span><span id="__span-0-5"><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-c highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="kt">char</span><span class="w"> </span><span class="n">charr1</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+</span><span id="__span-1-2"><span class="kt">char</span><span class="w"> </span><span class="n">charr2</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"jaguar"</span><span class="p">;</span>
+</span><span id="__span-1-3">
+</span><span id="__span-1-4"><span class="n">string</span><span class="w"> </span><span class="n">str1</span><span class="p">;</span><span class="w"> </span><span class="c1">//fixed value('\0') in str1(different from C)</span>
+</span><span id="__span-1-5"><span class="n">string</span><span class="w"> </span><span class="n">str2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"panther"</span><span class="p">;</span>
+</span><span id="__span-1-6">
+</span><span id="__span-1-7"><span class="n">charr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">charr2</span><span class="p">;</span><span class="w"> </span><span class="c1">//illegal(in C,we have to use strcpy)</span>
+</span><span id="__span-1-8"><span class="n">str1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str2</span><span class="p">;</span><span class="w"> </span><span class="c1">//legal</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="n">string</span><span class="w"> </span><span class="n">str3</span><span class="p">;</span>
+</span><span id="__span-2-2"><span class="n">str3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">str2</span><span class="p">;</span>
+</span><span id="__span-2-3"><span class="n">str1</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">str2</span><span class="p">;</span>
+</span><span id="__span-2-4"><span class="n">str1</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"a string literal"</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+constructors(ctors)<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="n">string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cp</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</span><span id="__span-3-2"><span class="n">string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>
+</span><span id="__span-3-3"><span class="n">string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</span><span id="__span-3-4">
+</span><span id="__span-3-5"><span class="n">substr</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</span><span id="__span-3-6">
+</span><span id="__span-3-7"><span class="n">assign</span><span class="p">(...);</span>
+</span><span id="__span-3-8"><span class="n">insert</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</span><span id="__span-3-9"><span class="n">insert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+</span><span id="__span-3-10"><span class="n">erase</span><span class="p">(...);</span>
+</span><span id="__span-3-11"><span class="n">append</span><span class="p">(...);</span>
+</span><span id="__span-3-12"><span class="n">replace</span><span class="p">(...);</span>
+</span><span id="__span-3-13"><span class="n">replace</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="file-io">File I/O<a class="headerlink" href="#file-io" title="Permanent link">¶</a></h3>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ifstream&gt;</span><span class="c1"> //read from file</span>
+</span><span id="__span-4-2"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ofstream&gt;</span><span class="c1"> //write to file</span>
+</span><span id="__span-4-3">
+</span><span id="__span-4-4"><span class="n">ofstream</span><span class="w"> </span><span class="n">file1</span><span class="p">(</span><span class="s">"C:</span><span class="se">\\</span><span class="s">test.txt"</span><span class="p">);</span>
+</span><span id="__span-4-5"><span class="n">file1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Hello World"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-6"><span class="n">ifstream</span><span class="w"> </span><span class="n">file2</span><span class="p">(</span><span class="s">"C:</span><span class="se">\\</span><span class="s">test.txt"</span><span class="p">);</span>
+</span><span id="__span-4-7"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span><span id="__span-4-8"><span class="n">file2</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="a-quick-tour-of-c-week-2chenxiang">A Quick Tour of C++ Week 2(ChenXiang)<a class="headerlink" href="#a-quick-tour-of-c-week-2chenxiang" title="Permanent link">¶</a></h2>
+<h2 id="stl-week-3chenxiang">STL Week 3(ChenXiang)<a class="headerlink" href="#stl-week-3chenxiang" title="Permanent link">¶</a></h2>
+<p>[Definition]Part of the ISO Standard C++ Library,Data Structure and Algorithms  </p>
+<ul>
+<li>Containers:class templates,data structures  </li>
+<li>Algorithms  </li>
+<li>Iterators:uniform access of manners  </li>
+</ul>
+<h3 id="containers">Containers<a class="headerlink" href="#containers" title="Permanent link">¶</a></h3>
+<ul>
+<li>Sequential:array(static),vector(dynamic),deque(double-ended queue),(forward_)list  </li>
+<li>Associative:set(key),map(key-value),multiset,multimap</li>
+<li>Unordered associative  </li>
+<li>Adaptors:stack,(priority_)queue  </li>
+</ul>
+<h4 id="vector">vector<a class="headerlink" href="#vector" title="Permanent link">¶</a></h4>
+<ul>
+<li>Constructor,destructor  </li>
+<li>Element access:at,operator[],front,back,data,...  </li>
+<li>Iterators:begin,end,cbegin,cend,...  </li>
+<li>Capacity:empty,size,reserve,capacity,...  </li>
+<li>Modifiers:clear,insert,erase,push_back,...  </li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+</span><span id="__span-5-2"><span class="n">v</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">//Whoops!</span>
+</span><span id="__span-5-3"><span class="c1">//use push_back() or resize()</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="list">list<a class="headerlink" href="#list" title="Permanent link">¶</a></h4>
+<p>(doubly-linked)
+<code>push_back</code>,<code>list&lt;string&gt;::iterator p;</code></p>
+<h4 id="map">map<a class="headerlink" href="#map" title="Permanent link">¶</a></h4>
+<p><code>map&lt;string,float&gt; price;</code>
+multi-map:one key corresponds to multiple values</p>
+<h4 id="stack">stack<a class="headerlink" href="#stack" title="Permanent link">¶</a></h4>
+<p><span>adaptor:<span class="heti-spacing"> </span></span>转换器  </p>
+<h3 id="algorithms">Algorithms<a class="headerlink" href="#algorithms" title="Permanent link">¶</a></h3>
+<ul>
+<li>[first,last)</li>
+<li>for_each,find,count,...  </li>
+<li>copy,fill,transform,replace,rotate,...  </li>
+<li>sort,partial_sort,nth_element,...</li>
+<li>set_difference,set_union,...  </li>
+<li>accumulate,partial_sum,...  </li>
+</ul>
+<h3 id="iterators">Iterators<a class="headerlink" href="#iterators" title="Permanent link">¶</a></h3>
+<h3 id="typedefs">Typedefs<a class="headerlink" href="#typedefs" title="Permanent link">¶</a></h3>
+<p><code>auto</code><span>:<span class="heti-spacing"> </span></span>编译器推断<br/>
+<code>using</code><br/>
+<code>typedef map&lt;Name,list&lt;PhoneNum&gt;&gt; PB;</code> </p>
+<h2 id="defining-class-week-3">Defining Class Week 3<a class="headerlink" href="#defining-class-week-3" title="Permanent link">¶</a></h2>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">)</span>
+</span><span id="__span-6-2"><span class="kt">void</span><span class="w"> </span><span class="n">move</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">dy</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+Q1:All the functions take a pointer to Point as the first parameter,why?If we take it as a global var,is it OK?<br/>
+ANS:No,because we need to tell the function <strong>which</strong> struct to deal with<br/>
+Solution:put the functions into the struct -&gt; member functions class<br/>
+<code>::</code>所有格resolver
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="kt">void</span><span class="w"> </span><span class="nf">S::f</span><span class="p">()</span><span class="w"> </span><span class="c1">//function f in class S</span>
+</span><span id="__span-7-2"><span class="p">{</span>
+</span><span id="__span-7-3"><span class="w">    </span><span class="o">::</span><span class="n">f</span><span class="p">();</span><span class="w"> </span><span class="c1">//global function f,instead of recursively call</span>
+</span><span id="__span-7-4"><span class="w">    </span><span class="o">::</span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">//global a</span>
+</span><span id="__span-7-5"><span class="w">    </span><span class="n">a</span><span class="o">--</span><span class="p">;</span><span class="w">   </span><span class="c1">//local a</span>
+</span><span id="__span-7-6"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+How does the compiler now its members when executing member functions?<br/>
+<code>this</code> is a pointer points to the object  
+<h3 id="object">Object<a class="headerlink" href="#object" title="Permanent link">¶</a></h3>
+<p>Object = Attributes + Service = Data(private) + Operations(Public)<br/>
+UML:name,attribute,service(operations)<br/>
+class≈struct(class默认访问权限为private而struct为public)<br/>
+任何class都需要分在.h与.cpp两个文件中，.h提供声明供他人使用，.cpp提供private实体<br/>
+<strong>One</strong> class definition <strong>per</strong> header.h
+Only declarations are allowed in .h  </p>
+<ul>
+<li>extern var  </li>
+<li>function prototypes  </li>
+<li>class/struct definition </li>
+</ul>
+<h3 id="include">include<a class="headerlink" href="#include" title="Permanent link">¶</a></h3>
+<ul>
+<li>#include "xx.h"：优先搜索<span class="heti-skip"><span class="heti-spacing"> </span>.cpp<span class="heti-spacing"> </span></span>文件所在目录再到指定位置搜索</li>
+<li>#include<xx.h>：指定位置搜索
+  自带头文件
+  环境变量
+  -I</xx.h></li>
+<li>#include<xx>：与<xx.h>相同</xx.h></xx></li>
+</ul>
+<h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">¶</a></h3>
+<p>What will happen if we forget to initialize?<br/>
+Without initialization,we won't get fixed value.<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="k">struct</span><span class="w"> </span><span class="nc">Point</span>
+</span><span id="__span-8-2"><span class="p">{</span>
+</span><span id="__span-8-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-8-5"><span class="w">    </span><span class="n">Point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// 构造函数</span>
+</span><span id="__span-8-6"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-8-7"><span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-8-8"><span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-8-9"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-10"><span class="p">};</span>
+</span><span id="__span-8-11">
+</span><span id="__span-8-12"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-8-13"><span class="p">{</span>
+</span><span id="__span-8-14"><span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-8-15"><span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">p2</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">};</span>
+</span><span id="__span-8-16"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+构造函数名字与结构名相同，没有返回类型<br/>
+没有参数的构造函数：default<br/>
+成员变量的赋值  
+<ul>
+<li>在结构体中赋值  </li>
+<li>在构造函数头中添加初始化列表<code>Point(int xx,int yy):x(xx),y(yy)</code> 成员变量名<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>初始化值<span><span class="heti-spacing"> </span>)</span></li>
+<li>在构造函数中赋值  </li>
+<li>以上三种按序进行</li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="k">struct</span><span class="w"> </span><span class="nc">Y</span>
+</span><span id="__span-9-2"><span class="p">{</span>
+</span><span id="__span-9-3"><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+</span><span id="__span-9-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-9-5"><span class="w">    </span><span class="n">Y</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-9-6"><span class="p">}</span>
+</span><span id="__span-9-7"><span class="n">Y</span><span class="w"> </span><span class="n">y1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">Y</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">Y</span><span class="p">(</span><span class="mi">3</span><span class="p">)};</span><span class="w"> </span><span class="c1">//OK</span>
+</span><span id="__span-9-8"><span class="n">Y</span><span class="w"> </span><span class="n">y2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">)};</span><span class="w"> </span><span class="c1">//ERROR</span>
+</span><span id="__span-9-9"><span class="n">Y</span><span class="w"> </span><span class="n">y3</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span><span class="w"> </span><span class="c1">//ERROR</span>
+</span><span id="__span-9-10"><span class="n">Y</span><span class="w"> </span><span class="n">y4</span><span class="p">;</span><span class="w"> </span><span class="c1">//ERROR</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="destructor">Destructor<a class="headerlink" href="#destructor" title="Permanent link">¶</a></h3>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><span class="k">struct</span><span class="w"> </span><span class="nc">Y</span><span class="p">{</span>
+</span><span id="__span-10-2"><span class="w">    </span><span class="o">~</span><span class="n">Y</span><span class="p">();</span><span class="c1">//cannot have any parameter</span>
+</span><span id="__span-10-3"><span class="p">};</span>
+</span><span id="__span-10-4"><span class="o">~</span><span class="n">Y</span><span class="p">(){</span>
+</span><span id="__span-10-5"><span class="w">    </span><span class="c1">//auto</span>
+</span><span id="__span-10-6"><span class="w">    </span><span class="p">...</span>
+</span><span id="__span-10-7"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+What happens with <code>goto</code> and <code>switch</code>?<br/>
+Not allowed.  
+<h2 id="inside-object-week-4">Inside Object Week 4<a class="headerlink" href="#inside-object-week-4" title="Permanent link">¶</a></h2>
+<p>what to do and how to do</p>
+<h3 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">¶</a></h3>
+<ul>
+<li>public  </li>
+<li><span>friend:<span class="heti-spacing"> </span></span>授权（所有）私有成员，被以下接收<br/>
+  自由函数<br/>
+  类中的函数<br/>
+  整个类  </li>
+<li><span>private:<span class="heti-spacing"> </span></span>私有的边界是类，不是对象<br/>
+  同一类的不同对象可以互相访问private成员    </li>
+<li><span>protected:<span class="heti-spacing"> </span></span>子类可以访问  </li>
+</ul>
+<h3 id="objects-in-different-places">Objects in different places<a class="headerlink" href="#objects-in-different-places" title="Permanent link">¶</a></h3>
+<p><img alt="alt text" src="../image.png"/><br/>
+<img alt="alt text" src="../image-1.png"/><br/>
+<img alt="alt text" src="../image-2.png"/> </p>
+<h3 id="static">Static<a class="headerlink" href="#static" title="Permanent link">¶</a></h3>
+<p>Initialization Dependency:not guaranteed<br/>
+strong recommend:no global vars!  </p>
+<ul>
+<li>static storage  </li>
+<li>restricted access  </li>
+</ul>
+<p>use static only inside <strong>functions and classes</strong></p>
+<ul>
+<li>static free function:deprecated  </li>
+<li>static global vars:deprecated  </li>
+<li>static local vars:persistent storage  </li>
+<li>static member vars:shared  </li>
+<li>static member functions:shared  </li>
+</ul>
+<p>static object:initialized when first called,destruct as a global var<br/>
+static member:不在class的存储空间中，被不同对象共享（被视为同一个）
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="k">class</span><span class="w"> </span><span class="nc">M</span><span class="p">{</span>
+</span><span id="__span-11-2"><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_h</span><span class="p">;</span><span class="w"> </span><span class="c1">//declaration,not belonging to the class</span>
+</span><span id="__span-11-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_w</span><span class="p">;</span><span class="w"> </span><span class="c1">//declaration</span>
+</span><span id="__span-11-4"><span class="p">};</span>
+</span><span id="__span-11-5">
+</span><span id="__span-11-6"><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="o">::</span><span class="n">m_h</span><span class="p">;</span>
+</span><span id="__span-11-7"><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="o">::</span><span class="n">m_h</span><span class="p">;</span><span class="c1">//ERROR</span>
+</span></code></pre></div></td></tr></table></div>
+static function:no <code>this</code>,不能访问任何非静态成员变量或函数<br/>
+不需要制造对象即可调用(<class name="">::<static func="">)，和任何对象都无关<br/>
+应用：提供制造类对象的方法，作为制造函数 <br/>
+<img alt="alt text" src="../image-3.png"/>
+<div class="admonition note">
+<p class="admonition-title"><span>local vars<span class="heti-spacing"> </span></span>的空间分配发生在进入函数时，编译器会在进入函数时算好所有本地变量需要的最大空间与地址</p>
+</div>
+<p><span>static local variable:<span class="heti-spacing"> </span></span>在程序结束前析构，在函数内访问<br/>
+static member variable的构造与析构与global variable相同，在类内访问  </p>
+<h3 id="constant-object">Constant object<a class="headerlink" href="#constant-object" title="Permanent link">¶</a></h3>
+<p>How can the object be protected from change?<br/>
+Solution:declare member functions const<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><span class="kt">int</span><span class="w"> </span><span class="nf">Data::set_date</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">){</span>
+</span><span id="__span-12-2"><span class="w">    </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+</span><span id="__span-12-3"><span class="p">}</span>
+</span><span id="__span-12-4"><span class="kt">int</span><span class="w"> </span><span class="nf">Data::get_date</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">{</span>
+</span><span id="__span-12-5"><span class="w">    </span><span class="n">day</span><span class="o">++</span><span class="p">;</span><span class="w">      </span><span class="c1">//ERROR modify data member</span>
+</span><span id="__span-12-6"><span class="w">    </span><span class="n">set_day</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span><span class="c1">//ERROR call non-const member function</span>
+</span><span id="__span-12-7"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="c1">//OK</span>
+</span><span id="__span-12-8"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+const修饰this<br/>
+静态成员变量不可能是const，因为没有this指针，只能在初始化列表初始化<br/>
+const and non-const member function can coexist(overload)  
+<h2 id="memory-model-week-4chenxiang">Memory model Week 4(ChenXiang)<a class="headerlink" href="#memory-model-week-4chenxiang" title="Permanent link">¶</a></h2>
+<h3 id="variables">variables<a class="headerlink" href="#variables" title="Permanent link">¶</a></h3>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="c1">//global vars</span>
+</span><span id="__span-13-2"><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span><span id="__span-13-3"><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="c1">//static global vars</span>
+</span><span id="__span-13-4"><span class="n">f</span><span class="p">()</span>
+</span><span id="__span-13-5"><span class="p">{</span>
+</span><span id="__span-13-6"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="c1">//local vars</span>
+</span><span id="__span-13-7"><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="c1">//static local vars</span>
+</span><span id="__span-13-8"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="c1">//allocated local vars</span>
+</span><span id="__span-13-9"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>Global data:global vars,static global vars,static local vars(i,j,l,str)  </li>
+<li>Stack:local vars(k)  </li>
+<li>Heap:dynamically allocated vars(*p)  </li>
+</ul>
+<p>global vars:vars defined outside any functions and classes and can be shared between .cpp files(extern)  </p>
+<p>static vars:inhibit to be accessed outside .cpp</p>
+<p>static local vars:keep its state btw functions</p>
+<p>static  </p>
+<ul>
+<li>restricted access scope  </li>
+<li>persistent storage  </li>
+</ul>
+<h3 id="reference">reference<a class="headerlink" href="#reference" title="Permanent link">¶</a></h3>
+<p><code>ps = &amp;s</code>,<code>(*ps).length()</code>,<code>ps-&gt;length()</code><br/>
+绑定别名(alias)(一次性不可计算的指针)，通过引用直接操作原始变量<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">;</span><span class="c1">//a pointer to a character,s points to the addr of p</span>
+</span><span id="__span-14-2"><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="c1">//ERROR</span>
+</span><span id="__span-14-3"><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="c1">//把x的值赋值给s指向的变量，*是一个运算符</span>
+</span><span id="__span-14-4"><span class="kt">char</span><span class="o">&amp;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="c1">//a reference</span>
+</span><span id="__span-14-5">
+</span><span id="__span-14-6"><span class="kt">int</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">47</span><span class="p">;</span>
+</span><span id="__span-14-7"><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-14-8"><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="c1">//ERROR,reference is permanent and cannot be changed</span>
+</span><span id="__span-14-9"><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="c1">//ERROR,reference cannot be null</span>
+</span><span id="__span-14-10"><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"y = "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="c1">//y = 47</span>
+</span><span id="__span-14-11"><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+</span><span id="__span-14-12"><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"x = "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="c1">//x = 18</span>
+</span><span id="__span-14-13"><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="c1">//copy the value of z to y(a.k.a x)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="p">);</span>
+</span><span id="__span-15-2"><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="c1">//not allowed</span>
+</span><span id="__span-15-3"><span class="c1">//i * 3是右值，不能出现在赋值号左边，不能被reference接收</span>
+</span><span id="__span-15-4"><span class="c1">//reference只能接受一个左值</span>
+</span><span id="__span-15-5"><span class="c1">//右值：只能放在赋值号右边</span>
+</span><span id="__span-15-6"><span class="c1">//左值：即可以放到赋值号左边又可以放在赋值号右边*,[],.,-&gt;</span>
+</span><span id="__span-15-7"><span class="kt">int</span><span class="o">&amp;*</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="c1">//illegal,reference没有实体，无法被指向</span>
+</span><span id="__span-15-8"><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">);</span><span class="c1">//legal,the reference of pointer</span>
+</span><span id="__span-15-9"><span class="c1">//no reference to reference</span>
+</span><span id="__span-15-10"><span class="c1">//no array of reference</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">){</span>
+</span><span id="__span-16-2"><span class="w">    </span><span class="n">x</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-16-3"><span class="p">}</span>
+</span><span id="__span-16-4"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-16-5"><span class="p">{</span>
+</span><span id="__span-16-6"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-16-7"><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span><span id="__span-16-8"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 6</span>
+</span><span id="__span-16-9"><span class="w">    </span><span class="c1">//不再是值传递 f(y)能成功的修改y了</span>
+</span><span id="__span-16-10"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="_2"><span>*<span class="heti-spacing"> </span></span>右值引用<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><span class="n">T</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="c1">//将亡值</span>
+</span><span id="__span-17-2"><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-17-3"><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+</span><span id="__span-17-4"><span class="c1">//延长临时变量的生命周期</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="dynamic-memory-allocation">dynamic memory allocation<a class="headerlink" href="#dynamic-memory-allocation" title="Permanent link">¶</a></h3>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span><span class="c1">//malloc(向程序运行的进程申请空间)</span>
+</span><span id="__span-18-2"><span class="k">new</span><span class="w"> </span><span class="n">Stash</span><span class="p">;</span><span class="c1">//construct object in heap</span>
+</span><span id="__span-18-3"><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-18-4">
+</span><span id="__span-18-5"><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="c1">//free</span>
+</span><span id="__span-18-6"><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+new and delete triggers and ensures the correctness of Ctor/Dtor(运算符)<br/>
+cannot delete twice but can delete nullptr  
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">psome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="c1">//长度不确定的数组</span>
+</span><span id="__span-19-2"><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">psome</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span><span class="c1">//heap上的空间分配：Magic number(4bytes) + bytes allocated '4'(4bytes) + p(4bytes)</span>
+</span><span id="__span-20-2"><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-20-3"><span class="n">Student</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">();</span><span class="c1">//可传参</span>
+</span><span id="__span-20-4"><span class="n">Student</span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-20-5"><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="c1">//-8 bytes,check是否是magic number,如果不是则报错</span>
+</span><span id="__span-20-6"><span class="n">a</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-20-7"><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="c1">//ERROR</span>
+</span><span id="__span-20-8"><span class="k">delete</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="c1">//Destructor,then check magic number</span>
+</span><span id="__span-20-9"><span class="k">delete</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="c1">//1 destructor,then delete 1 student(ERROR in some compilers)</span>
+</span><span id="__span-20-10"><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="c1">//10 destructor</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="constant">constant<a class="headerlink" href="#constant" title="Permanent link">¶</a></h3>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span><span class="p">;</span>
+</span><span id="__span-21-2"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">27</span><span class="p">;</span><span class="w"> </span><span class="c1">//illegal</span>
+</span><span id="__span-21-3"><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w">    </span><span class="c1">//illegal</span>
+</span><span id="__span-21-4">
+</span><span id="__span-21-5"><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">       </span><span class="c1">//legal,copy const to non-const</span>
+</span><span id="__span-21-6"><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">           </span><span class="c1">//legal</span>
+</span><span id="__span-21-7"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="c1">//legal</span>
+</span></code></pre></div></td></tr></table></div>
+<code>const</code> is an <em>internal linkage</em>
+<ul>
+<li>Compile time constants <code>const int bufsize = 1024;</code> </li>
+<li>Run-time constants
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">class_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w">  </span><span class="c1">//store in .text</span>
+</span><span id="__span-22-2"><span class="kt">int</span><span class="w"> </span><span class="n">finalgrade</span><span class="p">[</span><span class="n">class_size</span><span class="p">];</span><span class="w"> </span><span class="c1">//legal</span>
+</span><span id="__span-22-3">
+</span><span id="__span-22-4"><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-22-5"><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-22-6">
+</span><span id="__span-22-7"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-22-8"><span class="kt">double</span><span class="w"> </span><span class="n">classaverage</span><span class="p">[</span><span class="n">size</span><span class="p">];</span><span class="w"> </span><span class="c1">//error,static array length must be fixed when compiling!</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">53</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">55</span><span class="p">};</span>
+</span><span id="__span-23-2"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="c1">// p(pointer) is a const</span>
+</span><span id="__span-23-3"><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="c1">//legal</span>
+</span><span id="__span-23-4"><span class="n">p</span><span class="o">++</span><span class="p">;</span><span class="w">     </span><span class="c1">//illegal</span>
+</span><span id="__span-23-5">
+</span><span id="__span-23-6"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// (*p)(the object pointer p points to) is a const</span>
+</span><span id="__span-23-7"><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="c1">//illgal</span>
+</span><span id="__span-23-8"><span class="n">p</span><span class="o">++</span><span class="p">;</span><span class="w">     </span><span class="c1">//legal</span>
+</span><span id="__span-23-9"><span class="c1">//不能通过指针修改变量（变量本身能否修改取决于变量本身是否有const）</span>
+</span><span id="__span-23-10"><span class="c1">//观察const在*左边还是右边</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-24-2"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ci</span><span class="p">;</span>
+</span><span id="__span-24-3"><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ip</span><span class="p">;</span>
+</span><span id="__span-24-4"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">cip</span><span class="p">;</span>
+</span><span id="__span-24-5"><span class="n">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-24-6"><span class="n">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ci</span><span class="p">;</span><span class="w"> </span><span class="c1">//illegal,ci cannot be modified but ip can,this is not allowed</span>
+</span><span id="__span-24-7"><span class="n">cip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-24-8"><span class="n">cip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ci</span><span class="p">;</span>
+</span><span id="__span-24-9"><span class="o">*</span><span class="n">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">54</span><span class="p">;</span><span class="w"> </span><span class="c1">//always legal</span>
+</span><span id="__span-24-10"><span class="o">*</span><span class="n">cip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">54</span><span class="p">;</span><span class="c1">//never legal</span>
+</span></code></pre></div></td></tr></table></div>
+String literals:in .text,read only
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><span class="p">(</span><span class="k">const</span><span class="p">)</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">;</span>
+</span><span id="__span-25-2"><span class="c1">//sizeof(s) = 8</span>
+</span><span id="__span-25-3"><span class="c1">//s in stack,"Hello World!" in .text</span>
+</span><span id="__span-25-4"><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">;</span>
+</span><span id="__span-25-5"><span class="c1">//in stack</span>
+</span><span id="__span-25-6"><span class="c1">//sizeof(s) = 14</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-26-2"><span class="p">{</span>
+</span><span id="__span-26-3"><span class="w">    </span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="c1">//illegal</span>
+</span><span id="__span-26-4"><span class="p">}</span>
+</span><span id="__span-26-5"><span class="c1">//传结构-&gt;传指针</span>
+</span><span id="__span-26-6"><span class="c1">//const修饰确保指针指向内容不被修改</span>
+</span></code></pre></div></td></tr></table></div></li>
+</ul>
+<h2 id="inside-class-week-6">Inside Class Week 6<a class="headerlink" href="#inside-class-week-6" title="Permanent link">¶</a></h2>
+<h3 id="overload">Overload<a class="headerlink" href="#overload" title="Permanent link">¶</a></h3>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><span class="k">class</span><span class="w"> </span><span class="nc">point</span><span class="p">{</span>
+</span><span id="__span-27-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-27-3"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-27-4"><span class="w">    </span><span class="n">point</span><span class="p">()</span><span class="o">:</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">){}</span>
+</span><span id="__span-27-5"><span class="w">    </span><span class="n">point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">xx</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">yy</span><span class="p">)</span><span class="o">:</span><span class="n">x</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">yy</span><span class="p">){};</span>
+</span><span id="__span-27-6"><span class="p">};</span>
+</span><span id="__span-27-7">
+</span><span id="__span-27-8"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-27-9"><span class="p">{</span>
+</span><span id="__span-27-10"><span class="w">    </span><span class="n">point</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-27-11"><span class="w">    </span><span class="n">point</span><span class="w"> </span><span class="n">p2</span><span class="p">;</span>
+</span><span id="__span-27-12"><span class="w">    </span><span class="n">point</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-27-13"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+函数名相同，参数表不同
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><span class="w">    </span><span class="n">point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">:</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">){}</span>
+</span><span id="__span-28-2"><span class="w">    </span><span class="n">point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">xx</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">yy</span><span class="p">)</span><span class="o">:</span><span class="n">x</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">yy</span><span class="p">){};</span>
+</span><span id="__span-28-3"><span class="w">    </span><span class="c1">//相同的参数表</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><span class="c1">//auto-cast</span>
+</span><span id="__span-29-2"><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">short</span><span class="p">);</span>
+</span><span id="__span-29-3"><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+</span><span id="__span-29-4"><span class="n">f</span><span class="p">(</span><span class="sc">'a'</span><span class="p">);</span><span class="w"> </span><span class="c1">//ERROR</span>
+</span><span id="__span-29-5"><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="c1">//ERROR</span>
+</span><span id="__span-29-6"><span class="n">f</span><span class="p">(</span><span class="mf">2L</span><span class="p">);</span><span class="c1">//long ERROR</span>
+</span><span id="__span-29-7"><span class="n">f</span><span class="p">(</span><span class="mf">3.2</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+const and non-const is an overload,non-const can be put to const.<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><span class="c1">//Delegating Ctors</span>
+</span><span id="__span-30-2"><span class="k">class</span><span class="w"> </span><span class="nc">Info</span><span class="p">{</span>
+</span><span id="__span-30-3"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-30-4"><span class="w">    </span><span class="n">Info</span><span class="p">(){</span><span class="n">InitRest</span><span class="p">();}</span>
+</span><span id="__span-30-5"><span class="w">    </span><span class="n">Info</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="n">Info</span><span class="p">(){</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;}</span>
+</span><span id="__span-30-6"><span class="w">    </span><span class="n">Info</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="o">:</span><span class="n">Info</span><span class="p">(){</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;}</span>
+</span><span id="__span-30-7"><span class="p">}</span>
+</span><span id="__span-30-8"><span class="c1">//逐级代理</span>
+</span><span id="__span-30-9"><span class="k">class</span><span class="w"> </span><span class="nc">class_c</span><span class="p">{</span>
+</span><span id="__span-30-10"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-30-11"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+</span><span id="__span-30-12"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">;</span>
+</span><span id="__span-30-13"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">middle</span><span class="p">;</span>
+</span><span id="__span-30-14"><span class="w">    </span><span class="n">class_c</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">my_max</span><span class="p">){</span>
+</span><span id="__span-30-15"><span class="w">        </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_max</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">my_max</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-30-16"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-30-17"><span class="w">    </span><span class="n">class_c</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">my_max</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">my_min</span><span class="p">)</span><span class="o">:</span><span class="n">class_c</span><span class="p">(</span><span class="n">my_max</span><span class="p">){</span>
+</span><span id="__span-30-18"><span class="w">        </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_min</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">my_min</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">my_min</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-30-19"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-30-20"><span class="w">    </span><span class="n">class_c</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">my_max</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">my_min</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">my_middle</span><span class="p">)</span><span class="o">:</span><span class="n">class_c</span><span class="p">(</span><span class="n">my_max</span><span class="p">,</span><span class="n">my_min</span><span class="p">){</span>
+</span><span id="__span-30-21"><span class="w">        </span><span class="c1">//只能有一个代理构造，早于初始化列表，晚于定义初始化</span>
+</span><span id="__span-30-22"><span class="w">        </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_middle</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">my_middle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">my_middle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-30-23"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-30-24"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+可以将代理构造的目标隐藏起来(private)<br/>
+不能循环代理  
+<h3 id="default-argument">Default argument<a class="headerlink" href="#default-argument" title="Permanent link">¶</a></h3>
+<p>在成员函数的参数表中放入默认值<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><span class="k">class</span><span class="w"> </span><span class="nc">point</span><span class="p">{</span>
+</span><span id="__span-31-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-31-3"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-31-4"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">k</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-5"><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-31-6"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-31-7"><span class="p">};</span>
+</span><span id="__span-31-8">
+</span><span id="__span-31-9"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-31-10"><span class="p">{</span>
+</span><span id="__span-31-11"><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-31-12"><span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">k</span><span class="p">();</span><span class="c1">//ERROR</span>
+</span><span id="__span-31-13"><span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">k</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+</span><span id="__span-31-14"><span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">k</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-31-15"><span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">k</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+</span><span id="__span-31-16"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<code>void k(int a,int x=0,int y)</code>:not allowed,default arguments written from right to left<br/>
+默认参数值写在声明(.h)中而不要写在定义(.cpp)中<br/>
+因为参数值是依据头文件由编译器填入的（与函数内部无关）  
+<h3 id="inline-functions">Inline functions<a class="headerlink" href="#inline-functions" title="Permanent link">¶</a></h3>
+<p><span>overhead(<span class="heti-spacing"> </span></span>额外开销<span><span class="heti-spacing"> </span>) for a function call:context_switch</span><br/>
+<code>inline</code>是C语言的特性<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">){</span>
+</span><span id="__span-32-2"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-32-3"><span class="p">}</span>
+</span><span id="__span-32-4"><span class="n">main</span><span class="p">(){</span>
+</span><span id="__span-32-5"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-32-6"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-32-7"><span class="w">    </span><span class="c1">//Compiler does:b = a*2;</span>
+</span><span id="__span-32-8"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<code>inline</code>的代价:浪费空间<br/>
+需要在声明与定义repeat <code>inline</code>关键字<br/>
+不会在obj中产生任何代码(无法链接)<br/>
+<div class="language-sh highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1">g++<span class="w"> </span>-c<span class="w"> </span>a.cpp<span class="w"> </span><span class="c1">#只编译不链接</span>
+</span><span id="__span-33-2">objdump<span class="w"> </span>-t<span class="w"> </span>a.o<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>xx
+</span></code></pre></div></td></tr></table></div>
+需要将<code>inline</code>函数的body写在.h中，以供编译器'抄写'<br/>
+Better than <code>define</code>,<code>inline</code>会检查变量的类型. <br/>
+是否真的<code>inline</code>是由编译器根据函数大小或函数是否递归自行决定的  
+<h2 id="composition-week-7">Composition Week 7<a class="headerlink" href="#composition-week-7" title="Permanent link">¶</a></h2>
+<p>composition:construct new object with existing objects<br/>
+Reuse the implementation<br/>
+ways of conclusion  </p>
+<ul>
+<li>fully(Ctor and Dtor are automatically called)(Only C++)  </li>
+<li>by reference<br/>
+  logical relationship is not fully(e.g.Supervisor)<br/>
+  size-of is unknown beforehand<br/>
+  resource is to be allocated/connected at run time(exception)  </li>
+</ul>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">{...};</span>
+</span><span id="__span-34-2"><span class="k">class</span><span class="w"> </span><span class="nc">Currency</span><span class="p">{...};</span>
+</span><span id="__span-34-3"><span class="k">class</span><span class="w"> </span><span class="nc">SavingsAccount</span><span class="p">{</span>
+</span><span id="__span-34-4"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-34-5"><span class="w">    </span><span class="n">SavingsAccount</span><span class="p">(</span>
+</span><span id="__span-34-6"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-34-7"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">address</span><span class="p">,</span>
+</span><span id="__span-34-8"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">);</span>
+</span><span id="__span-34-9"><span class="w">    </span><span class="o">~</span><span class="n">SavingsAccount</span><span class="p">();</span>
+</span><span id="__span-34-10"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">();</span>
+</span><span id="__span-34-11"><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-34-12"><span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="n">m_saver</span><span class="p">;</span>
+</span><span id="__span-34-13"><span class="w">    </span><span class="n">Currency</span><span class="w"> </span><span class="n">m_balance</span><span class="p">;</span>
+</span><span id="__span-34-14"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+Composition在内存的存储与定义类时的顺序有关<br/>
+传值构造
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">{</span>
+</span><span id="__span-35-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-35-3"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-35-4"><span class="w">    </span><span class="n">A</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ii</span><span class="p">)</span><span class="o">:</span><span class="n">i</span><span class="p">(</span><span class="n">ii</span><span class="p">){</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"A::A()"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;}</span><span class="c1">//必须传值构造</span>
+</span><span id="__span-35-5"><span class="w">    </span><span class="c1">//A(int ii=0):i(ii){} //可作为默认构造</span>
+</span><span id="__span-35-6"><span class="w">    </span><span class="o">~</span><span class="n">A</span><span class="p">(){</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"A::~A()"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;}</span>
+</span><span id="__span-35-7"><span class="p">}</span>
+</span><span id="__span-35-8">
+</span><span id="__span-35-9"><span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">{</span>
+</span><span id="__span-35-10"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-35-11"><span class="w">    </span><span class="n">B</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="n">j</span><span class="p">(</span><span class="n">i</span><span class="p">){</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"B::B()"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;}</span>
+</span><span id="__span-35-12"><span class="w">    </span><span class="o">~</span><span class="n">B</span><span class="p">(){</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"B::~B()"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;}</span>
+</span><span id="__span-35-13"><span class="p">}</span>
+</span><span id="__span-35-14">
+</span><span id="__span-35-15"><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">{</span>
+</span><span id="__span-35-16"><span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-35-17"><span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-35-18"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-35-19"><span class="w">    </span><span class="n">C</span><span class="p">()</span><span class="o">:</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">){}</span><span class="c1">//初始化列表顺序与构造顺序无关</span>
+</span><span id="__span-35-20"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+使用初始化列表
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><span class="n">SavingsAccount</span><span class="o">::</span><span class="n">SavingsAccount</span><span class="p">(</span>
+</span><span id="__span-36-2"><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-36-3"><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">address</span><span class="p">,</span>
+</span><span id="__span-36-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="o">:</span><span class="n">m_saver</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">address</span><span class="p">),</span><span class="n">m_balance</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cents</span><span class="p">){}</span>
+</span><span id="__span-36-5"><span class="w">    </span><span class="c1">//参数构造m_saver,m_balance</span>
+</span><span id="__span-36-6"><span class="kt">void</span><span class="w"> </span><span class="n">SavingsAccount</span><span class="o">::</span><span class="n">print</span><span class="p">(){</span>
+</span><span id="__span-36-7"><span class="w">    </span><span class="n">m_saver</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+</span><span id="__span-36-8"><span class="w">    </span><span class="n">m_balance</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+</span><span id="__span-36-9"><span class="p">}</span>
+</span><span id="__span-36-10">
+</span><span id="__span-36-11"><span class="n">SavingsAccount</span><span class="o">::</span><span class="n">SavingsAccount</span><span class="p">(</span>
+</span><span id="__span-36-12"><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-36-13"><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">address</span><span class="p">,</span>
+</span><span id="__span-36-14"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">){</span>
+</span><span id="__span-36-15"><span class="w">    </span><span class="n">m_saver</span><span class="p">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</span><span id="__span-36-16"><span class="w">    </span><span class="n">m_saver</span><span class="p">.</span><span class="n">set_address</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+</span><span id="__span-36-17"><span class="w">    </span><span class="n">m_balance</span><span class="p">.</span><span class="n">set_balance</span><span class="p">(</span><span class="n">cents</span><span class="p">);</span>
+</span><span id="__span-36-18"><span class="w">    </span><span class="c1">//默认构造再赋值</span>
+</span><span id="__span-36-19"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-36-20"><span class="c1">//</span>
+</span></code></pre></div></td></tr></table></div>
+It is common to make embedded objects <code>private</code>.<br/>
+Example:clock display  
+<h2 id="inheritance-week-8">Inheritance Week 8<a class="headerlink" href="#inheritance-week-8" title="Permanent link">¶</a></h2>
+<p>Inheritance is to take the existing class,clone it,and then make additions and modifications to the clone.<br/>
+Reuse the interface<br/>
+OOP的三大特性：封装，继承，多态<br/>
+Example:DoME(Database of Multimedia Entertainment)  </p>
+<ul>
+<li>CD:title,artist,tracks,playingtime,got-it,comment  </li>
+<li>DVD:title,director,playingtime,got-it,comment  </li>
+<li><code>list</code> and <code>print</code> </li>
+</ul>
+<p>可修改：可维护性<br/>
+不需要修改：可扩展性<br/>
+基类（父类）-&gt;派生类（子类）  </p>
+<h3 id="what-does-it-inherited">What does it inherited?<a class="headerlink" href="#what-does-it-inherited" title="Permanent link">¶</a></h3>
+<ul>
+<li>private member vars.<br/>
+    inaccessible<br/>
+    exist in derived class(内存中先于子类的member vars，父类嵌入子类对象)  </li>
+<li>public member functions<br/>
+    are public mumber functions of derived class too  </li>
+<li>private member functions<br/>
+    inaccessible in derived class  </li>
+<li>protected members<br/>
+    fully and only accessible in derived class  </li>
+<li>static members<br/>
+    a change to all  </li>
+</ul>
+<p>父类先被<span class="heti-skip"><span class="heti-spacing"> </span>Ctor<span class="heti-spacing"> </span></span>后被<span><span class="heti-spacing"> </span>Dtor</span> </p>
+<h3 id="name-hiding">Name hiding<a class="headerlink" href="#name-hiding" title="Permanent link">¶</a></h3>
+<p>子类中重写父类<span class="heti-skip"><span class="heti-spacing"> </span>overloaded<span class="heti-spacing"> </span></span>函数中的一个，会导致其他重载函数隐藏<br/>
+Use <code>virtual</code> to affect function overloading(Polymorphism)<br/>
+<img alt="alt text" src="../image-4.png"/><br/>
+private继承可以理解为composition  </p>
+<h2 id="polymorphism-week-9-10">Polymorphism Week 9 - 10<a class="headerlink" href="#polymorphism-week-9-10" title="Permanent link">¶</a></h2>
+<p>Subtyping
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><span class="n">Vehicle</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vehicle</span><span class="p">();</span>
+</span><span id="__span-37-2"><span class="n">Vehicle</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Car</span><span class="p">();</span>
+</span><span id="__span-37-3"><span class="n">Vehicle</span><span class="w"> </span><span class="o">*</span><span class="n">v3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bicycle</span><span class="p">();</span><span class="c1">//通过v3,我们只认为他是一个vehicle</span>
+</span></code></pre></div></td></tr></table></div>
+Parameter passing
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Database</span><span class="p">{</span>
+</span><span id="__span-38-2"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item</span><span class="p">)</span>
+</span><span id="__span-38-3"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-38-4"><span class="w">        </span><span class="p">...</span>
+</span><span id="__span-38-5"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-38-6"><span class="p">}</span>
+</span><span id="__span-38-7"><span class="n">DVD</span><span class="w"> </span><span class="n">dvd</span><span class="p">;</span>
+</span><span id="__span-38-8"><span class="n">DVD</span><span class="w"> </span><span class="n">cd</span><span class="p">;</span>
+</span><span id="__span-38-9"><span class="n">Database</span><span class="p">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">dvd</span><span class="p">);</span>
+</span><span id="__span-38-10"><span class="n">Database</span><span class="p">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">cd</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="casting">casting<a class="headerlink" href="#casting" title="Permanent link">¶</a></h3>
+<p><span>casting:<span class="heti-spacing"> </span></span>类型转换<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1"><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="mf">6.3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+Up-casting:造型<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><span class="n">Person</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">();</span>
+</span><span id="__span-40-2"><span class="c1">//Student is still a student,we just not treat it as a student  </span>
+</span><span id="__span-40-3"><span class="n">Manager</span><span class="w"> </span><span class="n">pete</span><span class="p">(</span><span class="s">"Pete"</span><span class="p">,</span><span class="s">"444-55-6666"</span><span class="p">,</span><span class="s">"Bakery"</span><span class="p">);</span>
+</span><span id="__span-40-4"><span class="n">Employee</span><span class="o">*</span><span class="w"> </span><span class="n">ep</span><span class="w"> </span><span class="o">=&amp;</span><span class="n">pete</span><span class="p">;</span>
+</span><span id="__span-40-5"><span class="n">Employee</span><span class="o">&amp;</span><span class="w"> </span><span class="n">er</span><span class="w"> </span><span class="o">=</span><span class="n">pete</span><span class="p">;</span>
+</span><span id="__span-40-6"><span class="n">ep</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">(</span><span class="n">cout</span><span class="p">);</span><span class="c1">//lose type information about the object  </span>
+</span></code></pre></div></td></tr></table></div>
+UML图示<br/>
+<img alt="alt text" src="../image-5.png"/>
+<h3 id="virtual">virtual<a class="headerlink" href="#virtual" title="Permanent link">¶</a></h3>
+<p>[Question] What's the point of saying it's a subclass object?<br/>
+[Example] Shapes:Rectangle,Circle &amp; Ellipse<br/>
+Operations:render,resize,move<br/>
+Data:center<br/>
+<img alt="alt text" src="../image-7.png"/><br/>
+<code>virtual</code> (together with pointer) calls the relevant subclass member function(dynamic binding)<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1"><span class="w">    </span><span class="n">rectangle</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+</span><span id="__span-41-2"><span class="w">    </span><span class="n">draw</span><span class="p">(</span><span class="o">&amp;</span><span class="n">r</span><span class="p">);</span>
+</span><span id="__span-41-3"><span class="w">    </span><span class="n">r</span><span class="p">.</span><span class="n">render</span><span class="p">();</span><span class="c1">//static binding:compile time</span>
+</span><span id="__span-41-4"><span class="w">    </span><span class="n">shape</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">r</span><span class="p">;</span><span class="c1">//p is a polymorphic variable</span>
+</span><span id="__span-41-5"><span class="w">    </span><span class="c1">//static(declared) type:shape,dynamic(run-time) type:rectangle</span>
+</span><span id="__span-41-6"><span class="w">    </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">render</span><span class="p">();</span>
+</span><span id="__span-41-7"><span class="w">    </span><span class="c1">//(*p -&gt; vptr -&gt; vtable[?])()</span>
+</span><span id="__span-41-8"><span class="w">    </span><span class="c1">//to select which function to call:binding</span>
+</span><span id="__span-41-9"><span class="w">    </span><span class="c1">//dynamic binding:run time</span>
+</span><span id="__span-41-10">
+</span><span id="__span-41-11"><span class="nl">output</span><span class="p">:(</span><span class="n">without</span><span class="w"> </span><span class="err">`</span><span class="k">virtual</span><span class="err">`</span><span class="p">)</span>
+</span><span id="__span-41-12"><span class="n">shape</span><span class="o">::</span><span class="n">render</span><span class="p">()</span>
+</span><span id="__span-41-13"><span class="n">rectangle</span><span class="o">::</span><span class="n">render</span><span class="p">()</span>
+</span><span id="__span-41-14"><span class="n">shape</span><span class="o">::</span><span class="n">render</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+binding:which function to call<br/>
+static binding:call the function as the code<br/>
+dynamic binding:call the function of the object <br/>
+virtual functions  
+<ul>
+<li>non-virtual:compiler generates <em>static</em> </li>
+<li>virtual
+  can be transparently overridden(覆盖)<br/>
+  objects carry a pack of their virtual functions<br/>
+  compiler checks pack and <em>dynamically</em> call  </li>
+</ul>
+<h3 id="how-does-virtual-work">How does <code>virtual</code> work?<a class="headerlink" href="#how-does-virtual-work" title="Permanent link">¶</a></h3>
+<p>note:the sizeof a class with no member var is '1'(not '0' which is unscientific)<br/>
+without <code>virtual</code>,sizeof(subclass) = sizeof(superclass) + 4 * number of member vars(unless sizeof(superclass) == 1)<br/>
+with <code>virtual</code>(no matter how many),a <em>vptr</em>(virtual pointer) is generated,which points to <em>vtable</em>(owned by the class)<br/>
+vtable consists all the function pointer in the class<br/>
+sizeof(vptr) = 8(in x64) or 4(in x86)<br/>
+<img alt="alt text" src="../image-8.png"/><br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><span class="n">Rectangle</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+</span><span id="__span-42-2"><span class="n">Shape</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+</span><span id="__span-42-3"><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+</span><span id="__span-42-4"><span class="n">Shape</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="p">;</span>
+</span><span id="__span-42-5"><span class="n">p</span><span class="o">-&gt;</span><span class="n">render</span><span class="p">();</span><span class="c1">//Shape::render()</span>
+</span><span id="__span-42-6"><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">r</span><span class="p">;</span>
+</span><span id="__span-42-7"><span class="n">p</span><span class="o">-&gt;</span><span class="n">render</span><span class="p">();</span><span class="c1">//Rectangle::render()</span>
+</span></code></pre></div></td></tr></table></div>
+[Question] What happens to vptr?<br/>
+vptr won't be transferred,because vptr is generated <strong>in constructor</strong>
+<h3 id="virtual-destructors">Virtual destructors<a class="headerlink" href="#virtual-destructors" title="Permanent link">¶</a></h3>
+<p>Why?<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><span class="n">Shape</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Ellipse</span><span class="p">(</span><span class="mf">100.0F</span><span class="p">,</span><span class="mf">200.0F</span><span class="p">);...</span>
+</span><span id="__span-43-2"><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="c1">// p-&gt;~ then free()</span>
+</span><span id="__span-43-3"><span class="c1">//problem:which ~ to call</span>
+</span></code></pre></div></td></tr></table></div>
+We consider every class has a virtual destructor<br/>
+Therefore,every class ought to have a vptr  
+<h3 id="override">Override<a class="headerlink" href="#override" title="Permanent link">¶</a></h3>
+<p>Superclass and subclass define methods with the same signature(function prototype)<br/>
+Suppose D is derived from B,should D::f() and B::f() have the same input type and output type?<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><span class="k">class</span><span class="w"> </span><span class="nc">expr</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-44-2"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-44-3"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">expr</span><span class="o">*</span><span class="w"> </span><span class="n">newexpr</span><span class="p">();</span>
+</span><span id="__span-44-4"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">expr</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">clone</span><span class="p">();</span>
+</span><span id="__span-44-5"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="nf">self</span><span class="p">();</span>
+</span><span id="__span-44-6"><span class="p">};</span>
+</span><span id="__span-44-7"><span class="k">class</span><span class="w"> </span><span class="nc">binaryexpr</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-44-8"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-44-9"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">binaryexpr</span><span class="o">*</span><span class="w"> </span><span class="n">newexpr</span><span class="p">();</span><span class="c1">//OK</span>
+</span><span id="__span-44-10"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">binaryexpr</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">clone</span><span class="p">();</span><span class="c1">//OK</span>
+</span><span id="__span-44-11"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">binaryexpr</span><span class="w"> </span><span class="nf">self</span><span class="p">();</span><span class="c1">//Error!</span>
+</span><span id="__span-44-12"><span class="w">    </span><span class="c1">//note:virtual in subclass can be neglected</span>
+</span><span id="__span-44-13"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Name hiding still exists with virtual<br/>
+Only override on virtual functions!<br/>
+Shape is an abstruct class,we actually don't want a <em>shape</em> object to be created.<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><span class="k">class</span><span class="w"> </span><span class="nc">shape</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-45-2"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-45-3"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">render</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-45-4"><span class="w">    </span><span class="c1">//纯虚函数</span>
+</span><span id="__span-45-5"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+某一个函数<code>virtual f() = 0</code>，表示类是抽象的，抽象类不能构造对象
+<h3 id="multiple-inheritance">*Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permanent link">¶</a></h3>
+<p>一个类有多个父类<span class="heti-skip"><span class="heti-spacing"> </span>(only c++):<span class="heti-spacing"> </span></span>菱形继承的问题，其余<span class="heti-skip"><span class="heti-spacing"> </span>oop<span class="heti-spacing"> </span></span>语言的单根结构（所有类都是<span class="heti-skip"><span class="heti-spacing"> </span>object<span class="heti-spacing"> </span></span>类的子类，容易实现容器）<br/>
+c++通过多继承制造容器<br/>
+虚继承：指针指向爷类<br/>
+虚继承解决多继承，多继承解决没有单根结构的问题，最终被模板取代<br/>
+多继承只有在多个父类只有一个是实际类的时候可以进行  </p>
+<h2 id="copy-and-move-week-10">Copy and Move Week 10<a class="headerlink" href="#copy-and-move-week-10" title="Permanent link">¶</a></h2>
+<h2 id="_3">开课小测<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+</static></class></article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © YYC 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../../js/katex.js"></script>
+</body>
+</html>
