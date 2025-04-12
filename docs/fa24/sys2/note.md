@@ -702,8 +702,10 @@ RISC-V modes
 
 - 00 user/app   U  
 - 01 supervisor S  
-- 10 reserved  
+- 10 reserved(hipervisor)  
 - 11 machine    M  
+
+x86 modes:ring0,ring3(ring1,ring2),hipervisor,...
 
 Event:an "unusual" change in control flow  
 stop execution -> change mode -> change context  
@@ -806,16 +808,16 @@ dynamic linking
 - need loader resolve library calls  
 - can't execute without proper loader  
   
-Who setups ELF file mapping  
+Who setups ELF file mapping?  
 Kernel  
   exec syscall  
     load_elf_binary  
   
-Who setups stack and heap  
+Who setups stack and heap?  
 Kernel  
   exec syscall  
   
-Who setups libraries  
+Who setups libraries?  
 Loader  
   ld-xxx  
   
@@ -965,12 +967,19 @@ context switch:state saving
 stp = store pair  
 x29 = fp  
 x9 = sp  
-x30 = lr = ra (pc = lr after ret)  
+x30 = lr = ra (pc = lr after `ret`)  
 \#16 = x8 + 16  
 x0 = switch_caller_pcb_pointer  
 x1 = switch_callee_pcb_pointer  
 `add x8,x0,x10(offset)`  
 x8 = cpu_context  
+pc switch
+```asm
+str lr,[x8]
+add x8,x1,x10
+ldr lr,[x8]
+ret
+```
   
 stack switch  
 ```asm
@@ -995,8 +1004,14 @@ P1_f(){
 C code is not permitted because of overhead or optimization(lean & mean)  
 
 ![alt text](image/image-33.png)  
-`msr sp_e10,x1`for safety(thread_info -> cred -> uid)(x1:task_struct)  
+`msr sp_e10,x1`for safety(thread_info -> cred -> uid(root:0,user:>1000))(x1:task_struct)  
   
+![alt text](image/image-78.png)  
+
+- process0 -> kernel  
+- context_switch  
+- kernel -> process1  
+
 When and where are the kernel context been saved?  
 
 - when:cpu_switch_to  
@@ -1013,7 +1028,7 @@ user_space_context in pt_regs
   
 user process -> call system call(kernel_entry)-> execute system call(kernel_exit)-> return  
 
-why fork() can return two values?  
+Why fork() can return two values?  
 x0 store return_value in arm64  
   
 two x0 after clone  
@@ -1263,7 +1278,7 @@ process:资源分配与保护单元
 
 !!! note "process is a resource allocator and protection"  
 
-threads in a process share address space(data,heap,files and signals) & code,but not share pc,registers and stack(variables,function stack)  
+threads in a process share address space(data,heap,files,page table and signals) & code,but not share pc,registers and stack(variables,function stack)  
   
 Advantages  
 
@@ -1610,7 +1625,7 @@ typedef struct{
 }semaphore;
 
 wait(semaphore *S){
-  S -> value --;//MS is needed
+  S -> value --;//MS is needed(mutex)
   while(S -> value < 0) {
     add this process to S -> list;
     block();
@@ -1856,8 +1871,11 @@ no deadlock here
 
 - Prevention:break one of the four conditions  
 - Avoidance:calculate the safe states  
-- Deadlock detection and recovery  
+- Deadlock detection
+- Deadlock recovery  
   
+The OS often does not handle deadlock.
+
 #### Prevention  
 
 - mutual exclusion  
@@ -2076,12 +2094,12 @@ wait for event:syscall interrupt exception
   
 Interrupt:I/O timer  
   
-OS operates on privileged instructions  
+OS operates on privileged instructions(relevant to hardware)  
 A subset of instructions of every CPU is restricted in usage: only the OS can execute them  
   
 User mode & kernel mode  
 OS(狭义):kernel(Linux)  
-OS(广义)：user + kernel(Android)  
+OS(广义):user(app) + kernel(Android)  
 Browser is not a part of an OS  
   
 RISCV modes:三个半  
@@ -2122,7 +2140,8 @@ dynamic linking
 ![alt text](image/image-72.png)  
 static variable -> .data(int a=5;)初始化  
 static const -> .rodata(read only)  
-int b; -> .bss未初始化 filled with 0  
+int b; -> .bss未初始化 filled with 0 
+.data,.rodata,.bss all store **global** vars. 
 .text executable  
 *stack:per thread(threads have different return addr)  
 *heap:per process  
@@ -2140,8 +2159,9 @@ Who setups libraries
 Loader(user process)  
   ld-xxx  
   
-Linux:monolithic  
-  
+Linux/Windows:monolithic宏内核  
+MacOS:混合内核  
+
 #### Processes  
 [Definition]a unit of resource allocation and protection  
   

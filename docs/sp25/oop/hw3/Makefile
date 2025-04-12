@@ -9,7 +9,7 @@ CXXFLAGS = $(INCLUDES)
 all: $(OUT)
 
 $(OUT): $(OBJ)
-	g++ $(OBJ) -o $(OUT)
+	g++ $(OBJ) -g -o $(OUT)
 
 %.o: %.cpp
 	g++ $(CXXFLAGS) -c $< -o $@

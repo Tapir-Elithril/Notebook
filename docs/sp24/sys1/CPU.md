@@ -40,7 +40,7 @@ dmem_ift.r/w_reply_bits.rdata/wdata
 dmem_ift.w_request_bits.wmask  
 ```
 正确接线即可  
-ImmGen,DataPkg,MaskGen模块要自行设计与实现，具体在[Data Package,Mask Generation,Data Trunc设计](#data-packagemask-generationdata-trunc)会详细解释  
+ImmGen,DataPkg,MaskGen模块要自行设计与实现，具体在[Data Package,Mask Generation,Data Trunc设计](#imm-generationdata-packagemask-generationdata-trunc)会详细解释  
 cosim是仿真测试，将pc,inst,wdata等接入cosim用于测试代码的正确性(虽然给出的cosim连线很多，但事实上我们通常只关心pc,inst,wdata的正确性，因为只要这些都正确了，指令执行就基本正确了)
 ### 指令执行阶段
 指令执行分为五个阶段，具体为：
@@ -80,7 +80,7 @@ alu_op(由funct3与funct7确定,ALU的选择信号)
     always_comb begin
         if (inst_reg) begin
             case(funct3)
-            3'b000:alu_op = funct7[5] ? ALU_SUB : ALU_ADD;
+            3'b000:alu_op = ...
             ...
             endcase
         end
@@ -96,11 +96,7 @@ wb_sel(由inst_reg确定为WB_SEL_ALU)表示写回值是alu_res
 ```verilog
 assign alu_data_1 = 
     alu_asel == ASEL_REG ? read_data_1 : ...
-assign alu_data_2 = 
-    alu_bsel == ...
-
-assign wb_val = 
-    wb_sel == WB_SEL_ALU ? alu_res : ...
+...
 ```
 控制信号的选项可通过查看repo/sys-project/include/core_struct.sv得到  
 各类信号的opcode,funct3也可以在里面找到(但请不要省略查询手册这一步，务必完整理解32位inst每一部分的作用)
@@ -165,5 +161,5 @@ wire类型是线路，只能通过assign
     end
 ```
 ## 写在最后  
-[南京大学计算机系统课程指导](https://nju-projectn.github.io/ics-pa-gitbook/ics2022/FAQ.html)写得很好，未来的工作科研中大多是没有指导甚至连目标都不明确的任务，这篇文档的目的在于帮助大家独立自主的完成CPU的设计，为系统2与系统3打好基础，未来的指导也会越来越少，但此处，请先学会利用手头的资源。  
+[南京大学计算机系统课程指导](https://nju-projectn.github.io/ics-pa-gitbook/ics2022/FAQ.html)写得很好，未来的工作科研中大多是没有指导甚至连目标都不明确的任务，这篇文档并不是一篇心得或是攻略，你可以将其认为是一套补充材料，本质的目的在于帮助大家独立自主的完成CPU的设计，为系统2与系统3打好基础，未来的指导也会越来越少，但此处，请先学会利用手头的资源。  
 从无到有的过程往往是最困难的，这也正因如此，单周期CPU被认为可能是系统贯通课程最难的实验了，但如果独立完成，一定会加深对数字逻辑与CPU组成扎实深厚的认识，任何问题勤问助教与LLM，加油！

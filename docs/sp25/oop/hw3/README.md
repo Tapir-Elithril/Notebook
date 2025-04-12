@@ -14,11 +14,45 @@ The maze figure is as follows:
 ![alt text](image.png)
 
 sample interaction:  
-output:
 ```text
-
+> Game start!
+> Type 'help' if you don't know what to do.
+> Welcome to the Lobby. There are 3 exits: west, east and up.
+> Enter your command:
+go west
+> Moving to west
+> Welcome to the Room 1. There are 2 exits: east and up.
+> Enter your command:
+go up
+> Moving to up
+> Welcome to the Room 3. There are 2 exits: east and down.
+> Enter your command:
+go east
+> Moving to east
+> Princess:Help me!
+> You:Don't be afraid!
+> Princess:Take me to the lobby.
+> Welcome to the Room 4. There are 3 exits: west, east and down.
+> Enter your command:
+go down
+> Moving to down
+> You take the princess to the lobby!
+> You win!
 ```
-input:
 ```text
-
+> Game start!
+> Type 'help' if you don't know what to do.
+> Welcome to the Lobby. There are 3 exits: west, east and up.
+> Enter your command:
+go up
+> Moving to up
+> Princess:Help me!
+> You:Don't be afraid!
+> Princess:Take me to the lobby.
+> Welcome to the Room 4. There are 3 exits: west, east and down.
+> Enter your command:
+go east
+> Moving to east
+> Whoops! Monster here!
+> Game over!
 ```

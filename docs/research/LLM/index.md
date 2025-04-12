@@ -52,6 +52,6 @@ API
 llama.cpp:
 代码功能：llama_model,CPU/GPU buffer type,buft,create_tensor,weight_alloc,kv_cache,scheduler,graph,memory_alloc
 
-通过AI infra向LLM知识库投毒
+通过AI infra向LLM**知识库**投毒
 同一网络同一进程下模型信息窃取 哪些资源是共享的
 llama.cpp.源码剖析

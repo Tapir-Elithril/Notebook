@@ -17,7 +17,7 @@ public:
     // 0: average, 1: available
     static map<string,int> shared_min;
     static map<string,int> shared_max;
-    static const string courses[9]; // fixed course list
+    static const string courses[9];
     Student();
     ~Student();
     void input(const string& line,int no);

@@ -28,7 +28,8 @@ I.Kate Math 4 Physics 2 Chemistry 3 Biology 5
 H.Leo English 3 Chinese 5 Politics 2 Geopgraphy 4 History 5
 T.Mia English 5 History 5 Geography 5 Physics 4 Math 5
 W.Noah Politics 2 Geography 1 Math 1 Chinese 2 Biology 1 History 1
-
+StudentA ads 93 oop 91 fds 79
+StudentB cg 87 bs 92 os 88
 <Ctrl + D>
 ```
 

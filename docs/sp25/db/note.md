@@ -541,16 +541,20 @@ create assertion credits_earned_constraints check
   
 ```sql
 create view faculty as
+(
     select ID,name,dept_name
     from instructor;
+)
 
 select name from faculty
 where dept_name = 'Biology';
 
 create view dept_total_salary(dept_name,total_salary)as
+(
     select dept_name,sum(salary)
     from instructor
     group by dept_name;
+)
 ```
 view can be defined from other views(view expansion for sql server)
 ```sql
@@ -628,6 +632,7 @@ grant update(budget) on department to U1,U2
 grant all privileges on department to U1
 
 revoke <privilege list> on <relation name or view name> from <user list>
+
 revoke select on branch from U1,U2,U3
 ```
 #### Role
@@ -654,4 +659,706 @@ revoke select on department from Amit,Satoshi restrict;
 revoke grant option for select on department from Amit;
 ```
 
-## Chap 5 Advanced SQL
+## Chap 5 Advanced SQL  
+### 5.1 Accessing SQL from a programming language  
+
+- API  
+  ODBC(Open DataBase Connectivity):C,C++,C#  
+  JDBC:Java  
+- Embedded SQL
+  C  
+  SQLJ:Java  
+  JPA:OR(Object Relation) mapping of Java
+
+1.connectivity
+2.create a statement object
+3.send queries and fetch results  
+
+#### JDBC
+```Java
+public static void JDBC()
+{
+    try{
+        Connection conn = DriverManager.getConnection(url,userid,passwd);
+        Statement stmt = conn.createStatement();
+        //...actual work...
+        stmt.close();
+        conn.close();
+    }
+    catch(SQLException sqle){}
+}
+```
+```Java
+try{
+    stmt.executeUpdate(
+        "insert into instructor values(...)");
+} catch (){}
+
+ResultSet rset = stmt.executeQuery(
+    "select dept_name,avg(salary)
+     from instructor
+     group by dept_name");
+while(rset.next())
+{
+    Systems.out.println(rset.getString("dept_name") + " " + rset.getFloat(2));
+}
+
+int a = rset.getInt("a");
+if(rset.wasNull()) Systems.out.println("Got null value");
+```
+##### Prepared Statement  
+```java
+PreparedStatement pStmt = conn.prepareStatement(
+    "insert into instructor values(?,?,?,?)");
+pStmt.setString(1,"88877");//向第一个参数传入
+pStmt.setString(2,"Perry");
+...
+pStmt.executeUpdate();
+```
+##### SQL Injection  
+```sql
+select * from instructor where name = 'X' or 'Y' = 'Y';
+-- 'X';update instructor set salary = salary + 10000000;
+```
+##### Metadata Features  
+```java
+ResultSetMetaData rsmd = rs.getMetaData();
+for(int i = 1;i <= rsmd.getColumnCount();i++)
+{
+    System.out.println(rsmd.getColumnName(i));
+    System.out.println(rsmd.getColumnTypeName(i));
+}
+DatabaseMetaData dbmd = conn.getMetaData();
+ResultSet rs = dbmd.getColumns(null,"univdb","department","%");
+```
+##### Transaction Control
+```java
+conn.setAutoCommit(false);
+conn.commit();
+conn.rollback();
+```
+#### SQLJ
+```java
+#sql iterator deptlnfolter(String deptname,int avgSal);
+//Define class automatically
+deptlnfolter iter = null;
+#sql iter = {select dept_name,avg(salary) as avgSal from instructor group by dept name};
+//check while compiling
+while(iter.next())
+{
+    String deptName = iter.dept_name();
+    int avgSal = iter.avgSal();
+    System.out.println(deptName + " " + avgSal);
+}
+iter.close();
+```
+#### ODBC  
+```c
+int ODBC()
+{
+    RETCODE error;
+    HENV env;
+    HDBC conn;
+    SQLAllocEnv(&env);
+    SQLAllocConnect(env,&conn);
+    SQLConnect(conn,url,SQL_NTS,"avi",SQL_NTS,passwd,SQL_NTS);//Null Terminate String
+    {
+        char deptname[80];
+        float salary;
+        int lenOut1,lenOut2;
+        HSTMT stmt;
+        char* sqlquery = 
+        "select dept_name,sum(salary)
+         from instructor
+         group by dept_name";
+        SQLAllocStmt(conn,&stmt);
+        error = SQLExecDirect(stmt,sqlquery,SQL_NTS);
+        if(error == SQL_SUCCESS){
+            SQLBindCol(stmt,1,SQL_C_CHAR,deptname,80,&lenOut1);//绑定
+            SQLBindCol(stmt,2,SQL_C_FLOAT,&salary,0,&lenOut2);
+            while(SQLFetch(stmt)==SQL_SUCCESS){ //transmit
+                printf(" %s %g\n",deptname,salary);
+            }
+        }
+        SQLFreeStmt(stmt,SQL_DROP);
+    }
+    SQLDisconnect(conn);
+    SQLFreeConnect(conn);
+    SQLFreeEnv(env);
+}
+```
+##### Prepared Statement  
+```c
+SQLPrepare(stmt,<SQL String>);
+SQLBindParameter(stmt,<parameter#>,...type info...)
+retcode = SQLExecute(stmt);
+SQLSetConnectionOption(conn,SQL_AUTOCOMMIT,0)
+SQLTransact(conn,SQL_COMMIT)
+```
+#### Embedded SQL  
+host language:C(EXEC SQL <>;),C++,Java(#SQL{};),...
+```c
+main(){
+    EXEC SQL INCLUDE SQLCA;
+    EXEC SQL BEGIN DECLARE SECTION
+    char account_no[11];//end by '\0'
+    char branch_name[16];
+    int balance;
+    EXEC SQL END DECLARE SECTION
+    EXEC SQL CONNECT TO dank_db USER Adam USING Eve;
+    scanf("%s %s %d",account_no,branch_name,balance);
+    EXEC SQL insert into account values(:account_no,:branch_name,:balance);
+    if(SQLCA.sqlcode !=0) printf("Error!\n");
+    else printf("Success!\n");
+}
+EXEC SQL update account
+         set balance = balance +:balance
+         where account_number = :account_no;
+
+EXEC SQL select balance into :balance:mask 
+        //no bind needed
+        //mask<0 null,mask>0截断
+         from account 
+         where account_number = :account_no;
+
+EXEC SQL DECLARE account_cursor CURSOR for
+    select account_number,balance
+    from depositor natural join account
+    where depositor.customer_name = :customer_name;
+scanf("%s",customer_name);
+EXEC SQL open account_cursor;//iterator
+for(;;)
+{
+    EXEC SQL fetch account_cursor into :account_no,:balance;
+    if(SQLCA.sqlcode)...
+    if(balance < 1000)
+        EXEC SQL update account set balance = "balance * 1.05" where current of account_cursor
+    else ...
+}
+EXEC SQL close account_cursor;
+```
+Embedded SQL helps static type check and optimizer  
+Dynamic SQL use a place holder('?') too
+### 5.2 Functions and Procedures  
+#### Procedual Constructs in SQL
+module language:if-then-else,while
+stored procedures:call  
+语法检查，语义检查，转化关系代数表达式，查询优化
+```sql
+create function dept_count(dept_name varchar(20))
+returns integer
+begin 
+    declare d_count integer;
+    select count(*) into d_count
+    from instructor
+    where instructor.dept_name = dept_name
+    return d_count;
+end
+
+select dept_name,budget
+from department
+where dept_count(dept_name) > 1;
+```
+```sql
+create function instructors_of(dept_name char(20))
+    returns table(ID varchar(5),
+                  name varchar(20),
+                  dept_name varchar(20),
+                  salary numeric(8,2))
+return table
+    (select ID,name,dept_name,salary
+    from instructor
+    where instructor.dept_name =instructors_of.dept_name)
+
+select * from table(instructors_of('Music'));
+```
+#### SQL Procedures
+```sql
+create procedure dept_count_proc
+(in dept_name varchar(20),out d_count integer)
+begin
+    select count(*) into d_count
+    from instructor
+    where instructor.dept_name = dept_count_proc.dept_name
+end
+
+declare d_count integer;
+call dept_count_proc('Physics',d_count);
+```
+```sql
+declare n integer default 0;
+while n<10 do
+    set n = n + 1
+end while
+
+repeat
+    set n = n - 1
+until n = 0
+end repeat
+
+for r as
+    select budget from department
+    where dept_name = 'Music'
+    -- 遍历行
+do
+    set n = n-r.budget
+end for
+```
+#### External Language Functions/Procedures
+```sql
+create procedure dept_count_proc
+(in dept_name varchar(20),out count integer)
+language C
+external name '/usr/avi/bin/dept_count_proc'
+-- sandbox for security
+```
+### 5.3 Triggers
+ECA:Event,Condition,Action
+#### Row level triggers
+```sql
+create trigger account_trigger 
+after update of account on balance 
+referencing new row as nrow
+referencing old row as orow
+for each row
+when nrow.balance - orow.balance >= 200000 or
+     orow.balance - nrow.balance >= 50000
+begin
+    insert into account_log values(nrow.account_number,nrow.balance - orow.balance,current_time())
+end;
+```
+```sql
+create trigger timeslot_check1
+after insert on section
+referencing new row as nrow
+for each row
+when(nrow.time_slot_id not in(
+        select time_slot_id
+        from time_slot))
+begin
+    rollback
+end;
+
+create trigger timeslot_check2
+after delete on timeslot
+referencing old row as orow
+for each row
+when(orow.time_slot_id not in(
+        select time_slot_id
+        from time_slot)
+    and orow.time_slot in(
+        select time_slot_id
+        from section)
+    )
+begin
+    rollback
+end;
+```
+```sql
+create trigger setnull_trigger
+before update of takes 
+referencing new row as nrow
+for each row
+when(nrow.grade = '')
+begin atomic
+    set nrow.grade = null;
+end;
+```
+#### Statement level triggers
+```sql
+create trigger grade_trigger 
+after update of takes on grade
+referencing new table as new_table
+for each statement
+when exists(select avg(grade)
+            from new_table
+            group by course_id,sec_id,semester,year
+            having avg(grade)<60)
+begin
+    rollback
+end
+```
+
+## Chap 6 Entity-Relationship Model  
+### 6.1 Database Design Process 
+requirement specification -> conceptual-design(E-R diagram) -> logical design(schema) -> physical-design  
+### 6.2 E-R Diagram
+![alt text](image-19.png) 
+方框:实体集Entity Set(加虚线partial key(discriminator) -> weak entity)  
+weak entity依赖strong entity才能唯一标识自己  
+菱形框:关系集Relationship Set(双线框(identifying relationship)连接weak entity与strong entity)  
+箭头:对应关系(有箭头一对一无箭头一对多,两边无箭头多对多,双线total participation,必须有对应)  
+E.g.一个department可以有多个instructor,指向department  
+E.g.每个course都要在course_dept表中,双线连接course,course_dept  
+Attribute:relationship带属性(grade)  
+Role:prereq:实体内关系(例:前置课程)  
+{}:多值属性  
+E-R model原则:避免冗余(使用指针),明确关系(显示表示)    
+Entity:an object that exists and distinguishable from other objects(name,ID)  
+Relationship set:{(e1,e2,...,en),ei∈Ei}  
+Degree of relationship set:多元联系(最多使用一个箭头) (尽量使用二元联系,三元联系可以转化为四个实体间的三个二元联系) 
+Composite Attributes(复合类型):E.g.Name(first_name,family_name),Address  
+Derived attribute(派生属性):可计算  
+![alt text](image-20.png)  
+Mapping Cardinality Constraints(one-to-one,one-to-many,many-to-many)
+l..h:最少最多参与次数,*表示多个  
+### 6.3 Reduction to Relational Schemas  
+1.Strong entity -> schema with same attributes  
+```sql
+course(course_id,title,credits)
+```
+  Weak entity -> schema + strong entity primary key  
+```sql
+section(course_id,sec_id,semester,year)
+```
+2.many-to-many relationship set -> schema with the primary key of entity set
+```sql
+advisor(s_id,i_id)
+```
+  one to many relationship set -> schema -> add attribute to the entity(many side)
+```sql
+department(dept_name,building,budget)
+instructor(ID,name,salary,   dept_name   )
+```
+3.Composite and Multivalued attributes
+```sql
+instructor(ID,first_name,middle_initial,last_name,
+    street_number,street_name,apt_number,city,state,zip_code,
+    date_of_birth,age)
+inst_phone(ID,phone_number)
+
+time_slot(time_slot_id)
+time_slot_detail(time_slot_id,day,start_time,end_time)
+-- section reference time_slot(foreign key)
+-- Optimization
+time_slot(time_slot_id,day,start_time,end_time)
+section(sec_id,semester,year,  time_slot  )
+-- Caveat:time_slot attribute of section cannot be a foreign key
+-- Solution:using trigger
+```
+### 6.4 Design Issues
+Common mistake:redundant attribute  
+![alt text](image-21.png)  
+Note:*takes* is still needed for the sake of the students haven't taken part in assignment  
+1.use entity set vs. attributes(whether extra info is needed or multivalue)  
+2.use entity set vs. relationship set  
+takes vs. section_reg + registration + student_reg  
+3.placement of relationship attributes
+4.binary vs. non-binary relationship(conversion)  
+![alt text](image-23.png)  
+### 6.5 Extended ER Features  
+![alt text](image-22.png)  
+
+- Specialization(top-down inheritance)
+- Generalization(bottom-up)
+overlapping:同属,存在person同属employee与student  
+disjoint:不相交子集,不能同时是instructor与secretary  
+partial/total:并集是否等于全集  
+#### Reduction  
+1.inherit from parent
+2.inherited attributes in the schema  
+3.type attribute to differentiate  
+
+## Chap 7 Relational Database Design
+### 7.1 First Normal Form
+A relational schema R is in first normal form if the domains of all attributes of R are **atomic**.  
+### 7.2 A lossy/lossless Decomposition
+What is a 'good' relation?  
+Pitfalls of 'bad' relation(combined schema)  
+
+- Information repetition  
+- Insertion anomalies  
+- Update difficulty  
+  
+```sql
+instructor(id,name,salary,dept_name)
+department(dept_name,building,budget)
+```
+Denote as a functional dependency:  
+id -> name,salary,dept_name  
+dept_name -> building,salary  
+We should treat every functional dependency "kindly".  
+  
+```sql
+employee(ID,name,street,city,salary) ->
+employee1(ID,name)
+employee2(name,street,city,salary)
+```
+This is a lossy decomposition if some people share the same name.  
+[Definition] A lossless decomposition is a composition that if we **natural join** the two sub schemas,we can get the original schema.  
+The key reason of lossy is that `name` is not a key.  
+More tuples means more uncertainly,thus less information.  
+A decomposition of R into R1 and R2 is lossless if  
+**R1 ∩ R2 -> R1 or R1 ∩ R2 -> R2(公共属性一定是某一个关系的key)** 
+[Goal] Decompose R into a set of relations such that each relation is a 'good' form and the decomposition is lossless  
+Normal Forms:1NF -> 2NF -> 3NF -> **BCNF** -> 4NF  
+
+### 7.3 Functional dependencies  
+[Definition] $\alpha,\beta \subseteq R,\alpha \rightarrow \beta $ if $t1[\alpha] = t2[\alpha] \Rightarrow t1[\beta] = t2[\beta]$  
+K is a superkey(key) of R if $K \rightarrow R$
+K is a candidate key iff $K \rightarrow R$ and for no $\alpha \subset K,\alpha \rightarrow R$
+e.g. ID and name is a superkey of the schema student but not candidate key,because ID inself can determine a particular student  
+$\alpha \rightarrow \beta $ is trivial if $\beta \subseteq \alpha$  
+#### Closure(闭包) of functional dependencies  
+If $A \rightarrow B$ and $B\rightarrow C$ then $A \rightarrow C$  
+$F = \left\{A \rightarrow B,B \rightarrow C \right\}$
+$F^+ = \left\{A \rightarrow B,B \rightarrow C, A \rightarrow C,AB \rightarrow B,AB\rightarrow C,...\right\}$
+Find F+ by applying armstrong's axioms:  
+
+- if $\beta \subseteq \alpha$,then $\alpha \rightarrow \beta$ reflexivity自反  
+- if $\alpha \rightarrow \beta$,then $\gamma\alpha \rightarrow \gamma\beta$ augmentation增补  
+- if $\alpha \rightarrow \beta$,$\beta \rightarrow \gamma$,then $\alpha \rightarrow \gamma$ transitivity传递  
+
+Additional rules:  
+
+- if $\alpha \rightarrow \beta$,$\alpha \rightarrow \gamma$,then $\alpha \rightarrow \beta\gamma$ union  
+- if $\alpha \rightarrow \beta\gamma$,$\alpha \rightarrow \beta$,then $\alpha \rightarrow \gamma$ decomposition  
+- if $\alpha \rightarrow \beta$,$\gamma\beta \rightarrow \delta$,then $\alpha\gamma \rightarrow \delta$ pseudotransitivity  
+  
+Exercise 1:Prove $\alpha\gamma \rightarrow \beta\gamma \leftrightarrow \alpha\gamma \rightarrow \beta$  
+#### Closure of attribute sets  
+[Definition]The closure of attribute a under F(a+) is the set of attributes that are functionally determined by a under F  
+R(A,B,C,D) F = $\left\{A \rightarrow B,B \rightarrow C,B \rightarrow D \right\}$  
+A+ = ABCD(can be a key)  
+B+ = BCD  
+C+ = C  
+Algorithm:有向图  
+K is a key(superkey) if K+ = R
+K is a candidate key iff K+ = R and any $\alpha \subset K,\alpha^+ \neq R$  
+Compute F+ by using closure of attricute sets  
+![alt text](image-24.png)  
+
+### 7.4 Canonical Cover(正则覆盖)  
+A simplicity of functional dependencies,making it have no redundant dependencies or redundant parts of dependencies  
+[Definition] Fc is a canonical cover of F is $F \leftrightarrow F_c$ and no extraneous attribute  
+Computing:函数依赖图  
+![alt text](image-25.png)  
+### 7.5 Boyce-Codd Normal Form  
+A relation schema is BCNF,if for any $\alpha \subseteq R,\beta \subseteq R$,at least one of the following holds:  
+
+- $\alpha \rightarrow \beta$ is trivial  
+- $\alpha$ is a superkey of R  
+  
+instr_dept(ID,name,salary,dept_name,building,budget) is not in BCNF because dept_name -> building,budget but dept_name is not a superkey  
+任何一条非平凡的函数依赖左边都必须是key  
+Decomposition a schema into BCNF  
+![alt text](image-26.png)  
+$\alpha$ is reserved in the original(not BCNF) scheme and is also the key of the new schema  
+E.g. R{A,B,C,D,E},F={A->B,B->CD,E->D}  
+Candidate key:AE  
+Let R1 = {A,B} R~ = {A,C,D,E} F~ = {A->CD,E->D}  
+Let R2 = {A,C} R~ = {A,D,E} F~ = {A->D,E->D}  
+Let R3 = {A,D} R4 = {A,E}  
+答案不唯一，建议从叶向根分解  
+F1 = {A->B},F2 = {A->C},F3 = {A->D},F4 = {AE->AE}不是依赖保持的  
+如E->D不能由F1,F2,F3,F4推出  
+
+### 7.6 Third Normal Form  
+[Definition] **Dependency Preservation(依赖保持)**：
+如果通过检验单一关系上的函数依赖，就能确保所有的函数依赖成立，那么这样的分解是依赖保持的  
+或者说，原来R上的每一个函数依赖，都可以在分解后的单一关系上得到验证或者推导得到  
+A decomposition is dependecy preserved if $(F1\cup...\cup Fn)^{+}=F^{+}$  
+对某一个R，BCNF与依赖保持可能无法同时保证  
+A relation schema is 3NF,if for any $\alpha \subseteq R,\beta \subseteq R$,at least one of the following holds:  
+
+- $\alpha \rightarrow \beta$ is trivial  
+- $\alpha$ is a superkey of R  
+- **Each attribute A in $\beta - \alpha$ is contained in a candidate key of R**  
+  
+E.g. R = {J,K,L},F = {JK -> L,L -> K}(candidate key = JK,JL)  
+不是BCNF但是3NF(K包含于一个candidate key JK)  
+任何一条非平凡的函数依赖，如果左边不是key，那么右边必须包含在某一个key里面  
+3NF是对BCNF的最小放松  
+[Algorithm] 
+优先保证函数依赖，分解canonical cover中的每一条函数依赖  
+如果分解出的关系模式都不包括candidate key则将某一个candidate key单独作为一个关系模式  
+E.g. R{A,B,C,D,E},F={A->B,B->CD,E->D}  
+Candidate key:AE  
+R1 = {A,B},R2 = {B,C,D},R3 = {E,D},R4 = {A,E}  
+如果某一个关系模式包含在另一个关系模式中，去除多余的关系模式  
+
+### *7.7 Multivalued dependencies and Fourth Normal Form
+classes(course,teacher,book)(course:teacher = 1:n,course:book = 1:n,teachers and books are independent)  
+|course | teacher | book|
+|-------|---------|-----|
+|DB|A|DB Concept|
+|DB|A|DB System|
+|DB|H|DB Concept|
+|DB|H|DB System|
+|DB|S|DB Concept|
+|DB|S|DB System|
+|OS|A|OS Concept|
+|OS|A|OS System|
+|OS|J|OS Concept|
+|OS|J|OS System|  
+
+key = {course,teacher,book}  
+Redundant and Insertion anomalies(insert DB,T)  
+Decompose:teaches(course,teacher),text(course,book)  
+[Definition] MVDs:$\alpha,\beta \subseteq R,\alpha \rightarrow\rightarrow \beta $ if $t1[\alpha] = t2[\alpha]$ then exists $t3,t4$ such that  
+$
+t1[\alpha] = t2[\alpha] = t3[\alpha] = t4[\alpha],
+t3[\beta] = t1[\beta],
+t4[\beta] = t2[\beta],
+t3[R-\alpha-\beta] = t2[R-\alpha-\beta],
+t4[R-\alpha-\beta] = t1[R-\alpha-\beta]
+$ (independent)  
+$\alpha \rightarrow\rightarrow \beta $ is trivial if $\beta \subseteq \alpha $ or $a \cup b = R$  
+If $\alpha \rightarrow \beta $,then $\alpha \rightarrow\rightarrow \beta $单值决定是多值决定的特例  
+D = {all functional and multivalued dependencies}  
+D+ is the closure of D  
+A relation schema is 4NF,if for any $\alpha \subseteq R,\beta \subseteq R$,at least one of the following holds:  
+
+- $\alpha \rightarrow\rightarrow \beta$ is trivial  
+- $\alpha$ is a superkey of R  
+
+If a relation is in 4NF,it is in BCNF($F^+ \subset D^+$)  
+![alt text](image-27.png)  
+
+## Chap 12 Physical Storage Systems  
+### 12.1 Physical Storage Media
+volatile/non-volatile storage:易失/非易失存储  
+![alt text](image-29.png)  
+
+- primary storage:fastest but volatile(cache,main memory)  
+- NVM(Non-Volatile Memory):耐用性差  
+- secondary storage(on-line storage):non-volatile,moderately fast(flash memory,magnetic disks)  
+- tertiary(第三级) storage(off-line storage):non-volatile,slow  
+   
+### 12.2 Magnetic Disks
+![alt text](image-30.png)  
+Magnetic Hard Disk Mechanism:机械运动  
+大文件的存储方式:每个盘片存储一部分，并行读  
+
+- Read-write head  
+- Surface of platter(平盘) divided into circular **tracks(磁道)**  
+- Each track is divided into sectors(扇区)  
+- Disk arm swings to read/write a sector  
+- Head-disk assemblies:multiple disk platters on a single spindle(轴)  
+- Cylinder(柱面)  
+  
+Disk controller(磁盘控制器):interface between the computer system and the disk drive hardware  
+checksums:校验码(写时计算，写完后读出校验)  
+
+### 12.3 Performance measurement  
+
+- Access Time
+  seek time(寻道时间):4-10ms  
+  rotational latency:4-11ms  
+- Data transfer rate:25-100M/s  
+- Disk block:4-16KB  
+- Sequential access pattern  
+- Random access pattern  
+- I/O operations(number of random block reads) per second(IOPS,每秒I/O操作数):50-200IOPS -> 尽量减少随机访问次数  
+- Mean time to failure(MTTF):3-5yr
+  
+### 12.4 Optimization of Disk-Block Access  
+
+- Buffering:in-memory buffer  
+- Read-ahead(Prefetch):read extra blocks in anticipation  
+- Disk-arm-scheduling:reorder block requests  
+  elevator algorithm  
+  file organization:defragment  
+- Non-volatile write buffers:battery backed up RAM(备电)/flash memory  
+- Log disk:a disk devoted to writing a sequential log of block updates  
+
+### 12.5 Flash memory & NVM  
+
+- NAND flash:cheaper than NOR flash  
+- SSD(Solid State Disks):block-oriented disk interfaces  
+![alt text](image-31.png)  
+Erase:2-5ms,256KB-1MB  
+Remapping by using Flash translation table  
+wear leveling(磨损均衡)  
+NVM:write buffer/log disk(未商业化)  
+![alt text](image-32.png)  
+
+## Chap 13 Data Storage Structures  
+### 13.1 File Organization  
+The database is stored as a collection of files  
+Each file is a sequence of records and each records is a sequence of fields  
+#### Fixed-length record  
+store record *i* starting from byte *n * (i-1)*,where *n* is the size of each record  
+Delete of record *i*:  
+
+- move records i+1,...,n to i,...,n-1  
+- move record n to i  
+- do not remove records,but link all free records on a free list  
+![alt text](image-33.png)  
+#### Variable-length record  
+variable length for one or more fields(varchar);null-value  
+represented by fixed size(offset,length),actual data stored after  
+![alt text](image-34.png)  
+null bitmap:represent null value(0 for not null,1 for null)  
+##### Slotted Page Structure  
+![alt text](image-35.png)  
+两头挤压  
+Slotted page header:  
+
+- number of record entries  
+- end of free space  
+- location and size of each record  
+  
+record pointers point to the entry for the record in header  
+
+### 13.2 Organization of Records in Files  
+- Heap:no-order,place anywhere where there is space  
+- Sequential  
+- B+ tree  
+- Hashing  
+
+#### Heap  
+Free-space map  
+![alt text](image-37.png)
+first level:'4' represents:4/8 free  
+second level:'4' represents the max free fraction of the relevant block  
+#### Sequential 
+order by a search-key  
+![alt text](image-38.png)  
+delete and insert by using pointers  
+need to reorganize the file from time to time  
+sequential storage are often combined with B+ tree  
+#### Multitable Clustering(多表聚类)  
+![alt text](image-39.png)  
+good for queries involving join  
+bad for queries involving only department  
+#### Table Partitioning  
+Reduce costs of some operations  
+Support parallel accessing  
+Allow different partitions to be stored on different storage devices  
+
+### 13.3 Data Dictionary Storage  
+Data Dictionary(system catalog) stores metadata,including:  
+
+- relation info  
+- user and account info(e.g. password)  
+- statistical and descriptive data(e.g. number of tuples of each relation)  
+- file organization info(sequential?hash?,physical location)  
+- indices info  
+
+### 13.4 Data Buffer
+Buffer Manager:allocating buffer space in main memory  
+```c
+access block:
+if block already in buffer:return addr
+else 
+    1. buffer manager allocates space in the buffer:
+    (1)replacing some other blocks if required
+    (2)replaced blocks written back to disk
+    2. reads the block from disk to the buffer
+```
+Replacement algorithm  
+
+- LRU(see Computer System III Cache)  
+- Toss-immediate:free the space as soon as the final tuple of that block has been processed  
+- MRU:pin the block currently being accessed,unpin it after the final tuple of the block been processed(近期被访问过的数据不太可能再被访问,more common in database management)
+- *An approximation of LRU:Clock  
+![alt text](image-40.png)  
+pin_count:number of processes accessing it currently  
+reference_bit:
+
+- set '1' is pin_count == 0  
+- set '0' is reference_bit is '1'(LRU)  
+- throw if reference_bit == 0(轮转一圈还没有被访问过)  
+
+## Chap 14 Indexing  

@@ -1,5 +1,9 @@
 # Linux
 ## 常用命令
+### sudo:root权限
+```sh
+sudo su  # 获取root权限
+```
 ### cd:切换工作目录
 ```sh
 cd /home/user/Documents  # 切换到绝对路径目录
@@ -96,6 +100,31 @@ chmod -R 755 /path/to/dir # 递归地为目录及其所有子文件设置权限
 ```sh
 grep "hello" file1.txt         # 查找 file1.txt 中包含 "hello" 的行
 grep -r "hello" /home/user     # 在 /home/user 目录下递归查找 "hello"
+```
+### objdump:反编译
+```sh
+objdump -d ./program  # 反编译为汇编指令
+objdump -d -M intel ./program | grep <word>  # 使用Intel语法反编译
+```
+### readelf:分析elf
+```sh
+readelf -h ./program  # 查看文件头
+```
+### echo:配置变量
+```sh
+echo "Hello World"  # 显示文本
+name = John
+echo $name # 显示变量值
+echo $PATH # 显示环境变量
+echo 'export VARIABLE_NAME="VARIABLE_VALUE"' >> ~/.bashrc  # 配置环境变量
+source ~/.bashrc
+```
+### man:全世界最强大的男人
+```sh
+man ls          # 显示命令信息与用法
+man -f objdump  # 显示命令的简短描述
+man 1 printf    # 查看printf命令
+man 3 printf    # 查看 C 库函数 printf
 ```
 ### sort:排序文件内容
 ```sh

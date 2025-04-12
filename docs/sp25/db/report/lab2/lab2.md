@@ -26,11 +26,11 @@
 (2)创建借书卡card表   
 ```sql
 CREATE TABLE card( //CREATE函数创建新表
-	cno char(7) NOT NULL,//name type NOT NULL创建不可为空的列
+	cno char(7) NOT NULL,--name type NOT NULL创建不可为空的列
 	name varchar(10) NOT NULL,
 	department varchar(40),
-	type char(1) CHECK (type in('T','G','U','O')),//CHECK(type in())设置分类选项
-	CONSTRAINT PK_card PRIMARY key(cno)//CONSTRAINT设置主键
+	type char(1) CHECK (type in('T','G','U','O')),--CHECK(type in())设置分类选项
+	CONSTRAINT PK_card PRIMARY key(cno)--CONSTRAINT设置主键
 );
 ```
 

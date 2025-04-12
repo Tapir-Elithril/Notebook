@@ -310,6 +310,11 @@ Registers -> L1-Cache -> L2-Cache -> Memory -> Disk
 Cache Size = Block Size * Sets + Related info(Indexes)
 
 #### Cache Design
+Using a FSM to control a simple cache  
+next-state function determines the state transition  
+![alt text](image-11.png)  
+write through写直达:write back to both cache and memory
+
 ##### 1.Where can a block be placed in the upper level?(Block placement)
 ###### Direct mapped
 (Block address) modulo (Number of blocks in the cache):循环分配  
@@ -329,20 +334,218 @@ index selects the set/block
 direct map:tag + set index + offset  
 hit if valid_bit == 1'b1 && tag == mem_addr  
 
-##### 3.Which block should be replaced on a cache/main memory miss?(Block Replacement)
-Random,LRU,FIFO
+##### Cache Size calculation  
+![alt text](image-13.png)  
+The size of the block is One word(4 bytes)  
+64-bit addresses  
+2<sup>n</sup>blocks(n bits for the index)  
+block size = 2<sup>m</sup>words  
+tag = 64-(n+m+Byteoffset) = 64 - (10 + 0 + 2) = 52  
+Byteoffset = log<sub>2</sub>block size(in bytes) = 2  
+cache size = 2<sup>n</sup> * (block size + tag size + valid size) = 2<sup>10</sup> * (2<sup>0</sup> * 32(bits/word) + 52 + 1) = 85Kib.  
+
+E.g.How many total bits are required for a direct-mapped cache with 16KiB of data and four-word blocks,assuming a 64-bit address?
+ANS:16KiB = 4096words = 2<sup>12</sup>words  
+block size is 4 words = 2<sup>2</sup>words,m=2  
+2<sup>12</sup>/2<sup>2</sup> = 1024blocks,n=10  
+data = 4 * 32(bits/word) = 128 bits(16Bytes * 8)  
+tag = 64-(n+m+2) = 50 bits  
+note:64-bit address = 50-bit tag + 10-bit index + 2-bit word offset + 2-bit Byte offset 映射到缓存块  
+Cache Size = 2<sup>n</sup>*(block size + tag size + valid size)
+= 2<sup>10</sup> * (128 + 50 + 1) = 179Kib = 22.375KiB
+  
+E.g.Consider a cache with 64 blocks and a block size of 16 bytes. To what block number does byte address 1201 map?  
+1201 / 16 = 75(1200-1215 in the same block)  
+75 modulo 64 = 11  
+
+##### 3.Which block should be replaced on a cache/main memory miss?(Block Replacement)  
+No selection is needed for direct map  
+Handle cache miss:  
+1.send PC to memory(PC - 4)  
+2.main memory perform and wait  
+3.write the cache entry  
+4.restart inst execution(refetch)  
+In set-associative and fully-associative,N blocks to choose for replacement.  
+###### Random
+###### LRU
+Least-Recently Used(LRU):assumed more recently accessed blocks more likely to be referenced again  
+use extra bits to keep track of accesses
+###### FIFO  
+First In,First Out(FIFO)  
+###### OPT(In theory)  
+Replace the one with the latest use in the future  
+Thrashing:Loop access sequence causes no hit for FIFO/LRU  
+**Block Size** affects the performance greatly  
+###### Stack replacement algorithm  
+B<sub>t</sub>(n) represents the set of access sequences contained in a cache block of size n at time t.  
+B<sub>t</sub>(n) is the subset of B<sub>t</sub>(n+1).  
+**LRU** is a stack replacement algorithm.  
+**FIFO** is **not** a stack replacement algorithm.(Belady)  
+Least-Recently Used is pushed to the bottom of the stack  
+![alt text](image-12.png)  
+###### Implementation  
+Comparison pair flip-flop  
+e.g.three cache blocks(A,B,C)  
+take pair AB,AC,BC  
+T<sub>AB</sub>:A is accessed later than B  
+T<sub>AB</sub>,T<sub>AC</sub>,T<sub>BC</sub> represents the sequence of access by applying triggers and gates  
+**huge block number**:Layered comparison  
 
 ##### 4.What happens on a write?(Write Strategy)
-Write Back or Write Through(with Write Buffer)
+When data is written into the cache,is the data also written to main memory?  
+Write Through  
 
+- can always discard cached data  
+- only a valid bit  
+- memory always have the latest data  
+  
+Write Back
+
+- can't discard  
+- valid bit and dirty bit(cache与memory不一致)  
+- much lower bandwidth
+  
+**Write hit**
+write buffer(write through)
+**Write miss**
+
+- write allocate
+  block is loaded into the cache(write back)  
+- write around
+  block is only written to main memory(not stored in the cache) 
+
+**Read allocate**
+memory -> cache  
+read from cache
+**Read through**  
+E.g.Assume a fully-associative write-back cache(empty)  
+What are the number of hits and misses using no-write allocate vs. write allocate?  
+**no-write allocate**  
+```asm
+write Mem[100];  //miss ,not write to cache
+write Mem[100];  //miss ,not write to cache
+read Mem[200];   //miss ,read into cache
+write Mem[200];  //hit
+write Mem[100];  //miss ,not write to cache
+```
+**write allocate**  
+```asm
+write Mem[100];  //miss write to cache
+write Mem[100];  //hit
+read Mem[200];   //miss ,read into cache
+write Mem[200];  //hit
+write Mem[100];  //hit
+```
+#### Virtual Memory  
+![alt text](image-14.png)
 #### Memory System Performance
+Memory Stall  
+Average Memory Access Time(AMAT)
+$AMAT = (HitTime + MissRate * MissPenalty)$
+E.g.Impact on performance  
 
-#### *Storage Systems
-
-
+#### *CPU Vulnerability
+##### Meltdown  
+利用Intel CPU乱序执行，利用内存响应时间越界访问  
+##### Spectre 
+利用Cache预取指令获取私密信息
 
 ## OS  
 ### Main Memory Week7 - 10
+#### Partition
+using physical memory  
+multi-programming:partition  
+protection,fast-execution,fast context switch  
+Once process starts,partition cannot be moved  
+Solution:logical address(offset within the partition相对地址)  
+Simple implementation:base and limit(length) registers(privileged)  
+between base and base + limit:segmentation  
+limit check for protection  
+
+- built-in protection  
+- fast execution(hardware)  
+- fast context switch(only change base and limit)  
+- norelocation of program address  
+- partition can be suspended and moved at any time  
+  
+##### Memory allocation strategy
+**fixed**    
+same size causing **Internal Fragmentation**(分配的用不完)  
+**variable**
+**External Fragmentation**(有空process放不进)  
+first-fit,best-fit,worst-fit  
+
+#### Segmentation
+.text,.data,... have different authority,can they be put into the same partition?    
+No,we map one process to n partitions(each is called a segmentation)  
+[Problem] Insufficient base and limit registers  
+[Solution] Segment table:an array where each entry has base and limit and perm(permission)  
+Every process has a segment table  
+Only a base register is needed to point to the segment table  
+Every entry represents a segmentation  
+logical address now is a pair:<segment_number,offset>  
+![alt text](image-15.png)  
+limit can be changed,therefore it is a variable allocation,no internal fragmentation but **external fragmentation**  
+Segmentation is used effectively in Unix(before paging because of small amount of additional hardware)  
+**address binding**  
+source code(symbolic) -> compiler(relocatable) -> linker(absolute)  
+Memory-Management Unit(MMU):a translator from logical addr to physical addr  
+
+#### Paging  
+basic idea:cut the process,making it noncontiguous(avoids external segmentation)  
+divide **physical** addr into fixed-sized blocks called **frames**(帧)  
+divide **logical**(virtual) addr into blocks of same size called **pages**  
+Set up a mapping to translate logical to physical addr,this mapping is called **page table**(index page,value frame)(not stored in the pages)  
+**Internal fragmentation**  
+fixed length partition  
+page size:2048,program size:72766(35 pages + 1086bytes)  
+internal fragementation = 2048 - 1086 = 962  
+Nowadays,the page size is getting bigger because we allow waste in memory(memory is cheaper)  
+frame table:which frame is free,how many frames have been allocated,... helps OS manage physical address  
+logical addr = <Page_number(p),Page_offset(d)>  
+m-n bits for page_number,n bits for page_offset  
+m = 32/64,n = log<sub>2</sub>(page_size)  
+x86:2<sup>32</sup> = 4GB  
+##### Implementation  
+Page-table base register(PTBR),Page-table length register(PTLR)  
+[Problem] Access page time to find frame number needs one memory access while actually read the data in memory needs another memory access  
+[Solution] cache the translation to avoid one memory access(TLB:Translation Look-aside Buffer)  
+hardware implementation:associative memory  
+tag TLB entries with address-space identifier(ASID)that uniquely identifies a process when context-switch  
+Associative memory supports parallel search  
+![alt text](image-16.png)  
+**Effective Access Time**
+EAT = hit_ratio * memory_access_time + (1 - hit_ratio) * 2 * memory_access_time  
+In modern design,hit_ratio is approximately 99.9%  
+Increase the page size helps improve the hit ratio(memory_access_size = TLB_size * page_size)  
+**Memory Protection**  
+present(valid) bit and permission bits in page table  
+**Page Sharing**  
+Run a program multiple times:.text can be shared but .data cannot be shared  
+##### Structure  
+[Question] 32-bit logical address space & 4KB page size,what is the page table size?  
+4G/4K = 1M entries(page table lines)  
+1M * 4B = 4MB(must be physically contiguous because another table needed for mapping if page table is splited)  
+If we have 1K processes,simply page tables occupies the whole memory  
+[Observation] Many indices are invalid  
+[Solution] break down page table into pages  
+Page size is 4KB,how many entries can fit in one page?  
+one entry is 4B,thus we have 1K entries/page    
+1M entries can be broken down to 1K pages,indexed by 1K entries,put into another page(4KB)  
+![alt text](image-17.png)  
+[Advantages] Pages don't need to be contiguous,and no page allocated if invalid in the first level  
+logical addr = <page_directory_number(first_level),page_table_number(second_level),offset>
+12-bits offset:4K(Page size)(stored in the last-level pages)  
+10-bits page_directory_number and 10-bits page_table_number:1K entries per table  
+If page size is 64KB,we have 16-bits offset,14-bits page_table_number and 2-bits page_directory_number  
+Page Table in Linux:page table base register CR3(arm:TTBR,RISCV:SATP)(store **physical addr**,otherwise another table for mapping is needed)
+64-bit logical address space:16EB(4G * 4GB)  
+Page table entry:8B page table size:4KB  
+Entry number/page = 512  
+3-level page:12 + 9*3 = 39bits(512GB Phone)  
+4-level page:48bits(256TB Server)  
+5-level page:57bits(128PB AI)  
+
 
 ### File System Week11 - 14
 
