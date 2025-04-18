@@ -1362,3 +1362,13 @@ reference_bit:
 - throw if reference_bit == 0(轮转一圈还没有被访问过)  
 
 ## Chap 14 Indexing  
+
+## Chap 15 Query Processing
+
+## Chap 16 Query Optimization
+
+## Chap 17 Transactions
+
+## Chap 18 Concurrency Control
+
+## Chap 19 Recovery System

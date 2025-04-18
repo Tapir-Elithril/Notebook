@@ -22,31 +22,28 @@ public:
     void setDenominator(int denom);
     int getNumerator() const;
     int getDenominator() const;
-    double toDouble() const;
-    string toString() const;
 
-    Fraction operator+(const Fraction &f) const;
-    Fraction operator-(const Fraction &f) const;
-    Fraction operator*(const Fraction &f) const;
-    Fraction operator/(const Fraction &f) const;
+    void prt() const;
 
-    bool operator==(const Fraction &f) const;
-    bool operator!=(const Fraction &f) const;
-    bool operator<(const Fraction &f) const;
-    bool operator<=(const Fraction &f) const;
-    bool operator>(const Fraction &f) const;
-    bool operator>=(const Fraction &f) const;
+    friend const Fraction operator+(const Fraction &f1,const Fraction &f2);
+    friend const Fraction operator-(const Fraction &f1,const Fraction &f2);
+    friend const Fraction operator*(const Fraction &f1,const Fraction &f2);
+    friend const Fraction operator/(const Fraction &f1,const Fraction &f2);
+
+    friend bool operator<(const Fraction &f1,const Fraction &f2);
+    friend bool operator<=(const Fraction &f1,const Fraction &f2);
+    friend bool operator==(const Fraction &f1,const Fraction &f2);
+    friend bool operator!=(const Fraction &f1,const Fraction &f2);
+    friend bool operator>=(const Fraction &f1,const Fraction &f2);
+    friend bool operator>(const Fraction &f1,const Fraction &f2);
+
+    operator double() const;
+    operator string() const;
 
     friend ostream &operator<<(ostream &os, const Fraction &f);
     friend istream &operator>>(istream &is, Fraction &f);
 
     Fraction conversion(string decimal_num) const;
-
-    void prt() const;
 };
-
-
-
-
 
 #endif

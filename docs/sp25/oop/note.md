@@ -801,6 +801,324 @@ c++通过多继承制造容器
 虚继承解决多继承，多继承解决没有单根结构的问题，最终被模板取代  
 多继承只有在多个父类只有一个是实际类的时候可以进行  
 
-## Copy and Move Week 10
+## Copy and Move Week 10  
+### Copying  
+get a copy of the existing object unconsciously  
+E.g.
+```cpp
+void func(Currency p) {
+    cout << "X = " << p.dollars();
+}
+...
+Currency bucks(100, 0);
+func(bucks);//bucks is copies into p
+//Currency p = buck; or Currency p(buck);
+//we actually do a construct
+//but we can only call a default constructor(see howmany.cpp)
+```
+Copy Constructor:构造函数的参数是自己类的对象(const reference)  
+`HowMany(const HowMany& r) {}`  
+When will copy happen ?  
+
+- `ClassType a = b;`  
+- function call  
+- function return  
+  
+When must we have a copy ctor ?  
+When we have a pointer in member var(or other non-memory resources,e.g.句柄)  
+why?See person.cpp   
+default constructor:member-wise copy(依次调用成员拷贝构造)/binary copy(逐字节拷贝，无法正确处理指针)  
+```cpp
+Person copy_func(char *who) {
+    Person local(who);
+    local.print();
+    return local;// copy ctor called
+}
+Person nocopy_func(char *who) {
+    return Person(who);
+}//no copy needed
+```
+Compiler helps:RVO (Return Value Optimization) and NRVO (Named Return Value Optimization)  
+Note:注意拷贝与赋值的区别  
+1.try to create own copy ctor if needed  
+2.declare a private copy ctor to avoid getting copied  
+### Types of function parameters and return value  
+```cpp
+void f(Student i);//copy ctor,protect outside object
+void f(Student *p);//indicate that we may modify the object
+void f(Student& i);//better with const if won't modify
+```
+```cpp
+Student f(); //create a new object
+Student* f();
+Student& f();
+```
+```cpp
+char *foo() {
+    char *p;
+    p = new char[10]; //不要在函数中申请内存再交出去
+    strcpy(p,"something");
+    return p;
+}
+void bar() {
+    char *p = foo();
+    printf("%s",p);
+    delete p; //What if someone forget,how can she know a delete is needed
+}
+```
+```cpp
+//a better version
+char *foo(char *p) { //传入一直指针
+    strcpy(p,"something");
+    return p; //操作完成后传出去
+}
+void bar() {
+    char p[10]; 
+    char *p = foo(p);
+    printf("%s",p);
+    // delete p; 
+}
+```
+### *Moving
+get all the info of the original object while destroying the original one  
+参数为右值引用(&&)的拷贝构造  
+```cpp
+DynamicArray(DynamicArray&& rhs):m_size{rhs.m_size},m_array{rhs.m_array}
+{
+    rhs.m_size = 0;
+    rhs.m_array = nullptr;
+    cout << "Move constructor:dynamic array is moved! << endl;
+}
+```
+only c++,for moving the object itself(not pointer)(`Student s`)  
+使用std::move获得右值  
+```cpp
+vector<int> v1{1,2,3,4};
+vector<int> v2 = v1;//copy ctor
+vector<int> v3 = std::move(v1); //move ctor
+//std::move将v1转化为右值，移动后v1消失
+```
+对象初始化
+```cpp
+string str("hello");
+string str = "hello";
+struct student {
+    char *name;
+    int age;
+};
+student s = {"dablelv",18};
+student sarr[] = {{"dablelv",18},{"tommy",19}};
+class test {
+    int a;
+    int b;
+public:
+    test(int i,int j);
+};
+test t{0,0};
+test *pt = new test{1,2};
+int *a = new int[3]{1,2,0};
+//{} only in c++11
+```
+using
+```cpp
+class Base {
+public:
+    void f();
+};
+class Child : public Base {
+public:
+    using Base::f;
+    void f(int i) {}
+}
+```
+
+## Overloaded Operator Week 11  
+[Recall] Overload的条件：函数的名称相同参数表不同（参数个数不同或类型不同且类型不会引起歧义）  
+子类和父类的指针不构成overload(歧义)，const与non-const构成overload  
+operators can be overloaded  
+```c
++ - * / % ^ & | ~
+= += -= *= /= %= ^= &= |=
+<< >> <<= >>= 
+== != < > <= >= 
+! && || ++ --
+, ->*(a.i) ->()(a.f(i)) []
+new delete
+new[] delete[] 
+```
+operators cannot be overloaded
+```c
+. .* :: ?:
+sizeof typeid
+static_cast dynamic_cast const_cast reinterpret_cast(类型转换)
+```
+Only existing operators can be overloaded(`**` cannot be overloaded)  
+Operators must be overloaded on a class or *enumeration type`enum{__,__,__}`  
+Overloaded must preserve the number of operands and precedence(优先级)  
+```cpp
+const String String::operator +(const String& that);
+//example see a.cpp
+```
+How to overload?  
+```cpp
+A a1(1);
+A a3 = a1 + 3;//3 is converted to A type
+A a4 = 3 + a1;//ERROR
+```
+
+### As member function  
+implicit first argument  
+no type conversion performed on receiver  
+### As global function
+use `friend`  
+Only one side need to be the class(`3+a1` is allowed)  
+**Choose between member function and global function**  
+
+- Unary operators(单步运算`-,~`) should be member  
+- `= () [] -> ->*` must be member  
+- assignment operators should be member  
+- other binary operators are encouraged to be global  
+
+!!! danger "期末大题，多个运算符的参数表与返回类型"  
+
+### passing parameter
+- read only(`+,>,...`)(not read only:赋值运算符`++,--,=,...`):pass it as `const reference`  
+- member function that won't modify `this`,use const member function  
+- global function that will change its left-hand-side,pass it as `reference`(but not `const reference`)  
+  
+### return value
+左值运算符  
+```cpp
+a + b = 6; //非左值运算符
+*p = 6;
+a[i] = 6;
+a.k = 6;
+```
+左值运算符应返回可写值，而非左值运算符返回不可写值(add `const` before `operator`)   
+
+- if a new object is to generated,return a const object  
+- logical operators return `bool`  
+
+### prototypes of operators  
+- `+-*/%^&|~`  
+  `const T operatorX(const T& l,const T& r);`  
+- `! && || < <= == >= >`  
+  `bool operatorX(const T& l,const T& r);`  
+- `[]`  
+  `E& T::operator[](int index);`  
+
+### `++` and `--`  
+```cpp
+class Integer {
+public:
+    ...
+    const Integer& operator++(); //++i
+    const Integer operator++(int); //i++(返回另一个对象,this中的i加1)
+    //we often transfer '0' for int
+    ...
+}
+const Integet& Integer::operator++() {
+    *this += 1;
+    return *this;
+}
+const Integet Integer::operator++(int) {
+    Integer old(*this);
+    ++(*this);
+    return old;
+}
+```
+### Relational operator  
+use `== <` to implement `!= > <= >=`  
+```cpp
+bool Integer::operator==(const Integer& rhs)const {
+    return i == rhs.i;
+}
+bool Integer::operator!=(const Integer& rhs)const {
+    return !(*this == rhs);
+}
+bool Integer::operator<(const Integer& rhs)const {
+    return i < rhs.i;
+}
+```
+### []
+```cpp
+const int& Vector::operator[](const int ind) {
+    return buf[ind];
+}
+Vector v(100);
+v[10] = 45;
+```
+### stream extractor/inserter and manipulator  
+```cpp
+//global function not const
+istream& operator>>(istream& is,T& obj) {
+    return is;
+}
+cin >> a >> b >> c; 
+ostream& operator<<(ostream& os,const T& obj) {
+    return os;
+}
+cout << a << b << c;
+```
+```cpp
+ostream& manip(ostream& out) {
+    ...
+    return out;
+}
+ostream& tab(ostream& out) {
+    return out << "\t";
+}
+cout << "Hello" << tab << "World";
+```
+### copying & initialization  
+```cpp
+T& T::operator=(const T& rhs)
+{
+    if(this != &rhs){   //this is a must,in case `a=a` delete itself
+        ...
+    }
+    return  * this;
+}
+```
+### value classes  
+`explicit`:indicating that the ctor cannot be used for data conversions  
+```cpp
+class PathName {
+    string name;
+public:
+    explicit PathName(const string&);
+    ~PathName();
+};
+...
+string abc("abc");
+PathName xyz(abc);//OK
+xyz = abc;//ERROR with explicit 
+```
+Conversion operators`X::operator T()`  
+```cpp
+class Rational {
+public:
+    operator double() const;//Rational to double
+    //无返回类型
+};
+Rational::operator double() const {
+    return numerator_/(double)denominator_;
+}
+Rational r(1,3);
+double d = 1.3 * r;
+```
+note:`C(T)` and `operator C()` cannot be both accessible(compiler may confuse)  
+Usually,we'd rather use `double todouble() const;`  
+overloading and type conversion:c++ check each argument for a best match  
+
+## Template Week 12
+
+## Exception Week 13
+
+## Smart pointer Week 14
+
+## OOP Design Concept Week 15
+
+## Stream Week 16
 
 ## 开课小测

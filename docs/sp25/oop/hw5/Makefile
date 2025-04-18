@@ -15,6 +15,7 @@ $(OUT): $(OBJ)
 	g++ $(CXXFLAGS) -c $< -o $@
 
 run: $(OUT)
+	rm $(OBJ)
 	./$(OUT)
 
 clean:

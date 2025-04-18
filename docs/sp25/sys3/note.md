@@ -524,10 +524,10 @@ present(valid) bit and permission bits in page table
 Run a program multiple times:.text can be shared but .data cannot be shared  
 ##### Structure  
 [Question] 32-bit logical address space & 4KB page size,what is the page table size?  
-4G/4K = 1M entries(page table lines)  
+4GB/4KB = 1M entries(page table lines)  
 1M * 4B = 4MB(must be physically contiguous because another table needed for mapping if page table is splited)  
 If we have 1K processes,simply page tables occupies the whole memory  
-[Observation] Many indices are invalid  
+[Insights] Many indices are invalid  
 [Solution] break down page table into pages  
 Page size is 4KB,how many entries can fit in one page?  
 one entry is 4B,thus we have 1K entries/page    
@@ -545,7 +545,155 @@ Entry number/page = 512
 3-level page:12 + 9*3 = 39bits(512GB Phone)  
 4-level page:48bits(256TB Server)  
 5-level page:57bits(128PB AI)  
+PTE,PMD,PUD(upper),P4D,PGD(global directory)  
+##### Hashed page table  
+virtual page number is hashed into frame number  
+using linked list if two page number has the same hash value  
+high collison probability & need contiguous addr  
+##### Inverted page table  
+[Insights] physical addr space << virtual addr space  
+[Solution] index by physical addr  
+Each entry has a pid and virtual page number  
+need traverse the whole page table & no memory sharing  
+##### Swapping  
+[Definition] extends physical memory with backing disks(用硬盘换内存)  
+Context switch becomes veryvery slow  
+Swapping is unfriendly to SSD/flash memory  
+Android terminates apps if low free memory  
+Intel IA-32 Page Address Extensions(PAE):page table entries to 64bits,but 2-bits for a 4 entry table  
+Intel IA-64 6 segmentations  
+ARM:no segmentations  
+##### Practice  
+![alt text](image-18.png)  
+1)4GB/4KB = 1M entries,1M * 4B = 4MB  
+2)1ST:4KB,2ND:1K * 4KB = 4MB  
+3)Pages don't need to be contiguous,and no page allocated if invalid in the first level  
+4)10-bits page_directory_number,10-bits page_table_number,12-bits offset  
+0xf2015202 = 0b1111001000|0000010101|001000000010(968,21)  
+![alt text](image-20.png)  
+32-bits:2+14+16  
+39-bit VA:10+13+16(减少一级)  
+48-bit VA:6+13+13+16  
+![alt text](image-19.png)  
+offset:log<sub>2</sub>(page_size) = 10
+page_number:32-10 = 22
+0x00003986:0b0000000000000000001110|0110000110  
+page_number:14 invalid  
+0x00002bc6:0b0000000000000000001010|1111000110  
+page_number:10 offset:0x000003c6  
+addr = 0x13 << 10 + 0x000003c6(低10位)  
 
+#### Virtual Memory  
+[Insights]Code needs to be loaded to memory in execution,but the entire program is rarely needed at the same time  
+[Solution]partially-loaded program  
+demand paging:brings a page into physical memory only when accessed  
+lasy swap:never swap a page unless accessed  
+pre-paging:predict pages may be accessed later  
+invalid -> page fault  
+##### Page fault
+(1)invalid reference -> exception  
+(2)valid reference but not in memory -> swap in  
+page fault handling  
+
+- get an empty physical frame  
+- swap page into frame via disk operation(maintained by free-frame list)  
+- set page table entry to indicate the page in memory  
+- restart the instruction  
+  
+tell OS to map by `syscall`(brk,mmap),not actually allocation until demand  
+![alt text](image-22.png)  
+![alt text](image-23.png)  
+allocate free frames using **zero-fill-on-demand**  
+![alt text](image-21.png)  
+EAT:page fault rate:p  
+EAT = (1-p) * memory access time + p * (page fault overhead + swap out + swap in + instruction restart overhead)  
+Copy-on-Write(COW):allows the parent and child processes(fork()) to initially share the same pages in memory as long as no process modify(write) it.  
+If either process writes the COW page,OS copies the page and set the page writable  
+Page replacement:no free page when needed  
+[Solution] swap out some pages to swap分区  
+[Question] What victim page to avoid thrashing?  
+Dirty bit:whether the page is modified after loaded?  
+We can directly replace the pages if not dirty  
+page fault handling with replacement  
+
+- find the location of the desired page on disk  
+- find the free page  
+  if there is a free page,use it  
+  if there is none,pick a victim frame
+    if the frame's dirty,write to the disk  
+- update the page table  
+- restart the instruction  
+ 
+potentially **2 page I/O** for one page fault  
+Page replacement algorithm:FIFO,optimal,LRU,LFU,MFU  
+For FIFO,adding more frames may cause more page faults(Belady's anomaly)(not stack replacement)  
+(Enhanced) Second-Chance Algorithm:take order pair(reference,modify(dirty))(0,0 > 0,1 > 1,0 > 1,1)  
+Page-Buffering Algorithm:always keep a pool of free frames  
+##### Allocation  
+Fixed(Local) allocation per process  
+Global allocation  
+Reclaiming pages  
+memory below minimum threshold:choose process to kill according to OOM scores  
+Major page fault:page is referenced but not in memory  
+Minor pape fault:mapping does not exist,but page in memory  
+  shared library  
+  reclaimed and not freed yet  
+Non-Uniform Memory Access(NUMA):speed of access to memory varies(multi-core and multi-core-correspond-memory)  
+allocating memory "close to" the CPU by scheduler  
+##### Thrashing
+[Definition] a process does not have enough pages,causing higher page fault rate,page fault to get page,existing existing frame,but quickly need replaced frame back,thereby **a process is busy swapping pages in and out**  
+Why does thrashing occur?total size of locality > total memory size  
+[Solution] 
+1.using local or priority page replacement(one process thrashing does not affect others)  
+2.provide a process with as many frames as it needs  
+**Working-set Model**  
+Working-set window(Δ):a fixed number of page references
+working set of process p<sub>i</sub>(WSS<sub>i</sub>):total number of pages referenced in the most recent Δ  
+total working sets:D = ΣWSS<sub>i</sub>,monitor the total working set by suspending and swapping out to make D < m  
+[Challenge] keep track of the working set  
+[Solution] page-fault frequency(PFF) to check the pressure of process memory,swap out a process is PFF is too high  
+##### Kernel Memory Allocation  
+allocated from a free-memory pool  
+for device I/O,kernel memory needs to be physically contiguous  
+**Buddy System**:memory is allocated in units of the size of power of 2  
+split the unit into two buddies until a proper sized chunk is available  
+E.g.256KB is available,21KB is requested  
+256KB -> 128KB -> 64KB -> 32KB = 21KB_round_up  
+**Slab Allocator**:a slab contains one or more pages,divided into equal-sized objects  
+a cache in a slab allocator consists of one or more slabs  
+fast small kernel object allocation and small internal fragmentation,object fields may be resuable,no need to initialize again  
+![alt text](image-24.png)  
+kmem_cache -> slabs_full/partial/empty -> slab -> page -> object  
+`kmalloc()` -> small object using slab/huge object using buddy system:ensuring contiguous PA  
+`vmalloc()`(similar to `malloc()` in user space):huge space requirement but no need contiguous PA   
+##### Other considerations  
+**Prepaging**
+**Page Size**(and reason)  
+
+- Fragmentation:small page size  
+- Page table size:large  
+- Number of page faults:large  
+- TLB(page table entry cache) size:large
+- Locality:small  
+- I/O overhead:large(every page fault needs an I/O)  
+- always a power of 2  
+- growing over time  
+  
+**TLB Reach**:the amount of memory accessible from the TLB  
+TLB Reach = TLB size * page size  
+**Program structure**  
+int[128,128],each row is stored in one page,and only one entry in the TLB  
+```c
+for(j = 0; j < 128 ; j++)
+  for(i = 0; i < 128; i++)
+128*128 = 16384 page faults
+for(i = 0; i < 128 ; i++)
+  for(j = 0; j < 128; j++)
+128 page faults
+```
+**I/O interlock**:pages that are used for copying a file from a device must be locked from being selected for eviction  
+
+#### Linux Virtual Memory  
 
 ### File System Week11 - 14
 
