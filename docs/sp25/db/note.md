@@ -1362,7 +1362,130 @@ reference_bit:
 - throw if reference_bit == 0(轮转一圈还没有被访问过)  
 
 ## Chap 14 Indexing  
+### 14.1 Basic Concept  
+Search key:attribute to sets of attributes used to look up record in a file  
+index file consists of records(index entries) of the form:search key,pointer  
+two basic kinds of indices:ordered indices,hash indices  
+access types:point query(records of a specific value),range query  
+performance measurement:access time,insertion time,deletion time,space overhead  
+### 14.2 Ordered Indices  
 
+- primary index(主索引):the order of the search key is in the same order of the file(clustering index聚集索引)  
+  最高效,只有一种  
+- secondary index(辅助索引):the order of search key is not in the same order of the file  
+![alt text](image-41.png)   
+
+- dense index:index record appears for every search-key value in the file  
+- sparse index:contains index values for only some search-key values  
+![alt text](image-42.png)  
+locate a record with search-key value K by  
+(1)find index record with largest search-key value < K  
+(2)sequentially starting at the record to which the index record points  
+no sparse index for secondary index  
+### 14.3 B+ Tree Index  
+basic concept see [ADS Lecture 2](https://tapir-elithril.github.io/Notebook/fa24/ads/note/#b-tree)  
+Assume a block in 4Kb in disk,each index is 10 bytes and each pointer is 4 bytes  
+The maximum number of child is $\frac{4096 - 4}{10 + 4} + 1 = 293$ ~ 147  
+If there a K search keys,the tree height is no more than$\lceil log_{\lceil n/2\rceil}(K)\rceil$ ~ $\lceil log_{\lceil n/2\rceil}(K/2)\rceil + 1$ 
+range query is supported by linked list in the leaf level  
+scan from the head of the linked list  
+#### height and size estimation  
+```sql
+person(pid     char(18) primary key,
+       name    char(8),
+       age     smallint, -- 2bytes
+       address char(40));
+block size:4K
+1000000 person
+```
+**height estimation**  
+person record size = 18+8+2+40 = 68  
+records per block 4096/68 = 60
+blocks for storing 1000000/60 = 16667  
+B+ tree fan-out $n = \frac{4096 - 4}{18 + 4} + 1 = 187$ ~ 94(inner pointers)  
+leaf:93 ~ 186  
+2 levels: min = 2 * 93 = 186,max = 187 * 186 = 34782  
+3 levels: min = 2 * 94 * 93 = 17484,max = 187 * 187 * 186 = 6504234  
+4 levels: min = 2 * 94 * 94 * 93 = 1643496,max = 187 * 187 * 187 * 186 = 1216291758  
+ANS:3 levels  
+**size estimation**  
+min:  
+leaf = 1000000/186 = 5377  
+second level = 5377/187 = 29  
+root = 1  
+total node number = 5377 + 29 + 1 = 5407  
+max:  
+leaf = 1000000/93 = 10752(取下界)  
+second level = 10752/94 = 114  
+root = 1  
+total node number = 10752 + 114 + 1 = 10867  
+删除时有时可以不修改父节点的索引,父节点的索引不一定一定要出现在叶子中  
+#### B+ Tree File Organization  
+Leaf nodes in a B+ tree file organization stores records directly instead of pointers  
+#### Other issues  
+**Record relocation and secondary indices**  
+If a record moves,all secondary indices should be updated  
+[Solution] use primary-index search key instead of record pointer in secondary index,存放primary key(通常不变)而不直接存放record  
+#### Index strings  
+variable length string as keys  
+prefix compression:keep enough characters to distinguish entries in subtrees(e.g.silb for "silas" and "silberschatz")  
+#### Bulk loading and Bottom-up build  
+Assume we already have 1000000 records,build a B+ Tree for indexing  
+Insert one by one ?  
+alterative1:insert in sequential order  
+alterative2:Bottom-up construction  
+
+- sort index entries  
+- create B+ Tree layer by layer,start with leaf level  
+- written to disk using sequential I/O operations  
+  parallel operation see [ADS Lecture 15](https://tapir-elithril.github.io/Notebook/fa24/ads/note/#parallel-operation)  
+disk estimated cost:1 seek + <number_of_blocks> block transfer  
+
+Bulk insertion  
+
+- build a new B+ Tree using bottom-up algorithm  
+- merge the two B+ Tree(merge sort)  
+disk estimated cost:2 seeks + <original_number_of_leaf + new_number_of_blocks> block transfer  
+
+**Multiple key access**  
+```sql
+select ID
+from instructor 
+where dept_name = "finance" and salary = 80000;
+```
+create a B+ Tree index on tuple(dept_name,salary)  
+### 14.4 Indexing in main memory  
+in the leaf level,how to locate if we have 186 branches?  
+binary search is not efficient since memory is loaded to cache in the unit of blocks  
+use large node size to optimize disk access  
+for structure data within a node,use a tree instead of an array to optimize cache access  
+### 14.5 Indexing on flash  
+Write-optimized tree structures(LSM Tree & Buffer Tree)  
+#### LSM Tree  
+Log Structured Merge Tree:  
+Records inserted first into in-memory tree(L0 tree)  
+move to disk(L1 tree) when in-memory tree's full,merging using bottom-up algorithm  
+merge to L2 tree if L1's full,...  
+![alt text](image-43.png)  
+**stepped merge**  
+k trees of each level on disk,when all k indices exists,merge them into one index of the next level(reduce write cost but more expensive query)  
+optimization of point lookups:**Bloom filter(布隆过滤器)**  
+Every tree correspond to a filter,search the tree only when the filter returns a positive result(hash function)  
+#### Buffer Tree  
+each internal node of B+ Tree has a buffer to store inserts  
+inserts all moved to lower level only when the buffer's full  
+less overhead on queries ,reduce per record I/O but more random I/O than LSM  
+#### Bitmap indices  
+![alt text](image-44.png)  
+10010:record no.0 & 3 are male  
+easy &|~,counting by an array of integer to number of '1's(e.g. 254 -> 6,255 -> 7)
+### 14.6 SQL definition
+```sql
+create index <index_name> on <table>(<attribute_list>);
+create index cust-strt-city-index on customer(customer-city,customer-street);
+create unique index uni-acnt-index on account(account-number);
+drop index <index_name>;
+```
 ## Chap 15 Query Processing
 
 ## Chap 16 Query Optimization

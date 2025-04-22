@@ -692,10 +692,40 @@ for(i = 0; i < 128 ; i++)
 128 page faults
 ```
 **I/O interlock**:pages that are used for copying a file from a device must be locked from being selected for eviction  
+#### *Free Space Management  
+In virtual memory space,  
+[Mechanism] splitting and coalescing(合并)  
+![alt text](image-25.png)  
+![alt text](image-26.png)  
+[Problem] the storage of the linked list  
+[Solution] reuse the freed space    
+```c
+typedef struct __header_t {
+  int size;
+  int magic;
+} header_t;
 
-#### Linux Virtual Memory  
+typedef struct __node_t {
+  int size;
+  struct __node_t* next;
+} node_t;
 
-### File System Week11 - 14
+void free(void *ptr) {
+  header_t *hptr = (void*)ptr - sizeof(header_t);
+  ...
+}
+```
+![alt text](image-27.png)
+16500:a space addr pointer
+[Question] What is 16500 does not point correctly,e.g.,16508(where size and magic can be cotrolled by user)堆喷  
+
+### File System Week10 - 13
+#### File System Interface
+[Definition] file is a contiguous logical addr space for storing info  
+proc file system - use file system **interface** to retrieve system info(not real data in storage),an alterative of syscalls,using read,open and write  
+
+
+### I/O & Storage Week14
 
 ### DLP,TLP Week15
 

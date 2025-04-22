@@ -1500,11 +1500,13 @@ Number of passes = $1 + \lceil log_k(N/M)\rceil$
   
 ### Reduce the number of tapes —— Polyphase  
 A 2-way merge using only 3 tapes  
-{  
-T2,T3 -> T1  
-1/2T1 -> T2 //more passes are needed  
-T1,T2 -> T3  
-}loop  
+```c
+Loop:{
+  T2,T3 -> T1  
+  1/2T1 -> T2 //more passes are needed  
+  T1,T2 -> T3
+}  
+```  
   
 A smarter way - split unevenly  
 ![alt text](image/image-62.png)  

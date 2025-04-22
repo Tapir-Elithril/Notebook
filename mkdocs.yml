@@ -19,11 +19,11 @@ nav:
     - Makefile: tools/makefile/index.md
   #   - Html: tools/html/index.md
   #   - reveal-md: tools/reveal-md/index.md
-  # - research:
-  #   - research/index.md
-  #   - 论文阅读:
-  #     - kvcache: research/paper_reading/kvcache.md
-  #   # - 论文写作工具: research/paper_tools/index.md
+  - research:
+    - research/index.md
+    - temp:
+      - llm_vulnerability: research/LLM/llm4sec_table.md
+    # - 论文写作工具: research/paper_tools/index.md
   - fa23:
     - fa23/index.md
     - 军训: fa23/military_training/index.md
@@ -153,6 +153,7 @@ repo_url: https://github.com/Tapir-Elithril/Notebook
 repo_name: Tapir-Elithril/Notebook
 
 markdown_extensions:
+  - tables
   # [数学公式支持]
   # https://squidfunk.github.io/mkdocs-material/reference/math/#katex
   - pymdownx.arithmatex:

@@ -10,7 +10,7 @@ int main()
         cout << "Int parameter Ctor f2 = " << f2 << endl;
         Fraction f3 = f2;
         cout << "Copy Ctor: f3 = " << f3 << endl;
-        cout << "Note:This may not test the existence of copy ctor since the compiler may automatically give a default one." << endl;
+        //cout << "Note:This may not test the existence of copy ctor since the compiler may automatically give a default one." << endl;
         cout << "...Try to construct a fraction: 1/0" << endl;
         Fraction f4(1,0);
     } catch (const invalid_argument& e) {
@@ -172,4 +172,7 @@ int main()
     } catch (const exception &e) {
         cout << "Catch Exception: " << e.what() << endl;
     }
+
+    cout << "===== Test succeed =====" << endl;
+    return 0;
 }
