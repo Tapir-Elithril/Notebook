@@ -57,6 +57,7 @@ file2 >> str;
 ## A Quick Tour of C++ Week 2(ChenXiang)
 
 ## STL Week 3(ChenXiang)
+Standard Template Library  
 [Definition]Part of the ISO Standard C++ Library,Data Structure and Algorithms  
 
 - Containers:class templates,data structures  
@@ -105,7 +106,27 @@ adaptor:转换器
 - accumulate,partial_sum,...  
 
 ### Iterators  
+STL<parameters>::iterator xxx  
 
+- input iterator  
+- output iterator  
+- forward iterator:++p,p++,*p,==,!=,=(forward list,unordered_map,unordered_set)  
+- bidirectional iterator:...,--p,p--(list,set,map)  
+- random access iterator:p+=i,p-=i,p+i,p-1,p[i],<,>,<=,>=,p2-p1(vector,deque)  
+- 不支持迭代器：stack,queue  
+
+begin(),end()  
+end()常不能达到，用!=stl.end()作为结束条件  
+```cpp
+list<int> L;
+list<int>::iterator li;
+li = L.begin();
+++li;
+*li = 10;
+L.erase(li);
+++li; //ERROR
+//可以使用li = L.erase(li)获得一个新的iterator
+```
 ### Typedefs
 `auto`:编译器推断  
 `using`  
@@ -128,7 +149,7 @@ void S::f() //function f in class S
     a--;   //local a
 }
 ```
-How does the compiler now its members when executing member functions?  
+How does the compiler kknow its members when executing member functions?  
 `this` is a pointer points to the object  
 
 ### Object
@@ -136,7 +157,7 @@ Object = Attributes + Service = Data(private) + Operations(Public)
 UML:name,attribute,service(operations)  
 class≈struct(class默认访问权限为private而struct为public)  
 任何class都需要分在.h与.cpp两个文件中，.h提供声明供他人使用，.cpp提供private实体  
-**One** class definition **per** header.h
+**One** class definition **per** header.h  
 Only declarations are allowed in .h  
 
 - extern var  
@@ -188,6 +209,8 @@ struct Y
     float f;
     int i;
     Y(int a);
+    //如果定义了其他构造函数，编译器不会自动生成默认构造函数
+    //除非显示说明Y() = default;
 }
 Y y1[] = {Y(1),Y(2),Y(3)}; //OK
 Y y2[2] = {Y(1)}; //ERROR
@@ -217,13 +240,15 @@ what to do and how to do
   类中的函数  
   整个类  
 - private:私有的边界是类，不是对象  
-  同一类的不同对象可以互相访问private成员    
+  同一类的不同对象可以互相访问private成员  
+  e.g.**拷贝构造**可以直接利用私有变量传参  
 - protected:子类可以访问  
 
 ### Objects in different places
 ![alt text](image.png)  
 ![alt text](image-1.png)  
 ![alt text](image-2.png)  
+任何一个对象都只属于一个具体的类  
 
 ### Static
 Initialization Dependency:not guaranteed  
@@ -252,12 +277,17 @@ int M::m_h;
 static int M::m_h;//ERROR
 ```
 static function:no `this`,不能访问任何非静态成员变量或函数  
-不需要制造对象即可调用(<class name>::<static func>)，和任何对象都无关  
+不需要制造对象即可调用(<class name>::<static func/var>)，和任何对象都无关  
 应用：提供制造类对象的方法，作为制造函数   
 ![alt text](image-3.png)  
+
 !!! note "local vars的空间分配发生在进入函数时，编译器会在进入函数时算好所有本地变量需要的最大空间与地址"  
+
 static local variable:在程序结束前析构，在函数内访问  
 static member variable的构造与析构与global variable相同，在类内访问  
+
+!!! danger "static变量/函数必须在类外(.cpp)中声明！  
+
 ### Constant object  
 How can the object be protected from change?  
 Solution:declare member functions const  
@@ -272,7 +302,7 @@ int Data::get_date() const{
 }
 ```
 const修饰this  
-静态成员变量不可能是const，因为没有this指针，只能在初始化列表初始化  
+静态成员变量不可能是const，因为没有this指针，只能在初始化列表初始化(const是无用的，const确保类对象不被修改，而static member不属于类)  
 const and non-const member function can coexist(overload)  
 
 ## Memory model Week 4(ChenXiang)
@@ -306,8 +336,9 @@ static
   
 ### reference
 `ps = &s`,`(*ps).length()`,`ps->length()`  
-绑定别名(alias)(一次性不可计算的指针)，通过引用直接操作原始变量  
+绑定别名(alias)(一次性不可计算的指针)，通过引用直接操作原始变量，共享存储，不是指针，不需要解引用  
 ```cpp
+char p;
 char* s = &p;//a pointer to a character,s points to the addr of p
 char* s = p;//ERROR
 *s = x;//把x的值赋值给s指向的变量，*是一个运算符
@@ -365,8 +396,10 @@ delete[] p;
 new and delete triggers and ensures the correctness of Ctor/Dtor(运算符)  
 cannot delete twice but can delete nullptr  
 
+!!! note "new 返回的是指针"  
+
 ```cpp
-int* psome = new int [10];//长度不确定的数组
+int* psome = new int[10];//长度不确定的数组
 delete[] psome;
 ```
 ```cpp
@@ -393,12 +426,14 @@ const int z = y; //legal
 ```
 `const` is an *internal linkage*
 
-- Compile time constants `const int bufsize = 1024;`  
+- Compile time constants    
 - Run-time constants
 ```cpp
+//compile time
 const int class_size = 12;  //store in .text
 int finalgrade[class_size]; //legal
 
+//run time
 int x;
 cin >> x;
 
@@ -441,10 +476,10 @@ char s[] = "Hello World!";
 ```cpp
 void f(const int* x)
 {
-    x++;//illegal
+    (*x)++;//illegal
 }
-//传结构->传指针
-//const修饰确保指针指向内容不被修改
+//实际设计中常通过传指针替代传结构
+//使用const修饰确保指针指向内容不被修改
 ```
 
 ## Inside Class Week 6  
@@ -480,8 +515,11 @@ f(2L);//long ERROR
 f(3.2);
 ```
 const and non-const is an overload,non-const can be put to const.  
+
+!!! danger "不同的返回类型不构成重载"  
+
 ```cpp
-//Delegating Ctors
+//*Delegating Ctors
 class Info{
 public:
     Info(){InitRest();}
@@ -553,22 +591,20 @@ objdump -t a.o |grep xx
 ```
 需要将`inline`函数的body写在.h中，以供编译器'抄写'  
 Better than `define`,`inline`会检查变量的类型.   
-是否真的`inline`是由编译器根据函数大小或函数是否递归自行决定的  
+是否真的`inline`是由编译器根据函数大小或函数是否递归、循环、是否有静态变量自行决定的  
 
 ## Composition Week 7  
 composition:construct new object with existing objects  
 Reuse the implementation  
-ways of conclusion  
+**ways of composition**  
 
 - fully(Ctor and Dtor are automatically called)(Only C++)  
 - by reference  
-  logical relationship is not fully(e.g.Supervisor)  
+  logical relationship is not fully(e.g.supervisor & employee)  
   size-of is unknown beforehand  
   resource is to be allocated/connected at run time(exception)  
   
 ```cpp
-class Person{...};
-class Currency{...};
 class SavingsAccount{
 public:
     SavingsAccount(
@@ -580,6 +616,12 @@ public:
 private:
     Person m_saver;
     Currency m_balance;
+};
+
+class Employee{
+    ...
+private:
+    Supervisor *m_supervisor;
 };
 ```
 Composition在内存的存储与定义类时的顺序有关  
@@ -779,9 +821,9 @@ class binaryexpr : public expr {
 public:
     virtual binaryexpr* newexpr();//OK
     virtual binaryexpr& clone();//OK
-    virtual binaryexpr self();//Error!
+    virtual binaryexpr self();//Error!Type not match,c++ prohibit this operation
     //note:virtual in subclass can be neglected
-}
+};
 ```
 Name hiding still exists with virtual  
 Only override on virtual functions!  
@@ -793,7 +835,15 @@ public:
     //纯虚函数
 }
 ```
-某一个函数`virtual f() = 0`，表示类是抽象的，抽象类不能构造对象
+某一个函数`virtual f() = 0`，表示类是抽象的，抽象类不能构造对象  
+抽象类的子类可以是抽象类  
+```cpp
+    Mammal *M = new Mammal();
+    Male m;
+    *M = m;//对象切片
+
+    Employee* b = new Manager(); //没有发生对象切片
+```
 ### *Multiple Inheritance  
 一个类有多个父类(only c++):菱形继承的问题，其余oop语言的单根结构（所有类都是object类的子类，容易实现容器）  
 c++通过多继承制造容器  
@@ -832,11 +882,11 @@ default constructor:member-wise copy(依次调用成员拷贝构造)/binary copy
 Person copy_func(char *who) {
     Person local(who);
     local.print();
-    return local;// copy ctor called
+    return local;// copy ctor called unless NRVO applied
 }
 Person nocopy_func(char *who) {
     return Person(who);
-}//no copy needed
+}//no copy needed,RVO automatically applied
 ```
 Compiler helps:RVO (Return Value Optimization) and NRVO (Named Return Value Optimization)  
 Note:注意拷贝与赋值的区别  
@@ -868,7 +918,7 @@ void bar() {
 ```
 ```cpp
 //a better version
-char *foo(char *p) { //传入一直指针
+char *foo(char *p) { //传入指针
     strcpy(p,"something");
     return p; //操作完成后传出去
 }
@@ -876,7 +926,7 @@ void bar() {
     char p[10]; 
     char *p = foo(p);
     printf("%s",p);
-    // delete p; 
+    // delete p; //no longer needed
 }
 ```
 ### *Moving
@@ -1052,10 +1102,12 @@ v[10] = 45;
 ```cpp
 //global function not const
 istream& operator>>(istream& is,T& obj) {
+    is >> p.name >> p.age;
     return is;
 }
 cin >> a >> b >> c; 
 ostream& operator<<(ostream& os,const T& obj) {
+    os << p.name << p.age;
     return os;
 }
 cout << a << b << c;
@@ -1077,7 +1129,7 @@ T& T::operator=(const T& rhs)
     if(this != &rhs){   //this is a must,in case `a=a` delete itself
         ...
     }
-    return  * this;
+    return *this;
 }
 ```
 ### value classes  
@@ -1112,13 +1164,786 @@ Usually,we'd rather use `double todouble() const;`
 overloading and type conversion:c++ check each argument for a best match  
 
 ## Template Week 12
+[Insights] similar code for different types  
+Other oop language solution:common superclass  
+```cpp
+//a c implementation 
+class Stack {
+    void push(void *);
+    void* pop();
+    //Stack();
+    Stack(int cap,int os);//capacity,object_size
+private:
+    //void **pBuf;
+    void *pBuf;
+    //cannot deal with pointer when copy  
+};
+pBuf = new char[cap * os];
+Stack(100,sizeof(Student));
+```
+[Classification] reuse source code(generic泛型，use types as parameters in class or function definitions),function template函数模板,class template类模板  
+### Function templates
+```cpp
+template <class T> // or typename
+void swap(T& x,T& y) {
+    T temp = x;
+    x = y;
+    y = temp;
+}
+```
+Instantiation实例化  
+```sh
+nm -CU a.out
+```
+No instantiation is not used,c.f.function instantiated if not called  
+`inline` functions are declarations,so is templates.  
+Function with no `template` is found first  
+Only exact type match on types is used for `template`,`template` does not support type conversion at all  
+```cpp
+int add(int a, int b)
+{
+    return a + b;
+}
+template <typename T>
+T add(T a,T b)
+{       
+    return a + b;
+}
+cout << add(1.1,2.2f) << endl;//int add is called
+//if no int add,ERROR
+```
+unique function match > unique function template match > overloading(conversion)  
+```cpp
+template <typename T>
+T foo(void){
+    /*...T is used inside function*/
+    /*compiler don't know what is T because no parameter to infer*/
+}
+foo<int>();//tell the compiler what is T
+foo<float>();
+```
+### Class templates
+`stack<int>,list<Person>,queue<Job>`  
+```cpp
+template <typename T>
+class Vector {
+public:
+    Vector(int);
+    ~Vector();
+    Vector(const Vector&);
+    Vector& operator=(const Vector&);
+    T& operator[](int);
+private:
+    T* m_elements;
+    int m_size;
+};
+
+template <typename T>
+T& Vector<T>::operator[](int i)//必考：T& Vector<?>
+{
+    return content[i];
+}
+```
+Usage  
+```cpp
+Vector<int> v1[100];
+Vector<Complex> v2[256];
+v1[20] = 10;
+v2[20] = v1[20]; //OK if int->Complex is defined
+```
+### parameters
+```cpp
+template <typename KEY,typename VALUE>
+class HashTable{
+    const VALUE& lookup(const KEY&) const;
+    void install(const KEY&,const VALUE&);
+    ...
+};
+```
+`Vector< Vector<double *> >`,space between>> is recommended  
+`Vector< int (*)(Vector<double>&,int )>`函数指针，相当于`Vector< int f(Vector<double>&,int )>`  
+**Expression**  
+```cpp
+template <typename T,int bounds = 100>
+class FixedVector {
+public:
+    FixedVector();
+    // ...
+    T& operator[](int);
+private:
+    T elements[bounds]; //fixed size array
+    //bounds is no longer a variable after instantiation
+    //not allowed otherwise,see vector.cpp
+};
+
+template <typename T,int bounds>
+T& FixedVector<T,bounds>::operator[](int i){
+    return elements[i];
+}
+FixedVector<int,10> v1;
+FixedVector<int> v2; //default bounds
+//no pointer,copy ctor & overloaded assignment is not needed
+```
+变长数组
+```c
+struct A {
+    int size;
+    int a[]
+};
+A *p = malloc(sizeof(int) * 101);
+p->size = 100;
+```
+### Inheritance  
+```cpp
+template <typename A>
+class Derived:public Base{}
+template <typename A>
+class Derived:public List<A>{}
+class SupervisorGroup:public List<Employee*>{}//从模板实例出来的类得到继承
+```
+类不能从模板中得到继承，从模板得到继承的也是模板  
+`friend`,`static members` are allowed  
+IN GENERAL,put the definition and declaration for the template in the header file  
+template SHOULD NOT have a `.cpp`  
+compiler/linker can remove multiple definition of templates automatically  
 
 ## Exception Week 13
+The basic philosophy of C++ is that "badly formed code will not be run"  
+more strict type check than C  
+Run-time error:可预见，不可避免，不一定发生  
+### Try-catch
+Why needed?  
+Readability of code,Convenience of Modification  
+No further code will be executed if an exception happened,and we won't come back after exception handled  
+What is a good exception handle choice?  
+1.return random object  
+2.return special value  
+3.die(`exit`)  
+4.die gracefully(`assert`)  
+### Exception handle chain  
+```cpp
+template<typename T>
+T& Vector<T>::operator[](int indx) {
+    if(indx < 0 || indx >= m_size)
+        throw <<something>>; //something can be any type
+    return m_elements[indx];
+}
+```
+What to throw?  
+```cpp
+class VectorIndexError {
+public:
+    VectorIndexError(int v):m_badvalue(v) {}
+    ~VectorIndexError(){}
+    void diagnostic() {
+        cerr << "index" << m_badvalue << "out of range!" << endl;
+    }
+private:
+    int m_badvalue;
+};
+```
+`throw VectorIndexError(indx);`:throw the object itself  
+```cpp
+int func() {
+    Vector<int> v(12);
+    v[3] = 5;
+    int i = v[42]; // i won't get value;
+    return i * 5; //won't be done
+}
+// return to where caller calls func
+// caller gets the exception raise from func
+```
+```cpp
+void outer() {
+try {
+    func();// throw VIE
+    func2();
+} catch (VectorIndexError& e) {
+    e.diagnostic();
+}
+```
+```cpp
+void outer2() {
+    String err("exception caught");
+    try {
+        func();
+    } catch (VectorIndexError& e) {
+        cout << err;
+        throw; //propagate the exception
+    }
+}
+```
+```cpp
+void outer3() {
+    try {
+        outer2();
+    } catch(...) {
+        //... catches all exceptions
+        cout << "Exception stops here!";
+    }
+}
+```
+Basic steps:  
+Is surrounding(`{}`) a try?  
+- No:leave the scope(e.g. if)  
+    - Is it a function body?  
+        Yes:return to the caller(Dtor the objects except the Error object)  
+        the Error object Dtor happens only after caught  
+        No:Is surrounding(`{}`) a try?  
+- Yes:try to match a catch  
+    - Match?  
+        Yes:do the clause  
+        No:(try means a throw,attempt to find another try)Is surrounding(`{}`) a try?  
+
+**handler selection**  
+Handlers check in order of appearance,if exception "is a" object of the type in catch block  
+```cpp
+A:
+B:public A
+catch(A &a); //A and B will be caught here
+catch(B &b); //meaningless 
+```
+### Standard library exceptions
+#### new
+`malloc()` returns NULL if failed  
+`new` raises a `bad_alloc` exception  
+```cpp
+void func(){
+    try {
+        while(1)
+            char *p = new char[1000000];
+    } catch (bad alloc& e){
+    }
+}
+```
+![alt text](image-9.png)  
+#### Bad Exception  
+Exception specification  
+```cpp
+void abc(int a) throw(MathErr)
+/*c++ compiler doesn't know whether MathErr is handled properly
+java compiler does*/
+{
+    ...
+}
+//If other exceptions thrown,compiler gives a bad exception  
+void goodguy() throw (...){
+//handles all exceptions
+}
+void goodguy() throw (){
+//no exceptions
+}
+void average() {} //no checking
+void lala() noexcept; 
+//tell the compiler the function should not raise exceptions
+```
+### Design considerations
+Exception should be used for errors
+```cpp
+try{
+    for(; ;)
+        p = list.next();
+} catch (List::end_of_list) {
+}
+// a bad design,but python actually did it
+```
+Don't use exception for good conditions  
+### More exceptions
+#### Failure in ctor
+`A* p = new A();` the space is allocated,but no pointer points to it(memory leak)  
+`delete this` only for objects newed and a well-written dtor  
+**two stages construction**  
+Ctor cannot raise exception(only variable assignment)  
+Every operation that need memory allocation should be done after ctor(Additional initialization including file,network connection & memory allocation in `Init()`)  
+
+#### Failure in dtor
+Stack unwinding:If dtor is called when handling other exceptions,and it throws an exception,call `terminate()` to terminate the programme  
+```cpp
+class Resource {
+public:
+    ~Resource() noexcept(false) { 
+        throw std::runtime_error("Oops"); // dangerous!
+    }
+};
+
+int main() {
+    try {
+        Resource res;
+        throw std::runtime_error("First error"); // stack unwinding
+        //two exceptions co-exists,c++ calls std::terminate()
+    } catch (...) { 
+        // never executed
+    }
+}
+```
+
+#### Design and usage
+```cpp
+struct X {};
+struct Y : public X {};
+try {
+    throw Y();
+} catch (X x){
+    // copy ctor,loses of some info
+}
+//use reference instead!
+```
+```cpp
+try {
+    throw new Y();
+} catch (Y* p) {
+    //forget to delete 
+}
+//java can delete automatically,but in c++,try to avoid pointer in catch
+```
+**unexpected**  
+```cpp
+#include <exception>  
+void my_handler(){
+    std::cout << "Unexpected exception!\n";
+    exit(1);
+}
+void f() throw(X,Y) {
+    throw Z();
+}
+void main() {
+    std::set_unexpected(my_handler);
+    //unexpected exception go to `my_handler()`
+    try {
+        f();
+    } catch(...){
+        //won't execute
+    }
+}
+```
+**terminate**  
+If an exception is thrown but not caught,`std::terminate()` will be called
+```cpp
+// an intercepted terminate
+void my_terminate() {}
+set_terminate(my_terminate);
+```
+#### Reminder
+1.return special value is always an efficient way,don't give it up!  
+2.Exception  
+3.assert  
 
 ## Smart pointer Week 14
+goals:reference counting(the object is pointed by how many pointers) for garbage collection     
+Class `UCObject` holds the count,`UCPointer` is a smart pointer to a `UCObject`  
+`UCPointer` is an object implemented using a template and overloads `operator->` and unary `operator*`  
+```cpp
+class String {
+private:
+    //char* s;
+    UCObject *s; //has a reference count
+public:
+    string(const char* ss) {
+        s = new char(strlen(ss) + 1);
+        //strcpy(s,ss);
+        s = ss;
+    }
+    ~string(){delete[] s;}
+};
+String abc("abcdef");
+String def = abc; //copy ctor,point to "abcdef",reference count ++
+abc = "Hello world"; //COW
+```
+### Reference counting
+```cpp
+//p = q
+p -> decrement(); //check,if count == 0,delete this
+p -> *q;
+q -> increment();
+```
+![alt text](image-11.png)  
+```cpp
+#include <assert.h>
+class UCObject {
+public:
+    UCObject():m_refCount(0) {}
+    virtual ~UCObject() {assert(m_refCount == 0);};
+    UCObject(const UCObject&) : m_refCount(0) {} //new UCObject
+    void incr() {m_refCount ++;}
+    void decr();
+    int refereces(){return m_refCount;}
+private:
+    int m_refCount;
+};
+
+inline void UCObject::decr() {
+    m_refCount -= 1;
+    if (m_refCount == 0)
+        delete this;
+}
+```
+```cpp
+template <typename T> //we hope T is inherited from UCObject
+class UCPointer {
+private:
+    T* m_pObj;
+    void increment(){if(m_pObj) m_pObj->incr();}
+    void decrement(){if(m_pObj) m_pObj->decr();}
+public:
+    UCPointer(T* r=0):m_pObj(r){increment();}
+    ~UCPointer(){decrement();}
+    UCPointer(const UCPointer<T>& p);
+    UCPointer& operator=(const UCPointer<T> &);
+    T* operator->() const;
+    T& operator*() const {return *m_pObj;};
+};
+
+template<typename T>
+UCPointer<T>::UCPointer(const UCPointer<T>& p) {
+    m_pObj = p.m_pObj;
+    increment();
+}
+template<typename T>
+UCPointer<T>& UCPointer<T>::operator=(const UCPointer<T> &p){
+    if(m_pObj != p.m_pObj) {
+        decrement();
+        m_pObj = p.m_pObj;
+        increment();
+    }
+    return *this;
+}
+template<typename T>
+T* UCPointer<T>::operator->() const {
+    return m_pObj;
+}
+```
+![alt text](image-12.png)  
+```cpp
+class String {
+public:
+    String(const char *);
+    ...
+private:
+    UCPointer<StringRep> m_rep;
+};
+String::String(const char *s):m_rep(0) {
+    m_rep = new StringRep(s);// ctor an object use the pointer
+}
+```
+```cpp
+class StringRep:public UCObject {
+public:
+    StringRep(const char *);
+    ...
+private:
+    char *m_pChars;
+    // no assignment op!
+    void operator=(const StringRep&) {}
+};
+StringRep::StringRep(const char *s) {
+    if(s) {
+        int len = strlen(s) + 1;
+        m_pChars = new char[len];
+        strcpy(m_pChars,s);
+    } else {
+        m_pChars = new char[1];
+        *m_pChars = '\0';
+    }
+}
+```
+In standard library,`std::auto_ptr` can be used as `UCPointer`  
 
 ## OOP Design Concept Week 15
+### Coupling耦合
+loose coupling:understand one class without reading others;change one class without affecting others  
+Make the coupling between reusable parts(可重用) and other classes as loose as possible  
+#### call-back
+回调函数`addlistener(Listener *pl)`  
+Ioc:注入反转,发出消息的类构造可接收对象，接收方构造接收子类，通过注册对象调用接收方代码
+```cpp
+class Listener { // 可接收对象
+    virtual void action() = 0;
+};
+class Button { // 发出方
+public:
+    onpressed(){pl;} // 通过注册对象调用接收方代码
+    addListener(Listener *pl);
+private:
+    Listener *pl;
+};
+class Actor(Button *pB) { // 接收方
+    pB -> addListener(Actor::f()); //注册对象
+    void f() {dance();}
+};
+class ActorListener: public Listener { // 接收子类
+    void action();
+};
+```
+#### message mech.
+消息机制：  
+[model1] 所以对象相互独立，但都注册在一个中央消息机制中，通过向中央发送交给另一对象的字符串实现信息传递（字符串匹配）  
+[model2] 对消息机制划分角色，对象向中央注册函数  
+![alt text](image-10.png)  
+### Cohesion内聚
+[Definition] the number of diversity of tasks that a single unit is responsible for  
+We aim for high cohesion  
+### Code duplication  
+bad design,hard maintenance 
+### Responsibility-driven design  
+Each class should be responsible for manipulating its own data  
+**localizing change**  
+When a change is needed,as few classes as possible should be affected  
+### Refactoring重构
+classes and methons should be refactoried to maintain high cohesion and low coupling  
+Test before and after refactoring  
+### extensibility  
+可扩展性：如果有需求变更，代码**不经修改**就可以适应新的需求  
+可维护性：如果有需求变更，代码**简单修改**就可以适应新的需求  
+### Encapsulation  
+having all the data member private:限制数据访问，避免非法状态，隐藏实现细节，提高安全性与可维护性，降低耦合  
 
 ## Stream Week 16
+[Definition] common logical interface to a device,sequential,one-direction & 1D,produce and consume value at a certain position  
+generic(iostream),file(fstream),string(sstream)  
+extractor`>>`,insertor`<<`,manipulation(change the stream state,e.g.`endl`)  
+### Kinds of stream
+1.text stream  
+text stream is a special kind of binary stream(everything in a computer is binary)  
+(1)every character is readable  
+(2)organized by line(`\n`)  
+(3)perform some character translation(e.g. binary->text,`\n`,0d0a -> 0d by Linux kernel)  
+2.binary stream  
+no translation  
+### Predefined streams  
+`cin`,`cout`,`cerr`,`clog`  
+`cerr`:unbuffered debugging output  
+`clog`:buffered debugging output  
+```cpp
+cout << "Hello\n";
+cerr << "Bye\n";
+/*
+    ./a.out >1   
+    Bye
+    cat 1
+    Hello
+    ./a.out 2>1  # direct cerr to 1
+    Hello
+    cat 1
+    Bye
+    ./a.out >1 2>2
+    cat 1
+    Hello
+    cat 2
+    Bye
+    ./a.out >>1 2>>2 # 添加
+    cat 1
+    Hello
+    Hello
+    cat 2
+    Bye
+    Bye
+*/
+```
+### Input Operation
+```cpp
+istream& operator>>(istream& is,T& obj) {
+    return is;
+}
+```
+`int get()`  
+```cpp
+int ch;
+while((ch == cin.get())!= EOF)
+    cout.put(ch);
+```
+`istream& get(char& ch)`(similar to `int get()`)  
+`istream& getline(istream& is,string& str,char delim='\n');` free function  
+compared,`cin.getline(char* ,int size)` is not preferred  
+`cin.ignore(int limit=1,int delim=EOF)` skip over `limit` or to delimit  
+`int gcount()`:how many characters read during the last operation  
+`void pushback(char)` on cin:push a character back to stream  
+`char peek()`:examine next character without reading it (get & pushback)  
+### Output Operation
+```cpp
+ostream& operator<<(ostream& os,const T& obj) {
+    return os;
+}
+```
+`put(char)`:prints a single character  
+`flush()`:force c++ buffer written(whether OS & disk is written cannot be determined)  
+### Manipulator
+`#include<iomanip>`  
+```cpp
+int n;
+cout << "enter a number in hexdecimal" << flush;
+cin >> hex >> n; //按16进制读,all cin holds the state afterwards until we meet a dec
+cout << setprecision(2) << 1000.243 << endl;//精度
+cout << setw(20) << "OK!";//宽度
+```
+`dec`,`hex`,`oct`,`endl`,`flush`,`setw(int)`,`setfill(char)`(左填充),`setbase(int)`(其他进制),`ws`(跳过空格),`setprecision(int)`  
+**stream flags**  
+`ios::skipws`,`ios::left`,`ios::internal`(pad between sign and value),`ios::dec`,`ios::showbase`,`ios::showpoint`,`ios::uppercase`,`ios::showpos`  
+`setiosflags(flags)`(按位或),`resetiosflags(flags)`(置0),`setf(flags),unsetf(flags)`  
+```cpp
+#include<iostream>
+#include<iomanip>
+main() {
+    cout.setf(ios::showpos|ios::scientific);
+    cout << "123" << " " << "456.78" << endl;// +123 +40567800e+02
+    cout << resetiosflags(ios::showpos) << 123; // 123
+    return 0;
+}
+```
+![alt text](image-13.png)  
+FAIL:操作/数据问题,ignore,clear to GOOD  
+BAD:用户  
+checking status:`good()`,`eof()`,`fail()`,`bad()`  
+```cpp
+int main() 
+int n;
+cout << "Enter a value for n,then [Enter]" << flush;
+while(cin.good()) {
+    cin >> n;
+    if(cin) { //an overload to int
+        cin.ignore(INT_MAX,'\n'); //clear the current line
+        break;
+    }
+    if(cin.fail()) {
+        cin.clear();
+        cin.ignore(INTMAX,'\n');
+        cout << "Try again" << flush;
+    }
+}
+```
+### File Stream  
+In C,`fopen(filename,rt)` for read text mode  
+In C++,we have  
+`ios::app`(append),`ios::ate`(position at the end),`ios::binary`,`ios::in`,`ios::out`  
+```cpp
+int main(int argc,char* argv[]) { //argv[0]:program name,argv[1]:source filename,argv[2]:target filename  
+    //correct usage: ./copy source.txt target.txt
+    if(argc != 3) {
+        cerr << "Usage: copy file1 file2" << endl;
+        exit(1);
+    }
+    ifstream in(argv[1]);
+    if(!in) {
+        cerr << "Unable to open file" << argv[1];
+        exit(2);  
+    }
+    ofstream out(argv[2]);
+    if(!out) {
+        cerr << "Unable to open file" << argv[2];
+        exit(2);  
+    }
+    char c;
+    while(in >> c)
+        out << c;
+}
+```
+`open(filename,mode)`  
+```cpp
+ifstream inputS;
+inputS.open("somefile",ios::in);
+if(!inputS) {
+    cerr << "Unable to open somefile"; 
+    ...
+```
+### Cast Operators运算符
+1.`static_cast`:compile time cast(int -> float,parent pointer/reference -> child,void* -> T*)  
+```cpp
+int main() {
+    int a=10;
+    double b = static_cast<double>(a);
+    class Base{};
+    class Derived:public Base{};
+    Derived* d;
+    Base* baseptr = static_cast<Base*>(&d);
+    void* voidptr = &a;
+    int* intptr = static_cast<int*>(voidptr);  
+}
+```
+必须有转换规则  
+2.`dynamic_cast`:for Polymorphism(recall up-casting)  
+```cpp
+class Base {
+    virtual void foo() {}
+};
+class Derived: public Base {};
+int main() {
+    Base* baseptr = new Derived();
+    Derived* derivedptr = dynamic_cast<Derived*>(baseptr);//runtime check
+    if(derivedptr)
+        std::cout << "Cast succeed" << endl;
+    else 
+        std::cout << "Cast failed" << endl;
+    delete baseptr;
+}
+```
+必须有继承关系  
+3.`const_cast`:change const/volatile(易变，不能优化，必须与内存做交换) attribute  
+```cpp
+int main() {
+    const int a = 10;
+    int* b = const_cast<int*>(&a);//remove const
+    *b = 20;
+}
+```
+4.`reinterpret_cast`:any type conversion(maybe dangerous),no type check  
+```cpp
+int main() {
+    int a = 65;
+    char* chptr = reinterpret_cast<char*>(&a);
+    std::cout << *chptr << endl;// 'A' in ASCII
+}
+```
+仅考察123的使用场景
 
-## 开课小测
+## Final Exam
+不考察：右值引用，移动构造，成员变量构造初始化，代理构造  
+![alt text](image-14.png)  
+![alt text](image-15.png)  
+写输出，选择，改错  
+填空题:exception,overload,template...
+设计题:不编译，不运行  
+ 
+## Supplement
+
+### namespace
+命名空间：划分全局类名避免名字冲突，不同命名空间可以定义相同的变量名  
+```cpp
+namespace space1{
+    string name = "randomstar";
+    void foo();
+    class cat(){
+        public:
+        void meow();
+    };
+} //no ',' or ';' here!
+namespace space2{
+    string name = "ToyamaKasumi";
+    void foo();
+}
+namespace space2{
+    void g();
+}
+int main()
+{
+    cout << space1::name << endl;
+    using namespace space2;
+    cout << name << endl;
+    space1::foo();
+    using space1::foo();
+    using space1::cat;
+    foo();
+    cat c;
+    c.meow();
+    using namespace space1;
+    using namespace space2;
+    foo(); //ERROR
+}
+```
+### typeid
+```cpp
+#include<typeinfo>
+A *ap = new B;
+std::cout << typeid(*ap).name() << std::endl;
+//output:B if virtual A else A
+```
+
+[错题集](https://k5ms77k0o1.feishu.cn/wiki/wikcnH7YKB6KFCwCXgRdXk2MZAf)  

@@ -73,17 +73,17 @@ nav:
     - 普通物理学实验II: fa24/physics2_lab/index.md
     - 茶文化与茶健康: fa24/tea/index.md
     - 健美操: fa24/aerobics/index.md
-  # - sp25:
-  #   - sp25/index.md
-  #   - 计算机系统III:
-  #     - sp25/sys3/index.md
-  #     - 笔记: sp25/sys3/note.md
-  #   - 数据库系统: 
-  #     - sp25/db/index.md
-  #     - 笔记: sp25/db/note.md
-  #   - 面向对象程序设计: sp25/oop/index.md
-  #   - 马克思主义基本原理(H): sp25/marx/index.md
-  #   - 习近平新时代中国特色社会主义思想概论: sp25/xi/index.md
+  - sp25:
+    - sp25/index.md
+    - 计算机系统III:
+      - sp25/sys3/index.md
+      - 笔记: sp25/sys3/note.md
+    - 数据库系统: 
+      - sp25/db/index.md
+      - 笔记: sp25/db/note.md
+    - 面向对象程序设计: sp25/oop/index.md
+    - 马克思主义基本原理(H): sp25/marx/index.md
+    - 习近平新时代中国特色社会主义思想概论: sp25/xi/index.md
 
 
 theme:

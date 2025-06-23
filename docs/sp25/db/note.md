@@ -1,4 +1,5 @@
 # 数据库系统
+孙建伶班的笔记
 
 ## Chap 1 Introduction
 
@@ -159,7 +160,7 @@ Composition of operations:e.g.$\sigma_{A=C}(r\times s)$
 (6)rename $\rho$
 Notation:$\rho_{x}(E)$  
 将E改名为x，E可以是关系代数的结果  
-$\rho_{x(A_1,...,A_n}(E)$ 将n个属性分别改名  
+$\rho_{x(A_1,...,A_n)}(E)$ 将n个属性分别改名  
 查询表达式与查询优化  
 ![alt text](image-10.png)  
 ![alt text](image-11.png)  
@@ -339,13 +340,6 @@ select name from instructor order by salary desc limit 3;-- 前三
 union/intersect/except(minus) all -- Multiset
 (select course_id from section where sem = 'Spring' and year = 2010)
 ```
-a. Find each customer who has an account at every branch located in “Brook-
-lyn”.
-
-b. Find the total sum of all loan amounts in the bank.
-
-c. Find the names of all branches that have assets greater than those of at
-least one branch located in “Brooklyn”.
 ### 3.4 Aggregate Function
 avg,min,max,sum(null = 0),count  
 ```sql
@@ -562,7 +556,7 @@ insert into faculty values('30765','Green','Music');
 insert into instructor values('30765','Green','Music',null);
 -- view is rarely updatable
 ```
-#### *Materialized view
+#### *Materialized view(details in 16.6)
 create a physical table containing all the tuples in the result of the query
 ```sql
 create materialized view
@@ -796,7 +790,7 @@ SQLSetConnectionOption(conn,SQL_AUTOCOMMIT,0)
 SQLTransact(conn,SQL_COMMIT)
 ```
 #### Embedded SQL  
-host language:C(EXEC SQL <>;),C++,Java(#SQL{};),...
+host language:C(EXEC SQL <>;),C++,Java(#SQL{}; ),...
 ```c
 main(){
     EXEC SQL INCLUDE SQLCA;
@@ -987,7 +981,7 @@ requirement specification -> conceptual-design(E-R diagram) -> logical design(sc
 方框:实体集Entity Set(加虚线partial key(discriminator) -> weak entity)  
 weak entity依赖strong entity才能唯一标识自己  
 菱形框:关系集Relationship Set(双线框(identifying relationship)连接weak entity与strong entity)  
-箭头:对应关系(有箭头一对一无箭头一对多,两边无箭头多对多,双线total participation,必须有对应)  
+箭头:对应关系(有箭头一对多,两边无箭头多对多,双线total participation,必须有对应)  
 E.g.一个department可以有多个instructor,指向department  
 E.g.每个course都要在course_dept表中,双线连接course,course_dept  
 Attribute:relationship带属性(grade)  
@@ -1061,7 +1055,7 @@ partial/total:并集是否等于全集
 
 ## Chap 7 Relational Database Design
 ### 7.1 First Normal Form
-A relational schema R is in first normal form if the domains of all attributes of R are **atomic**.  
+A relational schema R is in first normal form if the domains of all attributes of R are **atomic**(不可再分).  
 ### 7.2 A lossy/lossless Decomposition
 What is a 'good' relation?  
 Pitfalls of 'bad' relation(combined schema)  
@@ -1089,7 +1083,7 @@ This is a lossy decomposition if some people share the same name.
 The key reason of lossy is that `name` is not a key.  
 More tuples means more uncertainly,thus less information.  
 A decomposition of R into R1 and R2 is lossless if  
-**R1 ∩ R2 -> R1 or R1 ∩ R2 -> R2(公共属性一定是某一个关系的key)** 
+**R1 ∩ R2 -> R1 or R1 ∩ R2 -> R2(公共属性一定是某一个关系的key)**  
 [Goal] Decompose R into a set of relations such that each relation is a 'good' form and the decomposition is lossless  
 Normal Forms:1NF -> 2NF -> 3NF -> **BCNF** -> 4NF  
 
@@ -1097,7 +1091,7 @@ Normal Forms:1NF -> 2NF -> 3NF -> **BCNF** -> 4NF
 [Definition] $\alpha,\beta \subseteq R,\alpha \rightarrow \beta $ if $t1[\alpha] = t2[\alpha] \Rightarrow t1[\beta] = t2[\beta]$  
 K is a superkey(key) of R if $K \rightarrow R$
 K is a candidate key iff $K \rightarrow R$ and for no $\alpha \subset K,\alpha \rightarrow R$
-e.g. ID and name is a superkey of the schema student but not candidate key,because ID inself can determine a particular student  
+e.g. (ID and name) is a superkey of the schema student but not candidate key,because ID inself can determine a particular student  
 $\alpha \rightarrow \beta $ is trivial if $\beta \subseteq \alpha$  
 #### Closure(闭包) of functional dependencies  
 If $A \rightarrow B$ and $B\rightarrow C$ then $A \rightarrow C$  
@@ -1157,7 +1151,10 @@ F1 = {A->B},F2 = {A->C},F3 = {A->D},F4 = {AE->AE}不是依赖保持的
 [Definition] **Dependency Preservation(依赖保持)**：
 如果通过检验单一关系上的函数依赖，就能确保所有的函数依赖成立，那么这样的分解是依赖保持的  
 或者说，原来R上的每一个函数依赖，都可以在分解后的单一关系上得到验证或者推导得到  
-A decomposition is dependecy preserved if $(F1\cup...\cup Fn)^{+}=F^{+}$  
+A decomposition is dependency preserved if $(F1\cup...\cup Fn)^{+}=F^{+}$  
+
+!!! warning 通常根据F<sub>C</sub>判断，注意不是$F1\cup...\cup Fn=F$  
+
 对某一个R，BCNF与依赖保持可能无法同时保证  
 A relation schema is 3NF,if for any $\alpha \subseteq R,\beta \subseteq R$,at least one of the following holds:  
 
@@ -1281,9 +1278,9 @@ Each file is a sequence of records and each records is a sequence of fields
 store record *i* starting from byte *n * (i-1)*,where *n* is the size of each record  
 Delete of record *i*:  
 
-- move records i+1,...,n to i,...,n-1  
-- move record n to i  
-- do not remove records,but link all free records on a free list  
+- 法1:move records i+1,...,n to i,...,n-1  
+- 法2:move record n to i  
+- 法3:do not remove records,but link all free records on a free list  
 ![alt text](image-33.png)  
 #### Variable-length record  
 variable length for one or more fields(varchar);null-value  
@@ -1312,6 +1309,7 @@ Free-space map
 ![alt text](image-37.png)
 first level:'4' represents:4/8 free  
 second level:'4' represents the max free fraction of the relevant block  
+e.g. max{4,2,1,4} = 4,max{7,3,6,5} = 7  
 #### Sequential 
 order by a search-key  
 ![alt text](image-38.png)  
@@ -1407,7 +1405,7 @@ leaf:93 ~ 186
 2 levels: min = 2 * 93 = 186,max = 187 * 186 = 34782  
 3 levels: min = 2 * 94 * 93 = 17484,max = 187 * 187 * 186 = 6504234  
 4 levels: min = 2 * 94 * 94 * 93 = 1643496,max = 187 * 187 * 187 * 186 = 1216291758  
-ANS:3 levels  
+ANS:2 levels(tree height:3)  
 **size estimation**  
 min:  
 leaf = 1000000/186 = 5377  
@@ -1487,11 +1485,717 @@ create unique index uni-acnt-index on account(account-number);
 drop index <index_name>;
 ```
 ## Chap 15 Query Processing
+### 15.1 Basic Steps  
+
+- parsing and translation:relational algebra  
+- optimization:relational algebra optimization;algorithm selection  
+- evaluation:execution of operations(pipeline?) 
+
+relational algebra can be drawn like a tree  
+![alt text](image-45.png)  
+### 15.2 Measures of query cost  
+disk access is the predominant cost  
+
+- Number of seeks:average-seek-cost  
+- Number of blocks read:average-block-read-cost  
+- Number of blocks written:average-block-write-cost  
+  
+For simplicity,use **number of block transfers** from the disk & **number of seeks**  
+t<sub>T</sub>:one block transfer time  
+t<sub>S</sub>:one seek time  
+magnetic disk:t<sub>S</sub> / t<sub>T</sub> = 40  
+SSD:t<sub>S</sub> / t<sub>T</sub> = 10  
+algorithms may reduce disk IO by extra buffer space,we apply **worst case estimates**(minimum buffer number)
+
+### 15.3 Selection Operations  
+#### File scan
+[Algorithm1] linear scan  
+worst cost $b_r * t_T + t_S$,br:number of blocks of relation r  
+key上的等值查找,stop if found  
+average(estimated) cost:$b_r/2 * t_T + t_S$  
+#### Index scan  
+[Algorithm2] primary B+-tree index,equality on key  
+cost $(h_i + 1)*(t_T + t_S)$  
+![alt text](image-47.png)  
+[Algorithm3] primary B+-tree index,equality on nonkey(repeated)  
+cost $h_i*(t_T + t_S) + t_S + t_T * b$,b:number of blocks containing match records  
+![alt text](image-48.png)
+[Algorithm4] secondary B+-tree index,equality on key  
+cost $(h_i + 1)*(t_T + t_S)$  
+![alt text](image-49.png)  
+[Algorithm4'] primary B+-tree index,equality on nonkey,equality  
+Each of *n* matching records on different blocks  
+Using a bucket of pointers,pointers stored in *m* blocks  
+cost $(h_i + m + n)*(t_T + t_S)$  
+![alt text](image-46.png)  
+#### Comparisons
+[Algorithm5] primary B+-tree index,comparison  
+Similar to [Algorithm3],cost $h_i*(t_T + t_S) + t_S + t_T * b$
+![alt text](image-50.png)  
+[Algorithm6] secondary B+-tree index,comparison  
+requires an I/O for each record,thus linear scan may be cheaper  
+![alt text](image-51.png)  
+#### Conjunction
+$\sigma_{\theta1 \wedge \theta2 \wedge ... \wedge \theta n}(r)$  
+[Algorithm] conjunctive selection using one index/composite index/interaction of identifiers  
+### 15.4 sorting  
+bubble sort is suitable for pipelining,while quick sort is not  
+**external sorting** is preferred,see [ADS Lecture 15](https://tapir-elithril.github.io/Notebook/fa24/ads/note/#lecture-15-external-sorting)  
+  
+#### Cost analysis  
+N-way merge,M buffer blocks  
+##### Simple version
+Total number of runs:$\lceil b_r /M \rceil$
+Total number of merge passes:$\lceil log_{M-1}(b_r /M) \rceil$  
+(at least keep one block for storing the output)  
+2b<sub>r</sub> block transfers for each pass,don't count write cost for the final pass  
+Total number of block transfers:$2b_r * \lceil log_{M-1}(b_r /M) \rceil + b_r$ = $b_r * (2\lceil log_{M-1}(b_r /M) \rceil + 1)$  
+**Cost of seeks**  
+
+- run generation:$2* \lceil b_r /M \rceil$  
+- merge phase:$2b_r$ seeks for each merge pass,except the final one does not require a write  
+  $\lceil log_{M-1}(b_r /M) \rceil$merge passes  
+
+Total number of seeks:$2* \lceil b_r /M \rceil + b_r(2\lceil log_{M-1}(b_r /M)\rceil-1)$  
+
+N < M,single merge pass$\lceil b_r /M \rceil = 1$  
+#### Advanced version  
+To reduce seek time,use b<sub>b</sub> buffer blocks per run  
+merge $\lfloor M/b_b \rfloor - 1$ runs in one pass(< M-1)  
+Total number of merge passes:$\lceil log_{\lfloor M/b_b \rfloor - 1}(b_r /M) \rceil$  
+Total number of block transfers:$2b_r * \lceil log_{\lfloor M/b_b \rfloor - 1}(b_r /M) \rceil + b_r$ = $b_r * (2\lceil log_{\lfloor M/b_b \rfloor - 1}(b_r /M) \rceil + 1)$  
+**Cost of seeks**  
+
+- run generation:$2* \lceil b_r /M \rceil$  
+- merge phase:$2\lceil b_r/b_b \rceil$ seeks for each merge pass,except the final one does not require a write  
+  $\lceil log_{\lfloor M/b_b \rfloor - 1}(b_r /M) \rceil$merger passes  
+
+Total number of seeks:$2* \lceil b_r /M \rceil + \lceil b_r/b_b \rceil(2\lceil log_{\lfloor M/b_b \rfloor - 1}(b_r /M)\rceil-1)$
+
+### 15.5 Join Operation  
+#### Nested-Loop Join  
+```c
+for each tuple tr in r do begin
+    for each tuple ts in s do begin
+        test(tr,ts) to see if they satisfy the join condition
+        if so,add (tr,ts) to the result
+    end
+end
+```
+r is called outer relation,s is called inner relation  
+$b_r + b_s$ block tranfers and $2$ seeks if the memory is sufficiently large($M > min(b_r,b_s)$)  
+memory not sufficiently large,  
+block transfer:$n_r * b_s + b_r$,where n<sub>r</sub> is the record number  
+seeks:$n_r + b_r$  
+#### Block Nested-Loop Join
+```c
+for each block Br in r do begin
+    for each block Bs in s do begin
+        for each tuple tr in r do begin
+            for each tuple ts in s do begin
+                test(tr,ts) to see if they satisfy the join condition
+                if so,add (tr,ts) to the result
+            end
+        end
+    end
+end
+```
+block transfer:$b_r * b_s + b_r$  
+seeks:$2b_r$(外层b<sub>r</sub>次,内存对每个b<sub>r</sub> seek s一次,然后顺序访问)  
+**M buffers**  
+[Target] Reduce $b_r$
+Use **M-2** disk blocks for outer relations,1 for inner relation and 1 for the output  
+block transfer:$\lceil b_r/(M-2) \rceil * b_s + b_r$  
+seeks:$2\lceil b_r/(M-2) \rceil$(外层b<sub>r</sub>次,内存对每个b<sub>r</sub> seek s一次,然后顺序访问)  
+If equal-join,stop on first match  
+scan inner loop forward and backward alternatively with LRU replacement to make use of blocks in the buffer  
+
+!!! note "Consider what will happen if we need to write to disk"
+
+#### Indexed Nested-Loop Join  
+If we have a B+-tree index on the inner relation's join attribute,  
+cost:$b_r(t_T + t_S) + n_r * c$,where c is the cost of traversing index and fetch all matching tuples  
+#### Merge Join  
+join attributes are sorted on both relations  
+only for equal-joins and natural joins  
+Similar to merge stage of the merge sort  
+make sure the duplicated values are handled properly  
+cost:$b_r + b_s$ block transfers + $\lceil b_r/b_b \rceil +\lceil b_s/b_b \rceil $ seeks + sorting(if not sorted)  
+**M buffers** 
+cost:$b_r + b_s$ block transfers + $\lceil b_r/x_r \rceil +\lceil b_s/x_s \rceil $ seeks($x_r + x_s = M$)  
+$x_r = \sqrt{b_r} * M(\sqrt{b_r} + \sqrt{b_s})$
+$x_s = \sqrt{b_s} * M(\sqrt{b_r} + \sqrt{b_s})$
+**hybrid(混合) merge-join**  
+If one relation is sorted,and the other has a secondary B+-tree index on the join attribute  
+
+Instead of merging (t<sub>r</sub>,t<sub>s</sub>),merge (t<sub>r</sub>,pointer<sub>s</sub>),sorted the pointers in physical address and use pointer<sub>s</sub> to find t<sub>s</sub>,this is because adjacent pointers are likely to be in the same block  
+#### Hash Join
+For equi-joins and natural joins  
+A hash function *h* is used for partition tuples of both relations on join attribute  
+Only the attributes with the same hash value may be joined  
+Join the attributes of the same hash value applying the former methods  
+[Question] how large is a partition?  
+the value *n* and the hash function *h* is chosen such that each *si* should fit in memory  
+$n >= \lceil b_s/M\rceil$,M is the buffer number  
+Use in memory hash index to avoid double loop  
+Typically,*n* is chosen as $\lceil b_s/M\rceil * f$,*f* is called the "fudge factor"(修正因子)，*f* = 1.2  
+Recursive partition by another hash function if number of partition *n* is greater than *M*  
+**No recursive partition needed if** $ M > b_s/M + 1$,$M > \sqrt{b_s}$(s is the smaller block number relation)  
+**Cost**  
+If recursive partition is not required,  
+$3(b_r+b_s)+4n_h$ block transfers + $2(\lceil b_r/b_b\rceil+\lceil b_s/b_b\rceil)+2n_h$ seeks  
+else,  
+![alt text](image-52.png)  
 
 ## Chap 16 Query Optimization
+### 16.1 Introduction  
+Equivalent expressions(Transformation Based Optimization逻辑优化)  
+Different Algorithms for each operation(Cost Based Optimization物理优化，基于代价估算的优化)  
+常见逻辑变换：有限选择/投影操作  
+物理优化：线性扫描/B+-Tree/merge join(need sort)/hash join  
+use `set showplan_text on` to see evaluation plan  
+
+### 16.2 Generating Equivalent Expressions  
+[Definition] equivalent if and only if the two relational algebra generates the same set of tuples on every legal database instance  
+**Equivalence Rules**  
+1.Conjuctive selections can be deconstructed  
+$\sigma_{\theta 1 \wedge \theta 2}(E) = \sigma _{\theta 1}(\sigma _{\theta 2}(E))$  
+2.Selection operations are commutative(可交换的)  
+$\sigma _{\theta 1}(\sigma _{\theta 2}(E)) =  \sigma _{\theta 2}(\sigma _{\theta 1}(E))$  
+3.Only the last projection operations are needed,the others can be omitted  
+$\Pi_{l1}(\Pi_{l2}(...(\Pi_{ln}(E))...))=\Pi_{l1}(E)$  
+4.Selections can be combined with Cartesian products and theta joins to avoid composition explosion  
+$\sigma_\theta(E_1 \times E_2)=E_1\bowtie_{\theta}E_2$
+$\sigma_{\theta1}(E_1\bowtie_{\theta2}E_2)=E_1\bowtie_{\theta1 \wedge \theta2}E_2$
+5.Theta join/natural join are commutative  
+$E_1\bowtie_{\theta}E_2=E_2\bowtie_{\theta}E_1$
+6.Theta join are associative  
+$(E_1\bowtie_{\theta}E_2)\bowtie_{\theta}E_3=E_1\bowtie_{\theta}(E_2\bowtie_{\theta}E_3)$  
+$(E_1\bowtie_{\theta1}E_2)\bowtie_{\theta2 \wedge \theta3}E_3=E_1\bowtie_{\theta1 \wedge \theta3}(E_2\bowtie_{\theta2}E_3)$条件分配  
+7.selection operation distributes over the theta join operations  
+$\sigma _{\theta0}(E_1\bowtie_{\theta}E_2)=(\sigma _{\theta0}(E_1))\bowtie_{\theta}E_2$
+$\sigma _{\theta1 \wedge \theta2}(E_1\bowtie_{\theta}E_2)=(\sigma _{\theta1}(E_1))\bowtie_{\theta}(\sigma_{\theta2}(E_2))$
+8.project operation distributes  
+$\Pi _{L1 \cup L2}(E_1\bowtie_{\theta}E_2)=(\Pi _{L1}(E_1))\bowtie_{\theta}(\Pi_{L2}(E_2))$  
+L3,L4 is the join attribute:
+$\Pi _{L1 \cup L2}(E_1\bowtie_{\theta}E_2)=(\Pi _{L1\cup L3}(E_1))\bowtie_{\theta}(\Pi_{L2 \cup L4}(E_2))$  
+9.The set operations union and intersection are commutative  
+10.The set operations union and intersection are associative  
+11.selection operation distributes over $\cup \cap -$  
+$\sigma_\theta(E_1 - E_2) = \sigma_\theta (E_1) - \sigma_\theta (E_2)$ similar for $\cap \cup$  
+$\sigma_\theta(E_1 - E_2) = \sigma_\theta (E_1) - E_2$ similar for $\cap$  
+
+!!! danger "not for $\cup$"
+12.projection distributes over union  
+...  
+Join ordering  
+$(r1\bowtie r2)\bowtie r3 = r1\bowtie (r2 \bowtie r3)$  
+smaller intermediate results execute first  
+### 16.3 Statistics for Cost Estimation  
+
+- $n_r$:number of tuples in a relation  
+- $b_r$:number of blocks  
+- $l_r$:size of tuple  
+- $f_r$:blocking factor,the number of tuples of *r* that fit into one block  
+  $b_r = \lceil \frac{n_r}{f_r}\rceil$
+- $V(A,r)$:number of distinct values that appear for r for attribute A,same as $\Pi_A(r)$
+  
+#### Histograms直方图  
+Equi-width,Equi-depth  
+
+#### Size Estimation  
+##### Selection
+$\sigma_{A=v}(r)$:  
+
+- $n_r/V(A,r)$  
+- A is a candidate key,size = 1  
+  
+$\sigma_{A<v}(r)$:(output c)  
+
+- c=0,if v < min(A,r)  
+- $c = n_r*\frac{v-min(A,r)}{max(A,r)-min(A,r)}$ for even distribution  
+  
+[Definition] selectivity(中选率):the probability that a tuple in relation r satisfies $\theta_i$  
+Conjunction:$\sigma_{\theta 1\wedge \theta2\wedge...\wedge\theta n(r)}$ assuming independence  
+result estimation:$n_r*\frac{s_1 * s_2 * ... * s_n}{n_r^n}$  
+Disjunction:$\sigma_{\theta 1\vee \theta2\vee...\vee\theta n(r)}$  
+result estimation:$n_r*(1-(1-\frac{s_1}{n_r})*(1-\frac{s_2}{n_r})*...*(1-\frac{s_n}{n_r}))$  
+##### Join
+
+- $r \times s$:$n_r*n_s$  
+- If $R\cap S = \varnothing$,$r \bowtie s = r \times s$  
+- If $R\cap S$ is a key for R,$r \bowtie s <= n_s$  
+- If $R\cap S$ is a foreign key in S referencing R,$r \bowtie s = n_s$(except null) 
+- If $R\cap S = {A}$ is not a key for R or S  
+  $r \bowtie s <= min\{\frac{n_r*n_s}{V(A,s)},\frac{n_r*n_s}{V(A,r)}\}$
+
+##### Other
+$\Pi_A(r)$ = V(A,r)  
+$_A\mathcal{g}_F(r)$ = V(A,r)  
+![alt text](image-53.png)  
+
+##### Number of distinct values  
+### 16.4 Cost-Based Join-Order Selection  
+$r_1 \bowtie r_2 \bowtie ...\bowtie r_n$  
+$\frac{2(n-1)!}{(n-1)!}$ different orders  
+Find the least cost order by applying **dynamic programming**(see [ADS Lec 8](https://tapir-elithril.github.io/Notebook/fa24/ads/note/#fundamental-problem))  
+![alt text](image-54.png)  
+```c
+Procedure findbestplan(S)
+    if(bestplan[S].cost != ∞)
+        return bestplan[S]
+    if(S contains only one relation)
+        set bestplan[S].plan and bestplan[S].cost based on the best way 
+        of accessing S using selections on S and indices (if any) on S
+    else for each non-empty subset S1 of S such that S1 != S
+        P1 = findbestplan(S1)
+        P2 = findbestplan(S - S1)
+        for each algorithm A for joining P1 and P2
+            ...commute plan and cost using A...
+        if cost < bestplan[S].cost
+            bestplan[S].cost = cost
+            bestplan[S].plan = plan
+    return bestplan[S]
+```
+T = O(3<sup>n</sup>)  
+S = O(2<sup>n</sup>)  
+**Left Deep Join Tree**:the right-hand-side input for each join is a relation,not the result of an intermediate join  
+![alt text](image-55.png)  
+Modify optimization algorithm by applying left-deep join tree  
+Replace "for each non-empty subset S1 of S such that S1 != S"  
+by "for each relation r in S,let S1 = S - r"  
+T = O(n*2<sup>n</sup>)  
+S = O(2<sup>n</sup>)  
+### 16.5 Nested Subqueries  
+```sql
+select name from instructor 
+    where exists(
+    select * from teaches where instructor.ID = teaches.ID and teaches.year = 2022
+    );
+```
+Correlation variables:parameters are variables from outer level query  
+```sql
+-- rewritten
+select name from instructor,teaches 
+    where instructor.ID = teaches.ID and teaches.year = 2022;
+```
+[Problem] generate different number of duplicates  
+semijoin半连接$\ltimes$:return if a tuple in *r* can be joined with a tuple in *s*  
+```sql
+select name from instructor where ID in
+    (select teaches.ID from teaches where year = 2022);
+```
+using not exist:  
+```sql
+select name from instructor where not exists
+    (select * from teaches where 
+    instructor.ID = teaches.ID and teaches.year = 2022);
+```
+using anti-semijoin $\overline{\ltimes}$  
+$\Pi_{name}(instructor\overline{\ltimes}_{instructor.ID = teaches.ID \wedge teaches.year = 2022}teaches)$
+More complex rewritten  
+```sql
+select A from r1,...,rn where
+    P1 and exists(select * from s1,...,sm where P21 and P22);
+```
+$\Pi_A(\sigma_{P1}(r_1 \times ... \times r_n)\ltimes_{P_2^2}\sigma_{P_2^1}(s_1 \times ...\times s_m)$  
+$P_2^1$ contains predicates that do not involve correlation variables  
+$P_2^2$ contains predicates involving correlation variables  
+The process of replacing a nested query by join/semijoin is called **decorrelation**  
+**groupby**  
+```sql
+select name from instructor
+    where 1 < (select count(*) from teaches where
+        instructor.ID = teaches.ID and teaches.year = 2022);
+```
+$\Pi_{name}(instructor\ltimes_{instructor.ID = TID \wedge 1<cnt(ID\ as\ TID\ \gamma count(*)\ as\ cnt)}(\sigma_{teaches.year = 2022}(teaches))))$
+
+### 16.6 Materialized Views
+```sql
+create view department_total_salary(dept_name,total_salary) as 
+select dept_name,sum(salary)
+from instructor
+group by dept_name;
+```
+**maintenance**  
+1.recomputation  
+2.incremental view maintenance  
+
+#### Join
+Consider a view $v = r \bowtie s$ and an update on *r*  
+$r^{new} \bowtie s = (r^{old} \cup i_r)\bowtie s = (r^{old}\bowtie s)\cup(i_r \bowtie s)$  
+$v^{new} = v^{old}\cup(i_r \bowtie s)$  
+For deletion,$v^{new} = v^{old} - (d_r \bowtie s)$  
+#### Selection and projection  
+Consider a view $v = \sigma_\theta(r)$  
+$v^{new} = v^{old}\cup \sigma_\theta(i_r)$  
+R = (A,B),r(R) = {(a,2),(a,3)}  
+$\Pi_A(r) = (a)$  
+For each tuple in the projection,keep a count of how many times it was derived  
+#### Aggregation  
+average salary:keep a count of teacher_num  
+search again for some min and max  
+median,variance(方差)  
+#### Materialized view selection  
+Based on typical system workload  
+#### Advanced topics in query optimation  
+Top-K queries  
 
 ## Chap 17 Transactions
+### 17.1 Transaction Concept
+[Definition] A Transaction is a unit of program execution that accesses and probably updates various data items  
+major issues to deal with:failure(recovery) & concurrent execution(concurrency control)  
+ACID:atomicity,consistency,isolation,durability  
+[Definition] transaction model:data access operations:read(X),write(X)  
+![alt text](image-58.png)  
+**Fund transfer**  
+```c
+read(A);
+A:= A - 50;
+write(A);
+------------
+read(B);
+B:= B - 50;
+write(B);
+```
+Atomicity:updates of a partially executed transaction(finish `write(A)` but not `write(B)`) are not reflected in the database  
+Durability:once the user has been notified that the transaction has completed,the updates must persist despite failures  
+Consistency:the sum of A & B unchanged  
+    explicit(显式) integrity constraints:primary keys,foreign keys  
+    implicit(隐式) integrity constraints:sum of all accounts - sum of loan accounts = cash-in-hand  
+    temporarily inconsistent during execution but the database consistency after completion  
+Isolation:another transaction is abandoned if the database is partially updated  
+    solution:serially(串行),concurrency control  
+### 17.2 Transaction States  
+
+- Active:initial state,executing  
+- Partially committed:after final statement executed  
+- Failed  
+- Aborted:transaction rolled back and database restored to its initial state,then restart the transaction or kill  
+- Committed  
+  
+![alt text](image-59.png)  
+### 17.3 Concurrent Execution  
+Advantages of concurrent execution:increased processor and disk utilization,reduced average response time(see OS)  
+Problems:
+1.Lost Update:修改丢失read before commit  
+2.Dirty Read:读脏数据read before rollback    
+3.Unrepeatable Read:不可重复读read value changed in one transaction  
+![alt text](image-61.png)   
+4.Phontom Problem:幽灵问题query result changed in one transaction  
+![alt text](image-62.png)  
+
+#### Schedules
+T1:transfer $50 from A to B,T2:transfer 10% of the balance from A to B  
+[Schedule1] serial schedule:T1 is followed by T2  
+[Schedule2] serial schedule:T2 is followed by T1  
+[Schedule3] cross schedule(equivalent to Schedule1)  
+![alt text](image-63.png)  
+the sum A+B is preserved  
+[Schedule4] A+B not preserved   
+![alt text](image-65.png)  
+
+### 17.4 Serializability(可串行化)  
+A schedule is serializability if it is equivalent to a serial schedule  
+#### Conflict serializablility  
+[Definition] conflicting instructions:Instruction Ii and Ij and transaction Ti and Tj  
+two instructions are conflicing iff there exists some item Q accessed by both Ii and Ij and at least one of them wrote Q  
+a conflict forces a temporal order  
+[Definition] conflict equivalent:a schedule *S* can be transformed into *S'* by a series of swaps of non-conflicting instructions  
+*S* is conflict serializable if it is conflict equivalent to a serial schedule  
+##### Testing  
+Procedence graph(前驱图):vertex = transaction,edge = conflict,arrow = early access -> late access  
+[Theorem] A schedule is conflict serializable iff its precedence graph is acyclic(无环的)   
+Cycle-detection algorithm:T = O(n<sub>2</sub>) or O(n + e)  
+serializability order obtained by **topological sorting**  
+#### View serializablity  
+(weaker than conflict serializability)  
+[Definition] view equivalent:two schedules *S* and *S'* for the same transaction are view equivalent if for each data item Q  
+1. In *S*,if Ti reads the initial value of Q then in *S'*,Ti must also read the initial value of Q  
+2. In *S*,if Ti executes `read(Q)` and that value was produce by Tj,then in *S'* ,Ti must read the value of Q that was produced by the same `write(Q)` of Tj  
+3. In *S*,if Ti writes the final value of Q then in *S'*,Ti must also writes the final value of Q  
+
+*S* is view serializable if it is view equivalent to a serial schedule  
+Every conflicting serializable schedule is view serializable but conversely is not  
+#### Other notions  
+If a schedule is not view serializable(of course not conflict serializable too),it can still be a serializable schedule (because of operation commutative,...)  
+### 17.5 Recoverablility
+[Definition] recoverable schedule:If Tj reads a data previously written by Ti,then the commit operation of Ti must appear before the commit operation of Tj  
+![alt text](image-66.png)  
+[Definition] cascading rollback(级联回滚):A single transaction failure leads to a series of transaction rollbacks  
+A waste of system resources!  
+[Modification] cascadeless schedule:for each transaction pair Ti and Tj,if Tj reads a data item previously written by Ti,then the commit operation of Ti must appear before the read operation of Tj(avoid dirty read)  
+A trade-off:Throughput of transaction decreases  
+### 17.6 Isolation level
+Weak-level consistency:allowing schedules being not serializble —— read-only transaction,database statistics  
+
+- Serializable  
+- Repeatable Read(ignore Phontom Problem)  
+- Read Committed(ignore Unrepeatable Read)  
+- Read Uncommitted(ignore Dirty Read)  
+
+```sql
+set transaction isolation level serializable
+```
+```java
+connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE)
+```
 
 ## Chap 18 Concurrency Control
+### 18.1 Lock-Based Protocols  
+exclusive(X):data can be both read and written  
+shared(S):data can be only read  
+Lock compatibility matrix相容锁矩阵:  
+Any number of transactions can hold S locks but if any transaction holds X lock on an item no other transactions can hold the lock,they can only wait  
+#### The Two-Phase Locking Protocol
+Phase 1:Growing Phase(only obtain locks)  
+lock point:items all got its locks  
+Phase 2:Shrinking Phase(only release locks)  
+```c
+lock-S(A);
+read(A);
+lock-S(B);//lock point
+read(B);
+unlock(A);
+unlock(B);
+display(A+B);
+```
+[Theorem] Two-Phase Locking Protocol assures serailizability  
+Transactions can be serialized in the order of their lock points  
+##### Proof by Contradiction  
+Using precedence graph,if there's an edge from Ti to Tj,then LP(Ti) < LP(Tj)(LP:Lock point),because in 2PL, we must lock before access  
+If the precedence graph has a cycle(e.g. T1 -> T2 -> T3 -> T1)  
+Then LP(T1) < LP(T2) < LP(T3) < LP(T1),contradiction!  
+![alt text](image-67.png)  
+##### Proof by Induction  
+Let Ti be the transaction with minimum lock point(LP)  
+[反证] If there is an operation OPj of another transaction Tj that blocks an operation OPi of Ti  
+Then LP(Tj) < LP(Ti),contradiction!  
+![alt text](image-68.png)  
+#### Extension
+[Problem] 2PL is not recoverable(dirty read)  
+Strict 2PL:a transaction must hold all its X locks until it commits/aborts  
+[Theorem] Strict 2PL is recoverable and avoids cascading rollbacks  
+Rigorous(强) 2PL:a transaction must hold all its locks(X&S) until it commits/aborts  
+Transactions can be serialized in the order of their commits  
+#### Exercise
+[Theorem] 2PL 是可串行的充分非必要条件  
+
+|T1|T2|T3|
+|---|---|---|
+|write C|||
+||write C||
+|||write A|
+|write A|||
+
+T3 -> T1 -> T2  
+
+|T1|T2|T3|
+|---|---|---|
+|lock-X(C)|||
+|write C||||
+|**unlock(C)**|||
+||**lock-X(C)**||
+||write C||
+||unlock(C)||
+|||lock-X(A)|
+|||write A|
+|||**unlock(A)**|
+|**lock-X(A)**|||
+|write A|||
+|unlock(A)|||  
+
+T1没有遵守2PL但是冲突可串行的  
+#### Lock Conversions
+potential update:S OR X  
+First Phase(lock upgrade):lock-U(default S can be converted to X)  
+Second Phase(lock downgrade):convert X to S  
+![alt text](image-69.png)  
+#### Automatic Lock Acquisition  
+```c
+// read(D)
+if Ti has a lock on D
+    then
+        read(D);
+    else 
+        if necessary wait until no other transactions has X on D
+        grant Ti S on D;
+        read(D);
+```
+```c
+// write(D)
+if Ti has X on D
+    then
+        write(D);
+    else
+        if necessary wait until no other transactions has any lock on D
+        if Ti has S on D
+            then
+                upgrade lock on D to X
+        else
+            grant Ti X on D
+        write(D);
+```
+#### Implementation —— lock manager
+The lock manager maintains a data structure called a lock table to record granted locks and pending requests  
+**lock table**  
+in-memory hash table  
+![alt text](image-70.png)  
+对Data123(T1,T8:S,T2:wait for X)  
+another data structure for transaction-lock mapping  
+
+### 18.2 Deadlock handling
+```c
+T1                  T2
+lock-X on A 
+write(A)
+                    lock-X on B
+                    write(B)
+                    wait for lock-X on A
+wait for lock-X on B
+```
+2PL cannot avoid deadlock  
+**deadlock prevention**:predeclaration,impose partial ordering(graph-based protocol),timeout-based scheme(giveup if wait too long,but causing starvation)  
+**deadlock detection**:whether wait-for graph(see [sys2-OS](https://tapir-elithril.github.io/Notebook/fa24/sys2/note/#deadlocks-week15)) has a cycle  
+**deadlock recovery**:kill the minimum-cost victim(nearest rollback instead of total rollback),include the number of rollbacks in the cost factor to avoid starvation  
+### 18.3 Graph-Based Protocols
+Impose a partial ordering on set D = {d1,d2,...,dn}  
+If di -> dj,then transaction must access di before dj  
+database graph:directed acyclic graph  
+![alt text](image-72.png)  
+**Tree Protocol**  
+1.Only exclusive locks are allowed  
+2.The first lock by Ti may be on any data item but a data Q can be locked only if its parent is locked beforehand  
+3.Data items can be unlocked at any time(not 2PL)  
+4.A data item has been locked and unlocked by Ti cannot be locked later  
+[Theorem] Tree Protocol assures conflict serializability and avoids deadlock but does not guarantee recoverability or cascade freedom(dirty read)  
+### 18.4 Multiple Granularity(多粒度)
+A hierarchy of data granularity,graphically represented as a tree  
+fine granularity(lower in tree),coarse granularity(higher in tree)  
+from root to leaf:database -> area -> file(table) -> record -> attribute  
+**Intention Lock Modes**  
+intention-shared(IS):indicate the intention to have an S lock on the node's descendent  
+intention-exclusive(IX)  
+shared and intention-exclusion(SIX)  
+对table加上S/X锁，就不再需要对每个record加锁  
+**Compatibility Matrix**  
+![alt text](image-74.png)  
+意向锁之间不相互冲突(IX与SIX冲突，实际上是IX与S冲突)  
+![alt text](image-75.png)  
+lock from root to leaf,unlock from leaf to root  
+### 18.5 Insert and Delete Operations  
+using X lock,but lead to phantom phenomenon(non-serializable)  
+Only lock the tuple is not enough  
+#### Phantom Prevention 
+##### Index Locking Protocol 
+A transaction Ti that performs a lookup must lock all the index leaf nodes on S  
+A transaction Ti that performs inserts,updates or deletes on relation *r* must lock indices to *r* on X  
+[Problem] requires locking the entire leaf  
+##### Next-Key Locking 
+[Definition] lock all values that satisfy index lookup and the next key value in index  
+![alt text](image-76.png)   
+lock the next key value to ensure that range queries will conflict with insert/delete/update(让冲突在值上表现出来)  
+### 18.6 Multiversion 2PL  
+Instead of modifying,we use versions,read operation just need to select an appropriate version  
+```sql
+select transaction read only;
+select transaction read write;
+```
+update transaction:  
+(1)read:obtain an S lock and read the latest version  
+(2)write:obtain an X lock and create a new version(timestamp ∞)  
+(3)commit:(global)version = ts-counter + 1;ts-counter++;unlock;  
+read-only transaction:return the version with the largest timestamp <= TS(Ti)  
 
 ## Chap 19 Recovery System
+### 19.1 Failure Classification
+Database application:transaction failure(logical errors,system errors)  
+DBMS/OS:system crash(power failure,software failure,hardware failure)  
+Database:disk failure(head crash磁头碰撞,other disk failure)  
+### 19.2 Storage Structure
+Volatile storage:cannot survive from system crashes  
+Nonvolatile storage:survive system crashes but may still fail  
+Stable storage:survives all failures(mythical,implement by maintaining multiple copies on distinct nonvolatile media)  
+### 19.3 Log-Based Recovery
+Atomicity:undo  
+Durability:redo  
+Recovery Algorithm:normal transaction processing(keep info),after failure  
+assume strict-2PL ensures no dirty read  
+Idempotent(幂等性):A recovery algorithm is idempotent if executing it several times gives the same result as executing it once  
+#### Log Records  
+log is kept on stable storage  
+start:<Tistart>  
+update(write(X)):<Ti,X,V1,V2>(V1:value before update,V2:value after update)  
+commit:<Ticommit>  
+abort:<Tiabort>  
+Redo:repeating history -> undo list(executing transactions when crash)  
+![alt text](image-77.png)  
+Only undo Line 8,12 by taking advantage of pointers  
+[Problem] processing the entire log is time-consuming  
+[Solution] **checkpoints**:assert the formal operations have written to database  
+write ahead logging principle(WAL)优先日志记录原则  
+1.output all log records (from log buffer) to stable storage  
+2.output all modified buffer blocks to the disk  
+3.write <Checkpoint L> to stable storage(L:active transaction list)  
+note:all updates while checkpointing  
+redo from checkpoint  
+![alt text](image-78.png)  
+[Problem] Frequent checkpoints and updates cannot execute while checkpointing  
+modern design:checkpoint when log record reach a number limit  
+#### Log Record Buffering  
+Log records are output to stable storage only if a block of log records is full or a log force operation is executed   
+Group commit:several log records can be output using a single output operation(may lose some operations)  
+#### Fuzzy Checkpointing
+allow updates happen during checkpointing  
+1.temporarily stop all updates  
+2.write <Checkpoint L> and force log  
+3.list M of modified buffer blocks(dirty data)(COW/MVCC/double dirty mark)  
+4.permit transactions  
+5.output to disk to all modified buffer blocks(WAL)  
+6.store a pointer to the checkpoint record in a fixed position last_checkpoint on disk(update the pointer only after dirty data written to disk)  
+start recovering from the checkpoint pointed by last_checkpoint  
+#### Non-volatile Storage
+Periodically dump(转存) the entire content of database to stable storage by using checkpoint  
+recover:reset and undo from dump  
+fuzzy dump & online dump
+### 19.4 Recovery with early lock release and logical undo operations(反操作)
+![alt text](image-79.png)  
+Before operation end,use physical undo  
+After operation end,lock has been released,use logical undo according to the info stored in <operation-end>  
+#### Failure Recovery
+Redo from the nearest checkpoint  
+Undo the operations in undo list  
+![alt text](image-80.png)  
+
+!!! danger "区分logical与physical undo"  
+
+### 19.5 ARIES Recovery Algorithm
+**SOTA**  
+[Structure] log sequence number(LSN),page LSN(last modify LSN),dirty page table  
+recover if pageLSN in buffer pool > pageLSN on disk  
+RecLSN:the first LSN modify the page after page LSN on disk  
+![alt text](image-82.png)  
+#### Recovery
+3 Phase:analyze,redo & undo  
+![alt text](image-83.png)  
+**Analysis pass**  
+1.start from the last checkpoint record  
+    1.1read dirty page table  
+    1.2set RedoLSN = min of RecLSNs  
+    1.3set undo-list = list of transactions in checkpoint log record  
+    1.4read LSN of the last log record for transactions in undo-list from checkpoint log record  
+2.scan forward from checkpoint  
+    2.1add undo-list if log record transaction not in  
+    2.2for update record,if page not in dirty page table,add with RecLSN set to LSN;if page in dirty page table,update PageLSN set to LSN;  
+    2.3for transaction end record,delete from undo-list  
+RedoLSN:where to start redo  
+RecLSN:minimize redo work  
+undo-list:all the transactions on undo-list should be rolled back  
+**Redo pass**  
+Scan forward from RedoLSN  
+    for update record,if page not in dirty page table or LSN < RecLSN,skip  
+    otherwise fetch the page from disk,if pageLSN on disk < LSN,redo,else skip too  
+**Undo pass**  
+Generate CLR(Compensation Log Record)  
+Set UndoNextLSN of the CLR to the prevLSN value of the update log record  
+![alt text](image-84.png)  
