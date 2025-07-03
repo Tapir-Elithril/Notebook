@@ -19,11 +19,6 @@ nav:
     - Makefile: tools/makefile/index.md
   #   - Html: tools/html/index.md
   #   - reveal-md: tools/reveal-md/index.md
-  - research:
-    - research/index.md
-    - temp:
-      - llm_vulnerability: research/LLM/llm4sec_table.md
-    # - 论文写作工具: research/paper_tools/index.md
   - fa23:
     - fa23/index.md
     - 军训: fa23/military_training/index.md
@@ -84,7 +79,15 @@ nav:
     - 面向对象程序设计: sp25/oop/index.md
     - 马克思主义基本原理(H): sp25/marx/index.md
     - 习近平新时代中国特色社会主义思想概论: sp25/xi/index.md
-
+    - 数据要素交易基础:
+      - sp25/data_market/index.md
+      - 笔记: sp25/data_market/note.md
+  - research:
+    - data_target: research/data/note.md
+    - llm_infra:
+      - kvcache: research/llm_vuln/kvcache.md
+      - llm_vulnerability: research/llm_vuln/llm_vulnerability.md
+      - mcp: research/llm_vuln/mcp.md
 
 theme:
   name: material
