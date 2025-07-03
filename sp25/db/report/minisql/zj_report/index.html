@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tapir's Notebook" name="description"/>
+<meta content="杨亿酬" name="author"/>
+<link href="https://tapir-elithril.github.io/Notebook/sp25/db/report/minisql/zj_report/" rel="canonical"/>
+<link href="../../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.15" name="generator"/>
+<title>Zj report - Tapir's Notebook</title>
+<link href="../../../../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"JetBrains Mono"}</style>
+<link href="../../../../../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../../../../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="orange" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#database-system">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Tapir's Notebook" class="md-header__button md-logo" data-md-component="logo" href="../../../../.." title="Tapir's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Tapir's Notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Zj report
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="切换至夜间模式" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="切换至夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="切换至日间模式" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="切换至日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../..">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../tools/">
+          
+  
+  
+    
+  
+  tools
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../fa23/">
+          
+  
+  
+    
+  
+  fa23
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../sp24/">
+          
+  
+  
+    
+  
+  sp24
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../fa24/">
+          
+  
+  
+    
+  
+  fa24
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../">
+          
+  
+  
+    
+  
+  sp25
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../research/data/note/">
+          
+  
+  
+    
+  
+  research
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Tapir's Notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../../../.." title="Tapir's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Tapir's Notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../..">
+<span class="md-ellipsis">
+    首页
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../tools/">
+<span class="md-ellipsis">
+    tools
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            tools
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/git/">
+<span class="md-ellipsis">
+    Git
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/linux/">
+<span class="md-ellipsis">
+    Linux
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/markdown/">
+<span class="md-ellipsis">
+    Markdown
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../tools/latex/">
+<span class="md-ellipsis">
+    LaTeX
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            LaTeX
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/latex/format/">
+<span class="md-ellipsis">
+    文献
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/latex/symbols/">
+<span class="md-ellipsis">
+    常用符号
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/makefile/">
+<span class="md-ellipsis">
+    Makefile
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa23/">
+<span class="md-ellipsis">
+    fa23
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            fa23
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/military_training/">
+<span class="md-ellipsis">
+    军训
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/math_analysis1/">
+<span class="md-ellipsis">
+    数学分析(甲)I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/programming/">
+<span class="md-ellipsis">
+    程序设计与算法基础
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/linear_algebra1/">
+<span class="md-ellipsis">
+    线性代数I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/modern_history/">
+<span class="md-ellipsis">
+    中国近现代史纲要(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/morality_law/">
+<span class="md-ellipsis">
+    思想道德与法治
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/political_philosophy/">
+<span class="md-ellipsis">
+    近代西方政治哲学导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/astronomy/">
+<span class="md-ellipsis">
+    天文学导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/psychology/">
+<span class="md-ellipsis">
+    心理学及应用
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/career_planning/">
+<span class="md-ellipsis">
+    职业生涯规划
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/reform_and_openup/">
+<span class="md-ellipsis">
+    中国改革开放史
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/orienteering/">
+<span class="md-ellipsis">
+    定向越野
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/fitness/">
+<span class="md-ellipsis">
+    身体素质课
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../sp24/">
+<span class="md-ellipsis">
+    sp24
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            sp24
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/math_analysis2/">
+<span class="md-ellipsis">
+    数学分析(甲)II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../sp24/sys1/">
+<span class="md-ellipsis">
+    计算机系统I
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统I
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/sys1/CPU/">
+<span class="md-ellipsis">
+    单周期CPU
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/physics1/">
+<span class="md-ellipsis">
+    普通物理学I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/discrete_math/">
+<span class="md-ellipsis">
+    离散数学理论基础
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/linear_algebra2/">
+<span class="md-ellipsis">
+    线性代数II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../sp24/fds/">
+<span class="md-ellipsis">
+    数据结构基础
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_7">
+<span class="md-nav__icon md-icon"></span>
+            数据结构基础
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/fds/struct/">
+<span class="md-ellipsis">
+    常见结构体
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/physics1_lab/">
+<span class="md-ellipsis">
+    普通物理学实验I
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/cyber_security/">
+<span class="md-ellipsis">
+    网络空间安全导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/piano/">
+<span class="md-ellipsis">
+    打开艺术之门——钢琴
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/swimming/">
+<span class="md-ellipsis">
+    游泳(初级)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/fitness/">
+<span class="md-ellipsis">
+    身体素质课
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/situation_policy1/">
+<span class="md-ellipsis">
+    形势与政策I
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/ctf/">
+<span class="md-ellipsis">
+    课程综合实践I——安全攻防实践基础(CTF)
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa24/">
+<span class="md-ellipsis">
+    fa24
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            fa24
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa24/sys2/">
+<span class="md-ellipsis">
+    计算机系统II
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统II
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/sys2/note/">
+<span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/physics2/">
+<span class="md-ellipsis">
+    普通物理学II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa24/ads/">
+<span class="md-ellipsis">
+    高级数据结构与算法分析
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/ads/note/">
+<span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/probability/">
+<span class="md-ellipsis">
+    概率论(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/aid/">
+<span class="md-ellipsis">
+    人工智能引论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/military_theory/">
+<span class="md-ellipsis">
+    军事理论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/physics2_lab/">
+<span class="md-ellipsis">
+    普通物理学实验II
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/tea/">
+<span class="md-ellipsis">
+    茶文化与茶健康
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/aerobics/">
+<span class="md-ellipsis">
+    健美操
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../">
+<span class="md-ellipsis">
+    sp25
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            sp25
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../sys3/">
+<span class="md-ellipsis">
+    计算机系统III
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统III
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sys3/note/">
+<span class="md-ellipsis">
+    笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../">
+<span class="md-ellipsis">
+    数据库系统
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            数据库系统
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../note/">
+<span class="md-ellipsis">
+    笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../oop/">
+<span class="md-ellipsis">
+    面向对象程序设计
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../marx/">
+<span class="md-ellipsis">
+    马克思主义基本原理(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../xi/">
+<span class="md-ellipsis">
+    习近平新时代中国特色社会主义思想概论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../data_market/">
+<span class="md-ellipsis">
+    数据要素交易基础
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_7">
+<span class="md-nav__icon md-icon"></span>
+            数据要素交易基础
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../data_market/note/">
+<span class="md-ellipsis">
+    笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    research
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            research
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/data/note/">
+<span class="md-ellipsis">
+    data_target
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+<span class="md-ellipsis">
+    llm_infra
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_2">
+<span class="md-nav__icon md-icon"></span>
+            llm_infra
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/llm_vuln/kvcache/">
+<span class="md-ellipsis">
+    kvcache
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/llm_vuln/llm_vulnerability/">
+<span class="md-ellipsis">
+    llm_vulnerability
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/llm_vuln/mcp/">
+<span class="md-ellipsis">
+    mcp
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/Tapir-Elithril/Notebook/edit/main/docs/sp25/db/report/minisql/zj_report.md" rel="edit" title="编辑此页">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<p><br/></p>
+<p><font face="Times"></font></p>
+<div align="center">
+<img src="img/image.png" width="45%"/>
+</div>
+<h1 id="database-system"><font size="20"></font><center>DataBase System</center><a class="headerlink" href="#database-system" title="Permanent link">¶</a></h1>
+<p><br/><br/></p>
+<h1 id="minisql"><font size="20"></font><center><font face="Times"><span>MiniSQL<span class="heti-spacing"> </span></span>个人设计报告</font></center><a class="headerlink" href="#minisql" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p><br/><br/><br/><br/></p>
+<div align="center">
+<font face="楷体" size="5">
+        姓名：<u>   钟 剑   </u><br/><br/><br/>
+        日期：<u>  6 月 4 日   </u>
+</font>
+</div>
+<div style="page-break-after: always;"></div>
+<h2 id="_1">一、 实验背景与目的<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>基于给定框架基础设计并实现一个精简型单用户<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>引擎<span><span class="heti-spacing"> </span>MinSQL</span></li>
+<li>在本次项目中，实现<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>引擎支持用户通过字符界面输入<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>语句实现简单的增、删、改、查操作</li>
+<li>同时可以通过索引来进行查询的性能优化</li>
+<li>在本次实验中， 设计并完成<span class="heti-skip"><span class="heti-spacing"> </span>Index<span class="heti-spacing"> </span></span>与部分<span><span class="heti-spacing"> </span>Executor</span></li>
+</ul>
+<p></p>
+<h2 id="_2">二、 设计完成内容<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>在本次实验中，设计完成了：</li>
+<li><code>B+ tree</code>相关<code>index</code><span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span><code>page</code>模块<span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>相关文件：
+  <img alt="alt text" src="img/image-5.png"/>
+<img alt="alt text" src="img/image-6.png"/></li>
+<li><code>executor_engine</code>执行相关模块，相关文件：
+  <img alt="alt text" src="img/image-8.png"/></li>
+<li>并参与工程最后的调试与优化</li>
+</ul>
+<p></p>
+<h2 id="_3">三、 具体模块设计<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="b-tree"><code>B+ Tree</code>相关模块设计<a class="headerlink" href="#b-tree" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p></p>
+<h4 id="1">1、 <strong>整体架构</strong><a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
+<h5 id="_4">节点数据页管理<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h5>
+<p><img alt="alt text" src="../img/image-3.png"/></p>
+<ul>
+<li><code>b plus tree leaf page</code> 与 <code>b plus tree internal page</code>都继承自 <code>b plus tree page</code>。</li>
+<li>每个<code>Page</code>段包含多个键值对<code>pair</code><span><span class="heti-spacing"> </span>(</span><code>key</code><span><span class="heti-spacing"> </span>,</span><code>value</code><span><span class="heti-spacing"> </span>)</span>：</li>
+<li><strong>对 <code>Internal Page</code></strong>:
+  <img alt="alt text" src="img/image-10.png"/><ul>
+<li>对一个内部节点，其中包含<span class="heti-skip"><span class="heti-spacing"> </span>m<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>pair,<span class="heti-spacing"> </span></span>其中有<span class="heti-skip"><span class="heti-spacing"> </span>m-1<span class="heti-spacing"> </span></span>个 <code>key</code>，<span>m<span class="heti-spacing"> </span></span>个 <code>pointer</code>即子节点页号，需要注意键与指针数量不同，因此第一个置为<code>invalid</code></li>
+<li>而<code>middle key</code>指的正是这个<code>invalid</code>位置应该储存的<code>key</code>。当一个内部节点分裂，需要将这个位置的<code>key</code>移到父节点中存储； 而当此内部节点需要进行<span class="heti-skip"><span class="heti-spacing"> </span>merge<span class="heti-spacing"> </span></span>或者<span><span class="heti-spacing"> </span>redistribute</span>，则需要从父节点中取出<code>middle key</code>存回该节点。</li>
+</ul>
+</li>
+<li><strong>对 <code>Leaf Page</code></strong> :
+  <img alt="alt text" src="img/image-12.png"/><ul>
+<li>对一个叶子节点，其中包含<span class="heti-skip"><span class="heti-spacing"> </span>m<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>pair,<span class="heti-spacing"> </span></span>其中有<span class="heti-skip"><span class="heti-spacing"> </span>m<span class="heti-spacing"> </span></span>个 <code>key</code>，<span>m<span class="heti-spacing"> </span></span>个<code>RowId</code><span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>记录<code>key</code>对应<span class="heti-skip"><span class="heti-spacing"> </span>row<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>table heap<span class="heti-spacing"> </span></span>中的位置<span><span class="heti-spacing"> </span>)</span> 。</li>
+</ul>
+</li>
+</ul>
+<p></p>
+<h5 id="b"><span>B+<span class="heti-spacing"> </span></span>树整体结构<a class="headerlink" href="#b" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h5>
+<p><img alt="alt text" src="../img/image-4.png"/>
+<img alt="alt text" src="img/image-7.png"/></p>
+<ul>
+<li>当需要建立一个索引时，需要先将索引加入<code>Index Root Page</code>中，然后籍此建立索引<span class="heti-skip"><span class="heti-spacing"> </span>B+<span class="heti-spacing"> </span></span>树。</li>
+<li>当用到某页时，需要从<span class="heti-skip"><span class="heti-spacing"> </span>buffer pool<span class="heti-spacing"> </span></span>中<code>fetch</code>，但使用完后需要进行<code>unpin</code>，避免引用计数一直不减少，无法回收页。</li>
+</ul>
+<p></p>
+<h4 id="2">2、 部分代码分析<a class="headerlink" href="#2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<blockquote>
+<p>由于具体代码较多，因此仅给出部分代码及函数名，详细可在源码中查看。</p>
+</blockquote>
+<h5 id="internal-page">Internal Page<a class="headerlink" href="#internal-page" title="Permanent link">¶</a></h5>
+<ul>
+<li><code>Lookup</code>函数：找到存有查找<code>key</code>的内部节点中对应的<code>index</code></li>
+<li>为加快查找速度，通过二分查找法对需要的节点进行查找<span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>使用<code>KeyManager</code>类中的比较函数来进行<code>Key</code>的序列化比较</li>
+<li>
+<p>此函数用于查找所需<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>的叶子节点</p>
+</li>
+<li>
+<p><code>InsertNodeAfter()</code>函数：将一个新的<span class="heti-skip"><span class="heti-spacing"> </span>(key, value)<span class="heti-spacing"> </span></span>插入到内部节点中的<code>old_value</code>之后</p>
+</li>
+<li>通过将<code>old_value</code>之后的键值对整体后移，在空出的位置上放上需要插入的键值对</li>
+<li>同时需要将当前节点记录的键值对数量加一</li>
+<li>
+<p>由于页相关函数都是对节点的基础操作单元化，因此在这里暂时不会进行插入后<span class="heti-skip"><span class="heti-spacing"> </span>split<span class="heti-spacing"> </span></span>检测</p>
+</li>
+<li>
+<p><code>CopyNFrom()</code>函数：将<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>个键值对从传入地址移动到给定地址</p>
+</li>
+<li>从传入地址开始，选择<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>个键值对，放置在给定地址后</li>
+<li>需要注意由于这里一般是对内部节点进行操作，因此需要对被移动节点的子节点<span class="heti-skip"><span class="heti-spacing"> </span>(adopt_child)<span class="heti-spacing"> </span></span>进行修改</li>
+<li>
+<p>需要遍历将<span class="heti-skip"><span class="heti-spacing"> </span>adopt child<span class="heti-spacing"> </span></span>的父节点修改为目标内部节点</p>
+</li>
+<li>
+<p><code>CopyLastFrom()</code>函数： 将一个<span class="heti-skip"><span class="heti-spacing"> </span>pair<span class="heti-spacing"> </span></span>移动到当前页的末尾</p>
+</li>
+<li>将当前页的拥有键值对数量加一，同时将需要移动的键值对添加到当前页末尾</li>
+<li>
+<p>同时由于移动了键值对，其指向的<span class="heti-skip"><span class="heti-spacing"> </span>adopt child<span class="heti-spacing"> </span></span>的父节点也需要进行进行调整，调整为当前页的<span><span class="heti-spacing"> </span>page_id</span></p>
+</li>
+<li>
+<p><code>MoveFirstToEndOf()</code>函数： 将当前页的首<span class="heti-skip"><span class="heti-spacing"> </span>Pair<span class="heti-spacing"> </span></span>移动到目标页末尾</p>
+</li>
+<li>取得当前页的第一个<span><span class="heti-spacing"> </span>pair</span>，需要注意由于内部节点的第一个<code>key</code>为<span><span class="heti-spacing"> </span>invalid</span>，因此需要从从父节点中获得<code>middle key</code></li>
+<li>直接让目标页调用<code>CopyLastFrom()</code>函数，将传入<span class="heti-skip"><span class="heti-spacing"> </span>pair<span class="heti-spacing"> </span></span>放在末尾</li>
+<li>
+<p>最后需要删除当前页的第一个<span><span class="heti-spacing"> </span>pair</span></p>
+</li>
+<li>
+<p><code>CopyFirstFrom()</code>函数： 将一个<span class="heti-skip"><span class="heti-spacing"> </span>pair<span class="heti-spacing"> </span></span>移动到当前页的开头</p>
+</li>
+<li>直接调用<code>InsertNodeAfter()</code>函数，由于是开头，因此将<code>old_value</code>设置为<code>INVALID_PAGE_ID</code></li>
+<li>
+<p>同时需要注意由于当前页开头的<code>key</code>为<span><span class="heti-spacing"> </span>invalid</span>，因此需要获得父节点的<code>middle key</code>，这样才能成为一个完整的内部节点</p>
+</li>
+<li>
+<p><code>MoveLastToFrontOf()</code>函数：  将当前页的末尾<span class="heti-skip"><span class="heti-spacing"> </span>Pair<span class="heti-spacing"> </span></span>移动到目标页的开头</p>
+</li>
+<li>将目标页的第一个<code>key</code>更新为<code>middle key</code></li>
+<li>取得当前页的末尾<span><span class="heti-spacing"> </span>value</span>，并让目标页直接调用<code>CopyFirstFrom()</code>，使得<code>value</code>能够插入到目标页的开头</li>
+<li>
+<p>删除当前页的第一个<span><span class="heti-spacing"> </span>pair</span></p>
+</li>
+<li>
+<p><code>MoveAllTo()</code>函数： 将当前页的所有键值对移动到目标页</p>
+</li>
+<li>取得当前页键值对开始地址</li>
+<li>目标页直接调用<code>CopyNFrom</code>函数，将所有键值对放在自身键值对后</li>
+<li>
+<p>同时需要注意这个函数用于进行内部节点的<span><span class="heti-spacing"> </span>merge</span>，因此需要从父节点获得<code>middle key</code></p>
+</li>
+<li>
+<p><code>MoveHalfTo()</code>函数： 将当前节点的一半键值对移动到目标节点</p>
+</li>
+<li>用于内部节点的<span><span class="heti-spacing"> </span>split</span></li>
+<li>需要将当前节点的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\lceil \frac{size}{2} \rceil\)</span><span class="heti-spacing"> </span></span>保留，同时将另一半移动到目标节点</li>
+<li>
+<p>注意需要调整当前页记录的键值对数量</p>
+</li>
+<li>
+<p><code>Remove()</code>函数： 根据传入的序号将对应的键值对从当前内部节点中删除</p>
+</li>
+<li>从出入序号起，将后面的键值对依次向前移动</li>
+<li>
+<p>同时将当前页记录的键值对数量减一</p>
+</li>
+<li>
+<p><code>RemoveAndReturnOnlyChild()</code><span>:<span class="heti-spacing"> </span></span>删除内部节点中唯一的键值对</p>
+</li>
+</ul>
+<p></p>
+<h5 id="leaf-page">Leaf Page<a class="headerlink" href="#leaf-page" title="Permanent link">¶</a></h5>
+<ul>
+<li><code>KeyIndex()</code>函数： 用于查看<code>key</code>是否在当前叶节点中</li>
+<li>使用二分查找法进行查找</li>
+<li>
+<p>找到需要的<code>key</code>在当前页中的<code>index</code></p>
+</li>
+<li>
+<p><code>Insert()</code>函数； 将一个键值对插入到给定的<code>key</code>之后</p>
+</li>
+<li>首先调用<code>KeyIndex</code>找到给定<code>key</code>在页中的<code>index</code></li>
+<li>接着将<code>index</code>后的键值对依次后移，同时在<span class="heti-skip"><span class="heti-spacing"> </span>index<span class="heti-spacing"> </span></span>位置插入键值对</li>
+<li>
+<p>最后将当前页记录的键值对数量加一</p>
+</li>
+<li>
+<p><code>Lookup</code><span>:<span class="heti-spacing"> </span></span>查看<code>key</code>是否位于当前叶节点中</p>
+</li>
+<li>调用<code>KeyIndex</code>进行查找，如果<span class="heti-skip"><span class="heti-spacing"> </span>index<span class="heti-spacing"> </span></span>所处位置是正常范围</li>
+<li>并且与<span class="heti-skip"><span class="heti-spacing"> </span>index<span class="heti-spacing"> </span></span>位置上的<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>进行比较，判断是否位于当前节点</li>
+<li>
+<p>用于判断是否是重复<span><span class="heti-spacing"> </span>Key</span>， 即唯一性判断</p>
+</li>
+<li>
+<p><code>RemoveAndDeleteRecord()</code><span>:<span class="heti-spacing"> </span></span>删除传入<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>对应的键值对</p>
+</li>
+<li>通过<code>KeyIndex</code>找到<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>对应的位置，将后面的键值对依次向前移动</li>
+<li>
+<p>同时将当前节点记录的键值对数量减一</p>
+</li>
+<li>
+<p><code>CopyNFrom()</code>： 从原地址移动<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>个键值对到目标地址</p>
+</li>
+<li>
+<p>直接进行移动，同时将目标页记录的键值对数量增加对应值</p>
+</li>
+<li>
+<p><code>MoveHalfTo()</code><span>:<span class="heti-spacing"> </span></span>将当前节点的键值对移动到目标页</p>
+</li>
+<li>将当前节点的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\lceil \frac{size}{2} \rceil\)</span><span class="heti-spacing"> </span></span>键值对保留，同时将另一半移动到目标节点</li>
+<li>让目标页调用<code>CopyNFrom</code>函数将对应数量的键值对放置在末尾</li>
+<li>
+<p>将当前页记录的键值对数量减少</p>
+</li>
+<li>
+<p>其余函数处理与<span class="heti-skip"><span class="heti-spacing"> </span>Internal Page<span class="heti-spacing"> </span></span>相似，唯一不同的是，当进行键值对的移动时，叶子节点不需要对<code>middle key</code>进行处理，因为叶子节点本身就会包含所有的<code>key</code>信息</p>
+</li>
+</ul>
+<p></p>
+<h5 id="b-plus-tree"><span>B Plus Tree<span class="heti-spacing"> </span></span>实现<a class="headerlink" href="#b-plus-tree" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h5>
+<ul>
+<li><code>FindLeafPage()</code>函数： 查找需要的叶子节点</li>
+<li>该函数有两种查找方式，取决于传入的<span class="heti-skip"><span class="heti-spacing"> </span>bool<span class="heti-spacing"> </span></span>型参数：<ul>
+<li>查找传入<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>应该插入的叶子节点</li>
+<li>从当前根节点出发查找最左边的叶子节点</li>
+</ul>
+</li>
+<li>通过不断迭代进行查询，最终一直迭代到叶子节点</li>
+<li>
+<p>在这个迭代途中需要特别注意使用<span class="heti-skip"><span class="heti-spacing"> </span>page<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>unpin</span></p>
+</li>
+<li>
+<p><code>Insert()</code>函数； 将一个新的值插入<span class="heti-skip"><span class="heti-spacing"> </span>B+<span class="heti-spacing"> </span></span>树中</p>
+</li>
+<li>如果当前树为空，那么新建根节点</li>
+<li>
+<p>如果不为空，那么先向叶节点进行插入</p>
+</li>
+<li>
+<p><code>InsertIntoLeaf()</code>函数； 将新的值插入合适叶子节点中</p>
+</li>
+<li>首先调用<code>FindLeafPage</code>函数，从这棵树的根节点出发，找到新的值应该插入的节点，即包含符合这个新值范围的节点<code>leaf_to_insert</code></li>
+<li>接着调用<code>lookup</code>函数判断当前节点中是否已经有了一个相同的值，确保<span class="heti-skip"><span class="heti-spacing"> </span>index<span class="heti-spacing"> </span></span>的唯一性，如果有那么插入失败</li>
+<li>在成功插入后，需要对当前叶子节点记录的键值对数量进行判断，如果数量达到最大，那么需要调用<code>Split</code>函数进行叶子节点的分裂</li>
+<li>
+<p>同时如果进行了分裂，需要将新生成叶子节点的索引加入到父节点中，因此需要再调用<code>InsertIntoParent</code>进行处理</p>
+</li>
+<li>
+<p><code>InsertIntoParent()</code>函数： 将新的节点信息插入到父节点中</p>
+</li>
+<li>如果刚才发生分裂的是根节点，那么需要新建一个新的根节点，将分裂节点的信息保存到这个根结点中；同时需要更新原来分裂节点的信息</li>
+<li>如果不是根节点，那么让父节点调用<code>InsertNodeAfter</code>函数进行新节点信息的插入</li>
+<li>
+<p>同时需要对父节点进行判断，当前的插入是否达到了最大值，如果达到了最大值需要继续进行递归执行更新</p>
+</li>
+<li>
+<p><code>Split()</code>函数： 将一个满节点进行分裂</p>
+</li>
+<li>分为分裂内部节点和叶子节点</li>
+<li>需要新建一个空的相同类型页，同时将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\lceil \frac{size}{2} \rceil\)</span><span class="heti-spacing"> </span></span>键值对留在当前节点，将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\lfloor \frac{size}{2} \rfloor\)</span><span class="heti-spacing"> </span></span>移动到新节点，这里直接调用<code>MoveHalfTo()</code>来进行实现</li>
+<li>
+<p>同时如果是叶子节点，需要对当前节点和新建节点的<code>Next_Page_Id</code>进行调整</p>
+</li>
+<li>
+<p><code>Redistribute()</code>函数： 如果两个节点键值对数量相加大于或等于<span><span class="heti-spacing"> </span><span class="arithmatex">\(Max\_Size\)</span></span>，那么需要进行键值对的重分配</p>
+</li>
+<li>根据传入的两个节点，与分配类型参数来判断当前分配方式</li>
+<li>如果分配类型为<span><span class="heti-spacing"> </span>1</span>，那么将<code>pre</code>的末尾键值对移动到<code>node</code>的开头</li>
+<li>如果分配类型为<span><span class="heti-spacing"> </span>0</span>，那么将<code>next</code>的开头键值对移动到<code>node</code>的末尾</li>
+<li>
+<p>其中会直接调用<code>MoveFirstToEndOf</code>或者<code>MoveEndToFrontOf</code>来进行键值对移动</p>
+</li>
+<li>
+<p><code>Coalesce()</code>函数： 如果两个节点键值对数量相加小于<span><span class="heti-spacing"> </span><span class="arithmatex">\(Max\_Size\)</span></span>，那么需要将节点进行合并</p>
+</li>
+<li>直接调用<code>MoveAllTo</code>函数将键值对进行整体移动</li>
+<li>
+<p>接着调用内部节点的<code>Remove</code>函数来进行父节点中被移动节点的信息</p>
+</li>
+<li>
+<p><code>CoalesceOrRedistribute()</code>函数： 当一个节点的节点数过少时，需要与兄弟进行重分配或者直接合并</p>
+</li>
+<li>如果当前节点删除后，键值对数量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(&lt; \frac{Max\_Size}{2}\)</span>,<span class="heti-spacing"> </span></span>那么就需要与兄弟节点进行重分配或者合并</li>
+<li>首先判断当前节点键值对数量与前后节点键值对数量相加是否大于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Max\_Size\)</span>,<span class="heti-spacing"> </span></span>如果大于或等于那么需要调用<code>Redistribute</code>进行节点的移动</li>
+<li>
+<p>如果小于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Max\_Size\)</span>,<span class="heti-spacing"> </span></span>那么则需要调用<code>Coalesce()</code>进行两个节点的合并</p>
+</li>
+<li>
+<p><code>Remove()</code>函数： 需要删除某个<code>key</code>时，直接调用<code>Remove</code>进行删除</p>
+</li>
+<li>首先通过<code>FindLeafPage</code>来找到对应<code>key</code>所在的叶子节点，接着直接调用<code>RemoveAndDeleteRecord</code>来删除这个键值对</li>
+<li>接着需要判断删除键值对后这个节点是否需要进行重分配和合并，如果当前键值对数量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(&lt; \frac{Max\_Size}{2}\)</span>,<span class="heti-spacing"> </span></span>那么就直接调用<code>CoalesceOrRedistribute</code>来进行处理</li>
+<li>另一种情况，如果删除的键值对是节点的第一个，那么则需要调整父节点的相关信息，同时由于内部节点性质（<span>index<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>是不存储信息的）<span>,<span class="heti-spacing"> </span></span>因此需要不断迭代向上找到真正存储信息的内部节点，进行修改</li>
+</ul>
+<p></p>
+<ul>
+<li>除此之外，完成叶节点链表迭代器实现</li>
+</ul>
+<p></p>
+<h3 id="executor"><code>Executor</code>相关模块设计<a class="headerlink" href="#executor" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>此部分主要根据执行执行指令的语法树进行信息读取
+  <img alt="alt text" src="../img/image-1.png"/>
+<img alt="alt text" src="img/image-9.png"/></li>
+<li>
+<p>不同的指令语法树不同需要通过可视化图形进行查看来确定具体信息位置</p>
+</li>
+<li>
+<p>通过找到信息后调用具体函数来进行执行操作，同时在命令行中输出相关信息</p>
+</li>
+</ul>
+<p></p>
+<h2 id="_5">四、 实验结果展示<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>运行<code>minisql_test</code>进行模拟整体运行后：
+<img alt="alt text" src="../img/image-2.png"/>
+<img alt="alt text" src="img/image-11.png"/>
+<img alt="alt text" src="img/image-13.png"/>
+<img alt="alt text" src="img/image-14.png"/>
+<img alt="alt text" src="../img/image-15.png"/></li>
+</ul>
+<p></p>
+<ul>
+<li>
+<p>进行<code>main</code>函数整体运行；</p>
+</li>
+<li>
+<p>完成数据库与表格建立：
+  <img alt="alt text" src="../img/image-16.png"/></p>
+</li>
+<li>数据插入：
+  <img alt="alt text" src="../img/image-17.png"/> </li>
+<li><span>100000<span class="heti-spacing"> </span></span>条数据查询：
+  <img alt="alt text" src="../img/image-18.png"/></li>
+<li>主键查询与非主键查询：
+  <img alt="alt text" src="../img/image-19.png"/></li>
+<li>多条件查询<code>select * from account where id &lt; 12515000 and name &gt; "name14500"</code>：
+  <img alt="alt text" src="../img/image-20.png"/></li>
+<li>唯一性约束：
+  <img alt="alt text" src="../img/image-21.png"/></li>
+<li>索引建立与查询：
+  <img alt="alt text" src="../img/image-22.png"/></li>
+<li>数据更新：
+  <img alt="alt text" src="../img/image-23.png"/></li>
+<li>数据删除：
+  <img alt="alt text" src="../img/image-24.png"/></li>
+<li>删除索引：
+  <img alt="alt text" src="../img/image-25.png"/></li>
+<li>表格内容整体删除：
+  <img alt="alt text" src="../img/image-26.png"/></li>
+<li>删除表格：
+  <img alt="alt text" src="../img/image-27.png"/></li>
+<li>删除数据库：
+  <img alt="alt text" src="../img/image-28.png"/></li>
+<li>退出后重新进入：
+  <img alt="alt text" src="../img/image-29.png"/>
+<img alt="alt text" src="../img/image-30.png"/></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © YYC 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../../../../js/katex.js"></script>
+</body>
+</html>

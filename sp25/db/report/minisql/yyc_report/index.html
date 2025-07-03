@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tapir's Notebook" name="description"/>
+<meta content="杨亿酬" name="author"/>
+<link href="https://tapir-elithril.github.io/Notebook/sp25/db/report/minisql/yyc_report/" rel="canonical"/>
+<link href="../../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.15" name="generator"/>
+<title>Yyc report - Tapir's Notebook</title>
+<link href="../../../../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"JetBrains Mono"}</style>
+<link href="../../../../../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../../../../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="orange" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#database-system">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Tapir's Notebook" class="md-header__button md-logo" data-md-component="logo" href="../../../../.." title="Tapir's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Tapir's Notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Yyc report
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="切换至夜间模式" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="切换至夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="切换至日间模式" class="md-option" data-md-color-accent="orange" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="切换至日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../..">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../tools/">
+          
+  
+  
+    
+  
+  tools
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../fa23/">
+          
+  
+  
+    
+  
+  fa23
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../sp24/">
+          
+  
+  
+    
+  
+  sp24
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../fa24/">
+          
+  
+  
+    
+  
+  fa24
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../">
+          
+  
+  
+    
+  
+  sp25
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../../research/data/note/">
+          
+  
+  
+    
+  
+  research
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Tapir's Notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../../../.." title="Tapir's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Tapir's Notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../..">
+<span class="md-ellipsis">
+    首页
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../tools/">
+<span class="md-ellipsis">
+    tools
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            tools
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/git/">
+<span class="md-ellipsis">
+    Git
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/linux/">
+<span class="md-ellipsis">
+    Linux
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/markdown/">
+<span class="md-ellipsis">
+    Markdown
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../tools/latex/">
+<span class="md-ellipsis">
+    LaTeX
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            LaTeX
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/latex/format/">
+<span class="md-ellipsis">
+    文献
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/latex/symbols/">
+<span class="md-ellipsis">
+    常用符号
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../tools/makefile/">
+<span class="md-ellipsis">
+    Makefile
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa23/">
+<span class="md-ellipsis">
+    fa23
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            fa23
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/military_training/">
+<span class="md-ellipsis">
+    军训
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/math_analysis1/">
+<span class="md-ellipsis">
+    数学分析(甲)I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/programming/">
+<span class="md-ellipsis">
+    程序设计与算法基础
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/linear_algebra1/">
+<span class="md-ellipsis">
+    线性代数I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/modern_history/">
+<span class="md-ellipsis">
+    中国近现代史纲要(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/morality_law/">
+<span class="md-ellipsis">
+    思想道德与法治
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/political_philosophy/">
+<span class="md-ellipsis">
+    近代西方政治哲学导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/astronomy/">
+<span class="md-ellipsis">
+    天文学导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/psychology/">
+<span class="md-ellipsis">
+    心理学及应用
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/career_planning/">
+<span class="md-ellipsis">
+    职业生涯规划
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/reform_and_openup/">
+<span class="md-ellipsis">
+    中国改革开放史
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/orienteering/">
+<span class="md-ellipsis">
+    定向越野
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa23/fitness/">
+<span class="md-ellipsis">
+    身体素质课
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../sp24/">
+<span class="md-ellipsis">
+    sp24
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            sp24
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/math_analysis2/">
+<span class="md-ellipsis">
+    数学分析(甲)II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../sp24/sys1/">
+<span class="md-ellipsis">
+    计算机系统I
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统I
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/sys1/CPU/">
+<span class="md-ellipsis">
+    单周期CPU
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/physics1/">
+<span class="md-ellipsis">
+    普通物理学I(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/discrete_math/">
+<span class="md-ellipsis">
+    离散数学理论基础
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/linear_algebra2/">
+<span class="md-ellipsis">
+    线性代数II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../sp24/fds/">
+<span class="md-ellipsis">
+    数据结构基础
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_7">
+<span class="md-nav__icon md-icon"></span>
+            数据结构基础
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/fds/struct/">
+<span class="md-ellipsis">
+    常见结构体
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/physics1_lab/">
+<span class="md-ellipsis">
+    普通物理学实验I
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/cyber_security/">
+<span class="md-ellipsis">
+    网络空间安全导论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/piano/">
+<span class="md-ellipsis">
+    打开艺术之门——钢琴
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/swimming/">
+<span class="md-ellipsis">
+    游泳(初级)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/fitness/">
+<span class="md-ellipsis">
+    身体素质课
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/situation_policy1/">
+<span class="md-ellipsis">
+    形势与政策I
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../sp24/ctf/">
+<span class="md-ellipsis">
+    课程综合实践I——安全攻防实践基础(CTF)
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa24/">
+<span class="md-ellipsis">
+    fa24
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            fa24
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa24/sys2/">
+<span class="md-ellipsis">
+    计算机系统II
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统II
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/sys2/note/">
+<span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/physics2/">
+<span class="md-ellipsis">
+    普通物理学II(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../../fa24/ads/">
+<span class="md-ellipsis">
+    高级数据结构与算法分析
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/ads/note/">
+<span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/probability/">
+<span class="md-ellipsis">
+    概率论(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/aid/">
+<span class="md-ellipsis">
+    人工智能引论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/military_theory/">
+<span class="md-ellipsis">
+    军事理论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/physics2_lab/">
+<span class="md-ellipsis">
+    普通物理学实验II
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/tea/">
+<span class="md-ellipsis">
+    茶文化与茶健康
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../fa24/aerobics/">
+<span class="md-ellipsis">
+    健美操
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../">
+<span class="md-ellipsis">
+    sp25
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            sp25
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../sys3/">
+<span class="md-ellipsis">
+    计算机系统III
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            计算机系统III
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sys3/note/">
+<span class="md-ellipsis">
+    笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../">
+<span class="md-ellipsis">
+    数据库系统
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            数据库系统
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../note/">
+<span class="md-ellipsis">
+    笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../oop/">
+<span class="md-ellipsis">
+    面向对象程序设计
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../marx/">
+<span class="md-ellipsis">
+    马克思主义基本原理(H)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../xi/">
+<span class="md-ellipsis">
+    习近平新时代中国特色社会主义思想概论
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../data_market/">
+<span class="md-ellipsis">
+    数据要素交易基础
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_7">
+<span class="md-nav__icon md-icon"></span>
+            数据要素交易基础
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../data_market/note/">
+<span class="md-ellipsis">
+    笔记
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    research
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            research
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/data/note/">
+<span class="md-ellipsis">
+    data_target
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+<span class="md-ellipsis">
+    llm_infra
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_2">
+<span class="md-nav__icon md-icon"></span>
+            llm_infra
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/llm_vuln/kvcache/">
+<span class="md-ellipsis">
+    kvcache
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/llm_vuln/llm_vulnerability/">
+<span class="md-ellipsis">
+    llm_vulnerability
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../../research/llm_vuln/mcp/">
+<span class="md-ellipsis">
+    mcp
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/Tapir-Elithril/Notebook/edit/main/docs/sp25/db/report/minisql/yyc_report.md" rel="edit" title="编辑此页">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<p><br/></p>
+<p><font face="Times"></font></p>
+<div align="center">
+<img src="img/image.png" width="45%"/>
+</div>
+<h1 id="database-system"><font size="20"></font><center>DataBase System</center><a class="headerlink" href="#database-system" title="Permanent link">¶</a></h1>
+<p><br/><br/></p>
+<h1 id="minisql"><font size="20"></font><center><font face="Times"><span>MiniSQL<span class="heti-spacing"> </span></span>个人设计报告</font></center><a class="headerlink" href="#minisql" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p><br/><br/><br/><br/></p>
+<div align="center">
+<font face="楷体" size="5">
+        姓名：<u>  杨 亿 酬  </u><br/><br/><br/>
+</font>
+</div>
+<div style="page-break-after: always;"></div>
+<h2 id="_1">一、 实验背景与目的<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>基于给定框架基础设计并实现一个精简型单用户<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>引擎<span><span class="heti-spacing"> </span>MinSQL</span></li>
+<li>在本次项目中，实现<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>引擎支持用户通过字符界面输入<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>语句实现简单的增、删、改、查操作</li>
+<li>同时可以通过索引来进行查询的性能优化</li>
+<li>在本次实验中， 设计并完成<span class="heti-skip"><span class="heti-spacing"> </span>Index<span class="heti-spacing"> </span></span>与部分<span><span class="heti-spacing"> </span>Executor</span></li>
+</ul>
+<p></p>
+<h2 id="_2">二、 设计完成内容<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>在本次实验中，设计完成了：</li>
+<li><code>CATALOG</code>相关文件：
+  <img alt="alt text" src="../img/image-1.png"/></li>
+<li><code>RECOVERY MANAGER</code>相关文件：
+  <img alt="alt text" src="../img/image-2.png"/></li>
+<li>并参与工程过程中的测试与<span class="heti-skip"><span class="heti-spacing"> </span>bug<span class="heti-spacing"> </span></span>修复  </li>
+</ul>
+<p></p>
+<h2 id="_3">三、 具体模块设计<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="catalog-manager"><code>Catalog Manager</code>相关模块设计<a class="headerlink" href="#catalog-manager" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p></p>
+<h4 id="1">1、 <strong>整体架构</strong><a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
+<p><span>Catalog Manager<span class="heti-spacing"> </span></span>负责管理和维护数据库的所有模式信息，包括：<br/>
+● 数据库中所有表的定义信息，包括表的名称、表中字段（列）数、主键、定义在该表上的索引。<br/>
+● 表中每个字段的定义信息，包括字段类型、是否唯一等。<br/>
+● 数据库中所有索引的定义，包括所属表、索引建立在那个字段上等。<br/>
+这些模式信息在被创建、修改和删除后还应被持久化到数据库文件中。此外，Catalog Manager还需要为上层的执行器Executor提供公共接口以供执行器获取目录信息并生成执行计划。  </p>
+<div style="page-break-after: always;"></div>
+<h4 id="2">2、 系统各模块的设计思路和实现<a class="headerlink" href="#2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<h5 id="indexinfoinit">IndexInfo::Init<a class="headerlink" href="#indexinfoinit" title="Permanent link">¶</a></h5>
+<p><span>1.<span class="heti-spacing"> </span></span>初始化<span><span class="heti-spacing"> </span>meta_data_</span><br/>
+2.初始化key_schema_(使用浅拷贝)<br/>
+3.CreateIndex创建索引  </p>
+<h5 id="getserializedsize">GetSerializedSize()<a class="headerlink" href="#getserializedsize" title="Permanent link">¶</a></h5>
+<p>依据<span class="heti-skip"><span class="heti-spacing"> </span>SerializeTo,DeserializeFrom<span class="heti-spacing"> </span></span>的实现，计算序列化大小<span><span class="heti-spacing"> </span>(CatalogMeta,TableMetadata,IndexMetadata)</span><br/>
+以CatalogMeta为例<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="kt">void</span><span class="w"> </span><span class="nf">CatalogMeta::SerializeTo</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><span class="w">  </span><span class="n">MACH_WRITE_UINT32</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">CATALOG_METADATA_MAGIC_NUM</span><span class="p">);</span>
+</span><span id="__span-0-3"><span class="w">  </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-0-4"><span class="w">  </span><span class="n">MACH_WRITE_UINT32</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">table_meta_pages_</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+</span><span id="__span-0-5"><span class="w">  </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-0-6"><span class="w">  </span><span class="n">MACH_WRITE_UINT32</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">index_meta_pages_</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+</span><span id="__span-0-7"><span class="w">  </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-0-8"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">table_meta_pages_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><span class="w">    </span><span class="n">MACH_WRITE_TO</span><span class="p">(</span><span class="n">table_id_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+</span><span id="__span-0-10"><span class="w">    </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-0-11"><span class="w">    </span><span class="n">MACH_WRITE_TO</span><span class="p">(</span><span class="n">page_id_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+</span><span id="__span-0-12"><span class="w">    </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-0-13"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-14"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">index_meta_pages_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><span class="w">    </span><span class="n">MACH_WRITE_TO</span><span class="p">(</span><span class="n">index_id_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+</span><span id="__span-0-16"><span class="w">    </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-0-17"><span class="w">    </span><span class="n">MACH_WRITE_TO</span><span class="p">(</span><span class="n">page_id_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+</span><span id="__span-0-18"><span class="w">    </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-0-19"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-20"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+由上可见CatalogMeta中的数据包含:
+4 bytes magic num + 4 bytes table_page num + 4 bytes index_page num<br/>
++ table_page nums * (4 bytes table id + 4 bytes page id)<br/>
++ index_page nums * (4 bytes index id + 4 bytes page id)<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">CatalogMeta::GetSerializedSize</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>
+</span><span id="__span-1-3"><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="n">table_meta_pages_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-4"><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="n">index_meta_pages_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+</span><span id="__span-1-5"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div style="page-break-after: always;"></div>
+<h5 id="catalogcpp">Catalog.cpp<a class="headerlink" href="#catalogcpp" title="Permanent link">¶</a></h5>
+<h6 id="catalogmanager-ctor">CatalogManager Ctor<a class="headerlink" href="#catalogmanager-ctor" title="Permanent link">¶</a></h6>
+<p><span>1.<span class="heti-spacing"> </span></span>获取<span><span class="heti-spacing"> </span>catalog_meta_page</span><br/>
+2.根据init新建或读取metadata<br/>
+    init == true<br/>
+    1)NewInstance()新建metadata<br/>
+    2)获取catalog_meta_page的Data并序列化<br/>
+    init == false<br/>
+    1)获取catalog_meta_page的Data并反序列化<br/>
+    2)GetTable/IndexMetaPages读取table与index metadata<br/>
+3.set next page id<br/>
+4.unpin fetched page  </p>
+<h6 id="createtable">CreateTable<a class="headerlink" href="#createtable" title="Permanent link">¶</a></h6>
+<p>1.create table_heap using DEEPCOPY SCHEMA<br/>
+2.create table metadata<br/>
+3.serialize to meta page<br/>
+4.update catalog meta<br/>
+5.create tableinfo<br/>
+6.update table_names,tables_ in catalog<br/>
+7.create index for unique attributes(primary key)  </p>
+<h6 id="createindex">CreateIndex<a class="headerlink" href="#createindex" title="Permanent link">¶</a></h6>
+<p>1.create index metadata<br/>
+2.serialize to meta page<br/>
+3.update catalog meta<br/>
+4.create indexinfo<br/>
+5.update index_names_,indexes_<br/>
+6.build up the tree(通过table_heap向bptree逐行插入，调用InsertEntry)  </p>
+<h6 id="gettablesgetindexgettableindexes">GetTable(s)/GetIndex/GetTableIndexes<a class="headerlink" href="#gettablesgetindexgettableindexes" title="Permanent link">¶</a></h6>
+<p>利用<span class="heti-skip"><span class="heti-spacing"> </span>table_name<span class="heti-spacing"> </span></span>遍历<span class="heti-skip"><span class="heti-spacing"> </span>tables_,(<span class="heti-spacing"> </span></span>批量<span class="heti-skip"><span class="heti-spacing"> </span>)<span class="heti-spacing"> </span></span>返回<span><span class="heti-spacing"> </span>table_info</span><br/>
+利用table_name遍历index_names_,返回index_id,再利用index_name遍历indexes_返回index_info<br/>
+利用table_name遍历index_names_,批量返回index_id,利用index_id遍历indexes_批量返回index_info</p>
+<h6 id="droptabledropindex">DropTable/DropIndex<a class="headerlink" href="#droptabledropindex" title="Permanent link">¶</a></h6>
+<p>1.delete metadata page<br/>
+2.delete table_heap<br/>
+3.update catalog meta<br/>
+4.erase table_names,tables_/index_names_,indexes_  </p>
+<h6 id="flushcatalogmetapage">FlushCatalogMetaPage<a class="headerlink" href="#flushcatalogmetapage" title="Permanent link">¶</a></h6>
+<p>1.get catalogmetapage<br/>
+2.serialize catalog_meta_<br/>
+3.unpin page(set dirty)  </p>
+<h6 id="loadtableloadindex">LoadTable/LoadIndex<a class="headerlink" href="#loadtableloadindex" title="Permanent link">¶</a></h6>
+<p>1.get table/index metadata page<br/>
+2.deserialize table/index metadata
+3.create table_heap/get table info<br/>
+4.create table_info/index_info<br/>
+5.update tables_,table_names_/index_names_,indexes_<br/>
+6.unpin page(set not dirty)  </p>
+<div style="page-break-after: always;"></div>
+<h2 id="recovery-manager"><code>Recovery Manager</code>相关模块设计<a class="headerlink" href="#recovery-manager" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h4 id="1_1">1、 <strong>整体架构</strong><a class="headerlink" href="#1_1" title="Permanent link">¶</a></h4>
+<p><span>Recovery Manager<span class="heti-spacing"> </span></span>负责管理和维护数据恢复的过程，包括：<br/>
+● 日志结构的定义<br/>
+● 检查点CheckPoint的定义<br/>
+● 执行Redo、Undo等操作，处理插入、删除、更新，事务的开始、提交、回滚等日志，将数据库恢复到宕机之前的状态<br/>
+出于实现复杂度的考虑，同时为了避免各模块耦合太强，前面模块的问题导致后面模块完全无法完成，同组成员的工作之间影响过深，我们将Recovery Manager模块单独拆了出来。另外为了减少重复的内容，我们不重复实现日志的序列化和反序列化操作，实现一个纯内存的数据恢复模块即可。  </p>
+<h4 id="2_1">2、 系统各模块的设计思路和实现<a class="headerlink" href="#2_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p></p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">lsn_t</span><span class="p">,</span><span class="w"> </span><span class="n">LogRecPtr</span><span class="o">&gt;</span><span class="w"> </span><span class="n">log_recs_</span><span class="p">{};</span><span class="w"> </span><span class="c1">//日志信息</span>
+</span><span id="__span-2-2"><span class="w">    </span><span class="n">lsn_t</span><span class="w"> </span><span class="n">persist_lsn_</span><span class="p">{</span><span class="n">INVALID_LSN</span><span class="p">};</span><span class="w">        </span><span class="c1">//已持久化的日志序号</span>
+</span><span id="__span-2-3"><span class="w">    </span><span class="n">ATT</span><span class="w"> </span><span class="n">active_txns_</span><span class="p">{};</span><span class="w">                     </span><span class="c1">//活跃事务编号</span>
+</span><span id="__span-2-4"><span class="w">    </span><span class="n">KvDatabase</span><span class="w"> </span><span class="n">data_</span><span class="p">{};</span><span class="w">                     </span><span class="c1">//数据</span>
+</span><span id="__span-2-5">
+</span><span id="__span-2-6"><span class="k">struct</span><span class="w"> </span><span class="nc">CheckPoint</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//CheckPoint检查点结构</span>
+</span><span id="__span-2-7"><span class="w">    </span><span class="n">lsn_t</span><span class="w"> </span><span class="n">checkpoint_lsn_</span><span class="p">{</span><span class="n">INVALID_LSN</span><span class="p">};</span><span class="w">       </span><span class="c1">//checkpoint所在日志序号</span>
+</span><span id="__span-2-8"><span class="w">    </span><span class="n">ATT</span><span class="w"> </span><span class="n">active_txns_</span><span class="p">{};</span><span class="w"> </span><span class="c1">// txn_id -&gt; last_lsn //checkpoint时活跃事务即其last_lsn_</span>
+</span><span id="__span-2-9"><span class="w">    </span><span class="n">KvDatabase</span><span class="w"> </span><span class="n">persist_data_</span><span class="p">{};</span><span class="w">               </span><span class="c1">//checkpoint时数据库数据</span>
+</span><span id="__span-2-10"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+按照recovery_manager_test.cpp的内容，应实现如下的事务恢复<br/>
+<div class="language-text highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">0. &lt;T0 Start&gt;
+</span><span id="__span-3-2">1. &lt;T0,A,2000,2050&gt;
+</span><span id="__span-3-3">2. &lt;T0,B,1000,-&gt;
+</span><span id="__span-3-4">3. &lt;T1 Start&gt;          
+</span><span id="__span-3-5">3. &lt;CheckPoint{T0,T1}&gt; Redo
+</span><span id="__span-3-6">4. &lt;T1,C,-,600&gt;        |   
+</span><span id="__span-3-7">5. &lt;T1 Commit&gt;         |   
+</span><span id="__span-3-8">6. &lt;T0,C,600,700&gt;      |   
+</span><span id="__span-3-9">                       |   
+</span><span id="__span-3-10">7. &lt;T0 Abort&gt;          |   Undo(A=2000,B=1000,C=600,D=-)
+</span><span id="__span-3-11">8. &lt;T2 Start&gt;          |   ↑
+</span><span id="__span-3-12">9. &lt;T2,D,-,30000&gt;      |   |
+</span><span id="__span-3-13">10.&lt;T2,C,600,800&gt;      ↓   |
+</span><span id="__span-3-14">                   Undo list{T2}(A=2000,B=1000,C=800,D=30000)
+</span><span id="__span-3-15">11.&lt;T2,C,800,600&gt;
+</span><span id="__span-3-16">12.&lt;T2,D,-&gt;
+</span><span id="__span-3-17">13.&lt;T2 Abort&gt;
+</span></code></pre></div></td></tr></table></div>
+1.从checkpoint开始redo直至最新的事务，记录未完成的事务到undo list<br/>
+2.按照undo list最未完成事务的日志做补偿操作，并将补偿操作添加到日志中  
+<h5 id="redophase">RedoPhase<a class="headerlink" href="#redophase" title="Permanent link">¶</a></h5>
+<p><span>Redo<span class="heti-spacing"> </span></span>从<span class="heti-skip"><span class="heti-spacing"> </span>checkpoint<span class="heti-spacing"> </span></span>记录的已持久化的日志<span class="heti-skip"><span class="heti-spacing"> </span>persist_lsn_<span class="heti-spacing"> </span></span>开始到日志末尾的内容<br/>
+根据操作的类型对data_做增删改操作<br/>
+对Begin操作，在活跃事务中添加事务编号(undo list)<br/>
+对Commit操作，从活跃事务中移除事务编号<br/>
+对Abort操作，从当前操作起，通过prev_lsn与prev_log获得Abort事务的过去操作，对增删改做回滚直至Begin  <br/>
+最后将persist_lsn_设置为日志末尾的lsn<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">RedoPhase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">lsn_t</span><span class="p">,</span><span class="w"> </span><span class="n">LogRecPtr</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_recs_</span><span class="p">.</span><span class="n">upper_bound</span><span class="p">(</span><span class="n">persist_lsn_</span><span class="p">);</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">log_recs_</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span>
+</span><span id="__span-4-3"><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-4-4"><span class="w">            </span><span class="n">LogRecPtr</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span><span id="__span-4-5"><span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">type_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kInsert</span><span class="p">:</span>
+</span><span id="__span-4-7"><span class="w">                    </span><span class="n">data_</span><span class="p">[</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">val</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-4-8"><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-9"><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kDelete</span><span class="p">:</span>
+</span><span id="__span-4-10"><span class="w">                    </span><span class="n">data_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">);</span>
+</span><span id="__span-4-11"><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-12"><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kUpdate</span><span class="p">:</span>
+</span><span id="__span-4-13"><span class="w">                    </span><span class="n">data_</span><span class="p">[</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">new_key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">new_val</span><span class="p">;</span>
+</span><span id="__span-4-14"><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-15"><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kBegin</span><span class="p">:</span>
+</span><span id="__span-4-16"><span class="w">                    </span><span class="n">active_txns_</span><span class="p">[</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">lsn_</span><span class="p">;</span>
+</span><span id="__span-4-17"><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-18"><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kCommit</span><span class="p">:</span>
+</span><span id="__span-4-19"><span class="w">                    </span><span class="n">active_txns_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">);</span>
+</span><span id="__span-4-20"><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-21"><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kAbort</span><span class="p">:{</span>
+</span><span id="__span-4-22"><span class="w">                    </span><span class="n">lsn_t</span><span class="w"> </span><span class="n">prev_lsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">prev_lsn_</span><span class="p">;</span>
+</span><span id="__span-4-23"><span class="w">                    </span><span class="n">LogRecPtr</span><span class="w"> </span><span class="n">prev_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_recs_</span><span class="p">[</span><span class="n">prev_lsn</span><span class="p">];</span><span class="w"> </span>
+</span><span id="__span-4-24"><span class="w">                    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">type_</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">LogRecType</span><span class="o">::</span><span class="n">kBegin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-25"><span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">type_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LogRecType</span><span class="o">::</span><span class="n">kInsert</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-4-26"><span class="w">                            </span><span class="n">data_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-4-27"><span class="w">                        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">type_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LogRecType</span><span class="o">::</span><span class="n">kDelete</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-4-28"><span class="w">                            </span><span class="n">data_</span><span class="p">[</span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">val</span><span class="p">;</span>
+</span><span id="__span-4-29"><span class="w">                        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">type_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LogRecType</span><span class="o">::</span><span class="n">kUpdate</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-4-30"><span class="w">                            </span><span class="n">data_</span><span class="p">[</span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">old_key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">old_val</span><span class="p">;</span>
+</span><span id="__span-4-31"><span class="w">                        </span><span class="n">prev_lsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_log</span><span class="o">-&gt;</span><span class="n">prev_lsn_</span><span class="p">;</span>
+</span><span id="__span-4-32"><span class="w">                        </span><span class="n">prev_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_recs_</span><span class="p">[</span><span class="n">prev_lsn</span><span class="p">];</span><span class="w"> </span>
+</span><span id="__span-4-33"><span class="w">                      </span><span class="p">}</span>
+</span><span id="__span-4-34"><span class="w">                    </span><span class="n">active_txns_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-4-35"><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-36"><span class="w">                    </span><span class="p">}</span>
+</span><span id="__span-4-37"><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-4-38"><span class="w">            </span><span class="n">persist_lsn_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">lsn_</span><span class="p">;</span>
+</span><span id="__span-4-39"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-4-40"><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div style="page-break-after: always;"></div>
+<h5 id="undophase">UndoPhase<a class="headerlink" href="#undophase" title="Permanent link">¶</a></h5>
+<p>根据<span class="heti-skip"><span class="heti-spacing"> </span>RedoPhase<span class="heti-spacing"> </span></span>获得的<span class="heti-skip"><span class="heti-spacing"> </span>Undo list(active_txns_),<span class="heti-spacing"> </span></span>对未提交事务的增删改操作做补偿操作<span class="heti-skip"><span class="heti-spacing"> </span>,<span class="heti-spacing"> </span></span>对<span class="heti-skip"><span class="heti-spacing"> </span>Begin<span class="heti-spacing"> </span></span>操作做<span class="heti-skip"><span class="heti-spacing"> </span>Abort,<span class="heti-spacing"> </span></span>并通过<span class="heti-skip"><span class="heti-spacing"> </span>AppendLogRec<span class="heti-spacing"> </span></span>添加记录<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">UndoPhase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">lsn_t</span><span class="w"> </span><span class="n">undo_lsn_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">persist_lsn_</span><span class="p">;</span><span class="w"> </span><span class="o">!</span><span class="n">active_txns_</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span><span class="w"> </span><span class="n">undo_lsn_</span><span class="o">--</span><span class="p">)</span>
+</span><span id="__span-5-3"><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-5-4"><span class="w">            </span><span class="n">LogRecPtr</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_recs_</span><span class="p">[</span><span class="n">undo_lsn_</span><span class="p">];</span>
+</span><span id="__span-5-5"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">active_txns_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">active_txns_</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+</span><span id="__span-5-6"><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-5-7"><span class="w">                </span><span class="k">switch</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">type_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-8"><span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kInsert</span><span class="p">:</span>
+</span><span id="__span-5-9"><span class="w">                        </span><span class="n">data_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">);</span>
+</span><span id="__span-5-10"><span class="w">                        </span><span class="n">AppendLogRec</span><span class="p">(</span><span class="n">CreateDeleteLog</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">val</span><span class="p">));</span>
+</span><span id="__span-5-11"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-12"><span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kDelete</span><span class="p">:</span>
+</span><span id="__span-5-13"><span class="w">                        </span><span class="n">data_</span><span class="p">[</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">val</span><span class="p">;</span>
+</span><span id="__span-5-14"><span class="w">                        </span><span class="n">AppendLogRec</span><span class="p">(</span><span class="n">CreateInsertLog</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">kv_data</span><span class="p">.</span><span class="n">val</span><span class="p">));</span>
+</span><span id="__span-5-15"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-16"><span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kUpdate</span><span class="p">:</span>
+</span><span id="__span-5-17"><span class="w">                        </span><span class="n">data_</span><span class="p">[</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">old_key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">old_val</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-5-18"><span class="w">                        </span><span class="n">AppendLogRec</span><span class="p">(</span><span class="n">CreateUpdateLog</span><span class="p">(</span>
+</span><span id="__span-5-19"><span class="w">                            </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">,</span>
+</span><span id="__span-5-20"><span class="w">                            </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">new_key</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-5-21"><span class="w">                            </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">new_val</span><span class="p">,</span>
+</span><span id="__span-5-22"><span class="w">                            </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">old_key</span><span class="p">,</span>
+</span><span id="__span-5-23"><span class="w">                            </span><span class="n">log</span><span class="o">-&gt;</span><span class="n">update_data</span><span class="p">.</span><span class="n">old_val</span>
+</span><span id="__span-5-24"><span class="w">                        </span><span class="p">));</span>
+</span><span id="__span-5-25"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-26"><span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kBegin</span><span class="p">:</span>
+</span><span id="__span-5-27"><span class="w">                        </span><span class="n">AppendLogRec</span><span class="p">(</span><span class="n">CreateAbortLog</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">));</span>
+</span><span id="__span-5-28"><span class="w">                        </span><span class="n">active_txns_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">log</span><span class="o">-&gt;</span><span class="n">txn_id_</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-5-29"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-30"><span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kCommit</span><span class="p">:</span>
+</span><span id="__span-5-31"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-32"><span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kAbort</span><span class="p">:</span>
+</span><span id="__span-5-33"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-34"><span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">LogRecType</span><span class="o">::</span><span class="no">kInvalid</span><span class="p">:</span>
+</span><span id="__span-5-35"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-36"><span class="w">                    </span><span class="k">default</span><span class="o">:</span>
+</span><span id="__span-5-37"><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-5-38"><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-5-39"><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-5-40"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-41"><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div style="page-break-after: always;"></div>
+<h4 id="3">3、 思考题<a class="headerlink" href="#3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p><strong>本模块中，为了简化实验难度，我们将<span class="heti-skip"><span class="heti-spacing"> </span>Recovery Manager<span class="heti-spacing"> </span></span>模块独立出来。如果不独立出来，真正做到数据库在任何时候断电都能恢复，同时支持事务的回滚，<span>Recovery Manager<span class="heti-spacing"> </span></span>应该怎样设计呢？此外，<span>CheckPoint<span class="heti-spacing"> </span></span>机制应该怎样设计呢？</strong> </p>
+<p><span>1.checkpoint<span class="heti-spacing"> </span></span>机制：添加<span class="heti-skip"><span class="heti-spacing"> </span>serialize<span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span>deserialize,<span class="heti-spacing"> </span></span>便于<span class="heti-skip"><span class="heti-spacing"> </span>LogManager<span class="heti-spacing"> </span></span>写入<span class="heti-skip"><span class="heti-spacing"> </span>CheckPoint<span class="heti-spacing"> </span></span>信息<br/>
+</p><div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="k">struct</span><span class="w"> </span><span class="nc">CheckPoint</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><span class="w">    </span><span class="n">lsn_t</span><span class="w"> </span><span class="n">checkpoint_lsn_</span><span class="p">{</span><span class="n">INVALID_LSN</span><span class="p">};</span>
+</span><span id="__span-6-3"><span class="w">    </span><span class="n">ATT</span><span class="w"> </span><span class="n">active_txns_</span><span class="p">{};</span><span class="w"> </span><span class="c1">// txn_id -&gt; last_lsn</span>
+</span><span id="__span-6-4"><span class="w">    </span><span class="n">KvDatabase</span><span class="w"> </span><span class="n">persist_data_</span><span class="p">{};</span>
+</span><span id="__span-6-5">
+</span><span id="__span-6-6"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">SerializeTo</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><span class="w">        </span><span class="c1">// checkpoint_lsn_</span>
+</span><span id="__span-6-8"><span class="w">        </span><span class="n">MACH_WRITE_TO</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">checkpoint_lsn_</span><span class="p">);</span>
+</span><span id="__span-6-9"><span class="w">        </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">);</span>
+</span><span id="__span-6-10">
+</span><span id="__span-6-11"><span class="w">        </span><span class="c1">// active_txns_的大小</span>
+</span><span id="__span-6-12"><span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">active_txns_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">active_txns_</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+</span><span id="__span-6-13"><span class="w">        </span><span class="n">MACH_WRITE_UINT32</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">active_txns_size</span><span class="p">);</span>
+</span><span id="__span-6-14"><span class="w">        </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-6-15">
+</span><span id="__span-6-16"><span class="w">        </span><span class="c1">// active_txns_条目</span>
+</span><span id="__span-6-17"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">txn_id</span><span class="p">,</span><span class="w"> </span><span class="n">last_lsn</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">active_txns_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-18"><span class="w">            </span><span class="n">MACH_WRITE_TO</span><span class="p">(</span><span class="n">txn_id_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">txn_id</span><span class="p">);</span>
+</span><span id="__span-6-19"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">txn_id_t</span><span class="p">);</span>
+</span><span id="__span-6-20"><span class="w">            </span><span class="n">MACH_WRITE_TO</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">last_lsn</span><span class="p">);</span>
+</span><span id="__span-6-21"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">);</span>
+</span><span id="__span-6-22"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-23">
+</span><span id="__span-6-24"><span class="w">        </span><span class="c1">// persist_data_的大小</span>
+</span><span id="__span-6-25"><span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">persist_data_</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+</span><span id="__span-6-26"><span class="w">        </span><span class="n">MACH_WRITE_UINT32</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">data_size</span><span class="p">);</span>
+</span><span id="__span-6-27"><span class="w">        </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-6-28">
+</span><span id="__span-6-29"><span class="w">        </span><span class="c1">// persist_data_条目</span>
+</span><span id="__span-6-30"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">persist_data_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-31"><span class="w">            </span><span class="n">key</span><span class="p">.</span><span class="n">SerializeTo</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-32"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">GetSerializedSize</span><span class="p">();</span>
+</span><span id="__span-6-33"><span class="w">            </span><span class="n">val</span><span class="p">.</span><span class="n">SerializeTo</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-34"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">val</span><span class="p">.</span><span class="n">GetSerializedSize</span><span class="p">();</span>
+</span><span id="__span-6-35"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-36"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-37">
+</span><span id="__span-6-38"><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">CheckPoint</span><span class="w"> </span><span class="nf">DeserializeFrom</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-39"><span class="w">        </span><span class="n">CheckPoint</span><span class="w"> </span><span class="n">checkpoint</span><span class="p">;</span>
+</span><span id="__span-6-40">
+</span><span id="__span-6-41"><span class="w">        </span><span class="c1">// 读取checkpoint_lsn_</span>
+</span><span id="__span-6-42"><span class="w">        </span><span class="n">checkpoint</span><span class="p">.</span><span class="n">checkpoint_lsn_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MACH_READ_FROM</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-43"><span class="w">        </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">);</span>
+</span><span id="__span-6-44">
+</span><span id="__span-6-45"><span class="w">        </span><span class="c1">// 读取active_txns_的大小</span>
+</span><span id="__span-6-46"><span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">active_txns_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MACH_READ_UINT32</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-47"><span class="w">        </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-6-48">
+</span><span id="__span-6-49"><span class="w">        </span><span class="c1">// 读取active_txns_条目</span>
+</span><span id="__span-6-50"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">active_txns_size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-51"><span class="w">            </span><span class="n">txn_id_t</span><span class="w"> </span><span class="n">txn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MACH_READ_FROM</span><span class="p">(</span><span class="n">txn_id_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-52"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">txn_id_t</span><span class="p">);</span>
+</span><span id="__span-6-53"><span class="w">            </span><span class="n">lsn_t</span><span class="w"> </span><span class="n">last_lsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MACH_READ_FROM</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-54"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">);</span>
+</span><span id="__span-6-55"><span class="w">            </span><span class="n">checkpoint</span><span class="p">.</span><span class="n">active_txns_</span><span class="p">[</span><span class="n">txn_id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_lsn</span><span class="p">;</span>
+</span><span id="__span-6-56"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-57">
+</span><span id="__span-6-58"><span class="w">        </span><span class="c1">// 读取persist_data_的大小</span>
+</span><span id="__span-6-59"><span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MACH_READ_UINT32</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-60"><span class="w">        </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-6-61">
+</span><span id="__span-6-62"><span class="w">        </span><span class="c1">// 读取persist_data_条目</span>
+</span><span id="__span-6-63"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data_size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-64"><span class="w">            </span><span class="n">KeyType</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyType</span><span class="o">::</span><span class="n">DeserializeFrom</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-65"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">GetSerializedSize</span><span class="p">();</span>
+</span><span id="__span-6-66"><span class="w">            </span><span class="n">ValType</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ValType</span><span class="o">::</span><span class="n">DeserializeFrom</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-67"><span class="w">            </span><span class="n">buf</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">val</span><span class="p">.</span><span class="n">GetSerializedSize</span><span class="p">();</span>
+</span><span id="__span-6-68"><span class="w">            </span><span class="n">checkpoint</span><span class="p">.</span><span class="n">persist_data_</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">val</span><span class="p">));</span>
+</span><span id="__span-6-69"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-70"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">checkpoint</span><span class="p">;</span>
+</span><span id="__span-6-71"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-72">
+</span><span id="__span-6-73"><span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">GetSerializedSize</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-74"><span class="w">        </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-6-75">
+</span><span id="__span-6-76"><span class="w">        </span><span class="c1">// 活跃事务条目大小</span>
+</span><span id="__span-6-77"><span class="w">        </span><span class="n">size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">active_txns_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">txn_id_t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">lsn_t</span><span class="p">));</span>
+</span><span id="__span-6-78">
+</span><span id="__span-6-79"><span class="w">        </span><span class="c1">// 持久化数据大小</span>
+</span><span id="__span-6-80"><span class="w">        </span><span class="n">size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// data_size</span>
+</span><span id="__span-6-81"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">persist_data_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-82"><span class="w">            </span><span class="n">size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">GetSerializedSize</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">val</span><span class="p">.</span><span class="n">GetSerializedSize</span><span class="p">();</span>
+</span><span id="__span-6-83"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-84"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+</span><span id="__span-6-85"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-86"><span class="p">};</span>
+</span><span id="__span-6-87">
+</span><span id="__span-6-88"><span class="c1">// 在RecoveryManager中补充CreateNewCheckpoint()函数</span>
+</span><span id="__span-6-89"><span class="n">lsn_t</span><span class="w"> </span><span class="nf">CreateNewCheckpoint</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-90"><span class="w">    </span><span class="c1">// 获取当前最新的LSN</span>
+</span><span id="__span-6-91"><span class="w">    </span><span class="n">lsn_t</span><span class="w"> </span><span class="n">current_lsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">GetNextLSN</span><span class="p">();</span>
+</span><span id="__span-6-92">
+</span><span id="__span-6-93"><span class="w">    </span><span class="c1">// 创建新的Checkpoint</span>
+</span><span id="__span-6-94"><span class="w">    </span><span class="n">CheckPoint</span><span class="w"> </span><span class="n">checkpoint</span><span class="p">;</span>
+</span><span id="__span-6-95"><span class="w">    </span><span class="n">checkpoint</span><span class="p">.</span><span class="n">checkpoint_lsn_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_lsn</span><span class="p">;</span>
+</span><span id="__span-6-96">
+</span><span id="__span-6-97"><span class="w">    </span><span class="c1">// 获取所有活跃事务及其最后LSN</span>
+</span><span id="__span-6-98"><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">active_txns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">txn_manager_</span><span class="o">-&gt;</span><span class="n">GetActiveTransactions</span><span class="p">();</span>
+</span><span id="__span-6-99"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">txn</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">active_txns</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-100"><span class="w">        </span><span class="n">checkpoint</span><span class="p">.</span><span class="n">AddActiveTxn</span><span class="p">(</span><span class="n">txn</span><span class="o">-&gt;</span><span class="n">GetTransactionId</span><span class="p">(),</span><span class="w"> </span><span class="n">txn</span><span class="o">-&gt;</span><span class="n">GetLastLSN</span><span class="p">());</span>
+</span><span id="__span-6-101"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-102">
+</span><span id="__span-6-103"><span class="w">    </span><span class="c1">// 获取需要持久化的数据</span>
+</span><span id="__span-6-104">
+</span><span id="__span-6-105"><span class="w">    </span><span class="c1">// 序列化并写入磁盘</span>
+</span><span id="__span-6-106"><span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">serialized_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checkpoint</span><span class="p">.</span><span class="n">GetSerializedSize</span><span class="p">();</span>
+</span><span id="__span-6-107"><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">char</span><span class="p">[</span><span class="n">serialized_size</span><span class="p">];</span>
+</span><span id="__span-6-108"><span class="w">    </span><span class="n">checkpoint</span><span class="p">.</span><span class="n">SerializeTo</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span><span id="__span-6-109"><span class="w">    </span><span class="n">disk_manager_</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">serialized_size</span><span class="p">);</span>
+</span><span id="__span-6-110"><span class="w">    </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">buf</span><span class="p">;</span>
+</span><span id="__span-6-111">
+</span><span id="__span-6-112"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">current_lsn</span><span class="p">;</span>
+</span><span id="__span-6-113"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+2.LogManager在log buffer充满或timeout发生时将日志信息写入磁盘并清空log buffer<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-7-2"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">AppendLog</span><span class="p">(</span><span class="n">LogRecPtr</span><span class="w"> </span><span class="n">log_rec</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">latch_</span><span class="p">);</span>
+</span><span id="__span-7-4"><span class="w">        </span><span class="n">log_buffer_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">log_rec</span><span class="p">);</span>
+</span><span id="__span-7-5"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">log_buffer_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">log_buffer_size_</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">timeout</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-6"><span class="w">            </span><span class="n">FlushLogBuffer</span><span class="p">();</span>
+</span><span id="__span-7-7"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-8"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-9">
+</span><span id="__span-7-10"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">FlushLogBuffer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-11"><span class="w">        </span><span class="c1">// 将log_buffer_中的日志写入磁盘</span>
+</span><span id="__span-7-12"><span class="w">        </span><span class="n">disk_manager</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_buffer_</span><span class="p">);</span>
+</span><span id="__span-7-13"><span class="w">        </span><span class="n">log_buffer_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+</span><span id="__span-7-14"><span class="w">        </span><span class="c1">// 创建新的Checkpoint表示数据已经持久化</span>
+</span><span id="__span-7-15"><span class="w">        </span><span class="n">recovery_manager</span><span class="p">.</span><span class="n">CreateNewCheckpoint</span><span class="p">();</span>
+</span><span id="__span-7-16"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-17">
+</span><span id="__span-7-18"><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-7-19"><span class="w">    </span><span class="n">RecoveryManager</span><span class="w"> </span><span class="n">recovery_manager</span><span class="p">;</span>
+</span><span id="__span-7-20"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LogRecPtr</span><span class="o">&gt;</span><span class="w"> </span><span class="n">log_buffer_</span><span class="p">;</span>
+</span><span id="__span-7-21"><span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">log_buffer_size_</span><span class="p">;</span>
+</span><span id="__span-7-22"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">latch_</span><span class="p">;</span>
+</span><span id="__span-7-23"><span class="w">    </span><span class="n">DiskManager</span><span class="w"> </span><span class="n">disk_manager</span><span class="p">;</span>
+</span><span id="__span-7-24"><span class="w">    </span><span class="n">lsn_t</span><span class="w"> </span><span class="n">persist_lsn</span><span class="p">;</span>
+</span><span id="__span-7-25"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+3.在Executor中将每一条执行的操作写入log buffer(优先写日志,WAL)<br/>
+4.为了支持事务，在Executor支持事务Begin,Commit与Abort<br/>
+Begin要求为创建新事务并写入开始日志，事务通过txn_manager管理，txn_manager已经实现<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="n">dberr_t</span><span class="w"> </span><span class="nf">ExecuteEngine::ExecuteTrxBegin</span><span class="p">(</span><span class="n">pSyntaxNode</span><span class="w"> </span><span class="n">ast</span><span class="p">,</span><span class="w"> </span><span class="n">ExecuteContext</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><span class="cp">#ifdef ENABLE_EXECUTE_DEBUG</span>
+</span><span id="__span-8-3"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"ExecuteTrxBegin"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="cp">#endif</span>
+</span><span id="__span-8-5"><span class="w">  </span><span class="c1">// 检查当前是否已有活跃事务</span>
+</span><span id="__span-8-6"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">GetTransaction</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Transaction already in progress"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-8"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DB_FAILED</span><span class="p">;</span>
+</span><span id="__span-8-9"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-10">
+</span><span id="__span-8-11"><span class="w">  </span><span class="c1">// 创建新事务</span>
+</span><span id="__span-8-12"><span class="w">  </span><span class="n">txn_id_t</span><span class="w"> </span><span class="n">txn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_txn_id_</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-8-13"><span class="w">  </span><span class="n">Transaction</span><span class="w"> </span><span class="o">*</span><span class="n">txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Transaction</span><span class="p">(</span><span class="n">txn_id</span><span class="p">);</span>
+</span><span id="__span-8-14"><span class="w">  </span><span class="n">context</span><span class="o">-&gt;</span><span class="n">SetTransaction</span><span class="p">(</span><span class="n">txn</span><span class="p">);</span>
+</span><span id="__span-8-15">
+</span><span id="__span-8-16"><span class="w">  </span><span class="c1">// 记录事务开始日志</span>
+</span><span id="__span-8-17"><span class="w">  </span><span class="n">LogRecPtr</span><span class="w"> </span><span class="n">begin_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">CreateBeginLog</span><span class="p">(</span><span class="n">txn_id</span><span class="p">);</span>
+</span><span id="__span-8-18"><span class="w">  </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">AppendLog</span><span class="p">(</span><span class="n">begin_log</span><span class="p">);</span>
+</span><span id="__span-8-19">
+</span><span id="__span-8-20"><span class="w">  </span><span class="c1">// 将事务加入事务管理器</span>
+</span><span id="__span-8-21"><span class="w">  </span><span class="n">txn_manager_</span><span class="o">-&gt;</span><span class="n">Begin</span><span class="p">(</span><span class="n">txn</span><span class="p">);</span>
+</span><span id="__span-8-22">
+</span><span id="__span-8-23"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Transaction "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">txn_id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" started successfully"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-24"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">DB_SUCCESS</span><span class="p">;</span>
+</span><span id="__span-8-25"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Commit要求将事务的全部操作刷盘，在lock_manager释放锁，在txn_manager提交事务<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="n">dberr_t</span><span class="w"> </span><span class="nf">ExecuteEngine::ExecuteTrxCommit</span><span class="p">(</span><span class="n">pSyntaxNode</span><span class="w"> </span><span class="n">ast</span><span class="p">,</span><span class="w"> </span><span class="n">ExecuteContext</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-2"><span class="cp">#ifdef ENABLE_EXECUTE_DEBUG</span>
+</span><span id="__span-9-3"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"ExecuteTrxCommit"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-9-4"><span class="cp">#endif</span>
+</span><span id="__span-9-5"><span class="w">  </span><span class="c1">// 获取当前事务</span>
+</span><span id="__span-9-6"><span class="w">  </span><span class="n">Transaction</span><span class="w"> </span><span class="o">*</span><span class="n">txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="o">-&gt;</span><span class="n">GetTransaction</span><span class="p">();</span>
+</span><span id="__span-9-7"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">txn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-8"><span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"No transaction to commit"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-9-9"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DB_FAILED</span><span class="p">;</span>
+</span><span id="__span-9-10"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-11">
+</span><span id="__span-9-12"><span class="w">  </span><span class="c1">// 记录事务提交日志</span>
+</span><span id="__span-9-13"><span class="w">  </span><span class="n">LogRecPtr</span><span class="w"> </span><span class="n">commit_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">CreateCommitLog</span><span class="p">(</span><span class="n">txn</span><span class="o">-&gt;</span><span class="n">GetTransactionId</span><span class="p">());</span>
+</span><span id="__span-9-14"><span class="w">  </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">AppendLog</span><span class="p">(</span><span class="n">commit_log</span><span class="p">);</span>
+</span><span id="__span-9-15">
+</span><span id="__span-9-16"><span class="w">  </span><span class="c1">// 强制日志刷盘确保持久性</span>
+</span><span id="__span-9-17"><span class="w">  </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">FlushLogBuffer</span><span class="p">();</span>
+</span><span id="__span-9-18">
+</span><span id="__span-9-19"><span class="w">  </span><span class="c1">// 释放所有锁</span>
+</span><span id="__span-9-20"><span class="w">  </span><span class="n">lock_manager_</span><span class="o">-&gt;</span><span class="n">UnlockAll</span><span class="p">(</span><span class="n">txn</span><span class="p">);</span>
+</span><span id="__span-9-21">
+</span><span id="__span-9-22"><span class="w">  </span><span class="c1">// 提交事务</span>
+</span><span id="__span-9-23"><span class="w">  </span><span class="n">txn_manager_</span><span class="o">-&gt;</span><span class="n">Commit</span><span class="p">(</span><span class="n">txn</span><span class="p">);</span>
+</span><span id="__span-9-24">
+</span><span id="__span-9-25"><span class="w">  </span><span class="c1">// 清理上下文</span>
+</span><span id="__span-9-26"><span class="w">  </span><span class="n">context</span><span class="o">-&gt;</span><span class="n">SetTransaction</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span>
+</span><span id="__span-9-27"><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">txn</span><span class="p">;</span>
+</span><span id="__span-9-28">
+</span><span id="__span-9-29"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Transaction "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">txn</span><span class="o">-&gt;</span><span class="n">GetTransactionId</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" committed successfully"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-9-30"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">DB_SUCCESS</span><span class="p">;</span>
+</span><span id="__span-9-31"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Abort要求将事务的所有操作回滚，记录回滚日志，释放锁<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><span class="n">dberr_t</span><span class="w"> </span><span class="nf">ExecuteEngine::ExecuteTrxRollback</span><span class="p">(</span><span class="n">pSyntaxNode</span><span class="w"> </span><span class="n">ast</span><span class="p">,</span><span class="w"> </span><span class="n">ExecuteContext</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><span class="cp">#ifdef ENABLE_EXECUTE_DEBUG</span>
+</span><span id="__span-10-3"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"ExecuteTrxRollback"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-10-4"><span class="cp">#endif</span>
+</span><span id="__span-10-5"><span class="w">  </span><span class="c1">// 获取当前事务</span>
+</span><span id="__span-10-6"><span class="w">  </span><span class="n">Transaction</span><span class="w"> </span><span class="o">*</span><span class="n">txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="o">-&gt;</span><span class="n">GetTransaction</span><span class="p">();</span>
+</span><span id="__span-10-7"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">txn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-8"><span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"No transaction to rollback"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-10-9"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DB_FAILED</span><span class="p">;</span>
+</span><span id="__span-10-10"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-11">
+</span><span id="__span-10-12"><span class="w">  </span><span class="c1">// 记录事务回滚日志</span>
+</span><span id="__span-10-13"><span class="w">  </span><span class="n">LogRecPtr</span><span class="w"> </span><span class="n">abort_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">CreateAbortLog</span><span class="p">(</span><span class="n">txn</span><span class="o">-&gt;</span><span class="n">GetTransactionId</span><span class="p">());</span>
+</span><span id="__span-10-14"><span class="w">  </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">AppendLog</span><span class="p">(</span><span class="n">abort_log</span><span class="p">);</span>
+</span><span id="__span-10-15">
+</span><span id="__span-10-16"><span class="w">  </span><span class="c1">// 执行回滚操作</span>
+</span><span id="__span-10-17"><span class="w">  </span><span class="n">txn_manager_</span><span class="o">-&gt;</span><span class="n">Abort</span><span class="p">(</span><span class="n">txn</span><span class="p">);</span>
+</span><span id="__span-10-18">
+</span><span id="__span-10-19"><span class="w">  </span><span class="c1">// 释放所有锁</span>
+</span><span id="__span-10-20"><span class="w">  </span><span class="n">lock_manager_</span><span class="o">-&gt;</span><span class="n">UnlockAll</span><span class="p">(</span><span class="n">txn</span><span class="p">);</span>
+</span><span id="__span-10-21">
+</span><span id="__span-10-22"><span class="w">  </span><span class="c1">// 清理上下文</span>
+</span><span id="__span-10-23"><span class="w">  </span><span class="n">context</span><span class="o">-&gt;</span><span class="n">SetTransaction</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span>
+</span><span id="__span-10-24"><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">txn</span><span class="p">;</span>
+</span><span id="__span-10-25">
+</span><span id="__span-10-26"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Transaction "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">txn</span><span class="o">-&gt;</span><span class="n">GetTransactionId</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" rolled back successfully"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-10-27"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">DB_SUCCESS</span><span class="p">;</span>
+</span><span id="__span-10-28"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+5.对quit操作，做强制刷盘与checkpoint的更新<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="n">dberr_t</span><span class="w"> </span><span class="nf">ExecuteEngine::ExecuteQuit</span><span class="p">(</span><span class="n">pSyntaxNode</span><span class="w"> </span><span class="n">ast</span><span class="p">,</span><span class="w"> </span><span class="n">ExecuteContext</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><span class="cp">#ifdef ENABLE_EXECUTE_DEBUG</span>
+</span><span id="__span-11-3"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"ExecuteQuit"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-11-4"><span class="cp">#endif</span>
+</span><span id="__span-11-5"><span class="w">  </span><span class="c1">// 检查是否有活跃事务</span>
+</span><span id="__span-11-6"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">GetTransaction</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-7"><span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">WARNING</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Active transaction found during quit, rolling back..."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-11-8"><span class="w">    </span><span class="n">ExecuteTrxRollback</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">);</span><span class="w">  </span><span class="c1">// 回滚当前事务</span>
+</span><span id="__span-11-9"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-10">
+</span><span id="__span-11-11"><span class="w">  </span><span class="c1">// 强制刷盘所有日志</span>
+</span><span id="__span-11-12"><span class="w">  </span><span class="n">log_manager_</span><span class="o">-&gt;</span><span class="n">FlushLogBuffer</span><span class="p">();</span>
+</span><span id="__span-11-13">
+</span><span id="__span-11-14"><span class="w">  </span><span class="c1">// 创建最终checkpoint</span>
+</span><span id="__span-11-15"><span class="w">  </span><span class="n">recovery_manager_</span><span class="o">-&gt;</span><span class="n">CreateNewCheckpoint</span><span class="p">();</span>
+</span><span id="__span-11-16">
+</span><span id="__span-11-17"><span class="w">  </span><span class="c1">// 确保checkpoint数据写入磁盘</span>
+</span><span id="__span-11-18"><span class="w">  </span><span class="n">disk_manager_</span><span class="o">-&gt;</span><span class="n">Sync</span><span class="p">();</span>
+</span><span id="__span-11-19">
+</span><span id="__span-11-20"><span class="w">  </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Database shutdown."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-11-21"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">DB_SUCCESS</span><span class="p">;</span>
+</span><span id="__span-11-22"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+6.当数据库异常退出再启动时，在Catalog的构造函数打开日志，从最近的一个checkpoint开始redo与undo，全部完成后设置一个checkpoint<br/>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><span class="n">CatalogManager</span><span class="o">::</span><span class="n">CatalogManager</span><span class="p">(</span><span class="n">BufferPoolManager</span><span class="w"> </span><span class="o">*</span><span class="n">buffer_pool_manager</span><span class="p">,</span><span class="w"> </span><span class="n">LockManager</span><span class="w"> </span><span class="o">*</span><span class="n">lock_manager</span><span class="p">,</span><span class="n">LogManager</span><span class="w"> </span><span class="o">*</span><span class="n">log_manager</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">init</span><span class="p">)</span>
+</span><span id="__span-12-2"><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">buffer_pool_manager_</span><span class="p">(</span><span class="n">buffer_pool_manager</span><span class="p">),</span><span class="w"> </span><span class="n">lock_manager_</span><span class="p">(</span><span class="n">lock_manager</span><span class="p">),</span><span class="w"> </span><span class="n">log_manager_</span><span class="p">(</span><span class="n">log_manager</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-3">
+</span><span id="__span-12-4"><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-12-5"><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">init</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span>
+</span><span id="__span-12-6"><span class="w">        </span><span class="c1">// ...</span>
+</span><span id="__span-12-7"><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-8"><span class="w">        </span><span class="c1">//load existing metadata,table,index</span>
+</span><span id="__span-12-9"><span class="w">        </span><span class="c1">//...</span>
+</span><span id="__span-12-10"><span class="w">        </span><span class="n">RecoveryManager</span><span class="w"> </span><span class="n">recovery_manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_manager</span><span class="o">-&gt;</span><span class="n">GetRecoveryManager</span><span class="p">();</span>
+</span><span id="__span-12-11"><span class="w">        </span><span class="n">recovery_manager</span><span class="p">.</span><span class="n">Init</span><span class="p">(</span><span class="n">last_checkpoint</span><span class="p">);</span>
+</span><span id="__span-12-12"><span class="w">        </span><span class="n">recovery_manager</span><span class="p">.</span><span class="n">RedoPhase</span><span class="p">();</span>
+</span><span id="__span-12-13"><span class="w">        </span><span class="n">recovery_manager</span><span class="p">.</span><span class="n">UndoPhase</span><span class="p">();</span>
+</span><span id="__span-12-14"><span class="w">        </span><span class="n">last_checkpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recovery_manager</span><span class="p">.</span><span class="n">CreateNewCheckpoint</span><span class="p">();</span>
+</span><span id="__span-12-15"><span class="w">        </span><span class="n">log_manager</span><span class="o">-&gt;</span><span class="n">FlushLogBuffer</span><span class="p">();</span>
+</span><span id="__span-12-16"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-17"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>完成以上部分后，断电后已被写入磁盘的日志都被正确<span class="heti-skip"><span class="heti-spacing"> </span>redo<span class="heti-spacing"> </span></span>与<span><span class="heti-spacing"> </span>undo</span>，在<span class="heti-skip"><span class="heti-spacing"> </span>log buffer<span class="heti-spacing"> </span></span>中的日志会丢失，保障了数据库的一致性  </p>
+<h2 id="_4">四、 实验结果展示<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>运行<code>minisql_test</code>：
+<img alt="alt text" src="../img/image-3.png"/><br/>
+<img alt="alt text" src="../img/image-4.png"/> </li>
+</ul>
+<p></p>
+<ul>
+<li>进行<code>main</code>函数整体运行结果见小组总体设计报告</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © YYC 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../../../../js/katex.js"></script>
+</body>
+</html>
