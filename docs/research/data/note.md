@@ -1,4 +1,4 @@
-[课程综合实践II——数据要素交易基础课程笔记](https://tapir-elithril.github.io/Notebook/sp25/data_market/note/)
+2025.6.25-7.7:[课程综合实践II——数据要素交易基础课程笔记](https://tapir-elithril.github.io/Notebook/sp25/data_market/note/)
 课程相关内容包括：
 
 - 数据安全
@@ -12,59 +12,97 @@
 “数据靶点”综述范围:在AIGC领域生成的数据中找漏洞  
 **评估出价值低的数据**  
 数据评估的要素：context(input),criteria,reference answer,model-generated content  
-评估协议:single-wise,pair-wise,corpus-level(all generation in a test set)  
-NLG(neural text generation)  
+评估协议:single-wise,pair-wise,corpus-level(all generation in a test set) 
+评估基本方式：heuristic,embedding-based,learning-based,LLM-based,benchmark-based 
+
+### NLG(neural text generation)  
+
 - heuristic evaluation  
-  - word-overlap(词重叠)
-    - 文本相似性
+  - word-overlap(词重叠)  
+    - 文本相似性  
         BLEU,ROUGE,METEOR:n-gram overlap  
         chrF,METEOR:combine precision and recall  
-        NIST,CIDEr:n-grams weight
-    - 文本多样性
+        NIST,CIDEr:n-grams weight  
+    - 文本多样性  
         Rep-n,Distinct-N:unique n-gram proportion  
-        Self-BLEU:sentence-level BLEU score calculation
-        EAD:adjusts(how?) the number of distinct tokens based on statistical expectation for longer texts
-    - 事实一致性
-        QA models + output summary与source的一致性测量
-    all reference-based(HighRES is reference-free but needs annotation to serve as reference)
-    可以完全reference-free吗？
-  - edit-distance
+        Self-BLEU:sentence-level BLEU score calculation  
+        EAD:adjusts(how?) the number of distinct tokens based on statistical expectation for longer texts  
+    - 事实一致性  
+        QA models + output summary与source的一致性测量  
+    all reference-based(HighRES is reference-free but needs annotation to serve as reference)  
+    可以完全reference-free吗？  
+  - edit-distance  
     TER,WER:generated text->reference text需要改变的词数  
-  - generation probability
-    perplexity(PPL):对未知文本的预测准确度，PPL越低（接近1）模型预测置信度越高
+  - generation probability  
+    perplexity(PPL):对未知文本的预测准确度，PPL越低（接近1）模型预测置信度越高  
     BARTScore  
     CTRLEval:designed text infilling tasks(完形填空)  
-    GPTScore
-  - other
-    FACE:对文本交叉熵的傅里叶分析
+    GPTScore  
+  - other  
+    FACE:对文本交叉熵的傅里叶分析  
     Mark-Evaluate:人口模型  
     Zipf:自然语言的词法规律  
     Q<sup>2</sup>:knowledge source&dialogue response  
 - embedding-based evaluation:semantic similarity  
+  ...  
 - learning-based evaluation:train on annotated(标注) data  
 - LLM-based evaluation:prompt+reasoning  
 - Benchmark-based evaluation  
   
+### Vision
+
+### Audio and Speech-related
+
+### future work
+评估偏差、跨领域泛化和复杂生成系统的可扩展性
+
 ## A Comprehensive Study of Shapley Value in Data Analytics
-**沙普利值在数据分析流水线中的利用情况与前景**
+**沙普利值在数据分析流水线中的利用情况与前景**  
+沙普利值的计算：排列/组合/蒙特卡洛采样法（数据要素交易基础Lab1）
+### 合作博弈模型
+合作博弈在数据分析实践中的对应：  
+player->数据特征/样本/数据集/派生数据  
+效用->goodness-of-fit scores(accuracy)/output
+应用方面：构建公平的数据要素市场；提升数据的性价比；将分析结果转化为解决实际问题
+### 沙普利值应用的挑战与解决方式
+#### 计算效率问题  
+
+- 蒙特卡洛采样(MC)  
+- ...  
+
+#### 近似出错
+
+#### 隐私保护
+
+#### 可解释性
+
+### SVBench
 
 ## Data Swarms: Optimizable Generation of Synthetic Evaluation Data
-**优化合成评估数据的生成推进LLM的量化评估**
+**优化合成评估数据的生成推进LLM的量化评估**  
 
 ## When Dynamic Data Selection Meets Data Augmentation
-**动态数据选择和数据增强优化结合的训练框架**
+**动态数据选择和数据增强优化结合的训练框架**  
+估计样本的局部密度与多模态语义一致性联合分布，针对性筛选适合增强的样本，同时抑制噪声或模糊数据，在保证泛化能力的前提下缩减数据集规模
+### 核心技术
+**data selection**  
+**data augmentation**  
+**combination**  
+### result
+在ImageNet-1k数据集上实现了训练成本降低50%且性能无损  
+增强了模型的抗噪能力和鲁棒性  
 
-
-
+## 评注
 关键点：
-AIGC生成数据的漏洞：
-- 数据本身：误报（幻觉），低相关性，重复性  
+AIGC生成数据的漏洞：  
+
+- 数据本身：**误报（幻觉）**，低相关性，重复性  
 - 安全漏洞：敏感信息、恶意信息  
-- 偏见，不公平输出
-- 合规性与责任
+- 偏见，不公平输出  
+- 合规性与责任  
 - RCE,prompt injection,backdoor,**数据投毒**  
-  
-后四者属于研究的重点吗？
-novelty之处：评估的方法？（具体到评估的优化方式）评估的框架？全面的评估对象（各类LLM）？
-需要调研的内容：LLM数据评估的SOTA
-需要的背景知识：一般的数据评估的方式
+   
+后四者属于研究的重点吗？  
+novelty之处：评估的方法（具体到评估的优化方式）？评估的框架？全面的评估对象（各类LLM）？  
+需要调研的内容：LLM数据评估的SOTA，其他数据增强（优化）的框架  
+需要的背景知识：一般的数据评估的方式  
