@@ -8,15 +8,15 @@
 ### 分数构成
 - 作业 10%
 - 实验 60%  
-  Lab0 环境配置 6%  
-  Lab1 多路选择器+七段译码管 10%  
-  Lab2 加减法器 6%  
-  Lab3 时序电路：有限状态机、计数器、乘法器 8%  
-  Lab4-1 卷积核 8%  
-  Lab4-2(Bonus)串口  
-  Lab5 汇编程序设计与调试 10%  
-  Project 单周期CPU 12%  
-  Project(Bonus) 多周期CPU  
+  - Lab0 环境配置 6%  
+  - Lab1 多路选择器+七段译码管 10%  
+  - Lab2 加减法器 6%  
+  - Lab3 时序电路：有限状态机、计数器、乘法器 8%  
+  - Lab4-1 卷积核 8%  
+  - Lab4-2(Bonus)串口  
+  - Lab5 汇编程序设计与调试 10%  
+  - Project 单周期CPU 12%  
+  - Project(Bonus) 多周期CPU  
   Bonus total 10%  
 -------total <= 70---------
 - 期末 30%  

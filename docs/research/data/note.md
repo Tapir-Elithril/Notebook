@@ -12,7 +12,7 @@
 “数据靶点”综述范围:在AIGC领域生成的数据中找漏洞  
 **评估出价值低的数据**  
 数据评估的要素：context(input),criteria,reference answer,model-generated content  
-评估协议:single-wise,pair-wise,corpus-level(all generation in a test set) 
+评估协议:single-wise,pair-wise,corpus-level(all generation in a test set)  
 评估基本方式：heuristic,embedding-based,learning-based,LLM-based,benchmark-based 
 
 ### NLG(neural text generation)  
@@ -106,3 +106,23 @@ AIGC生成数据的漏洞：
 novelty之处：评估的方法（具体到评估的优化方式）？评估的框架？全面的评估对象（各类LLM）？  
 需要调研的内容：LLM数据评估的SOTA，其他数据增强（优化）的框架  
 需要的背景知识：一般的数据评估的方式  
+
+
+7.4明确data target:  
+不是将大部分数据低质量都视为靶点  
+而是寻找质量低数据的代表性范本，上游数据对下游任务（性能）有直接损害的关键数据  
+对这些数据做cluster，然后性能增强  
+首要关注目标：文本/图像->**数值类型**（e.g.传感器，缺失，偏移，...）
+自动增强（后续考虑）
+
+尽可能在少量的条目上修改对下游task提升  
+增强手法：“治疗”，update而非传统data augmentation通过增加新的样本的增强方式
+//调研传统data augmentation的方式，比较不同（可能还能结合？比如先治疗再增强）
+少量高质量的数据，大量低质量的数据
+低质量数据靶点：什么是低质量的，有哪些（类别），如何识别，如何增强
+
+调研方向：数值类型数据
+数值类型的数据集（结构化的表格类型）：质量是如何评估的（传统数据评估的算法，缺失值，错误值）；传感器/分类器：目前数据修正的方法  
+传感器数据做预测/regression，kaggle上找一些数据集（天然有缺陷）  
+
+下一步：调研文献，收集数据集  

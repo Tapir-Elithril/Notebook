@@ -82,18 +82,207 @@ $$
 $$
 \forall i\in N,\forall c_i'\neq c_i,u_i(c_i)\ge u_i(c_i') 
 $$
-2.根据迈尔森引理，反向拍卖机制是 DSIC 的充要条件是：$(\boldsymbol{x},\boldsymbol{p})$满足(1)$\boldsymbol{x}$是单调不减的，(2)给定$\boldsymbol{x}$的情况下，只要给定$p(0)$的值，对任意的$i\in N$和$b_i \in [0,+\infty)$，$\boldsymbol{p}$的表达式是唯一确定的：
+2.根据迈尔森引理，反向拍卖机制是 DSIC 的充要条件是：$(\boldsymbol{x},\boldsymbol{p})$满足(1)$\boldsymbol{x}$是单调不增的（即报价$c_i$越低，卖出物品的概率越大），(2)给定$\boldsymbol{x}$的情况下，只要给定$p_i(0)$的值，对任意的$i\in N$和$b_i \in [0,+\infty)$，$\boldsymbol{p}$的表达式是唯一确定的：（这一表达式其实是通过必要性的步骤推导出来的）
 $$
-p_i(b_i)=p_i(0)+b_i\cdot x_i(b_i)-\int_0^{b_i}x_i(s)ds.
+p_i(c_i)=c_i+\frac{\int_{c_i}^{\infty}x_i(s)ds}{x_i(c_i)}.
 $$
 下面给出证明：
 充分性：
 设竞拍者$i$的成本为$c_i$，当其报价为$c'_i$时，其收益为
 $$
-u_i(c'_i)=x_i(c'_i)\cdot (p_i(c'_i)-c_i)=代入迈尔森公式
+u_i(c'_i)=x_i(c'_i)\cdot (p_i(c'_i)-c_i)=\int_{c'_i}^{\infty}x_i(s)ds+x_i(c'_i)\cdot(c'_i-c_i)
+$$
+特别地，当报价$c'_i=c_i$，即竞拍者诚实报价时，其收益为
+$$
+u_i(c_i)=\int_{c_i}^{\infty}x_i(s)ds
+$$
+故有
+$$
+u_i(c_i)-u_i(c'_i)=\int_{c_i}^{c'_i}x_i(s)ds+x_i(c'_i)(c_i-c'_i)
+$$
+当$c'_i\ge c_i$时，由于$x_i$是减函数，故
+$$
+\int_{c_i}^{c'_i}x_i(s)ds\ge (c'_i-c_i)x_i(c'_i)
+$$
+因此$u_i(c_i)-u_i(c'_i)\ge 0$，当$c'_i\le c_i$时同理可得$u_i(c_i)-u_i(c'_i)\ge 0$
+故无论其他竞拍者的报价如何，竞拍者$i$选择如实报出自己的成本是占优策略，因此该机制是 DSIC 的。
+必要性：
+假设机制$(\boldsymbol{x},\boldsymbol{p})$是DSIC的，有两个任意的变量$z\lt y \lt \infty$。一种可能的情况是，智能体$i$的成本是$z$，提交报价$y$，此时DSIC要求$u_i(z)\ge u_i(y)$，展开为
+$$
+x_i(z)\cdot (p_i(z)-z) \ge x_i(y)\cdot(p_i(y)-z)
+$$
+另一种情况是，智能体$i$的成本是$y$，提交报价$z$，此时要求
+$$
+x_i(y)\cdot (p_i(y)-y) \ge x_i(z)\cdot(p_i(z)-y)
+$$
+上述两式移项、组合后可以得到
+$$
+y(x_i(y)-x_i(z))\le x_i(y)p_i(y)-x_i(z)p_i(z) \le z(x_i(y)-x_i(z))
+$$
+实际上由上式左右两端已经可以看出，$(z-y)(x_i(y)-x_i(z))\ge 0$，因为$z\lt y$，故$x_i(y)-x_i(z)\le 0$，又因为这一结果对任意的$z\lt y \lt \infty$成立，故$x_i$是单调递减的，故也是可积且几乎处处可导的。
+进一步地，对不等式中三项分别除以$y-z$，然后令$y\rightarrow z$可得下式几乎处处成立：
+$$
+y\cdot x_i'(y)=(x_i(y)p_i(y))'
+$$
+两边对$y$积分可得
+$$
+\int_{c_i}^{\infty}y\cdot x_i'(y)dy=\int_{c_i}^{\infty}(x_i(y)p_i(y))'dy
+$$
+利用分部积分即可得到迈尔森支付公式
+$$
+p_i(c_i)=c_i+\frac{\int_{c_i}^{\infty}x_i(s)ds}{x_i(c_i)}.
 $$
 
-必要性：
-积分到无穷大
-
 ### 2.4 虚拟估值和正则性条件
+**本题将推导出对于虚拟估值$c(v)=v-\frac{1-F(v)}{f(v)}$和正则化条件的有趣描述。考虑 $[0, v_{max}]$上严格单调递增的分布函数$F$，其概率密度函数$f$为正，其中$v_{max}<+\infty$。对于估值服从分布$F$的竞拍者，当交易成功概率为$q \in [0,1]$时，定义$V(q)=F^{-1}(1-q)$为物品的“价格”，进而可以定义$R(q)=q\cdot V(q)$为从竞拍者处获得的期望收益。称$R(q)$为$F$的收益函数曲线，注意$R(0)=R(1)=0$。**
+1.请解释为什么$V(q)$可以被视为物品的价格；
+2.$[0,1]$上的均匀分布的收益曲线函数是什么？
+3.证明收益曲线在$q$点的斜率（即$R'(q)$）是$c(V(q))$，其中$c$是虚拟估值函数；
+4.证明当且仅当收益曲线是凹的时候，概率分布是正则的。
+
+[Answer]
+1.$V(q)$是关于$q$的单调递减函数，定义域为$[0,1]$，值域为$[0, v_{max}]$，且$V(0)=v_{max},V(1)=0$，下面推导为什么这样的$V(q)$可以被视为物品的价格
+假设某物品存在一个价格$p$，竞拍者的估值为$v$，则竞拍者愿意购买该物品的概率为（估值服从分布$F$）
+$$
+P(v\ge p)=1-P(v\lt p)=1-F(p)
+$$
+此时交易成功率为$q$，我们希望找到一个价格$p$使得$P(v\ge p)=q$，解得
+$$
+p=F^{-1}(1-q)\stackrel{\Delta}{=}V(q)
+$$
+从而$V(q)$可以被视为物品的价格，满足$q$是物品的价格为$V(q)$时，交易成功（即竞拍者愿意拍下物品，也即竞拍者的估值高于物品价格）的概率
+2.对$[0,1]$上的均匀分布，分布函数$F(v)=v$，则$F^{-1}(v)=v$此时收益曲线函数
+$$
+R(q)=q\cdot V(q)=q\cdot F^{-1}(1-q)=q(1-q)
+$$
+其中$q$是交易成功概率，$q\in[0,1]$
+3.要证明$R'(q)=c(V(q))$，即证$V(q)+q\cdot V'(q)=V(q)-\frac{1-F(V(q))}{f(V(q))}$，即
+$$
+\frac{1-F(V(q))}{f(V(q))}+q\cdot V'(q)=0  \tag{*}\qquad
+$$
+根据反函数的求导法则对$V(q)=F^{-1}(1-q)$，有
+$$
+V'(q)=\frac{1}{F'(F^{-1}(1-q))}\cdot (1-q)'=\frac{-1}{f(F^{-1}(1-q))}
+$$
+代入$(*)$，有
+$$
+\begin{aligned}
+&\frac{1-F(V(q))}{f(V(q))}+q\cdot V'(q) \\
+&\quad =\frac{q}{f(F^{-1}(1-q))}+q\cdot \frac{-1}{f(F^{-1}(1-q))} \\
+&\quad =0
+\end{aligned}
+$$
+
+从而证明了收益曲线的斜率是对应价格的虚拟估值
+4.要证明收益曲线$R(q)$是凹的是概率分布正则的充要条件
+即$R''(q)\le 0$是虚拟估值$c$单调递增的充要条件
+利用小题3的结论，我们有
+$$
+R''(q)=c'(V(q))\cdot V'(q),q\in[0,1]
+$$
+因为$V(q)$是单调递减的，所有$V'(q)\le 0$，则
+$R''(q)\le 0 \iff c'(V(q))\ge 0 \stackrel{V(q)\in[0,v_{max}]}{\iff}c是单调递增的$
+从而当且仅当收益曲线是凹的时候，概率分布是正则的。
+该结论表明，只要收益曲线是凹的，概率分布就是正则的，通过最优机制（二价拍卖与保留价）就可以实现最优拍卖
+收益曲线的凹性还符合边际效应递减的经济学直觉，通过收益曲线可以快速判断是否能够通过最优机制较为容易地实现收益最大化
+
+### 2.5 贝叶斯劝说：检察官与法官
+考虑检察官劝说法官判决的例子：假设法官（信号接收者）对于一个被告人，必须做出以下两种决策之一：判决有罪（convict）或无罪释放（acquit）。
+• 被告人有两种类型：有罪（guilty）或无罪（innocent）；
+• 法官在公正判决下获得的效用为 1：如果有罪被判有罪，无罪被判无罪，否则效用为 0；
+• 检察官（信号发送者）为法官提供有关被告的证据（发送信号），如果被告人判有罪，检察官获得效用 1，否则效用为 0；
+• 法官和检察官对被告人的类型有相同的先验概率分布：$\mu_0(guilty)=0.3,\mu_ 0(innocent)=0.7$。
+检察官进行调查收集有关被告人的证据，因此检察官的策略是选择一个提供证据的策略，希望改变法官的判决，使得被判有罪的越多越好（检查官效用最大化）。形式化地说，提供证据就是一个 $\pi(\cdot|guilty)$和$\pi(\cdot|innocent)$的信号机制，并且这一信号机制在博弈前是公开给法官的（或者说可验证的）。
+1. 根据信息设计的显示原理，给出下面需要考虑的信号机制的形式；
+2. 求检察官使用完全诚实的信号机制的情况下，检察官和法官的效用；
+3. 求检察官最优信号机制下检察官的效用，以及最优信号机制下法官后验概率分布的分布；
+4. 求检察官的最优信号机制。
+
+[Answer]
+1.定理（信息设计的显示原理）：只需要考虑$S \subseteq A$，且一个$s\in S$对应一个最优$a\in A$的机制  
+$S=\left\{1,2\right\}$对应$A=\left\{convict,acquit\right\}$，即检察官分别发送$1,2$两种信号，劝说法官分别做出对应$convict,acquit$的判决  
+2.$\pi(1|guilty)=1,\pi(2|innocent)=1,\pi(1|innocent)=0,\pi(2|guilty)=0$
+法官：$1\rightarrow convict,2\rightarrow acquit$
+$u=u_{法官}=\mu_0(guilty)\cdot\pi(convict|guilty)+\mu_0(innocent)\cdot\pi(acquit|innocent)=\\0.3*1+0.7*1=1$
+$v=u_{检察官}=\mu_0(guilty)\cdot\pi(convict|guilty)+\mu_0(innocent)\cdot\pi(convict|innocent)=\\0.3*1+0.7*0=0.3$
+3.设后验概率分布为$\mu$时，信号发送方的最优行动为$\hat{a}(\mu)$，信号发送方的期望收益为$\hat{v}(\mu)$
+对后验概率$\mu(guilty)$，法官宣判有罪的收益$u_{convict}=\mu(guilty)$，宣判无罪的收益$u_{acquit}=\mu(innocent)=1-\mu(guilty)$
+所以当$\mu(guilty)\ge 0.5$时，$\hat{a}(\mu)=convict$，检察官的收益$\hat{v}(\mu)=1$，反之$\hat{a}(\mu)=acquit$，检察官的收益$\hat{v}(\mu)=0$
+即
+$$
+\hat{v}(\mu)=
+\begin{cases}
+0 & 0\le\mu\le\frac{1}{2} \\
+1 & \frac{1}{2}\lt\mu\le1
+\end{cases}
+$$
+不难求出，$\hat{v}(\mu)$的凹包络$V(\mu)$为
+$$
+V(\mu)=
+\begin{cases}
+2\mu & 0\le\mu\le\frac{1}{2} \\
+1 & \frac{1}{2}\lt\mu\le1
+\end{cases}
+$$
+又因为最优机制下后验概率分布的分布是贝叶斯可行的，则
+期望$\mathbb{E}(\tau)=x(\frac{1}{2},\frac{1}{2})+(1-x)(0,1)=\mu_0=(0.3,0.7)$
+解得$x=0.6$
+从而检察官最优信号机制下检察官的效用$\hat{v}=1$，法官后验概率分布的分布为
+$$
+\begin{array}{c|ccccc}
+X & \mu_1 & \mu_2 \\ \hline
+P & 0.6 & 0.4 
+\end{array}
+$$
+4.检察官的最优信号机制为
+$\mu_1(guilty)=0.5,\mu_1(innocent)=0.5,\tau(\mu_1)=0.6$
+$\mu_2(guilty)=0,\mu_2(innocent)=1,\tau(\mu_2)=0.4$
+$\pi(1|guilty)=\frac{\tau(\mu_1)\cdot\mu_1(guilty)}{\mu_0(guilty)}=1$  
+$\pi(1|innocent)=\frac{\tau(\mu_1)\cdot\mu_1(innocent)}{\mu_0(innocent)}=\frac{3}{7}$  
+$\pi(2|guilty)=\frac{\tau(\mu_2)\cdot\mu_2(guilty)}{\mu_0(guilty)}=0$  
+$\pi(2|innocent)=\frac{\tau(\mu_2)\cdot\mu_2(innocent)}{\mu_0(innocent)}=\frac{4}{7}$  
+即在有罪的情况下一定发送信号$1$劝说法官判处有罪  
+在无罪的情况下以$\frac{3}{7}$的概率发送信号$1$，以$\frac{4}{7}$的概率发送信号$2$
+法官有$0.6$的概率接收信号$1$，接收信号$1$时，表明对方有$0.5$的概率有罪，$0.5$的概率无罪，此时法官会做出有罪判处
+有$0.4$的概率接收信号$2$，表明对方一定无罪，此时法官会做出无罪判处
+法官的效用$\tau(\mu_1)*\mu_1(guilty)+\tau(\mu_2)*\mu_2(innocent)=0.6*0.5+0.4*1=0.7$
+
+### 2.6 信息的价值
+设自然的状态集合为$\Omega=\left\{\omega_1,\omega_2\right\}$，买家的先验分布为$\mu_0(\omega_1)=0.7,\mu_0(\omega_2)=0.3$。设买家的行动集合为$A=\left\{a_1,a_2\right\}$，效用函数为
+$$
+u(a_1,\omega_1)=2,u(a_1,\omega_2)=0, \\
+u(a_2,\omega_1)=0,u(a_2,\omega_2)=3.
+$$
+假设有一个数据卖家提供如下信号机制：$S=\left\{s_1,s_2\right\}$，且
+$$
+\pi(s_1|\omega_1)=0.9,\pi(s_2|\omega_1)=0.1, \\
+\pi(s_1|\omega_2)=0.7,\pi(s_2|\omega_2)=0.3.
+$$
+求卖家信号机制对买家的价值。
+
+[Answer]
+在没有信号机制的情况下，
+买家采用行动$a_1$，效用$u_{a_1}=\mu_0(\omega_1)\cdot u(a_1,w_1)+\mu_0(\omega_2)\cdot u(a_1,w_2)=0.7*2+0=1.4$
+买家采用行动$a_2$，效用$u_{a_2}=\mu_0(\omega_1)\cdot u(a_2,w_1)+\mu_0(\omega_2)\cdot u(a_2,w_2)=0+0.3*0.3=0.9$
+此时买家的效用为始终采取行动$a_1$的效用$u=u_{a_1}=1.4$
+买家接收卖家提供的信号机制后，
+$\pi(s_1)=\mu_0(\omega_1)*\pi(s_1|\omega_1)+\mu_0(\omega_2)*\pi(s_1|\omega_2)=0.7*0.9+0.3*0.7=0.84$
+$\pi(s_2)=\mu_0(\omega_1)*\pi(s_2|\omega_1)+\mu_0(\omega_2)*\pi(s_2|\omega_2)=0.7*0.1+0.3*0.3=0.16$
+由贝叶斯公式，后验概率
+$\mu_{s_1}(\omega_1)=\frac{\pi(s_1|\omega_1)\cdot\mu_0(\omega_1)}{\pi(s_1)}=\frac{0.9*0.7}{0.84}=0.75$
+$\mu_{s_1}(\omega_2)=0.25$
+$\mu_{s_2}(\omega_1)=0.4375$
+$\mu_{s_2}(\omega_2)=0.5625$
+
+在接收到信号$s_1$时采取行动$a_1$，有期望效用$u(a_1|s_1)=\mu_{s_1}(\omega_1)*u(a_1,\omega_1)+\mu_{s_1}(\omega_2)*u(a_1,\omega_2)=0.75*2+0=1.5$
+在接收到信号$s_1$时采取行动$a_2$，有期望效用$u(a_2|s_1)=\mu_{s_1}(\omega_1)*u(a_2,\omega_1)+\mu_{s_1}(\omega_2)*u(a_2,\omega_2)=0+0.25*3=0.75$
+在接收到信号$s_1$时采取行动$a_1$，有期望效用$u(a_1|s_2)=\mu_{s_2}(\omega_1)*u(a_1,\omega_1)+\mu_{s_2}(\omega_2)*u(a_1,\omega_2)=0.4375*2+0=0.875$
+在接收到信号$s_1$时采取行动$a_2$，有期望效用$u(a_2|s_2)=\mu_{s_2}(\omega_1)*u(a_2,\omega_1)+\mu_{s_2}(\omega_2)*u(a_2,\omega_2)=0+0.5625*3=1.6875$
+此时买家的效用为在接收到信号$s_1$时采取行动$a_1$，在接收到信号$s_2$时采取行动$a_2$，期望效用
+$$
+u_S=\pi(s_1)*u(a_1|s_1)+\pi(s_2)*u(a_2|s_2)=0.84*1.5+0.16*1.6875=1.53
+$$
+从而卖家信号机制对买家的价值
+$$
+v=u_S-u=1.53-1.4=0.13
+$$

@@ -79,7 +79,7 @@ x_2,x^2,C_n^m,a_{ij},f^{(n)} //下标与上标
 ```
 #### 上划线
 ```
-\overline{AB},\widetilde{AB},\widehat{AB},\overrightarrow{AB}
+\overline{AB},\(wide)tilde{AB},\(wide)hat{AB},\overrightarrow{AB}
 //上划线，上波浪线，上尖号，矢量
 ```
 #### 特殊符号
