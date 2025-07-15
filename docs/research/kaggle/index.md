@@ -1,4 +1,4 @@
-kaggle自学记录：  
+# kaggle自学记录  
 2025.7.7
 ## Courses
 - Machine learning  
