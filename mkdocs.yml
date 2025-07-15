@@ -22,7 +22,6 @@ nav:
       - tools/latex/index.md
       - 文献: tools/latex/format.md
       - 常用符号: tools/latex/symbols.md
-  #   - Python: tools/python/index.md
     - Makefile: tools/makefile/index.md
   #   - Html: tools/html/index.md
   #   - reveal-md: tools/reveal-md/index.md
@@ -91,7 +90,11 @@ nav:
       - sp25/data_market/index.md
       - 笔记: sp25/data_market/note.md
   - research:
-    - data_target: research/data/note.md
+    - data_target:
+      - research/data/note.md
+      - paper_list: research/data/paper.md
+    - kaggle: 
+      - research/kaggle/index.md
     - llm_infra:
       - kvcache: research/llm_vuln/kvcache.md
       - llm_vulnerability: research/llm_vuln/llm_vulnerability.md

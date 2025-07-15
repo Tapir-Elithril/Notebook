@@ -32,7 +32,7 @@
 [World Development Indicators](https://www.kaggle.com/datasets/kaggle/world-development-indicators/data)缺失值，数据对齐问题  
 [FIFA 21 messy, raw dataset for cleaning/ exploring](https://www.kaggle.com/datasets/yagunnersya/fifa-21-messy-raw-dataset-for-cleaning-exploring)
 
-(from UCL)
+(from UCL)  
 [Air Quality](https://archive.ics.uci.edu/dataset/360/air+quality)多传感器冲突值、负值异常  
 
 ## Comments
@@ -40,7 +40,7 @@
 通过统计方法调整投资组合隔离因子影响（回归法、分组标准化）  
 文本数据（情感中性化，角色特征，作者人格）  
   
-**异常值** 
+**异常值**   
 过滤（Z-score，IQR），ai编辑  
 **缺失值**  
 统计填充，模型填充KNN，生成填充GAN   
