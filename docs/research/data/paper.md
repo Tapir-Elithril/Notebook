@@ -6,7 +6,7 @@
 数值类型的数据集（结构化的表格类型）：质量是如何评估的（传统数据评估的算法，缺失值，错误值）；传感器/分类器：目前数据修正的方法  
 传感器数据做预测/regression，kaggle上找一些数据集（天然有缺陷）  
 
-以下各分类中按相关性排序
+以下各分类中按相关性排序  
 ## Quality Evaluation
 ### Scaling and assessment of data quality
 
@@ -16,6 +16,7 @@
 
 ### The challenges of data quality and data quality assessment in the big data era
 
+### A Ardeshir Goshtasby. 2012. Similarity and Dissimilarity Measures. In Image Registration. Springer, 7–66.
 ## Data cleaning(detection & repairment)
 ### Data Cleaning: Overview and Emerging Challenges
 
@@ -25,9 +26,37 @@
 
 ## Datasets
 数值类型的有缺陷数据集
+(from kaggle)  
+[Cafe Sales - Dirty Data for Cleaning Training](https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training)  
+[Retail Store Sales: Dirty for Data Cleaning](https://www.kaggle.com/datasets/ahmedmohamed2003/retail-store-sales-dirty-for-data-cleaning)  
+[World Development Indicators](https://www.kaggle.com/datasets/kaggle/world-development-indicators/data)缺失值，数据对齐问题  
+[FIFA 21 messy, raw dataset for cleaning/ exploring](https://www.kaggle.com/datasets/yagunnersya/fifa-21-messy-raw-dataset-for-cleaning-exploring)
 
+(from UCL)
+[Air Quality](https://archive.ics.uci.edu/dataset/360/air+quality)多传感器冲突值、负值异常  
 
-## Summary
+## Comments
+因子暴露中性化（量化投资）  
+通过统计方法调整投资组合隔离因子影响（回归法、分组标准化）  
+文本数据（情感中性化，角色特征，作者人格）  
+  
+**异常值** 
+过滤（Z-score，IQR），ai编辑  
+**缺失值**  
+统计填充，模型填充KNN，生成填充GAN   
+**不一致**  
+scaling,normalization  
+**偏差数据/噪声**  
+SMOTE算法 MOLRL框架 对抗网络  
+标准化去偏  
+
+研究应着重在噪声并兼顾其他种类缺陷？  
+
+**[Definition]好的数据：提升平均模型准确率**  
+天然缺陷：data clean,回归预测  
+偏差数据：repair  
+
+## Summary(TBD)
 数据质量评估维度  
 - 完整性：缺失值比例、数据覆盖度  
 - 准确性：值域检查、业务规则验证  
