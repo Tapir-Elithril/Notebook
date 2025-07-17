@@ -93,8 +93,7 @@ nav:
     - data_target:
       - research/data/note.md
       - paper_list: research/data/paper.md
-    - kaggle: 
-      - research/kaggle/index.md
+    - kaggle: research/kaggle/index.md
     - llm_infra:
       - kvcache: research/llm_vuln/kvcache.md
       - llm_vulnerability: research/llm_vuln/llm_vulnerability.md
@@ -173,7 +172,6 @@ markdown_extensions:
   - def_list
   - attr_list
   - md_in_html
-  - sane_lists
   - admonition
   - pymdownx.keys
   - pymdownx.mark
@@ -195,6 +193,7 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.arithmatex:
       generic: true
+  - sane_lists
 
 extra_javascript:
   - javascripts/extra.js
