@@ -30,6 +30,8 @@
 ### Transformers for Tabular Data
 Transformer架构处理综述
 tabtransformer处理表格数据：数据靶点的识别与处理是否介入llm（llm在数据处理的应用）  
+
+![alt text](d9c636036d2852f5906b970bc94bebc.jpg)  
 ## Datasets
 数值类型的有缺陷数据集
 (from kaggle)  
@@ -63,6 +65,7 @@ SMOTE算法 MOLRL框架 对抗网络
 标准化去偏  
 平均模型预测率：动态测试集
 **噪声**  
+PCA  
 
 研究应着重在噪声并兼顾其他种类缺陷？  
 

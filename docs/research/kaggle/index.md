@@ -8,8 +8,8 @@
   - Python ✌  
   - Pandas ✌  
 - Data cleaning ✌  
-- Data visualization  
-- Feature engineering  
+- Data visualization ✌  
+- Feature engineering ✌    
 - Deep learning  
 - Computer Vision  
 - Time Series  
