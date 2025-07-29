@@ -53,6 +53,8 @@ x_2,x^2,C_n^m,a_{ij},f^{(n)} //下标与上标
 \forall,\exists //任意，存在
 
 \wedge,\vee //逻辑与，逻辑或
+
+\binom{}{} //组合数
 ```
 #### 希腊字母
 ```
@@ -119,6 +121,10 @@ A=\left( {\begin{array}{*{20}{c}}
 ```
 \rightarrow,\Rightarrow,\rightrightarrows,\Leftrightarrow,\iff,\mapsto
 //右箭头，推出，双右箭头，等价，等价(不同格式)，映射箭头
+```
+```
+\stackrel{\Delta}{\rightarrow} //这是一个点燃符号
+//在箭头上法添加文字或符号
 ```
 #### 几何
 ```
