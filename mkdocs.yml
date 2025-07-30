@@ -93,7 +93,8 @@ nav:
     - data_target:
       - research/data/note.md
       - paper_list: research/data/paper.md
-    - kaggle: research/kaggle/index.md
+    - kaggle: 
+      - research/kaggle/index.md
     - llm_infra:
       - kvcache: research/llm_vuln/kvcache.md
       - llm_vulnerability: research/llm_vuln/llm_vulnerability.md

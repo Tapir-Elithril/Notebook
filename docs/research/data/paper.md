@@ -34,8 +34,6 @@ MSE,AUC,hybrid
   
 ![alt text](image.png)  
 
-### A Ardeshir Goshtasby. 2012. Similarity and Dissimilarity Measures. In **Image** Registration. Springer, 7–66.
-
 ### Tabular Data: Deep Learning is Not All You Need
 an ensemble of deep models and XGBoost performs better  
 对比树模型与深度学习  
@@ -62,9 +60,11 @@ challenges:scalability,user engagement,semi-structured and unstructured data,new
 Transformer架构处理综述  
 tabtransformer处理表格数据  
 
+#### CVPR-2022 Table Structure Understanding with Transformers
 ![alt text](d9c636036d2852f5906b970bc94bebc.jpg)  
 
-[MLE-Dojo:Agent for kaggle](https://www.51cto.com/article/821446.html)  
+## LLM for data analytics  
+### MLE-Dojo: Interactive Environments for Empowering LLM Agents in Machine Learning Engineering
 ## Datasets
 数值类型的有缺陷数据集
 (from kaggle)  

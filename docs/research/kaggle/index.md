@@ -1,9 +1,9 @@
-# kaggle自学记录  
-2025.7.7
+# kaggle self-learning
+from 2025.7.7
 ## Courses
 - Machine learning  
   - Intro to Machine Learning ✌  
-  - Intermediate Machine Learning  
+  - Intermediate Machine Learning ✌ 
 - python,pandas  
   - Python ✌  
   - Pandas ✌  
@@ -16,4 +16,4 @@
 
 ## Competitions
 Titanic ✌  
-Housing  
+Housing ✌ 
