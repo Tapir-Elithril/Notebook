@@ -103,6 +103,7 @@ x-y=1.\\
 ```
 #### 矩阵
 ```
+^\top # 转置
 *{n}{X}:重复X格式n次，c:centre居中对齐
 
 A=\left( {\begin{array}{*{20}{c}}

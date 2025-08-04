@@ -48,6 +48,7 @@ challenges:scalability,user engagement,semi-structured and unstructured data,new
 ### *Automatic Data Repair: Are We Ready to Deploy?(ZJU)
 12 mainstream data repair algorithms,an effective and unified repair optimization strategy  
 
+[Problem] 是否做到了动态的修复
 
 ### *Activeclean: Interactive data cleaning for statistical modeling
 在每次迭代中，ActiveClean会根据数据对模型的价值以及数据实际上是脏数据的可能性，建议要清理的数据样本。分析师可以对样本应用值转换和过滤操作。ActiveClean将安全地增量更新当前模型（而不是完全重新训练）  
@@ -122,6 +123,16 @@ PCA
 ----------------------------   
 3.对各种类型数据的针对性调整（llm推理增强）  
 4.应用llm做自动化过程  
+
+### 另一种思考？
+治疗得病的智能体(based on multi-agent cooperation)  
+AI功能障碍：数据感染，推理失调，协同失能，...  
+对抗性探测，神经元可视化，形式化验证  
+神经重编辑(定向微调PERT)：Meta,LoRA,偏见病毒   
+对抗训练防御模型  
+知识蒸馏修复  
+DeepMind,Gradient Surgery,奖励上瘾  
+**抗体 -> 自身抗风险**
 
 ## Other
 数据质量评估维度  
