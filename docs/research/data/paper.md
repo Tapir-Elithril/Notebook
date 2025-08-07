@@ -1,4 +1,6 @@
 
+[综述](review.md)
+
 ## 目标
 低质量数据靶点：什么是低质量的，有哪些（类别），如何识别，如何增强  
   
@@ -39,9 +41,16 @@ an ensemble of deep models and XGBoost performs better
 对比树模型与深度学习  
 
 ## Data cleaning(detection & repairment)
-### *Data Cleaning: Overview and Emerging Challenges
-Quantitative Error Detection  
-Repairing  
+### [1] Data Cleaning: Overview and Emerging Challenges
+framework:ML for data cleaning efficiency and accuracy improving, effect evaluation(database query) using statisical analysis  
+aspects:new abstractions,interfaces,approaches of scalability, and crowdsourcing techniques.  
+define data error  
+
+- quantitative(outlier detection):abnormal behaviours and errors  
+- **qualitative**:constraints,rules(Integrity Constraints) and patterns  
+
+#### qualitative error detection  
+
 
 challenges:scalability,user engagement,semi-structured and unstructured data,new applications for streaming data,privacy & security  
 
@@ -104,6 +113,7 @@ PCA
 数理统计&随机过程？  
 
 ### 关于数据靶点对象（低质量数据）的思考
+*define* data error:<sub>[1]</sub>  
 对抗验证→特征联合分布优化验证机制  
 数据靶点→？样本质量  
 删去异常点导致测试集表现更差  
