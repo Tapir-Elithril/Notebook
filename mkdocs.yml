@@ -82,7 +82,9 @@ nav:
     - 数据库系统: 
       - sp25/db/index.md
       - 笔记: sp25/db/note.md
-    - 面向对象程序设计: sp25/oop/index.md
+    - 面向对象程序设计: 
+      - sp25/oop/index.md
+      - 笔记: sp25/oop/note.md
     - 马克思主义基本原理(H): sp25/marx/index.md
     - 习近平新时代中国特色社会主义思想概论: sp25/xi/index.md
     - 排舞: sp25/line_dance/index.md
@@ -93,6 +95,7 @@ nav:
     - data_target:
       - research/data/note.md
       - paper_list: research/data/paper.md
+      - review: research/data/review.md
     - kaggle: 
       - research/kaggle/index.md
     - llm_infra:

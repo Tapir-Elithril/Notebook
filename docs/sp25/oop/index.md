@@ -17,8 +17,8 @@
 ### 学习建议
 到课人数过少点过一次名，对名单一个个叫名字，可以下课补签，感觉对总评没影响  
 7次作业按照学在浙大设置的截止时间提交，需要注意课上可能会提到的特殊要求（翻看智云）  
-以下列出一些本人踩过的坑┭┮﹏┭┮：
-Student2 -1：
+以下列出一些本人踩过的坑┭┮﹏┭┮：  
+Student2 -1：  
 Each student can take an arbitrary number of courses. Each record consists of the course id/name and the score the student got.  
 
 Your course number is limited to 9("Chinese", "Math" , "English", "Physics", "Chemistry", "Biology", "History", "Politics" , "Geography"). Try to use map<string, int> to store student course-score pairs.   

@@ -41,7 +41,7 @@ an ensemble of deep models and XGBoost performs better
 对比树模型与深度学习  
 
 ## Data cleaning(detection & repairment)
-### [1] Data Cleaning: Overview and Emerging Challenges
+### Data Cleaning: Overview and Emerging Challenges
 framework:ML for data cleaning efficiency and accuracy improving, effect evaluation(database query) using statisical analysis  
 aspects:new abstractions,interfaces,approaches of scalability, and crowdsourcing techniques.  
 define data error  
@@ -64,7 +64,7 @@ challenges:scalability,user engagement,semi-structured and unstructured data,new
 
 ### Transformers for Tabular Data
 
-!!! warning "Learning transformer for data analysis ..."  
+!!! warning "TODO:Learning transformer for data analysis ..."  
 
 #### NeurIPS-2021 Revisiting Deep Learning Models for Tabular Data
 Transformer架构处理综述  
@@ -87,10 +87,6 @@ tabtransformer处理表格数据
 [Air Quality](https://archive.ics.uci.edu/dataset/360/air+quality)多传感器冲突值、负值异常  
 
 ## Comments
-因子暴露中性化（量化投资）  
-通过统计方法调整投资组合隔离因子影响（回归法、分组标准化）  
-文本数据（情感中性化，角色特征，作者人格）  
-  
 **标注错误**  
 Cleanlab  
 **异常值**   
@@ -110,39 +106,21 @@ SMOTE算法 MOLRL框架 对抗网络
 **噪声**  
 PCA  
 
-数理统计&随机过程？  
+统计理论？  
 
 ### 关于数据靶点对象（低质量数据）的思考
-*define* data error:<sub>[1]</sub>  
-对抗验证→特征联合分布优化验证机制  
-数据靶点→？样本质量  
-删去异常点导致测试集表现更差  
-误区：数据偏移不意味着质量差（新的有效信息）  
-误区：低质量数据是低性能数据  
-低性能数据：影响预测准确率  
+*define* data error:    
+低性能数据：影响预测准确率（偏移）  
 **低质量数据：明确为异常值、噪声、缺失、标注错误等**  
-注意偏移与噪声的区别  
-本质还是数据清洗  
 低性能数据包含特殊情况，是提高泛化能力的重要保障，不是治疗的对象  
-进一步思考，需要治疗的只是数据，还是特征构建，训练，验证的整个过程  
-如果只是数据清洗，可能能写的东西不多→重点上下游性能表现的整体提升  
+需要治疗的可能是特征构建，训练，验证的整个过程（数据变化可能引起特征变化）→重点上下游性能表现的整体提升  
 
 ### 数据靶点关键思考
 1.关键数据（痛点）识别（如何量化评估/精准定位关键数据，而不是逐条尝试）  
-2.针对性增强（选用何种方法，如何高效确定最优方法）  
+2.针对性增强（选用何种方法（Automatic Data Repair提到了12种方法），如何高效确定最优方法）  
 ----------------------------   
-3.对各种类型数据的针对性调整（llm推理增强）  
-4.应用llm做自动化过程  
-
-### 另一种思考？
-治疗得病的智能体(based on multi-agent cooperation)  
-AI功能障碍：数据感染，推理失调，协同失能，...  
-对抗性探测，神经元可视化，形式化验证  
-神经重编辑(定向微调PERT)：Meta,LoRA,偏见病毒   
-对抗训练防御模型  
-知识蒸馏修复  
-DeepMind,Gradient Surgery,奖励上瘾  
-**抗体 -> 自身抗风险**
+3.对各种类型数据的针对性调整（文本，多模态）  
+4.自动化过程  
 
 ## Other
 数据质量评估维度  

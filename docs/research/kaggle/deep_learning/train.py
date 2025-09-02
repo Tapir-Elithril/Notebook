@@ -89,3 +89,41 @@ history = model.fit(
     epochs=50,
     callbacks=[early_stopping]
 )
+
+"""
+dropout:randomly(parameter p) drop out some fraction of a layer's input units every step of training, 
+making it much harder for the network to learn those spurious patterns in the training data.
+batchnorm(BN):A batch normalization layer looks at each batch as it comes in, 
+first normalizing the batch with its own mean and standard deviation, 
+and then also putting the data on a new scale with two trainable rescaling parameters. 
+Batchnorm, in effect, performs a kind of coordinated rescaling of its inputs.
+标准化后的数据分布更稳定，使得梯度更新更平滑，允许使用更大的学习率。
+减少对参数初始化的依赖，使得训练更加鲁棒。
+防止激活值过大或过小，从而避免梯度消失(ReLU导致的训练停滞)或爆炸。
+"""
+
+model = keras.Sequential([
+    layers.Dense(128, activation='relu', input_shape=input_shape),
+    layers.Dropout(rate=0.3),
+    layers.Dense(64, activation='relu'),
+    layers.Dropout(rate=0.3),
+    layers.Dense(1)
+])
+"""
+the validation loss remains near a constant minimum even though the training loss continues to decrease. 
+So we can see that adding dropout did prevent overfitting this time.
+Moreover, by making it harder for the network to fit spurious patterns, 
+dropout may have encouraged the network to seek out more of the true patterns, 
+possibly improving the validation loss some as well
+"""
+
+model = keras.Sequential([
+    layers.BatchNormalization(input_shape=input_shape),
+    layers.Dense(512, activation='relu', input_shape=input_shape),
+    layers.BatchNormalization(),
+    layers.Dense(512, activation='relu'),
+    layers.BatchNormalization(),
+    layers.Dense(512, activation='relu'),
+    layers.BatchNormalization(),
+    layers.Dense(1),
+])
