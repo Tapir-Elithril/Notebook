@@ -1,0 +1,6608 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tapir's Notebook">
+      
+      
+        <meta name="author" content="杨亿酬">
+      
+      
+        <link rel="canonical" href="https://tapir-elithril.github.io/Notebook/sp25/data_market/note/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../../fa25/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>笔记 - Tapir's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ii" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Tapir&#39;s Notebook" class="md-header__button md-logo" aria-label="Tapir's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tapir's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../fa23/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  fa23
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sp24/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  sp24
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../fa24/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  fa24
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  sp25
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../fa25/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  fa25
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../research/data/note/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  research
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tapir&#39;s Notebook" class="md-nav__button md-logo" aria-label="Tapir's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tapir's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tools/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tools
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tools/latex/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LaTeX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LaTeX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/latex/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文献
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/latex/symbols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用符号
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/makefile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Makefile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa23/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fa23
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fa23
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/military_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    军训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/math_analysis1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学分析(甲)I(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序设计与算法基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/linear_algebra1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性代数I(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/modern_history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国近现代史纲要(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/morality_law/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    思想道德与法治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/political_philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    近代西方政治哲学导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/astronomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    天文学导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/psychology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    心理学及应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/career_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    职业生涯规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/reform_and_openup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国改革开放史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/orienteering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定向越野
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/fitness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    身体素质课
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp24/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sp24
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    sp24
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/math_analysis2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学分析(甲)II(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp24/sys1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统I
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统I
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/sys1/CPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单周期CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/physics1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学I(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/discrete_math/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    离散数学理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/linear_algebra2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性代数II(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp24/fds/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构基础
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/fds/struct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见结构体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/physics1_lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学实验I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/cyber_security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络空间安全导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/piano/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    打开艺术之门——钢琴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/swimming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    游泳(初级)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/fitness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    身体素质课
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/situation_policy1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    形势与政策I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/ctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程综合实践I——安全攻防实践基础(CTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa24/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fa24
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fa24
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa24/sys2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统II
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统II
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/sys2/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/physics2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学II(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa24/ads/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级数据结构与算法分析
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高级数据结构与算法分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/ads/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/aid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/military_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    军事理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/physics2_lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学实验II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/tea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    茶文化与茶健康
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/aerobics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    健美操
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sp25
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    sp25
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sys3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统III
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统III
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sys3/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../db/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据库系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../db/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../oop/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面向对象程序设计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面向对象程序设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    马克思主义基本原理(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    习近平新时代中国特色社会主义思想概论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../line_dance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    排舞
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据要素交易基础
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据要素交易基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        考试重点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 01:数据要素市场概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 01:数据要素市场概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        生产要素
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据市场的经济学原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据市场基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据市场设计要求
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据市场设计要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        产权问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定价问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公平和隐私问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 02:数据合规与安全
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 02:数据合规与安全">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全多方计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        联邦学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据脱敏
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        差分隐私
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全同态加密
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        零知识证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据合规
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 03:非合作博弈论基础（一）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 03:非合作博弈论基础（一）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        微观经济学基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="微观经济学基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        市场出清
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        社会福利
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        市场失灵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        博弈论基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        占优策略均衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纳什均衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 04:非合作博弈论基础（二）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 04:非合作博弈论基础（二）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合策略纳什均衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完全信息动态博弈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不完全信息博弈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 06:多臂老虎机算法基础与应用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 06:多臂老虎机算法基础与应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        随机多臂老虎机
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随机多臂老虎机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        贪心算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        \(ε\)-贪心算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        上置信界算法（UCB）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        汤普森采样算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对抗性多臂老虎机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多臂老虎机的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 05:合作博弈与数据估值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 05:合作博弈与数据估值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合作博弈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据估值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shapley" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shapley值计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 07:拍卖与机制设计基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 07:拍卖与机制设计基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拍卖理论基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拍卖理论基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        单物品密封拍卖
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        机制设计基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="机制设计基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        显示原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迈尔森引理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        福利最大化机制设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 08:最优机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 08:最优机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        虚拟福利最大化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="虚拟福利最大化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BIC迈尔森引理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IR个人理性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转化为虚拟福利最大化问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        *拍卖与数据定价
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 09:数据版本化定价
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 09:数据版本化定价">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据交易基本框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据定价基本方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据定价基本策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询数据的版本化定价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        机器学习模型的版本化定价
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 10:贝叶斯劝说
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 10:贝叶斯劝说">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型描述与问题转化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型描述与问题转化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一般模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        问题转化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优信号机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最优信号机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优信号机制的解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        接收者是否愿意接收信号
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 11:信息定价机制设计(特邀讲座)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 12:隐私与外部性问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 12:隐私与外部性问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        隐私成本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_66" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外部性问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fa25
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fa25
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/ml/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/ml/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/icv/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机视觉导论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机视觉导论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/icv/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/tcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论计算机科学导引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/opt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    优化基本理论与方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/quantum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    量子计算理论基础与软件系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    量子计算理论基础与软件系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/quantum/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/mao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    毛泽东思想与中国特色社会主义理论体系概论（H）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/tennis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网球（初级）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    data_target
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    data_target
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/data/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Target
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/data/paper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    paper_list
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/data/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../research/kaggle/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kaggle
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    kaggle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    llm_infra
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    llm_infra
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/llm_vuln/kvcache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kvcache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/llm_vuln/llm_vulnerability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    llm_vulnerability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/llm_vuln/mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mcp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        考试重点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 01:数据要素市场概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 01:数据要素市场概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        生产要素
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据市场的经济学原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据市场基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据市场设计要求
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据市场设计要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        产权问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定价问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公平和隐私问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 02:数据合规与安全
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 02:数据合规与安全">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全多方计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        联邦学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据脱敏
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        差分隐私
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全同态加密
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        零知识证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据合规
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 03:非合作博弈论基础（一）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 03:非合作博弈论基础（一）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        微观经济学基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="微观经济学基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        市场出清
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        社会福利
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        市场失灵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        博弈论基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        占优策略均衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纳什均衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 04:非合作博弈论基础（二）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 04:非合作博弈论基础（二）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合策略纳什均衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完全信息动态博弈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不完全信息博弈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 06:多臂老虎机算法基础与应用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 06:多臂老虎机算法基础与应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        随机多臂老虎机
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随机多臂老虎机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        贪心算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        \(ε\)-贪心算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        上置信界算法（UCB）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        汤普森采样算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对抗性多臂老虎机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多臂老虎机的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 05:合作博弈与数据估值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 05:合作博弈与数据估值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合作博弈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据估值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shapley" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shapley值计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 07:拍卖与机制设计基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 07:拍卖与机制设计基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拍卖理论基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拍卖理论基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        单物品密封拍卖
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        机制设计基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="机制设计基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        显示原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迈尔森引理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        福利最大化机制设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 08:最优机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 08:最优机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        虚拟福利最大化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="虚拟福利最大化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BIC迈尔森引理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IR个人理性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转化为虚拟福利最大化问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        *拍卖与数据定价
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 09:数据版本化定价
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 09:数据版本化定价">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据交易基本框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据定价基本方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据定价基本策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询数据的版本化定价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        机器学习模型的版本化定价
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 10:贝叶斯劝说
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 10:贝叶斯劝说">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型描述与问题转化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型描述与问题转化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一般模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        问题转化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优信号机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最优信号机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优信号机制的解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        接收者是否愿意接收信号
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 11:信息定价机制设计(特邀讲座)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lec 12:隐私与外部性问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lec 12:隐私与外部性问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        隐私成本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_66" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外部性问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Tapir-Elithril/Notebook/edit/main/docs/sp25/data_market/note.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="ii">课程综合实践II——数据要素交易基础<a class="headerlink" href="#ii" title="Permanent link">&para;</a></h1>
+<h2 id="_1">考试重点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>引言：基本概念（简答）<br />
+安全：了解安全方法<br />
+非合作博弈：纳什均衡计算<br />
+合作博弈：三人沙普利值的计算<br />
+多臂老虎机：概念与性质（MWU是无憾算法等结论）（简答）<br />
+拍卖（不同于作业）：VCG,课件提问(拍卖与数据定价部分不考)<br />
+版本化定价：无套利概念+去年作业题<br />
+贝叶斯劝说<br />
+最后一讲：选择一题  </p>
+<h2 id="lec-01">Lec 01:数据要素市场概述<a class="headerlink" href="#lec-01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">生产要素<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>企业：生产并出售产品，雇佣并使用生产要素<br />
+家庭：购买服务和商品，拥有并出售生产要素<br />
+生产要素：劳动力、土地、资本（钱不是资本）、企业家才能（技术）<br />
+<strong>数据的特性：零成本复制性，价值不确定性</strong>  </p>
+<h3 id="_3">数据市场的经济学原理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>数据的乘数效应：数据-&gt;产品-&gt;更多的数据<br />
+数据定价<br />
+绝对优势：生产者生产一种物品所需投入较少<br />
+机会成本：为了得到某种东西而必须放弃的东西<br />
+比较优势：如果一个生产者在生产 X 物品时放弃了较少的其他物品，即生产 X 物品的机会成本较小，就可以说他在生产该物品上具有比较优势；（比较机会成本，一个人不可能在两边都拥有比较优势）<br />
+机会成本：为了得到某种东西而必须放弃的东西<br />
+<img alt="alt text" src="../image.png" /><br />
+边际效用：增加一个单位的效用<br />
+边际成本：增加一个单位所需要的成本（航空公司对等退票乘客收取的价格）<br />
+Quiz1<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>A国生产1单位计算机，放弃26单位小麦，
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>B国生产1单位计算机，放弃20单位小麦，B国在生产计算机上的机会成本更低    
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>A国生产1单位小麦，放弃1/26单位计算机，
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>B国生产1单位小麦，放弃1/20单位小麦，A国在生产小麦上的机会成本更低    
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>1)B国在生产计算机上具有比较优势，A国在生产小麦上具有比较优势，
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>A国应该出口小麦，进口计算机，B国应该出口计算机，进口小麦  
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>2)1单位计算机和20-26单位小麦交换时合理的范围    
+</code></pre></div></p>
+<h3 id="_4">数据市场基本概念<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>分类：原始数据、查询服务、模型数据<br />
+数据交易流程：数据收集、数据存储、数据产品化（关系型数据库、机器学习模型）、数据合规、数据定价、数据溯源、数据销毁  </p>
+<h3 id="_5">数据市场设计要求<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">产权问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">定价问题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>成本法（零成本复制性，价值不确定性）<br />
+收益法（内在价值&amp;工具价值）<br />
+市场法  </p>
+<h4 id="_8">公平和隐私问题<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h2 id="lec-02">Lec 02:数据合规与安全<a class="headerlink" href="#lec-02" title="Permanent link">&para;</a></h2>
+<h3 id="_9">安全多方计算<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>百万富翁问题：保密比较财富<br />
+香蕉与苹果的solution<br />
+A构造n把锁，B仅有第j把锁的钥匙，A给定n把锁的标志位，B检查第j把锁的标志位，得到结果  </p>
+<h3 id="_10">联邦学习<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>传统机器学习：拿草（数据）给羊（模型）吃（训练）<br />
+联邦学习：羊到各个草场吃<br />
+联邦学习：一种具备数据隐私保护的分布式机器学习技术，数据拥有方在不公开本地数据的前提下通过加密传输模型实现共同训练<br />
+- 横向联邦学习：单一数据库用户量不足 <br />
+- 纵向联邦学习：单一数据库属性维度不足<br />
+- 迁移联邦学习：数据库之间样本和属性重叠均较少  </p>
+<h3 id="_11">数据脱敏<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>数据脱敏：根据制定的脱敏规则，针对敏感信息进行数据变形或遮蔽  </p>
+<ul>
+<li>动态数据脱敏：不脱离生产环境的实时脱敏，访问时处理  </li>
+<li>静态数据脱敏：脱离生产环境，脱敏后分发，脱敏后数据与生产环境相隔离  </li>
+</ul>
+<p>脱敏方法  </p>
+<ul>
+<li>无效化：截断、加密、隐藏、打*   </li>
+<li>随机化  </li>
+<li>数据替换  </li>
+<li>对称加密  </li>
+<li>平均值：重新随机分布  </li>
+<li>偏移与取整  </li>
+</ul>
+<h3 id="_12">差分隐私<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>“隐私”的数学模型<br />
+对真实数据增加噪声扰动实现隐私的量化保护<br />
+input one row的变化，攻击者无法根据output区分input的变化<br />
+隐私度ε，<strong>ε越小（趋近0），privacy越强，utility可用性越差</strong><br />
+Laplace机制：query q的真实结果为q(D)，返回q(D) + η，η服从Laplace分布<br />
+密度函数f(x|μ,b)，μ=0，f = Lap(b),方差2b²<br />
+敏感度：|q(D)-q(D')|&lt;=S(q),A(D) = q(D) + Lab(S(q)/ε)满足ε-差分隐私，即η=Lab(S(q)/ε)<br />
+quiz2<br />
+全局差分隐私：数据拥有者-&gt;可信的数据管理者-&gt;扰动<br />
+本地差分隐私：数据拥有者添加噪声-&gt;不可信的数据管理者  </p>
+<h3 id="_13">全同态加密<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>密文域的操作等效于明文域的对应操作，支持加法与乘法的操作<br />
+可用不可见，但计算成本高  </p>
+<h3 id="_14">零知识证明<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>证明者能够不向验证者提供任何有用的信息的情况下，使验证者相信某个论断是正确的<br />
+洞穴开门的例子  </p>
+<h3 id="_15">数据合规<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>Watermark：水印<br />
+embedding:noise range partition(red&amp;green domain)<br />
+detection:difference都来源于同一个domain  </p>
+<h2 id="lec-03">Lec 03:非合作博弈论基础（一）<a class="headerlink" href="#lec-03" title="Permanent link">&para;</a></h2>
+<h3 id="_16">微观经济学基础<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>偏好：对可选方案的排序<br />
+为偏好赋予常数，称为消费组合对消费者的效用<br />
+效用函数就是将消费束映射到满意程度的函数u:R<sup>n</sup>-&gt;R,u(一斤苹果，-6元钱) = 0<br />
+理性人假设：效用最大化（不理性人：行为经济学）<br />
+贝叶斯公式<br />
+效用函数：  </p>
+<ul>
+<li>柯布-道格拉斯效用$ u(x1,x2)=x_1^{\alpha}x_2^{1-\alpha}，\alpha\in(0,1)$<br />
+  边际效用递减,边际效用是指消费者对某种物品的消费量每增加一单位所增加的额外满足程度  </li>
+<li>冯诺依曼-摩根斯坦效用<span class="arithmatex">\(u(L)=pu(x)+(1-p)u(y)\)</span>,L:彩票,p:中奖概率<br />
+  u是严格凹函数-&gt;风险厌恶，u是严格凸函数-&gt;风险偏好，u是线性函数-&gt;风险中性  </li>
+<li>拟线性效用函数：<span class="arithmatex">\(u(x,p)=u(x)-p\)</span>,通过价格p购买消费束x后的效用  </li>
+</ul>
+<p>效用最大化问题：<br />
+效用函数u(x1,x2),两种商品价格p1,p2,消费者收入为p<br />
+<span class="arithmatex">\(max u(x1,x2),s.t.p_1x_1,p_2x_2 &lt;= p\)</span>,u关于x1,x2递增，因此u取最大值时等号成立<br />
+令效用函数为柯布-道格拉斯效用函数，不难发现需求与价格之间呈反相关  </p>
+<h4 id="_17">市场出清<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>需求定律:商品的需求量与价格之间成反方向变动<br />
+供给定律:商品价格与供给量成正方向变动<br />
+<img alt="alt text" src="../image-1.png" /><br />
+市场出清：市场机制自发消除超额供给或超额需求<br />
+竞争均衡：每个人各自的行动无法改变市场价格  </p>
+<h4 id="_18">社会福利<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>福利:资源配置有效性的衡量标准<br />
+<img alt="alt text" src="../image-2.png" /><br />
+消费者剩余=买到的商品效用-支付，厂商剩余=出售的效用-成本<br />
+支付 = 出售的效用，福利最大化：商品效用-成本最大化<br />
+福利经济学第一定律：竞争市场中，市场供给达到均衡时，市场资源配置是福利最大化的（看不见的手）  </p>
+<h4 id="_19">市场失灵<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<h5 id="_20">垄断<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h5>
+<p>垄断:一个产品只有一家厂商生产<br />
+垄断厂商通过提高价格攫取更多的消费者剩余  </p>
+<h5 id="_21">外部性<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h5>
+<p>一个人或一群人的行动和决策使另一个人或一群人受损或受益的情况，即社会成员从事经济活动时其成本与后果不完全由该行为人承担；负外部性：上游排污下游受损，正外部性：植树造林优化居民环境（公共物品）  </p>
+<h5 id="_22">信息不对称<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h5>
+<p>柠檬市场（次品市场）<br />
+好货与次货无法分辨-&gt;支付意愿下降-&gt;好货卖家不愿出售-&gt;退出市场-&gt;次货占领市场，即“劣币驱逐良币”-&gt;降低买卖双方福利-&gt;市场失灵<br />
+解决方案：监管、保修（斯宾塞劳动力市场模型，学历的筛选作用），保险的逆向选择（买家选择购买），道德风险（已经购买保险）  </p>
+<h4 id="_23">数据<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>卖家垄断，零成本复制性：供给曲线失效（P=0,需求Q=0,P&gt;0,Q=+∞），外部性（竞争厂家的购买），数据产权，信息不对称（买家不知道效用，卖家不确定买家）<br />
+价格歧视  </p>
+<ul>
+<li>一级（完全）价格歧视：完全掌握消费者偏好  </li>
+<li>三级价格歧视：根据消费者特征收取不同价格（大数据杀熟，学生半价）  </li>
+<li>二级价格歧视：按不同价格出售不同数量的商品（价目表）（大客户，信息甄别，版本化）  </li>
+</ul>
+<h3 id="_24">博弈论基础<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(max u(x) \rightarrow max u(x_i,x_{-i}),x_{-i} = (x_1,...,x_{i-1},x_{i+1},...,x_n)\)</span><br />
+垄断（单个），寡头垄断（少数厂商），伯川德竞争，价格=成本<br />
+协议（垄断协议），书店构成卡特尔（反垄断法）
+博弈的基本要素：多个人的决策，博弈的行为相互影响<br />
+三元组G=(N,S,u),参与人N，策略：集合S，报酬函数u<br />
+博弈的解/解概念<br />
+博弈的分类  </p>
+<ul>
+<li>非合作  </li>
+<li>完全信息/非完全信息  </li>
+<li>静态/动态  </li>
+<li>合作  </li>
+</ul>
+<h3 id="_25">占优策略均衡<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>严格劣策略：无论对方选择什么，自己选择这个策略都是最差的（被严格占优）<br />
+出于个人理性的决策无法达到社会最优<br />
+解决囚徒困境：强制力，机制设计，长期关系...<br />
+<strong>博弈论求解：重复剔除严格劣策略</strong><br />
+如果没有严格劣策略-&gt;弱占优（在所有情况大于等于，在某些情况下大于）<br />
+颤抖的手原则：考虑各情况都有概率取到<br />
+重复剔除弱劣策略的顺序会影响结果（严格劣策略不影响）<br />
+quiz3.1  </p>
+<h3 id="_26">纳什均衡<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>稳定策略：没有人愿意偏离的策略，此时的策略对每个人来说是一个对给定策略的最佳应对<br />
+离散策略求解：互为最优反应<br />
+quiz3.2<br />
+<img alt="alt text" src="../image-6.png" /><br />
+两个圆圈圈出的都是纳什均衡<br />
+连续策略求解：古诺竞争（竞争产量）<br />
+最优反应-&gt;偏导数为0（记得验证二阶导）<br />
+纳什均衡：均衡策略无人改变，占优策略均衡：对对方任意策略都占优<br />
+协调博弈：博弈双方协调各自的策略对双方都有利  </p>
+<h2 id="lec-04">Lec 04:非合作博弈论基础（二）<a class="headerlink" href="#lec-04" title="Permanent link">&para;</a></h2>
+<h3 id="_27">混合策略纳什均衡<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>稳定的策略带有随机，混合策略即为选择策略<span class="arithmatex">\(s_i\)</span>的概率分布，纯策略：某一个策略概率为1<br />
+策略型博弈的混合扩展，策略-&gt;概率分布，效用-&gt;期望（冯诺依曼-摩根斯坦效用）<br />
+混合策略纳什均衡：效用（期望）最高的混合策略向量（概率分布）<br />
+等价定义：只需要与纯策略相比（不偏向任何一个纯策略）<br />
+**计算：最 </p>
+<p>优反应，无差异原则（对应求导等于0，纯策略之间无差异）<strong><br />
+推论：被严格占优的策略不可能属于混合策略的支撑集合（被赋予正概率）<br />
+无差异但仍选取某一个固定策略概率是为了达到稳定状态（不然对方会修改策略）<br />
+</strong>note:无差异原则只是混合策略纳什均衡的必要条件，需要验证是否存在更高效用（纯策略）**<br />
+纳什定理（混合策略纳什均衡的存在性）：每一个策略型博弈G，如果参与人数有限，纯策略数目有限，那么G至少有一个混合策略纳什均衡  </p>
+<h3 id="_28">完全信息动态博弈<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>扩展式博弈，策略为向量（即使在某处停下）<br />
+子博弈：子树<br />
+完美信息博弈：每个参与人在行动时，都知道他位于博弈树的哪个节点上（e.g象棋&amp;斗地主）<br />
+子博弈完美均衡<br />
+均衡精炼（选择某一些均衡）<br />
+存在不是子博弈完美均衡的纳什均衡（全局均衡在某一个子博弈上不再完美均衡）<br />
+因为威胁的存在所以某一均衡是纳什均衡，但这一威胁可能是不可置信的（不理性的）<br />
+此时子博弈完美均衡是纳什均衡的精炼<br />
+完全混合的纳什均衡是子博弈完美均衡（每个策略都有正概率，存在威胁）<br />
+计算子博弈完美均衡：逆向归纳法<br />
+每个有限完美信息扩展式博弈都至少有一个子博弈完美纯策略均衡<br />
+产量领导模型（斯塔克尔伯格模型）：双层优化问题  </p>
+<h3 id="_29">不完全信息博弈<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>行业博弈均衡计算：先验概率，劣策略/无差异原则<br />
+<strong>策略式博弈：五元组（添加参与人类型与先验分布p）</strong>，先验分布p是给类型向量赋予一个概率<br />
+效用与所有人的类型相关（可以考虑你和一个能力未知的人匹配打游戏），而策略只与自己的类型相关<br />
+贝叶斯均衡：对每一个参与人i，每个类型ti，每个可能的纯策略si，都有效用最大<br />
+三阶段  </p>
+<ul>
+<li>自然赋予的类型（事前阶段ex ante）  </li>
+<li>更新分布选择形同（事中阶段interim）  </li>
+<li>得到收益（事后阶段ex post)  </li>
+</ul>
+<p>使用无差异原则前要检验是否存在纯策略均衡<br />
+2024-HW4-4.2  </p>
+<h2 id="lec-06">Lec 06:多臂老虎机算法基础与应用<a class="headerlink" href="#lec-06" title="Permanent link">&para;</a></h2>
+<h3 id="_30">随机多臂老虎机<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>机器学习：特性-&gt;标签学习映射<br />
+基于识别的：回归，聚类<br />
+基于监督的：多臂老虎机<br />
+探索与利用  </p>
+<ul>
+<li>完全反馈：看到所有臂的收益（股票）  </li>
+<li>部分反馈：部分臂的奖励（定价）  </li>
+<li>老虎机反馈：只能看到选择臂的奖励（新闻）  </li>
+</ul>
+<p>遗憾分析<br />
+伪遗憾，期望遗憾<br />
+Hoeffding 不等式  </p>
+<h4 id="_31">贪心算法<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>始终选择当前估计奖励最高的臂，并利用历史经验更新对每个臂的奖励估计值<br />
+遗憾分析：<span class="arithmatex">\(O(T^{\frac{2}{3}}(KlogT)^\frac{1}{3}\)</span>(K是臂的数量，所有的收益都在0，1之间)  </p>
+<h4 id="-"><span class="arithmatex">\(ε\)</span>-贪心算法<a class="headerlink" href="#-" title="Permanent link">&para;</a></h4>
+<p>以<span class="arithmatex">\(1-ε\)</span>的概率选择当前估计奖励最高的臂，以<span class="arithmatex">\(ε\)</span>的概率随机选择一个臂<br />
+HW1.7</p>
+<h4 id="ucb">上置信界算法（UCB）<a class="headerlink" href="#ucb" title="Permanent link">&para;</a></h4>
+<p>首先将每一个候选臂都选择一遍，作为初始化；然后在后续的时间步中，选择奖励均值估计量的上置信界最大的臂<br />
+该值越大则说明估计的不确定性越大，因此能过鼓励玩家尝试较少被选择的臂，避免陷入次优<br />
+UCB 算法的遗憾界为<span class="arithmatex">\(O(\sqrt{KT\log T})\)</span></p>
+<h4 id="_32">汤普森采样算法<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>采用贝叶斯方法，为每个臂维护一个先验概率分布，表示对该臂奖励概率的信念。每次选择臂时，从每个臂的后验概率分布中进行采样，并选择采样值最高的臂。最后，根据获得的奖励更新所选臂的后验概率分布，从而在探索和利用之间取得平衡。<br />
+使用Beta分布在获得奖励后调整概率分布<br />
+TS 算法的遗憾界为<span class="arithmatex">\(O(\sqrt{KT\log T})\)</span></p>
+<h3 id="_33">对抗性多臂老虎机<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p>对手在已知概率分布的情况下选择一个代价向量<br />
+玩家可以学到所有代价以调整策略（全反馈）<br />
+定义遗憾：和每轮都选择<strong>同一行动的最优的固定行动</strong>的代价之差<br />
+无憾：平均遗憾趋于0<br />
+跟风算法（Follow-The-Leader,FTL）：在每一个时间点t，选择最小累计代价的行动i<br />
+跟风算法不是无憾的<br />
+随机化是无憾的必要条件（通俗而言，如果不随机，对手可以每次设置策略对应行动的代价为1）<br />
+简单情况（存在一个完美的行动，其代价永远为 0，且代价只有可能为0或1）<br />
+对每一步 𝑡 = 1, 2, ..., 𝑇 ，记录截至目前从没出现过代价 1 的行动，然后在这些行动中根据均匀分布随机选择一个行动<br />
+无憾算法：乘性权重算法<br />
+代价可以是[0,1]中的任意值，不存在完美策略，则维护权重函数：<span class="arithmatex">\(w_{t+1}(i)=w_t(i)(1-\epsilon c_t(i))\)</span><br />
+遗憾上界<span class="arithmatex">\(O(\sqrt{T\ln n})\)</span><br />
+Hedge算法，Exp3算法（老虎机反馈）  </p>
+<h3 id="_34">多臂老虎机的应用<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p>动态定价问题<br />
+二分搜索：向上探索时过于激进<br />
+改进算法：使用平方缩小<br />
+改进算法的遗憾为1+2loglogN  </p>
+<h2 id="lec-05">Lec 05:合作博弈与数据估值<a class="headerlink" href="#lec-05" title="Permanent link">&para;</a></h2>
+<h3 id="_35">合作博弈<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<p>分摊美元博弈：公平、效率 <br />
+可转移效用的合作博弈（TU博弈）：参与人的子集成为联盟，v是联盟的特征函数，v(S)表示联盟S的价值<br />
+解概念：一个将每个博弈都映射到一个可行的收入分配集合的函数<br />
+如果对于任意的博弈解概念都是一个单点集，则称这一解概念为单点解  </p>
+<h3 id="_36">核<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<p>定义：满足有效率的，联盟理性（对于任何联盟而言，他们在大联盟中分配到的收入一定不会比离开大联盟组成小联盟获得的收入少）的合作博弈的解概念</p>
+<h3 id="_37">数据估值<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<p>Shapley值性质：有效率的，参与人对称的（两个不同参与人的加入为联盟增加的收入一致），解概念对称的（不同参与人i和j的解概念相同），零参与人（如果一个参与人对于任何联盟的加入都不会增加联盟的效用，那么他的收入为0）<br />
+Shapley值定义：对所有可能的排列，求出分配向量的加权平均<br />
+排列（n!），组合（2<sup>n-1</sup>）<br />
+$$
+v(S)=
+\begin{cases}
+0 &amp; S=\varnothing  \
+17 &amp; S=\left{A\right} \
+15 &amp; S=\left{B\right} \
+18 &amp; S=\left{C\right} \
+35 &amp; S=\left{A,B\right} \
+36 &amp; S=\left{B,C\right} \
+38 &amp; S=\left{A,C\right} \
+56 &amp; S=\left{A,B,C\right} 
+\end{cases}
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">排列</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">ABC</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr>
+<td style="text-align: center;">ACB</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr>
+<td style="text-align: center;">BAC</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr>
+<td style="text-align: center;">BCA</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr>
+<td style="text-align: center;">CAB</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr>
+<td style="text-align: center;">CBA</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr>
+<td style="text-align: center;">avg</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
+<p>留一法（leave-one-out,LOO）：数据Di的效用（控制变量）T=O(n)<br />
+*Data Shapley:Di 对大小为 j 的联盟的边际贡献<br />
+Beta Shapley:赋予权重，更重视较小联盟的边际贡献<br />
+Data Banzhaf:降低输入顺序的影响<br />
+T=O(2<sup>n</sup>)  </p>
+<h3 id="shapley">Shapley值计算<a class="headerlink" href="#shapley" title="Permanent link">&para;</a></h3>
+<p>排列采样：边际贡献、互补贡献<br />
+动态Shapley值（增删某些数据的Shapley值变化）  </p>
+<h2 id="lec-07">Lec 07:拍卖与机制设计基础<a class="headerlink" href="#lec-07" title="Permanent link">&para;</a></h2>
+<h3 id="_38">拍卖理论基础<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<ul>
+<li>posted price  </li>
+<li>auction:bid(投标)  </li>
+<li>open-bid auction  <ul>
+<li>English auction(open ascending price)：二价（但存在相互依赖价值）  </li>
+<li>Dutch auction(open descending price)：一价  </li>
+</ul>
+</li>
+<li>sealed-bid auction  <ul>
+<li>first-price auction(一价拍卖):支付自己的报价  </li>
+<li>second-price auction(二价拍卖):支付第二高的报价<br />
+reserve price,entry fee  </li>
+</ul>
+</li>
+<li>bargaining(double-auction)  </li>
+<li>reverse auction  </li>
+<li>多物品（频谱）/组合拍卖  </li>
+</ul>
+<p>投标规则，交易规则，信息规则</p>
+<h4 id="_39">单物品密封拍卖<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
+<p>分配规则（某投标下获得物品的概率），支付规则（某投标下需要支付的价格）  </p>
+<h5 id="_40">二价拍卖<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h5>
+<p>二价拍卖是诚实占优的<br />
+社会福利：<br />
+买家:<span class="arithmatex">\(t_i-p,0,...,0\)</span><br />
+卖家:<span class="arithmatex">\(p\)</span><br />
+福利：最高报价<span class="arithmatex">\(t_i\)</span><br />
+二价拍卖的缺陷：谎报第二价格<br />
+二价拍卖诚实的关键：报价与自己的估值无直接关联
+大于等于三价拍卖都是不诚实的，以三价拍卖为例，竞拍者有动机夸大报价，因为支付的是第三高价而非自己的报价，竞拍者可以有意提高报价以确保获胜，只要第三高价小于估值就仍然可以盈利，不同于二价拍卖，因为在二价拍卖中，如果竞拍者提高报价可能支付高于自己估值的价值导致亏损  </p>
+<h5 id="_41">一价拍卖<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h5>
+<p>对称递增均衡策略<span class="arithmatex">\(β(t)=t/2\)</span></p>
+<h5 id="_42">收入等价定理<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h5>
+<p>假设竞拍者估价独立同分布，那么只要估价为 0 的竞拍者的期望支付为0，且拍卖规则为报价最高者得到物品，则拍卖的递增对称均衡都会使得卖家获得相等的期望收入。<br />
+注：期望支付=均衡出价*概率，期望收入=期望支付的积分和（P20）  </p>
+<h3 id="_43">机制设计基础<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<p>定义：对不完全信息博弈，一个机制是一个二元组(S,M)，S是参与人的纯策略集合，M是将纯策略向量映射到结果集合的概率分布的映射<br />
+确定性：M映射到确定的结果集合O  </p>
+<h4 id="_44">显示原理<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
+<p>直接（显示）机制：策略=类型，报告估值<br />
+激励相容：诚实报告，占优策略激励相容（dominant-strategy incentive compatib,DISC）（诚实策略是占优均衡），贝叶斯激励相容（BIC）（诚实策略是贝叶斯纳什均衡）<br />
+显示原理：给定任意一个机制及其均衡策略（占优策略均衡或贝叶斯纳什均衡），都可以找到一个激励相容的直接机制，使得两个机制的结果一致<br />
+例：将一价拍卖变诚实<br />
+报价高获得物品但只需支付报价一半<br />
+<strong>机制设计者替代参与人做了求解均衡的工作</strong>  </p>
+<h4 id="_45">迈尔森引理<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>一个拍卖机制是DSIC的，当且仅当其分配规则和支付规则(<strong>x</strong>,<strong>p</strong>)满足，<strong>x</strong>是单调不减（报价越高概率越高）；给定<strong>x</strong>，<strong>p</strong>的表达式唯一确定<span class="arithmatex">\(p_i(b_i)=p_i(0)+b_i\cdot x_i(b_i)-\int_0^{b_i}x_i(s)ds\)</span>（迈尔森支付公式）（为了让别人诚实需要损失一定的利润，一价拍卖不诚实的原因）<br />
+二价拍卖的验证 critical value<br />
+对m个相同数据设计DSIC拍卖，m+1价拍卖<br />
+迈尔森引理的证明：连不等式，同除z-y并令z-&gt;y  </p>
+<h3 id="_46">福利最大化机制设计<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
+<p>福利最大化机制：拍卖机制选择的分配方案，使得社会福利达到最大，即所有赢家对分配到物品的估值之和最大
+（迈尔森引理无法解决的情况：多维）<br />
+VCG机制：假设诚实，分配规则：所有人收益最大化的分配<span class="arithmatex">\(\omega^*=argmax_{\omega\in\Omega}\sum_{i=1}^nb_i(\omega)\)</span>，支付规则：不包含参与人i的最大福利-所有参与人（i也参与拍卖）的最大福利再剔除i（外部性，加入拍卖的影响）<span class="arithmatex">\(p_i(b)=\sum_{j\neq i}b_j(\omega_{-i}^*)-\sum_{j\neq i}b_j(\omega^*)\)</span>，可能有多种分配方式，需要分别计算<br />
+二价拍卖的例子<br />
+VCG是DSIC（诚实）的；福利最大化的（事后有效率的/帕累托最优的：所有参与者真实信息（如估值）已知的情况下，资源的分配方式能够实现社会福利最大化，即没有任何其他分配方式能让至少一个人变得更好，而不让其他人变差）；支付非负的；事后个人理性（参与机制个人效用非负）<br />
+缺陷：计算困难性，增加竞拍者导致卖家收益降低（削弱卖家的参与意愿）<br />
+增加竞拍者可能降低VCG机制的收益，但增加竞拍者不会降低二价拍卖的收益   </p>
+<h2 id="lec-08">Lec 08:最优机制<a class="headerlink" href="#lec-08" title="Permanent link">&para;</a></h2>
+<p>卖家的收益最大化的拍卖机制</p>
+<h3 id="_47">虚拟福利最大化<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
+<p>不同玩家的估值分布是独立的（但不一定是同分布的）</p>
+<h4 id="bic">BIC迈尔森引理<a class="headerlink" href="#bic" title="Permanent link">&para;</a></h4>
+<p>诚实是贝叶斯纳什均衡<br />
+用期望概率与期望支付替换DISC情况下的概率与支付  </p>
+<h4 id="ir">IR个人理性<a class="headerlink" href="#ir" title="Permanent link">&para;</a></h4>
+<p>竞拍者估值为最低值时的期望支付小于等于0</p>
+<h4 id="_48">转化为虚拟福利最大化问题<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<p>虚拟估值<span class="arithmatex">\(c_i(t_i)=t_i-\frac{1-F_i(t_i)}{f_i(t_i)}\)</span>
+虚拟福利最大化时，拍卖机制能同时兼顾收益和效率</p>
+<h3 id="_49">最优机制<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
+<p>最大化虚拟估值的加权平均<br />
+正则化条件：虚拟估值<span class="arithmatex">\(c_i(t_i)\)</span>是单调递增的<br />
+给最大虚拟估值者赋概率1（如果虚拟估值都小于0，全赋概率0，不卖了）<br />
+与二价拍卖的区别：<span class="arithmatex">\(c^{-1}(0)\)</span>保留价，低于不卖（独立同分布）<br />
+最优机制的条件：虚拟估值最大且大于等于0，<span class="arithmatex">\(c_i(t_i)=max_{j\neq i}c_j(t_j)\ge 0\)</span><br />
+缺陷：估值分布难以检测，非对称模型报价最高的不一定获得物品（不符合事后有效），存在保留价物品不一定能卖出（不符合福利最大化，这是显然的，利润最大化和福利最大化是会有冲突的）<br />
+多物品单位需求拍卖：虚拟估值大于保留价就卖  </p>
+<h3 id="_50">*拍卖与数据定价<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
+<p>机器学习模型：单位预测准确度的估值，模型预测的准确率（添加噪声）<br />
+竞争比：无先验拍卖机制的收益与固定价格的最优收益的比，2.42<br />
+差分隐私与近似诚实<br />
+指数机制</p>
+<h2 id="lec-09">Lec 09:数据版本化定价<a class="headerlink" href="#lec-09" title="Permanent link">&para;</a></h2>
+<h3 id="_51">数据交易基本框架<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h3>
+<h3 id="_52">数据定价基本方法<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h3>
+<p>成本法、收益法、市场法</p>
+<h3 id="_53">数据定价基本策略<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h3>
+<p>数据定价基本要求：  </p>
+<ul>
+<li>传统市场定价要求  </li>
+<li>效用最大化/帕累托最优/预算约束/社会福利最大化  </li>
+<li>平衡预算  </li>
+<li>个人理性  </li>
+<li>无嫉妒  </li>
+<li>数据隐私性  </li>
+<li>动态性（数据更新）  </li>
+<li>无套利原则  </li>
+<li>诚实性/激励相容  </li>
+<li>公平分配  </li>
+<li>高效  </li>
+</ul>
+<p>个人理性，激励相容，平衡预算与社会福利最大化四者不可兼得<br />
+现实中的定价策略：  </p>
+<ul>
+<li>免费数据  </li>
+<li>根据使用次数决定价格  </li>
+<li>打包定价  </li>
+<li>订阅制  </li>
+<li>免费增值  </li>
+</ul>
+<p>特点：需求导向<br />
+免费增值的方式：版本化  </p>
+<ul>
+<li>原始数据版本化：数据分块出售，根据数据关键性特征分级分类出售，添加噪声构造新版本  </li>
+<li>查询数据版本化：为任意SQL查询定价  </li>
+<li>机器学习模型版本化：添加噪声影响模型准确性，从而生成不同版本的模型  </li>
+</ul>
+<p>问题：<strong>套利</strong>（利用市场价格差异无风险赚取利润）<br />
+卖香蕉3美元一根，10美元三根<br />
+先分三次借到三根香蕉（做空），捆绑出售再分三次还钱  </p>
+<h3 id="_54">查询数据的版本化定价<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h3>
+<p>信息无套利：如果某查询Q1的结果是另一个查询Q2结果的子集，那么Q1的价格低于Q2<br />
+组合无套利：如果一次查询可以拆成两次完成，那么一次查询的价格不能大于两次查询的价格之和，否则买家可以通过两次查询绕过一次查询实现套利<br />
+单调性：<span class="arithmatex">\(\forall A\subseteq B,f(A)\le f(B)\)</span>
+次可加性：<span class="arithmatex">\(f(x+y)\le f(x)+f(y)\)</span><br />
+或<span class="arithmatex">\(v(A\cup B)\le v(A)+v(B)\)</span>竞拍者对物品组合的估值不超过单独估值之和</p>
+<h3 id="_55">机器学习模型的版本化定价<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="../image-3.png" /><br />
+数据拥有者compensation function:隐私问题与收入分配<br />
+模型购买者price function:数据产品的效用<br />
+中间商:划分模型版本使得收入最大化，并实现公平分配、无套利、模型效用最大化<br />
+Revenue Maximization：Q-NP问题，存在2-近似算法  </p>
+<h2 id="lec-10">Lec 10:贝叶斯劝说<a class="headerlink" href="#lec-10" title="Permanent link">&para;</a></h2>
+<h3 id="_56">例子<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
+<p>1.参与人：导师、企业<br />
+2.策略：写推荐信，$A=\left{雇，不雇\right}  $
+3.类型：学生<span class="arithmatex">\(\Omega = \left\{ex,av\right\},\omega \in \Omega\)</span>
+4.先验：<span class="arithmatex">\(\mu_0(ex)=0.25,\mu_0(av)=0.75\)</span><br />
+5.效用：  </p>
+<ul>
+<li>导师：<span class="arithmatex">\(v(雇,\omega)=1,v(不雇,\omega)=0\)</span>  </li>
+<li>企业：<span class="arithmatex">\(v(雇,ex)=1,v(雇,av)=-0.5,v(不雇)=0\)</span>  </li>
+</ul>
+<p>导师的策略(企业已知)<br />
+<span class="arithmatex">\(S=\left\{e,a\right\}\)</span><br />
+<span class="arithmatex">\(\pi(e|ex),\pi(a|ex),\pi(e|av),\pi(a|av)\)</span>:对好/一般同学写好/一般推荐信的概率<br />
+<strong>诚实策略</strong>：<span class="arithmatex">\(\pi(e|ex)=1,\pi(a|ex)=0,\pi(e|av)=0,\pi(a|av)=1\)</span><br />
+企业：e-&gt;hiring,a-&gt;not <span class="arithmatex">\(u=0.25\)</span><br />
+导师：<span class="arithmatex">\(u=0.25\)</span><br />
+<strong>完全不诚实</strong>：<span class="arithmatex">\(\pi(e|ex)=1,\pi(e|av)=1,\pi(a|ex)=0,\pi(a|av)=0\)</span><br />
+企业：
+雇：<span class="arithmatex">\(0.25*1-0.75-0.5=-0.125\)</span><br />
+不雇：<span class="arithmatex">\(u=0\)</span><br />
+导师：<span class="arithmatex">\(u=0\)</span><br />
+<strong>部分诚实</strong>：<span class="arithmatex">\(\pi(e|ex)=1,\pi(e|av)=\frac{2}{3},\pi(a|ex)=0,\pi(a|av)=\frac{1}{3}\)</span><br />
+企业：<br />
+<span class="arithmatex">\(\mu_a(ex)=0,\mu_a(av)=1\)</span>（推荐信一般的情况下，学生类型的概率，后验分布<span class="arithmatex">\(\mu(ex|a)\)</span>）<br />
+<span class="arithmatex">\(\mu_e(ex)=\frac{1}{3},\mu_e(av)=\frac{2}{3}\)</span><br />
+贝叶斯公式：<span class="arithmatex">\(\mu(\omega|s)\stackrel{\Delta}{=}\mu_s(\omega)=\frac{\pi(s|\omega)\mu_0(\omega)}{\sum_{\omega' \in \Omega}\pi(s|\omega')\mu_0(\omega')}\)</span><br />
+雇|e：<span class="arithmatex">\(\frac{1}{3}*1-\frac{2}{3}*0.5=0\)</span>，不雇:0<br />
+不雇|a:<span class="arithmatex">\(0\)</span><br />
+(雇和不雇无差异)<br />
+<span class="arithmatex">\(u=0\)</span><br />
+导师：<span class="arithmatex">\(u=0.75\)</span>  </p>
+<h3 id="_57">模型描述与问题转化<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h3>
+<h4 id="_58">一般模型<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h4>
+<p>1.参与人：信号发送方、接收方<br />
+2.策略：  </p>
+<ul>
+<li>发送方：<span class="arithmatex">\((S,\pi(S|\omega))\)</span>-&gt;信号机制，其中<span class="arithmatex">\(S\)</span>是信号实现空间，<span class="arithmatex">\(s\in S\)</span>是信号实现  </li>
+<li>接收方：<span class="arithmatex">\(A\left\{a_1,...,a_n\right\}\)</span>  </li>
+</ul>
+<p>3.效用函数：发送方<span class="arithmatex">\(v(a,\omega)\)</span>，接收方<span class="arithmatex">\(u(a,\omega)\)</span><br />
+4.类型和先验分布<span class="arithmatex">\(\Omega=\left\{\omega_1,...,\omega_n\right\}\)</span>，<span class="arithmatex">\(\mu_0 \in int(\Delta(\Omega))\)</span>（<span class="arithmatex">\(\Omega\)</span>上概率分布的内点）<br />
+行动顺序：<br />
+1.发送方公开（承诺）一个信号机制<span class="arithmatex">\((S,\pi(S|\omega))\)</span><br />
+2.自然从<span class="arithmatex">\(\mu_0(\omega)\)</span>抽取一个<span class="arithmatex">\(\omega \in \Omega\)</span><br />
+3.导师根据信号机制<span class="arithmatex">\(\pi(s|\omega)\)</span>，发送<span class="arithmatex">\(s \in S\)</span><br />
+4.接收方收到<span class="arithmatex">\(s\)</span>后，计算<span class="arithmatex">\(\mu_s\)</span>，选择最优行动<br />
+5.计算接收方<span class="arithmatex">\(u(a,\omega)\)</span>，发送方<span class="arithmatex">\(v(a,\omega)\)</span><br />
+目标：<br />
+1.发送方发送信号是否可以使效用提升？什么样的情况会提升？<br />
+2.最优的信号机制是什么？<br />
+3.接收者是否愿意接收这样的信号？  </p>
+<h4 id="_59">问题转化<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h4>
+<p>后验概率分布的分布<span class="arithmatex">\(\tau\)</span>，有支撑集<span class="arithmatex">\(\left\{\mu_e,\mu_a\right\}\)</span>，<span class="arithmatex">\(\tau(\mu_e)=0.75=P(e),\tau(\mu_a)=0.25\)</span><br />
+期望<span class="arithmatex">\(\mathbb{E}(\tau)=0.75(\frac{1}{3},\frac{2}{3})+0.25(0,1)=(0.25,0.75)=\mu_0\)</span><br />
+定义：
+1.<span class="arithmatex">\(\tau\)</span>由信号机制导致<br />
+2.贝叶斯可行(Beyasian plausible):<br />
+$$
+\sum_{\mu}\tau(\mu)\cdot\mu=\mu_0
+$$
+定理:一个贝叶斯可行的后验概率分布的分布<span class="arithmatex">\(\tau\)</span><span class="arithmatex">\(\iff\)</span><span class="arithmatex">\(\tau\)</span>由信号机制导致<br />
+证明：<span class="arithmatex">\(\Leftarrow:S=\left\{s_1,...,s_n\right\}\)</span><br />
+<span class="arithmatex">\(\forall s\in S,\omega \in \Omega,\mu_s(\omega)=\frac{\pi(s|\omega)\cdot\mu_0(\omega)}{\sum_{\omega'}\pi(s|\omega')\cdot\mu_0(\omega')}\)</span><br />
+<span class="arithmatex">\(\tau(\mu_s)=P(s)=\sum_{\omega'}\pi(s|\omega')\cdot\mu_0(\omega')\)</span><br />
+<span class="arithmatex">\(\Rightarrow\sum_{s\in S}\tau(\mu_s)\cdot \mu_s=\sum_{s\in S}\pi(s|\omega)\cdot\mu_0(\omega)=\mu_0(\omega)\)</span><br />
+<span class="arithmatex">\(\Rightarrow:\tau(\mu_s),\mu_0(\omega),\mu_s(\omega)\rightarrow\pi(s|\omega)\)</span><br />
+<span class="arithmatex">\((\tau(\mu_s)\cdot\mu_s(\omega)=\pi(s|\omega)\cdot\mu_0(\omega))\)</span><br />
+令<span class="arithmatex">\(\pi(s|\omega)=\frac{\tau(\mu_s)\mu_s(\omega)}{\mu_0(\omega)}\rightarrow\sum_{s\in S}\frac{\tau(\mu_s)\mu_s(\omega)}{\mu_0(\omega)}=1\)</span><br />
+信号机制<span class="arithmatex">\(\iff\)</span>贝叶斯可行的后验概率分布的分布<span class="arithmatex">\(\iff\)</span>最优行动的分布<span class="arithmatex">\(\iff\)</span>发送者期望效用<br />
+问题转化：设计一个贝叶斯可行的后验概率分布的分布<span class="arithmatex">\(\tau\)</span>使得接收者效用最大化  </p>
+<h3 id="_60">最优信号机制<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h3>
+<p>设后验概率分布为<span class="arithmatex">\(\mu\)</span>时，接收方最优行动为<span class="arithmatex">\(\hat{a}(\mu)\)</span><br />
+<span class="arithmatex">\(\hat{v}(\mu)=E_{\mu}v(\hat{a}(\mu),\omega)\)</span><br />
+最优化的目标：<span class="arithmatex">\(max E_{\tau}\hat{v}(\mu),s.t.\sum_{\mu}\tau(\mu)\cdot\mu=\mu_0\)</span><br />
+定理（信息设计的显示原理）：只需要考虑<span class="arithmatex">\(S \subseteq A\)</span>，且一个<span class="arithmatex">\(s\in S\)</span>对应一个最优<span class="arithmatex">\(a\in A\)</span>的机制（导师发送的信号对应企业的最优行动），即信号可合并  </p>
+<h4 id="_61">最优信号机制的解<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h4>
+<h5 id="_62">凹包络<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h5>
+<p>定义(函数<span class="arithmatex">\(\hat{v}\)</span>)的凹包络<span class="arithmatex">\(V(\mu)=sup\left\{z|(\mu,z)\in co(\hat{v})\right\}\)</span>。其中<span class="arithmatex">\(co(\hat{v})\)</span>是<span class="arithmatex">\(\hat{v}\)</span>图像的凸包（大于等于<span class="arithmatex">\(\hat{v}\)</span>的最小凹函数）<br />
+凸包：将某个集合补成凸集（任意两点连线在集合内）<br />
+<img alt="alt text" src="../image-4.png" />  </p>
+<h5 id="_63">导师写推荐信的解<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h5>
+<p><span class="arithmatex">\(\mu(excellent)\ge\frac{1}{3}\)</span>时，<span class="arithmatex">\(\hat{a}(\mu)=hiring\)</span>，导师的效用<span class="arithmatex">\(\hat{v}(\mu)=1\)</span>，反之为<span class="arithmatex">\(0\)</span><br />
+<img alt="alt text" src="../image-5.png" /><br />
+<span class="arithmatex">\(\mu_1(ex)=0,\mu_1(av)=1,\tau(\mu_1)=\frac{1}{4}\)</span><br />
+<span class="arithmatex">\(\mu_2(ex)=\frac{1}{3},\mu_2(av)=\frac{2}{3},\tau(\mu_2)=\frac{3}{4}\)</span><br />
+<span class="arithmatex">\(\pi(1|ex)=\frac{\tau(\mu_1)\cdot\mu_1(ex)}{\mu_0(ex)}=0\)</span><br />
+<span class="arithmatex">\(\pi(1|av)=\frac{\tau(\mu_1)\cdot\mu_1(av)}{\mu_0(av)}=\frac{1}{3}\)</span><br />
+<span class="arithmatex">\(\pi(2|ex)=\frac{\tau(\mu_2)\cdot\mu_2(ex)}{\mu_0(ex)}=1\)</span><br />
+<span class="arithmatex">\(\pi(2|av)=\frac{\tau(\mu_2)\cdot\mu_2(av)}{\mu_0(av)}=\frac{2}{3}\)</span>  </p>
+<h4 id="_64">接收者是否愿意接收信号<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h4>
+<p>定理：在最优信号机制下，接收方的收益提高了<br />
+证明：<span class="arithmatex">\((S,\pi(s|\omega)\)</span>，接收方看到<span class="arithmatex">\(s\)</span>，更新<span class="arithmatex">\(\mu_s(\omega)=\frac{\pi(s|\omega)\cdot\mu_0(\omega)}{\sum_{\omega'\in\Omega}\pi(s|\omega')\cdot\mu_0(\omega')}\)</span><br />
+<span class="arithmatex">\(max_{a\in A}E_{\mu_s}u(a,\omega)=max_{a\in A}\sum_{\omega\in\Omega}\mu_s(\omega)\cdot u(a,\omega)\)</span><br />
+$$
+\begin{aligned}
+&amp;\sum_{s\in S}P(s)\cdot max_{a\in A}E_{\mu_s}u(a,\omega)=\sum_{s\in S}max_{a\in A}\sum_{\omega\in\Omega}\pi(s|\omega)\mu_0(\omega)u(a,\omega) \
+&amp;\quad \ge max_{a\in A}\sum_{s\in S}\sum_{\omega\in S}\pi(s|\omega)\cdot\mu_0(\omega)\cdot u(a,\omega) \
+&amp;\quad =max_{a\in A}\sum_{\omega\in\Omega}(\sum_{s\in S}\pi(s|\omega))\cdot\mu_0(\omega)u(a,\omega) \
+&amp;\quad =max_{a\in A}\sum_{\omega\in\Omega}\mu_0(\omega)u(a,\omega) \
+&amp;\quad =max_{a\in A}E_{\mu_0}u(a,\omega)
+\end{aligned}
+$$<br />
+卖出信息能够提升企业的效用（效用之差即为信息的价值）  </p>
+<h2 id="lec-11">Lec 11:信息定价机制设计(特邀讲座)<a class="headerlink" href="#lec-11" title="Permanent link">&para;</a></h2>
+<h2 id="lec-12">Lec 12:隐私与外部性问题<a class="headerlink" href="#lec-12" title="Permanent link">&para;</a></h2>
+<h3 id="_65">隐私成本<a class="headerlink" href="#_65" title="Permanent link">&para;</a></h3>
+<p>内在成本：个人不愿意<br />
+工具成本：公开隐私导致效用下降<br />
+福利三角形  </p>
+<h3 id="_66">外部性问题<a class="headerlink" href="#_66" title="Permanent link">&para;</a></h3>
+<p>买家：市场占有率，供求关系改变<br />
+卖家：隐私数据均衡价格下降，使用泛滥  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © YYC 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://tapir-elithril.github.io/Notebook/" target="_blank" rel="noopener" title="tapir-elithril.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<3230105697@zju.edu.cn>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

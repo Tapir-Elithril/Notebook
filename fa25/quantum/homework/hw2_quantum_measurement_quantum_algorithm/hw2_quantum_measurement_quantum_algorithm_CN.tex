@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem,algorithm,algpseudocode}
+\usepackage[UTF8]{ctex}
+\usepackage[braket]{qcircuit}
+\parindent=22pt
+\parskip=3pt
+\oddsidemargin 18pt \evensidemargin 0pt
+\leftmargin 1.5in
+\marginparwidth 1in \marginparsep 0pt \headsep 0pt \topskip 20pt
+\textheight 225mm \textwidth 148mm
+\renewcommand{\baselinestretch}{1.15}
+\begin{document}
+\title{{\bf 理论作业二 \quad 量子测量与量子算法}}
+\author{姓名 \quad 学号}
+\date{\today}
+\maketitle
+
+\begin{tabular*}{13cm}{r}
+\hline
+\end{tabular*}
+
+\vskip 0.3 in
+
+{\bf 1.} 假设有初始化为 $|1\rangle$ 态的量子寄存器若干，给出分别使用酉算子 $H$、$X$、$T$、$S$ 进行测量的结果。
+
+\vskip 0.3 in
+
+{\bf 2.} 证明 Grover 算法中的算子 $G$ 每次作用时使量子态向 $|\beta\rangle$ 方向旋转角度 $\theta$。
+
+\vskip 0.3 in
+
+{\bf 3.} 根据 Grover 算法中 $M$、$N$ 的定义，令 $\gamma = M/N$，证明在 $|\alpha\rangle$、$|\beta\rangle$ 基下，Grover 算法中的算子 $G$ 可以写为 $\begin{bmatrix}
+    1-2\gamma & -2\sqrt{\gamma-\gamma^2} \\ 2\sqrt{\gamma-\gamma^2} & 1-2\gamma
+\end{bmatrix}$。
+
+\vskip 0.3 in
+
+{\bf Bonus:} 给出 RSA 算法加密、解密过程的证明，即证明明文为 $a \equiv C^d \mod n$。
+
+\end{document}

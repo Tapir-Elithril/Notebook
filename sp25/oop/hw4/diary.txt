@@ -1,0 +1,15 @@
+1.1
+Sunny
+New Year's Day
+4.4
+Rainy
+QingMing
+5.1
+Sunny
+International Labor Day
+5.31
+Cloudy
+Dragon Boat Festival
+10.1
+Sunny
+National Day

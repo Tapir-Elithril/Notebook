@@ -1,0 +1,147 @@
+\documentclass{article}
+\usepackage{hwopt}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{\emph{Introductory Lectures on Optimization} \\ Homework (1)}
+\author{Student Name \\ Student ID 01234567}
+\date{October, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{excercise}\label{e1}\textbf{Norms}
+\end{excercise}
+In this exercise, we will give some examples of norms and a useful theorem related to norms in finite dimensional vector space
+\begin{enumerate}
+    \item  \textbf{$l_p$ norm}: The $l_p$ norm is defined by
+    \begin{equation}
+        \|x\|_p = (\Sigma_{i=1}^n |x_i|^p)^{\frac 1 p}
+    \end{equation}
+    where $\bold{x}=(x_1,...,x_n)\in \mathbb{R}^n$ and p$\geq$1.
+    \begin{enumerate}[label=\alph*.]
+        \item Please show that $l_p$ norm is a norm.
+        \item Please show that the following equality.
+        \begin{equation}
+            \underset{p\rightarrow \infty}{\lim} \|\bold{x}\|_p =\|\bold{x}\|_{\infty} =\underset{1\leq i\leq n}{max} |x_i|.
+        \end{equation}
+        The $l_{\infty}$ norm is defined as above
+    \end{enumerate}
+    \item \textbf{Operator norms}: Suppose that \textbf{A} $\in \mathbb{R}^{m\times n}$, which can be viewed as linear transformation from $\mathbb{R}^n$ to $\mathbb{R}^m$. Please show that the following operator norms' equality.
+    \begin{enumerate}[label=\alph*.]
+        \item Let $\|A\|_1 = \sup_{\bold{x}\in \mathbb{R}^n,\bold{x}\neq 0}\frac
+          {\|\textbf{Ax}\|_1}{\|\textbf{x}\|_1}$. Please show that
+        \begin{equation}
+            \|A\|_1 = \underset{1\leq j\leq n}{max}\Sigma_{i=1}^m |a_{ij}|.
+        \end{equation}
+        \item Let $\|A\|_{\infty}=\sup_{\bold{x}\in \mathbb{R}^n,\bold{x}\neq 0} \frac {\|\textbf{Ax}\|_{\infty}}{\|\textbf{x}\|_{\infty}}$. Please show that 
+        \begin{equation}
+            \|\textbf{A}\|_{\infty} =\underset{1\leq i\leq m}{max} \Sigma_{j=1}^n |a_{ij}|.
+        \end{equation}
+    \end{enumerate}
+    
+\end{enumerate}
+
+\begin{PROOF}{e1}
+Write down your solutions step by step here.
+\end{PROOF}
+\clearpage
+
+
+% \newpage
+\bigskip
+
+\begin{excercise}\label{e2} \textbf{Basis and Coordinates}
+\end{excercise}
+Suppose that $\{\bold{a_1},\bold{a_2},...,\bold{a_n}\}$ is a basis of an n-dimensional vector Space V.
+\begin{enumerate}
+    \item Show that $\{\lambda_1 \bold{a_1},\lambda_2 \bold{a_2},..., \lambda_n \bold{a_n}\}$ is also a basis of V for nonzero scalars $\lambda_1,\lambda_2, ..., \lambda_n$.
+    \item Suppose that the coordinate of a vector $\textbf{v}$ under the basis 
+    $\{\bold{a_1},...,\bold{a_n}\}$ is \textbf{x} = $(x_1, x_2, ..., x_n)$
+    \begin{enumerate}[label=\alph*.]
+        \item What is the coordinate of \textbf{v} under 
+        $\{\lambda_1 \bold{a_1},...,\lambda_n\bold{a_n}\}$?
+        \item What are the coordinates of  $\bold{w} =\Sigma_{i=1}^n \bold{a_i}$ under $\{\bold{a_1},\bold{a_2},...,\bold{a_n}\}$ and $\{\lambda_1\bold{a_1},\lambda_2\bold{a_2},...,\lambda_n\bold{a_n}\}$?  Note that $\lambda_i\neq 0 \ \forall i\in \{1,...,n\}$.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{PROOF}{e2}
+Write down your solutions step by step here.
+
+\end{PROOF}
+
+\bigskip
+
+\begin{excercise}\label{e3} \textbf{Differentiability}
+\end{excercise}
+
+Let $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ be a function, $\bold{x_0} \in \mathbb{R}^n$ be a point, and let $L: \mathbb{R}^n 
+\rightarrow \mathbb{R}^m$ be a linear transformation. We say that f is \textit{differentiable} at $\bold{x_0}$
+with \textit{derivative} $L$ if we have 
+    \begin{equation}
+        \underset{\bold{x}\rightarrow \bold{x_0};\bold{x}\neq \bold{x_0}}{\lim} \frac {\|f(x)-f(x_0)-L(x-x_0)\|_2}{\|x-x_0\|_2} = 0
+    \end{equation}
+
+We denote this derivative $L$ by $f'(\bold{x_0})$.
+    \begin{enumerate}
+        \item Let $x,a \in \mathbb{R}^n$ and $y\in \mathbb{R}^m$. Consider the functions as follows. Please show that they are differentiable and find $f'(\bold{x})$
+        \begin{enumerate}
+            \item $f(\bold{x})=\bold{a}^T\bold{x}$.
+            \item $f(\bold{x})=\bold{x}^T\bold{x}$.
+            \item $f(\bold{x})=\|\bold{y}-\bold{A}\bold{x}\|_2^2$, where $\bold{A}\in \mathbb{R}^{m\times n}$.
+        \end{enumerate}
+    \end{enumerate}
+
+\begin{PROOF}{e3}
+Write down your solutions step by step here.
+\end{PROOF}
+
+\bigskip
+
+\begin{excercise}\label{e4} \textbf{Properties of Eigenvalues and Singular Values}
+\end{excercise}
+
+\begin{enumerate}
+    \item Suppose the maximum eigenvalue, minimum eigenvalue of a given symmetric matrix $A\in S^n$ are denoted by $\lambda_{max}(\bold{A})$ and $\lambda_{min}(\bold{A})$,
+    respectively. Please show that 
+    \begin{equation}
+        \lambda_{max}(\textbf{A}) = \underset{\textbf{x}\in \mathbb{R}^n,\textbf{x}\neq 0}{\sup} \frac {\bold{x^TAx}}{\bold{x^Tx}}, \ \lambda_{min}(\textbf{A}) = \underset{\bold{x}\in \mathbb{R}^n, \bold{x} \neq 0}{\inf} \frac {\bold{x^TAx}}{\bold{x^Tx}}.
+    \end{equation}
+    (\textbf{Hint:}consider the orthogonal decomposition of \textbf{A}.)
+    \item Suppose \textbf{B} =$(b_{ij})\in \mathbb{R}^{m\times n}$ with maximum singular value $\sigma_{max}(\textbf{B})$.
+    \begin{enumerate}[label=\alph*.]
+        \item Let $\|\bold{B}\|_2:=\sup_{\bold{x}\in \mathbb{R}^n,\bold{x\neq
+              0}}\frac {\|\bold{Bx}\|_2}{\|x\|_2}$. Please show that
+        \begin{equation}
+            \sigma_{max}(\bold{B})=\|\bold{B}\|_2.
+        \end{equation}
+        \item Please show that 
+        \begin{equation}
+            \sigma_{max}(\textbf{B})=\underset{\bold{x}\in \mathbb{R}^m,\bold{y}\in \mathbb{R}^n, \bold{x,y}\neq 0}{\sup}
+            \frac {\bold{x^TBy}}{\|\bold{x}\|_2\|\bold{y}\|_2}
+        \end{equation}
+    \end{enumerate}
+    \item Please show the following two equalities:
+    \begin{equation}
+        f(\bold{y})-f(\bold{x})=\int_0^1\nabla f(\bold{x}+t(\bold{y}-\bold{x}))^T(\bold{y}-\bold{x})\, dt
+    \end{equation}
+    \begin{equation}
+        \nabla f(\bold{y})-\nabla f(\bold{x})=\int_0^1\nabla^2 f(\bold{x}+t(\bold{y}-\bold{x}))(\bold{y}-\bold{x})\, dt        
+    \end{equation}
+    (\textbf{Hint}: you may consider the function $g(t) =f(\bold{x}+t(\bold{y}-\bold{x}))$ and apply the fundamental theorem of calculus.)
+    \item Suppose that $f:\mathbb{R}^n \rightarrow  \mathbb{R}$ is twice continuously differentiable, and the gradient of $f$ is Lipschitz continuous, i.e.,
+    \begin{equation}
+        \|\nabla f(\bold{x})-\nabla f(\bold{y})\|_2\leq L \|\bold{x}-\bold{y}\|_2,\forall \bold{x},\bold{y} \in \mathbb{R}^n,
+    \end{equation}
+    where $L\ge 0$ is Lipschitz constant. Please show that $\lambda_{max}(\nabla^2 f(\bold{x}))\leq L$ for any $\bold{x} \in \mathbb{R}^n$, where $\lambda_{max}(\nabla^2 f(\bold{x}))$ is the largest eigenvalue of $\nabla^2 f(\bold{x})$.
+\end{enumerate}
+\begin{PROOF}{e4}
+Write down your solutions step by step here.
+
+\end{PROOF}
+
+
+
+\end{document}
