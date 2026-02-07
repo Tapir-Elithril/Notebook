@@ -93,7 +93,7 @@ nav:
       - 笔记: sp25/data_market/note.md
   - fa25:
     - fa25/index.md
-    - 机器学习：
+    - 机器学习:
       - fa25/ml/index.md
       - 笔记: fa25/ml/note.md
     - 计算机视觉导论:
