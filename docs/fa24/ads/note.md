@@ -800,7 +800,7 @@ A is an NPC problem,if A can be reduced to B,then B is an NPC problem
 Travelling salesman problem:Given a **complete** graph G,with edge costs, and an integer K,is there a simple cycle that visits all vertices and has total cost<=K  
 Proof:TSP is NP  
   and for any Hamiltonian cycle problem,we can construct an example that is a TSP problem  
-  and the solution to the Hamiltonian cycle is the solmution to the TSP problem  
+  and the solution to the Hamiltonian cycle is the solution to the TSP problem  
   ![alt text](image/image-58.png)  
   规约是单向的  
   

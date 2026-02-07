@@ -18,7 +18,7 @@ Gitlab:基于 Git 的 DevOps 平台，除了代码托管外，还提供完整的
 ### Repository creation
 ```bash
 git init  
-git add README.md  
+git add README.md  # git add .
 git commit -m "<update_info>"
 git branch -M <branch_name>  
 git remote add origin <website.git>

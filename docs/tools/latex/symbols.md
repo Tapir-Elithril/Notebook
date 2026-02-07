@@ -104,15 +104,17 @@ x-y=1.\\
 #### 矩阵
 ```
 ^\top # 转置
+^\dagger # 共轭转置
 *{n}{X}:重复X格式n次，c:centre居中对齐
 
-A=\left( {\begin{array}{*{20}{c}}
-{a_{11}} & {a_{12}} & {\cdots} & {a_{1n}} \\
-{a_{21}} & {a_{22}} & {\cdots} & {a_{2n}} \\
-{\vdots} & {\vdots} & {} & {\vdots} \\
-{a_{n1}} & {a_{n2}} & {\cdots} & {a_{nn}} \\
-\end{array}}    
-    \right)
+\begin{bmatrix}
+元素11 & 元素12 & \cdots & 元素1n \\
+元素21 & 元素22 & \cdots & 元素2n \\
+\vdots & \vdots & \ddots & \vdots \\
+元素m1 & 元素m2 & \cdots & 元素mn \\
+\end{bmatrix}
+
+bmatrix:[],pmatrix:()
 ```
 #### 相似全等
 ```
