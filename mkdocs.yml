@@ -96,21 +96,18 @@ nav:
     - 机器学习：
       - fa25/ml/index.md
       - 笔记: fa25/ml/note.md
-    - 计算机视觉导论
+    - 计算机视觉导论:
       - fa25/icv/index.md
       - 笔记: fa25/icv/note.md
-    - 理论计算机科学导引
+    - 理论计算机科学导引:
       - fa25/tcs/index.md
       - 笔记: fa25/tcs/note.md
-    - 优化基本理论与方法
-      - fa25/opt/index.md
-    - 量子计算理论基础与软件系统
+    - 优化基本理论与方法: fa25/opt/index.md
+    - 量子计算理论基础与软件系统:
       - fa25/quantum/index.md
       - 笔记: fa25/quantum/note.md
-    - 毛泽东思想与中国特色社会主义理论体系概论（H）
-      - fa25/mao/index.md
-    - 网球（初级）：
-      - fa25/tennis/index.md
+    - 毛泽东思想与中国特色社会主义理论体系概论（H）: fa25/mao/index.md
+    - 网球（初级）: fa25/tennis/index.md
   - research:
     - data_target:
       - research/data/note.md
