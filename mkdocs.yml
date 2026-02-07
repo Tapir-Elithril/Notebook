@@ -99,9 +99,7 @@ nav:
     - 计算机视觉导论:
       - fa25/icv/index.md
       - 笔记: fa25/icv/note.md
-    - 理论计算机科学导引:
-      - fa25/tcs/index.md
-      - 笔记: fa25/tcs/note.md
+    - 理论计算机科学导引: fa25/tcs/index.md
     - 优化基本理论与方法: fa25/opt/index.md
     - 量子计算理论基础与软件系统:
       - fa25/quantum/index.md
