@@ -104,19 +104,32 @@ nav:
     - 量子计算理论基础与软件系统:
       - fa25/quantum/index.md
       - 笔记: fa25/quantum/note.md
-    - 毛泽东思想与中国特色社会主义理论体系概论（H）: fa25/mao/index.md
+    - 毛泽东思想与中国特色社会主义理论体系概论(H): fa25/mao/index.md
     - 网球（初级）: fa25/tennis/index.md
-  - research:
-    - data_target:
-      - research/data/note.md
-      - paper_list: research/data/paper.md
-      - review: research/data/review.md
-    - kaggle: 
-      - research/kaggle/index.md
-    - llm_infra:
-      - kvcache: research/llm_vuln/kvcache.md
-      - llm_vulnerability: research/llm_vuln/llm_vulnerability.md
-      - mcp: research/llm_vuln/mcp.md
+  - sp26:
+    - sp26/index.md
+    - 自然语言处理导论:
+      - sp26/nlp/index.md
+      - 笔记: sp26/nlp/note.md
+    - 人工智能芯片与系统:
+      - sp26/chip/index.md
+      - 笔记: sp26/chip/note.md
+    - 数据挖掘导论:
+      - sp26/mining/index.md
+      - 笔记: sp26/mining/note.md
+    - 羽毛球（初级）: sp26/badminton/index.md
+    - 人工智能实践: sp26/ai_practice/index.md
+  # - research:
+  #   - data_target:
+  #     - research/data/note.md
+  #     - paper_list: research/data/paper.md
+  #     - review: research/data/review.md
+  #   - kaggle: 
+  #     - research/kaggle/index.md
+  #   - llm_infra:
+  #     - kvcache: research/llm_vuln/kvcache.md
+  #     - llm_vulnerability: research/llm_vuln/llm_vulnerability.md
+  #     - mcp: research/llm_vuln/mcp.md
 
 theme:
   name: material
@@ -217,5 +230,4 @@ markdown_extensions:
 extra_javascript:
   - javascripts/extra.js
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

@@ -1050,14 +1050,15 @@ M. update model parameters $\left\{(\alpha_i,\mu_i,\Sigma_i)|1\le i\le k\right\}
 核心对象:$x_j$的$\epsilon$-邻域包含样本足够多  
 密度直达，密度可达，密度相连  
 ![](image-35.png)  
+密度可达的点属于同一类，多余的点属于noise  
 
 #### 层次聚类
 ##### AGNES(AGglomerative NESting)
 
 1. 每个样本一个簇  
-2. 合并最近的两个簇  
-3. 直到所有样本都属于一个簇  
-output: tree hierarchy  
+2. 合并最近的两个簇，形成一个树节点  
+3. 不断合并生成节点直到所有样本都属于一个簇  
+output: tree hierarchy   
 
 ### feature selection
 search candidate subset -> evaluation -> next candidate  

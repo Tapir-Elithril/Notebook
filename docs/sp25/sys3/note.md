@@ -198,6 +198,7 @@ The limitations on ILP approaches directly led to the movement to multicore.
 In-class practice:
 ![alt text](73594853addbe984fa7f1755da7374b.png)
 
+note that whether the EX stage of the first inst is cycle 2 or 3 is not important  
 Instructions come out in order:Waiting sofa(buffer)
 
 #### Hardware-Based Speculation 硬件前瞻
@@ -1510,7 +1511,7 @@ using **cache coherence protocol**
 监听:broadcast invalid info/update data on the bus to invalidate/update other copies  
 write through & write back  
 write invalidate protocol(using write back)  
-|processor|buss|cacheA|cacheB|memory|
+|processor|bus|cacheA|cacheB|memory|
 |-------|-------|-------|-------|-------|
 |||||0|
 |Aread|cache miss|0||0|
