@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{hwopt}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts,amssymb}
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{\emph{Introductory Lectures on Optimization} \\ Homework (2)}
+\author{Student Name \\ Student ID 01234567}
+\date{November 30, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{excercise}\label{e1}\textbf{Convex functions}
+
+Please show the following functions are convex.
+\begin{enumerate}[label=\alph*.]
+\item $f(\mathbf{x})=\sum_{i=1}^k x_{[i]}$ on $\mathbf{dom}\, f = \mathbb{R}^n$, where $1\leq k \leq n$ and $x_{[i]}$ denotes the $i^{th}$ largest component of $\mathbf{x}$.
+\item The negative entropy, i.e.,
+\begin{equation*}
+    f(\mathbf{p}) = \sum_{i=1}^n p_i \,\text{log}\, p_i
+\end{equation*}
+on $\mathbf{dom} \ f =\{ p\in \mathbb{R}^n: 0< p_i \leq 1, \sum_{i=1}^n p_i =
+1\}$, where $p_i$ denotes the $i^{th}$ component of \textbf{p}.
+\item The spectral norm, i.e., 
+\begin{equation*}
+    f(\mathbf{X})=\|\mathbf{X}\|_2 = \sigma_{max}(\mathbf{X})
+\end{equation*}
+on $\mathbf{dom} \ f = \mathbb{R}^{m\times n}$, where $\sigma_{max}$ denotes the largest singular value of $\mathbf{X}$.
+
+\end{enumerate}
+\end{excercise}
+
+\begin{PROOF}{e1}
+Write down your solutions step by step here.
+\end{PROOF}
+% \newpage
+
+\bigskip
+
+\begin{excercise}\label{e2}\textbf{Operations that Preserve Convexity}
+  
+Let $f_i:\mathbb{R}^n \rightarrow  (-\infty,+\infty]$ be given convex
+  functions for $i\in I$, where $I$ is an arbitrary index set. Please show that the supremum
+\begin{equation*}
+    F(\mathbf{x}) = \underset{i\in I}{\text{sup}}\, f_i(\mathbf{x})
+\end{equation*}
+is convex.
+\end{excercise}
+
+\begin{PROOF}{e2}
+Write down your solutions step by step here.
+\end{PROOF}
+
+% \newpage
+\bigskip
+
+\begin{excercise}\label{e3} \textbf{Strong Convex Functions}
+  
+Suppose that $f$  is twice continuously differentiable and strongly convex with parameter $\mu >0$. Please show that $\mu \leq \lambda_{min}(\nabla^2 f(\mathbf{x}))$ for any $\mathbf{x} \in \mathbb{R}^n$, where $\lambda_{min}(\nabla^2 f(\mathbf{x}))$ is the smallest eigenvalue of $\nabla^2 f(\mathbf{x})$
+\end{excercise}
+
+\begin{PROOF}{e3}
+Write down your solution step by step here.
+\end{PROOF}
+
+\clearpage
+% \bigskip
+
+
+\begin{excercise}\label{e4}\textbf{Subdifferentials}
+
+  Calculation of subdifferentials
+\begin{enumerate}[label=\alph*.]
+\item Let $H\in \mathbb{R}^n$ be a hyperplane. The extended-value extension of its indicator function $I_H$ is 
+\begin{equation}
+\widetilde{I}_H(\mathbf{x})=\left\{
+\begin{aligned}
+&0, & \mathbf{x} \in H,\\
+&\infty, & else
+\end{aligned}
+\right.
+\end{equation}
+Find $\partial \widetilde{I}_H(\mathbf{x})$.
+
+\item Let $f(\mathbf{x}) = exp(\|\mathbf{x}\|_1), \mathbf{x}\in \mathbb{R}^n$. Find $\partial f(\mathbf{x})$.
+
+\item For $\mathbf{x}\in \mathbb{R}^n $, let $x_{[i]}$ be the $i^{th}$ largest component of $\mathbf{x}$. Find the subdifferentials of
+\begin{equation}
+    f(\mathbf{x})=\sum_{i=1}^{k} x_{[i]}
+\end{equation}
+\end{enumerate}
+\end{excercise}
+
+\begin{PROOF}{e4}
+Write down your solution step by step here.
+\end{PROOF}
+% \clearpage
+
+% \newpage
+\bigskip
+\bigskip
+\bigskip
+
+\begin{excercise}\label{e5} \textbf{Supporting Hyperplane}
+
+We know that there exists supporting hyperplanes at the boundary point of a convex set.
+
+Please solve the following questions.
+\begin{enumerate}[label=\alph*.]
+    \item Express the closed convex set $\{\mathbf{x} \in R_{+}^2| x_1x_2\geq 1\}$ as an intersection of halfspaces.
+    \item Let C=$\{\mathbf{x}\in R^n|\  ||\mathbf{x}_{\infty}|| \leq 1\}$, the $\infty$-norm unit ball in $\mathbb{R}^n$, and let $\hat {\mathbf{x}}$ be a point in the boundary of C. Identify the supporting hyperplanes of C at $\hat{\mathbf{x}}$ explicitly. (The $\infty$-norm of a point $\mathbf{x}\in \mathbb{R}^n$ is defined as $max_{1\leq i \leq n}|x_i|$.)
+\end{enumerate}
+\end{excercise}
+
+\begin{PROOF}{e5}
+Write down your solution step by step here.
+\end{PROOF}
+
+\bigskip
+\bigskip
+\begin{excercise}\label{e6} \textbf{Concave Function}
+
+  Consider the following loss function for logistic regression:
+  \begin{equation*}
+    l(\theta) = \sum_{i=1}^{N} \left\{ -\log[1 + \exp(-\theta^T u^{(i)})] - [1 - v^{(i)}]\theta^T u^{(i)} \right\}.
+  \end{equation*}
+  where $u^{(i)} \in R^n$ denotes the input variables, $v^{(i)} \in R$ denotes
+  the output variable, a pair ${(u^{(i)}, v^{(i)})}$ is called a training
+  example, and the dataset $\{(u^{(i)}, v^{(i)})\}, i=1,...,N$ is called a
+  training set. Find the Hessian $\mathbf{H}$ for this function and show that
+  $l$ is a concave function.
+
+\end{excercise}
+
+\begin{PROOF}{e6}
+Write down your solution step by step here.
+\end{PROOF}
+
+\end{document}

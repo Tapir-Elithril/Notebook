@@ -1,0 +1,6292 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tapir's Notebook">
+      
+      
+        <meta name="author" content="杨亿酬">
+      
+      
+        <link rel="canonical" href="https://tapir-elithril.github.io/Notebook/sp26/chip/note/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../mining/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>笔记 - Tapir's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Tapir&#39;s Notebook" class="md-header__button md-logo" aria-label="Tapir's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tapir's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../fa23/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  fa23
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sp24/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  sp24
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../fa24/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  fa24
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sp25/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  sp25
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../fa25/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  fa25
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  sp26
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tapir&#39;s Notebook" class="md-nav__button md-logo" aria-label="Tapir's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tapir's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Tapir-Elithril/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Tapir-Elithril/Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tools/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tools
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tools/latex/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LaTeX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LaTeX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/latex/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文献
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/latex/symbols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用符号
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/makefile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Makefile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa23/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fa23
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fa23
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/military_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    军训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/math_analysis1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学分析(甲)I(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序设计与算法基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/linear_algebra1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性代数I(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/modern_history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国近现代史纲要(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/morality_law/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    思想道德与法治
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/political_philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    近代西方政治哲学导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/astronomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    天文学导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/psychology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    心理学及应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/career_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    职业生涯规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/reform_and_openup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国改革开放史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/orienteering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定向越野
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa23/fitness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    身体素质课
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp24/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sp24
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    sp24
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/math_analysis2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学分析(甲)II(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp24/sys1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统I
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统I
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/sys1/CPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单周期CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/physics1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学I(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/discrete_math/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    离散数学理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/linear_algebra2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性代数II(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp24/fds/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构基础
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/fds/struct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见结构体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/physics1_lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学实验I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/cyber_security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络空间安全导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/piano/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    打开艺术之门——钢琴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/swimming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    游泳(初级)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/fitness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    身体素质课
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/situation_policy1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    形势与政策I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp24/ctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程综合实践I——安全攻防实践基础(CTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa24/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fa24
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fa24
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa24/sys2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统II
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统II
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/sys2/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/physics2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学II(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa24/ads/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级数据结构与算法分析
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高级数据结构与算法分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/ads/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/aid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能引论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/military_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    军事理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/physics2_lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    普通物理学实验II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/tea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    茶文化与茶健康
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa24/aerobics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    健美操
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp25/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sp25
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    sp25
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp25/sys3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统III
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统III
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp25/sys3/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp25/db/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据库系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp25/db/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp25/oop/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面向对象程序设计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面向对象程序设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp25/oop/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp25/marx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    马克思主义基本原理(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp25/xi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    习近平新时代中国特色社会主义思想概论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp25/line_dance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    排舞
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sp25/data_market/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据要素交易基础
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据要素交易基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sp25/data_market/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fa25
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fa25
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/ml/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/ml/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/icv/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机视觉导论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机视觉导论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/icv/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/tcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论计算机科学导引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/opt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    优化基本理论与方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../fa25/quantum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    量子计算理论基础与软件系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    量子计算理论基础与软件系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/quantum/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/mao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    毛泽东思想与中国特色社会主义理论体系概论(H)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fa25/tennis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网球（初级）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sp26
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    sp26
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../nlp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理导论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自然语言处理导论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能芯片与系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    人工智能芯片与系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-1introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 1：Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 1：Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amdahls-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amdahl's Law
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roofline-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roofline model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#littles-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Little's Law
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-2-reorder-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 2: Reorder buffer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-3-out-of-order-cpu-tomasulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 3: Out-of-order CPU + Tomasulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-4-cpu-superscalar-simd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 4: CPU Superscalar + SIMD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-5-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 5: Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-6-gpu-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 6: GPU architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 6: GPU architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programming-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programming model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-7-gpu-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 7: GPU optimization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 7: GPU optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-memories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU memories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU memories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dram-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DRAM subsystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-threading
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-coalescing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Coalescing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simt-divergency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIMT Divergency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atomic-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atomic operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-gpu-transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU-GPU transfer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-8-cache-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 8: Cache Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9-10-cache-coherence-and-consistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 9-10: Cache Coherence and Consistence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-11-ai-chipscommon-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 11: AI chips:common patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 11: AI chips:common patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activation-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activation function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-connected-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully Connected Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加速器设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="加速器设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        并行计算模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        简化控制模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Buffer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        量化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        专用编程语言DSA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-12-ai-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 12: AI processors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 12: AI processors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        深度学习加速器设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="深度学习加速器设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减少内存访问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-buffer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减少global buffer访问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增加计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见AI加速器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见AI加速器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ascend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        华为Ascend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-tpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google TPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-13-ai-chip-runtime-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 13: AI Chip + Runtime + Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 13: AI Chip + Runtime + Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambricon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        寒武纪Cambricon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算子基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算子开发方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cann" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CANN平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-14-parallel-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 14: Parallel Training
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 14: Parallel Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        data parallelism
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="data parallelism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AllReduce
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        challenges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model parallelism
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="model parallelism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inter-layer-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        inter layer pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intra-layertensor-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intra layer(tensor parallelism)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-15-flash-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        *Lecture 15: Flash Attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="*Lecture 15: Flash Attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="flash attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        *flash attention-1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention-2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention-3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention-4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rateloptimizing-holistic-data-movement-to-fine-tune-100b-model-on-a-consumer-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ratel:Optimizing Holistic Data Movement to Fine-tune 100B Model on a Consumer GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-16overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 16:Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../mining/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据挖掘导论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据挖掘导论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mining/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../badminton/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    羽毛球（初级）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-1introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 1：Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 1：Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amdahls-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amdahl's Law
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roofline-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roofline model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#littles-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Little's Law
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-2-reorder-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 2: Reorder buffer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-3-out-of-order-cpu-tomasulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 3: Out-of-order CPU + Tomasulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-4-cpu-superscalar-simd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 4: CPU Superscalar + SIMD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-5-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 5: Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-6-gpu-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 6: GPU architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 6: GPU architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programming-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programming model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-7-gpu-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 7: GPU optimization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 7: GPU optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-memories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU memories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU memories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dram-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DRAM subsystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-threading
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-coalescing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Coalescing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simt-divergency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIMT Divergency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atomic-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atomic operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-gpu-transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU-GPU transfer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-8-cache-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 8: Cache Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9-10-cache-coherence-and-consistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 9-10: Cache Coherence and Consistence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-11-ai-chipscommon-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 11: AI chips:common patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 11: AI chips:common patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activation-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activation function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-connected-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully Connected Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加速器设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="加速器设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        并行计算模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        简化控制模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Buffer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        量化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        专用编程语言DSA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-12-ai-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 12: AI processors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 12: AI processors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        深度学习加速器设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="深度学习加速器设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减少内存访问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-buffer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减少global buffer访问
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增加计算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见AI加速器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见AI加速器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ascend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        华为Ascend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-tpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google TPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-13-ai-chip-runtime-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 13: AI Chip + Runtime + Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 13: AI Chip + Runtime + Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambricon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        寒武纪Cambricon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算子基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算子开发方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cann" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CANN平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-14-parallel-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 14: Parallel Training
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 14: Parallel Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        data parallelism
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="data parallelism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AllReduce
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        challenges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model parallelism
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="model parallelism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inter-layer-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        inter layer pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intra-layertensor-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intra layer(tensor parallelism)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-15-flash-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        *Lecture 15: Flash Attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="*Lecture 15: Flash Attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="flash attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        *flash attention-1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention-2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention-3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flash-attention-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flash attention-4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rateloptimizing-holistic-data-movement-to-fine-tune-100b-model-on-a-consumer-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ratel:Optimizing Holistic Data Movement to Fine-tune 100B Model on a Consumer GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-16overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture 16:Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Tapir-Elithril/Notebook/edit/main/docs/sp26/chip/note.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="_1">人工智能芯片与系统<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="lecture-1introduction">Lecture 1：Introduction<a class="headerlink" href="#lecture-1introduction" title="Permanent link">&para;</a></h2>
+<h3 id="amdahls-law">Amdahl's Law<a class="headerlink" href="#amdahls-law" title="Permanent link">&para;</a></h3>
+<p>f:parallelizable fraction of a program<br />
+N:number of processors<br />
+$$
+Speedup=\frac{1}{1-f+\frac f N}
+$$</p>
+<h3 id="roofline-model">Roofline model<a class="headerlink" href="#roofline-model" title="Permanent link">&para;</a></h3>
+<p>Arithmetic intensity(AI):AI=total flops/total memory bytes<br />
+AI describes per memory byte float compute number<br />
+high AI:compute-bound(matrix multiplication),low AI:memory-bound(vector addition)<br />
+<img alt="" src="../image.png" /><br />
+peak flop/s:fused multiply-add + vectorization code<br />
+memory model:Cache &gt; HBM &gt; DRAM<br />
+Real Gflop/s <span class="arithmatex">\(\le\)</span> AI * DRAM GB/s</p>
+<h3 id="littles-law">Little's Law<a class="headerlink" href="#littles-law" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(L=\lambda * W\)</span>(buffer size = throughput * latency)<br />
+throughput:12GB/s,latency:100ns,buffer size = 100ns * 12GB/s=120B  </p>
+<h2 id="lecture-2-reorder-buffer">Lecture 2: Reorder buffer<a class="headerlink" href="#lecture-2-reorder-buffer" title="Permanent link">&para;</a></h2>
+<h2 id="lecture-3-out-of-order-cpu-tomasulo">Lecture 3: Out-of-order CPU + Tomasulo<a class="headerlink" href="#lecture-3-out-of-order-cpu-tomasulo" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../image-12.png" /><br />
+note that in in-order dispatch(upper-case),instruction 3 has to wait until instruction 2 to come out of ID phase.Before that,it cannot get into ID phase.<br />
+also,instruction 4 can get into IF phase only after instruction 3 come out of IF phase    </p>
+<h2 id="lecture-4-cpu-superscalar-simd">Lecture 4: CPU Superscalar + SIMD<a class="headerlink" href="#lecture-4-cpu-superscalar-simd" title="Permanent link">&para;</a></h2>
+<h2 id="lecture-5-memory">Lecture 5: Memory<a class="headerlink" href="#lecture-5-memory" title="Permanent link">&para;</a></h2>
+<p>small capacity,large bandwidth,small latency:SRAM HBM DDR SSD DISK:large capacity,small bandwidth,large latency<br />
+fast,expensive:Flip-Flop SRAM DRAM SSD(flash memory):slow,cheap<br />
+SRAM(cache):buffering data on chips,allow random access with low capacity<br />
+application:cache in CPU,shared memory in GPU,on-chip buffer in AI accelerator<br />
+HBM(High Bandwidth Memory) DRAM(very high bandwidth with high price and low flexibility,low capacity) vs. DDR DRAM<br />
+HBM is vertically stacked with very many joints(接口/电气连接点) between layers for large bandwidth,but difficult for highly stacking,causing low capacity  </p>
+<h2 id="lecture-6-gpu-architecture">Lecture 6: GPU architecture<a class="headerlink" href="#lecture-6-gpu-architecture" title="Permanent link">&para;</a></h2>
+<p>CPU vs. GPU:<br />
+- few complex cores vs. lots of small cores<br />
+- large cache vs. small cache<br />
+- large and slow memory vs. small and fast memory  </p>
+<p>CPU(sequential or modestly parallel) -&gt; GPU(massively parallel) -&gt; CPU<br />
+hardware execution model for GPU,CUDA(Compute Unified Device Architecture) programming model for <strong>thread block</strong><br />
+GPU memory capacity does not scale well because HBM is physically stacked and tightly coupled with the GPU, making it expensive and difficult to increase capacity without redesigning the entire module.  </p>
+<h3 id="programming-model">Programming model<a class="headerlink" href="#programming-model" title="Permanent link">&para;</a></h3>
+<p>thread-&gt;thread block-&gt;grid
+SPMD:single programme multiple data<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">//SISD</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">//SIMD:vector instruction</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">VLD</span><span class="w"> </span><span class="n">A</span><span class="o">-&gt;</span><span class="n">V1</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">VLD</span><span class="w"> </span><span class="n">B</span><span class="o">-&gt;</span><span class="n">V2</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">VADD</span><span class="w"> </span><span class="n">V1</span><span class="o">+</span><span class="n">V2</span><span class="o">-&gt;</span><span class="n">V3</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">VST</span><span class="w"> </span><span class="n">V3</span><span class="o">-&gt;</span><span class="n">C</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">//SPMD</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">//CUDA</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">float</span><span class="w"> </span><span class="nf">serialFunction</span><span class="p">(...);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">kernel</span><span class="p">(...);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">main</span><span class="p">()</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">cudaMalloc</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">d_in</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="n">bytes</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">cudaMemcpy</span><span class="p">(</span><span class="n">d_in</span><span class="p">,</span><span class="w"> </span><span class="n">h_in</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="n">bytes</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">kernel</span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="err">#</span><span class="n">blocks</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="n">threads</span><span class="w"> </span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">cudaFree</span><span class="p">(</span><span class="n">d_in</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">//CPU</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">vecadd</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">){</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">//1.allocate GPU memory</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">A_d</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">B_d</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">C_d</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">cudaMalloc</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="n">A_d</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">cudaMalloc</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="n">B_d</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">cudaMalloc</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="n">C_d</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="c1">//2.copy data to GPU memory</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">cudaMemcpy</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">cudaMemcpy</span><span class="p">(</span><span class="n">B_d</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">);</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="c1">//3.perform computation on GPU</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numThreadsPerBlock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">512</span><span class="p">;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numBlocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">numThreadsPerBlock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">numThreadsPerBlock</span><span class="p">;</span><span class="w"> </span><span class="c1">// size of input is not a multiple of number of threads per block</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">vecadd_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">numBlocks</span><span class="p">,</span><span class="w"> </span><span class="n">numThreadsPerBlock</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span><span class="n">B_d</span><span class="p">,</span><span class="n">C_d</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="c1">//4.copy data from GPU memory</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">cudaMemcpy</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">C_d</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="n">cudaMemcpyDeviceToHost</span><span class="p">);</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="c1">//5.deallocate GPU memory</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="n">cudaFree</span><span class="p">(</span><span class="n">A_d</span><span class="p">);</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="n">cudaFree</span><span class="p">(</span><span class="n">B_d</span><span class="p">);</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="n">cudaFree</span><span class="p">(</span><span class="n">C_d</span><span class="p">);</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">//GPU</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">vecadd_kernel</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">){</span><span class="w"> </span><span class="c1">//size of input is not a multiple of number of threads per block</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="p">}</span>
+</code></pre></div>
+locate the thread:<code>girdDim.x, blockDim.x, blockIdx.x, threadIdx.x</code><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">//CPU</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">add_matrix</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="o">++</span><span class="n">j</span><span class="p">){</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">            </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">            </span><span class="n">c</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">add_matrix</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1">//GPU</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">__global__</span><span class="w"> </span><span class="nf">add_matrix</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">){</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;</span><span class="n">N</span><span class="p">)</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">c</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="n">dim3</span><span class="w"> </span><span class="n">dimBlock</span><span class="p">(</span><span class="n">blocksize</span><span class="p">,</span><span class="w"> </span><span class="n">blocksize</span><span class="p">);</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="n">dim3</span><span class="w"> </span><span class="n">dimGrid</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="n">dimBlock</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">N</span><span class="o">/</span><span class="n">dimBlock</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="n">add_matrix</span><span class="o">&lt;&lt;&lt;</span><span class="n">dimGrid</span><span class="p">,</span><span class="w"> </span><span class="n">dimBlock</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="p">}</span>
+</code></pre></div>
+warp:32 consecutive threads.A thread block is divided into warps for SIMT execution<br />
+Why warps and SIMT?Reduce GPU scheduling overhead<br />
+thread block:logic scheduling unit defined by programmer<br />
+warp:execution unit determined in GPU hardware<br />
+SIMD(vector) is a single sequential instruction stream<br />
+SIMT is multiple instruction streams of scalar instructions<br />
+SIMT can treat each thread separately and can group threads into warps flexibly<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">//divergence-free execution</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">compute</span><span class="p">(</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">if</span><span class="p">(</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="c1">//remember 32 threads per warp</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">Do_this</span><span class="p">(</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">else</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">Do_that</span><span class="p">((</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="o">%</span><span class="mi">32</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></p>
+<h2 id="lecture-7-gpu-optimization">Lecture 7: GPU optimization<a class="headerlink" href="#lecture-7-gpu-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="gpu-memories">GPU memories<a class="headerlink" href="#gpu-memories" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../image-2.png" /><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">                        </span><span class="kt">int</span><span class="w"> </span><span class="n">LocalVar</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">                        </span><span class="kt">int</span><span class="w"> </span><span class="n">LocalArr</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">__device__</span><span class="w"> </span><span class="n">__shared__</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">SharedVar</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">__device</span><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">GlobalVar</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">__device__</span><span class="w"> </span><span class="n">__constant__</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ConstantVar</span><span class="p">;</span>
+</code></pre></div></p>
+<h4 id="dram-subsystem">DRAM subsystem<a class="headerlink" href="#dram-subsystem" title="Permanent link">&para;</a></h4>
+<p>Bank operation<br />
+Long global memory access latency</p>
+<h3 id="multi-threading">Multi-threading<a class="headerlink" href="#multi-threading" title="Permanent link">&para;</a></h3>
+<p>FGMT(Fine-Grained Multi-Threading) helps hide long latency operations(memory access)<br />
+occupancy:ratio of active warps to maximum number of warps per core<br />
+other warps execute instructions(activate more warps) when certain warps are waiting for memory access</p>
+<h3 id="memory-coalescing">Memory Coalescing<a class="headerlink" href="#memory-coalescing" title="Permanent link">&para;</a></h3>
+<p>only one DRAM transaction is needed if threads in the same warp access consecutive memory locations in the same burst<br />
+we want to satisfy warps,this is vertical to CPU<br />
+<img alt="" src="../image-1.png" /><br />
+对一个warp的前四个线程
+M0,0-&gt;M3,0:thread 0：[0,0],thread 1:[1,0],thread 2:[2,0],thread 3:[3,0],addr = 0,4,8,12,not consecutive<br />
+M0,0-&gt;M0,3:thread 0：[0,0],thread 1:[0,1],thread 2:[0,2],thread 3:[0,3],addr = 0,1,2,3,consecutive<br />
+在 C/C++/CUDA（行优先）中：threadIdx.x 对应 col 索引 → Coalesced<br />
+在 C/C++/CUDA 中：threadIdx.x 对应 row 索引 → Uncoalesced  </p>
+<h3 id="shared-memory">Shared memory<a class="headerlink" href="#shared-memory" title="Permanent link">&para;</a></h3>
+<p>shared memory is an interleaved/banked memory<br />
+32 banks in NVIDIA GPUs<br />
+bank conflict free if 32 threads and 32 banks correspond each other one-to-one(though random accessing)<br />
+reducing bank conflict:<br />
+- <strong>padding</strong><br />
+- randomzied mapping<br />
+- hash functions  </p>
+<p>data reuse:tiliing<br />
+cut data into tiles and load into shared memory,threads can access shared memory with only one DRAM access 
+<img alt="" src="../image-3.png" /><br />
+GPU matrix multiplication<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">mm_kernel</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">blockDim</span><span class="p">.</span><span class="n">y</span><span class="o">+</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">row</span><span class="o">*</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">col</span><span class="p">];</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">C</span><span class="p">[</span><span class="n">row</span><span class="o">*</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">}</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1">//tiled matrix multiplication</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="n">__shared__</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">A_s</span><span class="p">[</span><span class="n">TILE_DIM</span><span class="p">][</span><span class="n">TILE_DIM</span><span class="p">];</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="n">__shared__</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">B_s</span><span class="p">[</span><span class="n">TILE_DIM</span><span class="p">][</span><span class="n">TILE_DIM</span><span class="p">];</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">blockDim</span><span class="p">.</span><span class="n">y</span><span class="o">+</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">tile</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="o">/</span><span class="n">TILE_DIM</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">tile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="c1">//Load tile to shared memory</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">    </span><span class="n">A_s</span><span class="p">[</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">][</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">row</span><span class="o">*</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tile</span><span class="o">*</span><span class="n">TILE_DIM</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">];</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">    </span><span class="n">B_s</span><span class="p">[</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">][</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">[(</span><span class="n">tile</span><span class="o">*</span><span class="n">TILE_DIM</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">col</span><span class="p">];</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">    </span><span class="n">__syncthreads</span><span class="p">();</span><span class="w"> </span><span class="c1">// wait to finish loading before computing</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">    </span><span class="c1">// compute with tile</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TILE_DIM</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">A_s</span><span class="p">[</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">B_s</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">];</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">    </span><span class="n">__syncthreads</span><span class="p">();</span><span class="w"> </span><span class="c1">// wait to finish computing before loading</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="p">}</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="n">C</span><span class="p">[</span><span class="n">row</span><span class="o">*</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="simt-divergency">SIMT Divergency<a class="headerlink" href="#simt-divergency" title="Permanent link">&para;</a></h3>
+<p>branch divergence<br />
+divergence-free execution  </p>
+<h3 id="atomic-operation">atomic operation<a class="headerlink" href="#atomic-operation" title="Permanent link">&para;</a></h3>
+<p><code>int atomicAdd(int*, int)</code>,pointer to memory + value to add<br />
+prevent data races in histogram computation/synchronization  </p>
+<h3 id="cpu-gpu-transfer">CPU-GPU transfer<a class="headerlink" href="#cpu-gpu-transfer" title="Permanent link">&para;</a></h3>
+<p>overlap of data transfers and kernel execution<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">number_of_streams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="p">[</span><span class="n">number_of_streams</span><span class="p">];</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">number_of_streams</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">cudaStreamCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stream</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">number_of_streams</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="n">cudaMemcpyAsync</span><span class="p">(</span><span class="n">inputDevPtr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="n">hostPtr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">number_of_streams</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="n">Mykernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">num_blocks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">number_of_streams</span><span class="p">,</span><span class="w"> </span><span class="n">num_threads</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">outputDevPtr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">inputDevPtr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">number_of_streams</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="n">cudaMemcpyAsync</span><span class="p">(</span><span class="n">hostPtr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="n">outputDevPtr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="n">cudaDeviceSynchronize</span><span class="p">();</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="w"> </span><span class="n">number_of_streams</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="n">cudaStreamDestroy</span><span class="p">(</span><span class="n">Stream</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div></p>
+<h2 id="lecture-8-cache-basics">Lecture 8: Cache Basics<a class="headerlink" href="#lecture-8-cache-basics" title="Permanent link">&para;</a></h2>
+<h2 id="lecture-9-10-cache-coherence-and-consistence">Lecture 9-10: Cache Coherence and Consistence<a class="headerlink" href="#lecture-9-10-cache-coherence-and-consistence" title="Permanent link">&para;</a></h2>
+<h2 id="lecture-11-ai-chipscommon-patterns">Lecture 11: AI chips:common patterns<a class="headerlink" href="#lecture-11-ai-chipscommon-patterns" title="Permanent link">&para;</a></h2>
+<p>AI(DL) accelerator vs. GPU vs. CPU<br />
+通用性:ASIC &lt;&lt; AI accelerator &lt; FPGA &lt; GPU &lt; CPU<br />
+能效（单位能量计算量）:ASIC &gt; AI accelerator &gt; FPGA &gt;&gt; GPU &gt; CPU<br />
+可迭代性:ASIC &lt; AI accelerator &lt; FPGA &lt; GPU &lt; CPU<br />
+延时（做出决定/开跑的时间）:GPU &gt;&gt; CPU &gt; AI accelerator &gt; FPGA &gt; ASIC
+深度学习算法特性：计算特性（固定重复计算）、访存特性（数据访问的局部性，数据访问和后续计算的关系）  </p>
+<h3 id="dl">DL<a class="headerlink" href="#dl" title="Permanent link">&para;</a></h3>
+<h4 id="conv">Conv<a class="headerlink" href="#conv" title="Permanent link">&para;</a></h4>
+<p>卷积层的计算特性：矩阵 * 向量（1 filter）/矩阵（2 filters）<br />
+访存特性：时空局部性，一维局部性  </p>
+<h4 id="activation-function">Activation function<a class="headerlink" href="#activation-function" title="Permanent link">&para;</a></h4>
+<p>ReLU,Leaky ReLU<br />
+计算特性：向量运算，访存特性：向量顺序访问  </p>
+<h4 id="pooling">Pooling<a class="headerlink" href="#pooling" title="Permanent link">&para;</a></h4>
+<p>计算特性：二维空间reduce<br />
+访存特性：时空局部性  </p>
+<h4 id="fully-connected-layer">Fully Connected Layer<a class="headerlink" href="#fully-connected-layer" title="Permanent link">&para;</a></h4>
+<p>Flatten &amp; fully connect<br />
+计算特性：矩阵乘向量<br />
+访存特性：顺序访问&amp;activation  </p>
+<h4 id="transformer">Transformer<a class="headerlink" href="#transformer" title="Permanent link">&para;</a></h4>
+<p>Attention Mechanism see NLP<br />
+计算特性：矩阵乘法<br />
+访存特性：顺序访问<br />
+Feed Forward:同上  </p>
+<h3 id="_2">加速器设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../image-4.png" />  </p>
+<h4 id="_3">并行计算模块<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>Cube + Vector unit,scalar unit<br />
+aggressive custom computing unit  </p>
+<h4 id="_4">简化控制模块<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>多instruction queue管理，每个instruction queue顺序issue<br />
+Instr. dispatch -&gt; cube/vector/MTE queue<br />
+指令间并行不属于优化重点  </p>
+<h4 id="global-buffer">Global Buffer<a class="headerlink" href="#global-buffer" title="Permanent link">&para;</a></h4>
+<p>L1,L0A,L0B,L0C,Unified Buffer(UB):分块使用、降低单位访存功耗，牺牲可编程性<br />
+stride -&gt; set change<br />
+buffer vs. cache:能耗低、芯片面积小、手动管理</p>
+<h4 id="_5">量化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>quantization see NLP<br />
+GPU:FP8,FP16<br />
+TPU:INT8,Ascend:INT8(8-bit/16-bit)  </p>
+<h4 id="dsa">专用编程语言DSA<a class="headerlink" href="#dsa" title="Permanent link">&para;</a></h4>
+<p>转为高吞吐服务，不关心单一操作延迟，需要手动定义buffer，移动数据<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">DDR</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,...,</span><span class="mi">31</span><span class="p">};</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">DDR</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,...,</span><span class="mi">31</span><span class="p">};</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">DDR</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">Unified_Buffer</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">a_ub</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">Unified_Buffer</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">b_ub</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">Unified_Buffer</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">c_ub</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">Dma_Mov</span><span class="p">(</span><span class="n">a_ub</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">Dma_Mov</span><span class="p">(</span><span class="n">b_ub</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">Vector_add</span><span class="p">(</span><span class="n">c_ub</span><span class="p">,</span><span class="n">a_ub</span><span class="p">,</span><span class="n">b_ub</span><span class="p">);</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">Dma_Mov</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">c_ub</span><span class="p">);</span>
+</code></pre></div>
+解决难编程问题：算子库  </p>
+<h2 id="lecture-12-ai-processors">Lecture 12: AI processors<a class="headerlink" href="#lecture-12-ai-processors" title="Permanent link">&para;</a></h2>
+<h3 id="_6">深度学习加速器设计<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">减少内存访问<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>DRAM latency 200x ALU<br />
+solution:global buffer  </p>
+<h4 id="global-buffer_1">减少global buffer访问<a class="headerlink" href="#global-buffer_1" title="Permanent link">&para;</a></h4>
+<p>SRAM latency &gt; FP32 multiply<br />
+global buffer access -&gt; register utilization(data reuse)<br />
+TPU:weight stationary<br />
+output stationary<br />
+input stationary<br />
+-&gt;row stationary:global buffer filter一行  </p>
+<h4 id="_8">增加计算<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>计算模块的设计原则：尽可能多定制计算单元<br />
+例：16<em>16矩阵乘法<br />
+c代码:16</em> 16<em> 16=4096 cycles;2rd,1/16wb each cycle(with cache)<br />
+vector:<code>C[i][j]=A[i][:]*B[:][j]</code>,16</em> 16=256 cycles;2<em>16rd,1wb each cycle<br />
+matrix:<code>C[:][:]=A[:][:]*B[:][:]</code>,1 cycles;2</em> 16<em> 16rd,16</em> 16wb,算力密度高但通用性极弱  </p>
+<h3 id="ai">常见AI加速器<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h3>
+<h4 id="ascend">华为Ascend<a class="headerlink" href="#ascend" title="Permanent link">&para;</a></h4>
+<p>晟腾310推理芯片，910训练芯片<br />
+DaVinci Core:Cube(矩阵),Vector,Scalar<br />
+Cube:C=A<em>B(16 </em>16矩阵)，Accumulator,L0A/B/C buffer,A/B DFF,Accum DFF<br />
+Vector:L0C -&gt; Unified Buffer,Vector<br />
+Scalar:Scalar unit,unified buffer or scalar buffer,GPR,SPR<br />
+Cube极致算力高；Buffer访问、管理效率高；硬核随路计算指令<br />
+难编程；生态不完善  </p>
+<h4 id="google-tpu">Google TPU<a class="headerlink" href="#google-tpu" title="Permanent link">&para;</a></h4>
+<p>v1:inference<br />
+systolic array:regular array of processing elements(PE) for loop<br />
+e.g. IF ID ADD-SUB-MUL MEM WB<br />
+2x2 systolic array(3x3=9 PEs,right=left,down=upper,cell=cell+upper*left) for matrix mul<br />
+T=O(n)<br />
+<img alt="" src="../image-5.png" /><br />
+v2:support training(buffers -&gt; single vector memory,fixed activation pipeline -&gt; general purpose vector unit,MMU connected to vector memory -&gt; vector unit,DDR3 -&gt; HBM)<br />
+v3:support training + more computing power(2 matrix multiplication units)<br />
+v4:training,v4i:inference<br />
+v5/v6:TPU interconnect<br />
+推理加速器可以提高10倍以上能耗比，因为模型可以储存在aichip上，训练时不能显著提高，因为训练加速器不能将模型和中间结果都存在aichip上<br />
+大厂对训练极度谨慎，只有推理可以进行各类优化  </p>
+<h2 id="lecture-13-ai-chip-runtime-framework">Lecture 13: AI Chip + Runtime + Framework<a class="headerlink" href="#lecture-13-ai-chip-runtime-framework" title="Permanent link">&para;</a></h2>
+<h3 id="cambricon">寒武纪Cambricon<a class="headerlink" href="#cambricon" title="Permanent link">&para;</a></h3>
+<p>[goal] increase power ratio and programmability  <br />
+single-core DLP(Deep Learning Processor)-S:<br />
+- control unit:simple control+register renaming<br />
+    - IFU:address generator unit,inst cache,refill buffer,inst queue(out-of-order and SYNC between queue,in-order in queue)<br />
+    - IDU:decoder,ALU,Issue Queue(control,compute,memory)<br />
+- compute unit<br />
+    - VFU(Vector Fuction Unit)<br />
+    - MFU(Matrix)<br />
+    - Quantization<br />
+- SRAM unit<br />
+    - WRMA(weight)<br />
+    - NRAM(neuron)<br />
+    - DMA  </p>
+<p>tensor dataflow:DRAM-&gt;NRAM-&gt;VFU(-&gt;MFU-&gt;VFU)-&gt;NRAM-&gt;DRAM<br />
+weight dataflow:DRAM-&gt;WRAM-&gt;MFU<br />
+execution flow:<br />
+1. IFU read from DRAM by DMA;IDU decode and send to DMA,VFU,MFU<br />
+2. DMA read tensor,read neuron from DRAM to NRAM,read weight to WRAM<br />
+3. VFU read nueron from NRAM,preprocess and send to MFU<br />
+4. MFU read nueron from VFU,weight from WRAM,compute matrix and send to VFU<br />
+5. VFU postprocess nueron<br />
+6. VFU write back NRAM<br />
+7. DMA write from NRAM to DRAM  </p>
+<p>DLP ISA:Matrix(MLOAD,MSTORE,MMOVE片上传输;MMV,VMM,MMS,OP,MAM,MSM),Vector(VLOAD,VSTORE,VMOVE;VAV,VSV,VMV,VDV,VEXP,VLOG,IP,RV,VMAX,VMIN;VGT,VE,VAND,VOR,VNOT,VGTM),Scalar(SLOAD,SSTORE,SMOVE;);JUMP,CB(conditional branch);<br />
+multi-core DLP-M:<br />
+- DLP-M &lt;- DLP-C(cluster) &lt;- DLP-S<br />
+    - DLP-C:4 DLP-S，SMEM(shared memory),GDMA&amp;CDMA(outside and inside communication)  </p>
+<p>homogeneous同构 architecture(Huawei and Nvidia易编程) vs. heterogeneous异构 architecture(Cambricon,fast inside DLP-C,slower between DLP-C，shared memory减少HBM访问)  </p>
+<h3 id="runtime">Runtime<a class="headerlink" href="#runtime" title="Permanent link">&para;</a></h3>
+<h4 id="_9">算子基本概念<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>[Definition] A layer between AI framework(mindspore,tensorflow,pytorch,...) and AI chips<br />
+CANN:Compute Architecture for Neural Network,CUDA:Compute Unified Device Architecture<br />
+NN operator library:Conv,Batchnorm,Scale,ReLU,Pad,...<br />
+1. NN tasks are composed of NN operators<br />
+2. AI chips are difficult to program<br />
+[goal] performance and usability<br />
+operator library:NN,BLAS(Basic Linear Algebra Subprograms),DVPP(Digital Video Pre-Processor),AIPP(AI Pre-Processing),HCCL(Huawei Collective Communication Library)<br />
+[Definition] tensor:a container that stores operator input and output data<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">TensorDesc</span><span class="w"> </span><span class="n">tensordesc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">,</span><span class="n">shape</span><span class="p">,</span><span class="n">dtype</span><span class="p">,</span><span class="n">format</span><span class="p">}</span>
+</code></pre></div>
+shape:<br />
+|tensor|shape|
+|-------|-------|
+|1|(0,|
+|[1,2,3]|(3,|
+|[ [1,2],[3,4] ]|(2,2)|
+|[ [ [1,2],[3,4] ],[ [5,6],[7,8] ] ]|(2,2,2)|</p>
+<p><code>shape = (4,20,20,3)</code>:4 photos,20*20 pixels,3 channels<br />
+format 4D:[Batch,Height,Width,Channels] = NHWC  </p>
+<h4 id="_10">算子开发方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>TBE(Tensor Boost Engine) operator:DSL &amp; TIK(Tensor Iterator Kernel),AI CPU operator
+晟腾CANN:SPMD编程范式 Ascend C<br />
+where is tensor?device memory  </p>
+<h4 id="cann">CANN平台<a class="headerlink" href="#cann" title="Permanent link">&para;</a></h4>
+<p>计算图引擎GE:图准备，图拆分，图优化，图编译，图加载，图执行<br />
+图优化：<br />
+重复计算-&gt;单次计算直接调取结果<br />
+算子融合：每个算子都从内存读取再计算完成放回<br />
+[insight] Conv2D,BatchNorm,Relu均为顺序读写 -&gt; new operator:Conv2D_BatchNorm_Relu  <br />
+UB融合：<br />
+1. task和data在片上上下文切换<br />
+2. 新的算子所需数据从主存搬运到unified buffer<br />
+3. vector读取UB中的数据进行算子1，2，3，...的计算，结果存回UB<br />
+4. 结果从UB搬出到主存  </p>
+<p>应用：attention<br />
+[Problem] 中间结果读写HBM;softmax串行执行<br />
+[Solution] flashattention:tiling  </p>
+<h3 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h3>
+<p>模型训练和推理框架：mindspore,pytorch,tensorflow,...<br />
+将算法中的常用操作封装成组件，提高开发效率和性能<br />
+Mindspore:自动并行；二阶优化；动静态图结合；AI+科学计算<br />
+二阶优化：二阶矩阵近似表达-&gt;矩阵降频-&gt;矩阵降维-&gt;高性能算子加速<br />
+动态图：调试调优，静态图：执行部署，<code>set_context</code>灵活切换<br />
+科学计算：NVIDIA cuBLAS、cuFFT基础数学库  </p>
+<h2 id="lecture-14-parallel-training">Lecture 14: Parallel Training<a class="headerlink" href="#lecture-14-parallel-training" title="Permanent link">&para;</a></h2>
+<p>AI system:computing,storage,networking,compiling<br />
+NN training:<br />
+1. randomly initialized weight<br />
+2. iterate mini-batch learning:forward pass,backward pass,weight update  </p>
+<p>forward pass:a minibatch of n(n&gt;1) samples-&gt;matrix-matrix multiplication <span class="arithmatex">\(W*X=Y\)</span><br />
+compute loss<br />
+backward pass:layer weight gradient<br />
+back propogation:<br />
+- weight gradient <span class="arithmatex">\(dW=dY*X^\top\)</span><br />
+- activation gradient <span class="arithmatex">\(dX = W^\top * dY\)</span>    </p>
+<p>weight update:SGD,momentum,adam <span class="arithmatex">\(W+dW=W\)</span><br />
+[problem] Read After Write(RAW):dependency of weight w<br />
+distributed training:larger models,larger dataset &amp; accelerator memory size limitation(80GB/GPU)  </p>
+<h3 id="data-parallelism">data parallelism<a class="headerlink" href="#data-parallelism" title="Permanent link">&para;</a></h3>
+<p>each worker has a copy of model and is responsible for computing a portion of data<br />
+forward:cut X<br />
+<img alt="" src="../image-9.png" /><br />
+backward:computes gradient for its portion of minibatch<br />
+weight update:<br />
+1. each of N workers accumulates gradients:summing 1/N gradients<br />
+2. each worker updates its model with combined gradients from N workers  </p>
+<p><img alt="" src="../image-6.png" />  </p>
+<h4 id="allreduce">AllReduce<a class="headerlink" href="#allreduce" title="Permanent link">&para;</a></h4>
+<p>network:scale up &amp; scale out<br />
+scale up:GPU内部高速互联,scale out:机器间互联，如以太网络<br />
+'Ring' AllReduce:1D torus/ring,each worker communicates with 2 neighbors<br />
+2(N-1) steps,a worker send/receive 1/N of all bytes<br />
+1. Reduce_scatter:N-1 rounds,M/N data per round<br />
+2. Allgather:N-1 rounds,M/N data per round<br />
+N = number of GPUs,M = data size<br />
+<img alt="" src="../image-7.png" /><br />
+<img alt="" src="../image-8.png" /><br />
+*'In switch' AllReduce:each worker communicates with the switch  </p>
+<h4 id="challenges">challenges<a class="headerlink" href="#challenges" title="Permanent link">&para;</a></h4>
+<p>workload(epoches) increasing with batch size<br />
+strong scaling:increase GPU number while maintaining minibatch size -&gt; strong system<br />
+weak scaling:increase GPU number while increasing minibatch size -&gt; a little weaker strong system  </p>
+<h3 id="model-parallelism">model parallelism<a class="headerlink" href="#model-parallelism" title="Permanent link">&para;</a></h3>
+<h4 id="inter-layer-pipeline">inter layer pipeline<a class="headerlink" href="#inter-layer-pipeline" title="Permanent link">&para;</a></h4>
+<p>a worker is responsible for its portion of layers,e.g. worker 0 for layer 1,2;worker 1 for layer 3,4  <br />
+forward:worker0-&gt;1-&gt;2,loss,backward:worker2-&gt;1-&gt;0<br />
+idle bubbles:67%(N-1/N idle slots)<br />
+solution:subminibatches,cut minibatch into 2 subminibatches,after worker0 finishes computing the first subminibatch,worker1 can compute the first subminibatch while worker0 computes the second subminibatch<br />
+idle bubbles:50%<br />
+<img alt="" src="../image-10.png" /><br />
+N workers,K subminibatches:<br />
+total step-slots:2N(N+K-1)<br />
+idle step-slots:2N(N-1)<br />
+fraction of idle slots:(N-1)/(N+K-1) <br />
+challenges:overlap communication is hard;load balancing workload is difficult;idle slots reduce scaling efficiency  </p>
+<h4 id="intra-layertensor-parallelism">intra layer(tensor parallelism)<a class="headerlink" href="#intra-layertensor-parallelism" title="Permanent link">&para;</a></h4>
+<p>a worker is responsible for its portion of each layer,e.g worker 0 for layer1.1,layer2.1,layer3.1;worker 1 for layer 1.2,layer2.2,layer3.2  <br />
+partition a given layer's weights addresses idle slots,load imbalance but causes more communication costs<br />
+row-wise partitioning:an Allgather is needed between every two forward layers because each worker receives a portion of input w,all of input x and computes a portion of output y and the output y together is the next layer's x  <br />
+<img alt="" src="../image-11.png" /><br />
+column-wise partitioning:a ReduceScatter is needed between every two forward layers<br />
+<img alt="" src="../image-13.png" /><br />
+reducing synchronization by alternating partitioning:row-wise partitioning then column-wise paritioning,no communication is needed for two layers,only a communication <strong>AllReduce</strong> after the two layers,reduce half of the communication<br />
+<img alt="" src="../image-14.png" /><br />
+backward is the inverse of forward:row -&gt; column,column -&gt; row,Allgather -&gt; ReduceScatter,ReduceScatter -&gt; Allgather<br />
+Application:Transormer Block(Attention,MLP)  </p>
+<h2 id="lecture-15-flash-attention">*Lecture 15: Flash Attention<a class="headerlink" href="#lecture-15-flash-attention" title="Permanent link">&para;</a></h2>
+<h3 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h3>
+<p>ZeRO:Zero Redundancy Optimizer(See NLP:Lecture 8:DeepSpeed-Zero)<br />
+batch size limitation:how to choose parallel strategy?<br />
+1K NPU/GPU -&gt; small batch size -&gt; tensor parallelism(tp)  </p>
+<h3 id="flash-attention">flash attention<a class="headerlink" href="#flash-attention" title="Permanent link">&para;</a></h3>
+<p>normal attention is bounded by IO,low GPU utilization<br />
+flash attention:reduce IO,overlap of dropout,softmax,tensor core<br />
+naive attention <span class="arithmatex">\(O=softmax(QK^\top)V,Q_{S\times D},K_{S\times D}\)</span><br />
+- <span class="arithmatex">\(O(S^2)\)</span><br />
+- repeated reads/writes from GPU memory<br />
+- fp16 is low precision for softmax-&gt;safe softmax<br />
+- softmax is not a streaming algorithm-&gt;online softmax  </p>
+<p>softmax:<span class="arithmatex">\((\frac{e^{x_i}}{\sum_{j=1}^Ne^{x_j}})_{j=1}^N\)</span><br />
+safe softmax:<span class="arithmatex">\(m = max_{j=1}^N(x_j),(\frac{e^{x_i-m}}{\sum_{j=1}^Ne^{x_j-m}})_{j=1}^N\)</span><br />
+3-pass for max,sum and result respectively<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,...,</span><span class="n">N</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">m_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">m_</span><span class="p">{</span><span class="n">i</span><span class="mi">-1</span><span class="p">},</span><span class="w"> </span><span class="n">x_i</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,...,</span><span class="n">N</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">sum_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum_</span><span class="p">{</span><span class="n">i</span><span class="mi">-1</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x_i</span><span class="o">-</span><span class="n">mN</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,...,</span><span class="n">N</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">a_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x_i</span><span class="o">-</span><span class="n">mN</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sum_N</span>
+</code></pre></div>
+2-pass online softmax<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,...,</span><span class="n">N</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">m_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">m_</span><span class="p">{</span><span class="n">i</span><span class="mi">-1</span><span class="p">},</span><span class="n">x_i</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">sum_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">sum_</span><span class="p">{</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span><span class="o">^</span><span class="n">i</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x_j</span><span class="o">-</span><span class="n">mi</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">sum_</span><span class="p">{</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">}</span><span class="o">^</span><span class="p">{</span><span class="n">i</span><span class="mi">-1</span><span class="p">}</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x_j</span><span class="o">-</span><span class="n">mi</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x_i</span><span class="o">-</span><span class="n">mi</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum_</span><span class="p">{</span><span class="n">i</span><span class="mi">-1</span><span class="p">}</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">m_</span><span class="p">{</span><span class="n">i</span><span class="mi">-1</span><span class="o">-</span><span class="n">mi</span><span class="p">})</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x_i</span><span class="o">-</span><span class="n">mi</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,...,</span><span class="n">N</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="n">a_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x_i</span><span class="o">-</span><span class="n">mN</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sum_N</span>
+</code></pre></div></p>
+<h4 id="flash-attention-1">*flash attention-1<a class="headerlink" href="#flash-attention-1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>tiling:block size weight computation  <ul>
+<li>inter-tile:batch size and heads parallelism-&gt;low parallelism  </li>
+<li>intra-tile:outer-loop:K,V;inner-loop:Q-&gt;extra access to HBM from O  </li>
+</ul>
+</li>
+<li>recomputation:recompute the part needed during the backward pass instead of storing the full attention matrix  </li>
+</ul>
+<h4 id="flash-attention-2">flash attention-2<a class="headerlink" href="#flash-attention-2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>inter-tile:batch size and Q parallelism-&gt;high parallelism  </li>
+<li>intra-tile:outer-loop:Q;inner-loop:K,V-&gt;no extra access to HBM  </li>
+</ul>
+<h4 id="flash-attention-3">flash attention-3<a class="headerlink" href="#flash-attention-3" title="Permanent link">&para;</a></h4>
+<p>[problem] serial execution of GEMM,softmax and HBM<br />
+[solution] warp specialization and intra-warpgroup overlapping<br />
+warp spcialization:producer(DMA)-consumer model,overlap of memory access and computation<br />
+intra-warpgroup overlapping:overlap softmax and GEMM  </p>
+<h4 id="flash-attention-4">flash attention-4<a class="headerlink" href="#flash-attention-4" title="Permanent link">&para;</a></h4>
+<p>deeper warp specialization for Blackwell GPU  </p>
+<h3 id="rateloptimizing-holistic-data-movement-to-fine-tune-100b-model-on-a-consumer-gpu">Ratel:Optimizing Holistic Data Movement to Fine-tune 100B Model on a Consumer GPU<a class="headerlink" href="#rateloptimizing-holistic-data-movement-to-fine-tune-100b-model-on-a-consumer-gpu" title="Permanent link">&para;</a></h3>
+<h2 id="lecture-16overview">Lecture 16:Overview<a class="headerlink" href="#lecture-16overview" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © YYC 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://tapir-elithril.github.io/Notebook/" target="_blank" rel="noopener" title="tapir-elithril.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<3230105697@zju.edu.cn>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

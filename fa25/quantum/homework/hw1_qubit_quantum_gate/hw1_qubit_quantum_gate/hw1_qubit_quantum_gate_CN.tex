@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,enumitem,algorithm,algpseudocode}
+\usepackage[UTF8]{ctex}
+\usepackage[braket]{qcircuit}
+\parindent=22pt
+\parskip=3pt
+\oddsidemargin 18pt \evensidemargin 0pt
+\leftmargin 1.5in
+\marginparwidth 1in \marginparsep 0pt \headsep 0pt \topskip 20pt
+\textheight 225mm \textwidth 148mm
+\renewcommand{\baselinestretch}{1.15}
+\begin{document}
+\title{{\bf 理论作业一 \quad 量子比特与量子门}}
+\author{姓名 \quad 学号}
+\date{\today}
+\maketitle
+
+\begin{tabular*}{13cm}{r}
+\hline
+\end{tabular*}
+
+\vskip 0.3 in
+
+{\bf 1.} 已知双量子比特系统的量子态如下 $|\psi\rangle = \begin{bmatrix} \frac{1}{2} & x & 3x & \frac{i}{2\sqrt{2}} \end{bmatrix} ^ \intercal \in \mathbb{C}^4$ ，求该系统处于 $|01\rangle$ 态的概率。
+
+\vskip 0.3 in
+
+{\bf 2.} 已知单量子比特的态矢量为 $|\psi\rangle = \begin{bmatrix} 3/5 \\ 4/5 \end{bmatrix}$ ，求该量子比特的Bloch球坐标。
+
+\vskip 0.3 in
+
+{\bf 3.} Bell 态指双量子比特系统的四个特殊量子态，他们是双量子比特系统中纠缠度最高的量子态，因此也称为最大纠缠态，在量子隐形传态、量子算法中有着广泛的应用。一般而言，Bell 态定义如下：
+\begin{align}
+    |\beta_{xy}\rangle = \frac{|0y\rangle + (-1)^x|1\bar{y}\rangle}{\sqrt{2}}, \quad x,y \in \{0,1\}, \quad \bar{y} = 1-y
+\end{align}
+\begin{enumerate}[label=\alph*.]
+\item 证明 Bell 态是纠缠态。
+\item 用 H、X、Z 和 CNOT 门设计四个量子电路，使得初态为 $|00\rangle$ 的双量子比特系统经这些量子电路作用后分别演化为四个 Bell 态。
+\end{enumerate}
+
+\vskip 0.3 in
+
+{\bf 4.} 证明下图中的两个量子电路等价。（提示：计算两个量子电路对应的酉矩阵）
+
+\[ \Qcircuit @C=1.0em @R=2.0em {
+\lstick{q_0} & \targ & \qw \\
+\lstick{q_1} & \ctrl{-1} & \qw
+} \]
+
+\[ \Qcircuit @C=1.0em @R=1.5em {
+\lstick{q_0} & \gate{H} & \ctrl{1} & \gate{H} & \qw \\
+\lstick{q_1} & \gate{H} & \targ & \gate{H} & \qw 
+} \]
+
+\vskip 0.3 in
+
+{\bf 5.} 证明厄米算符 $A$ 的任一本征值均为实数，且不同本征值对应的本征态正交。
+
+\vskip 0.3 in
+
+{\bf 6.} Deutsch 算法展示了量子计算机强大的并行计算能力。Deutsch-Jozsa 算法是其推广形式，将可分类的函数推广至多比特情形。
+
+已知函数 $f:\{0,1\}^n \rightarrow \{0,1\}$，该函数是常数函数（对所有输入均输出 $0$ ，或对所有输入均输出 $1$）或平衡函数(对恰好一半的输入输出 $0$ ，对另一半输入输出 $1$)。Deutsch-Jozsa 算法只需对实现函数 $f$ 的结构进行一次查询，即可判断 $f$ 是常数函数还是平衡函数。
+
+下图是实现 Deutsch-Jozsa 算法的量子线路。其中，$U_f:|x,y\rangle \to |x,y\oplus f(x)\rangle$ 是实现函数 $f$ 的 $n+1$ 比特的量子门。
+
+\[ \Qcircuit @C=1.0em @R=.7em {
+\lstick{\ket{0}} & {/^n} \qw & \gate{H^{\otimes n}} & \multigate{1} {U_f} & \gate{H^{\otimes n}} & \meter & \qw \\
+\lstick{\ket{1}} & \qw & \gate{H} & \ghost{U_f} & \qw & \qw & \qw \\
+} \]
+
+推导该量子电路中量子态的演化过程，并说明如何基于测量结果判断 $f$ 是常数函数还是平衡函数。（提示：计算 $f$ 为常数函数或平衡函数时的测量结果）
+
+\end{document}
